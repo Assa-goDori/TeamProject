@@ -3,6 +3,8 @@
 <decorators defaultdir="/layout">
 	<decorator name="main" page="layout.jsp">
 		<pattern>*.dog</pattern>
+		<pattern>/member/*.dog</pattern>
+		<pattern>/vwork/*.dog</pattern>
 	</decorator>
 	<excludes>
 	
