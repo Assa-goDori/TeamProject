@@ -37,17 +37,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12">
-                    <p class="welcome-text">Welcome to life coach website.</p>
+                    <p class="welcome-text">구해독 페이지에 오신걸 .</p>
+                    <p class="welcome-text">환영해.</p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                       <!--  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                         <li>|</li>
-                        <li>+180-123-4567</li>
+                        <li>028570081</li> -->
                     </ul>
                 </div>
             </div>
@@ -77,7 +78,7 @@
                                 <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">펀딩</a></li>
-                                        <li><a href="blog-single.html">봉사</a></li>
+                                        <li><a href="blog-single.html">쇼핑</a></li>
                                     </ul>
                                 </li>
                                
@@ -99,8 +100,8 @@
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
                             <div class="slider-captions">
-                                <h1 class="slider-title">I Am John Deo</h1>
-                                <h3>Your Life Coach</h3>
+                                <!-- <h1 class="slider-title">I Am John Deo</h1>
+                                <h3>Your Life Coach</h3> -->
                                 <p class="hidden-sm hidden-xs hidden-md">Close the gap between where you are today & where you want to be...</p>
                                 <a href="#" class="btn btn-primary  hidden-xs">Get Template</a>
                             </div>
