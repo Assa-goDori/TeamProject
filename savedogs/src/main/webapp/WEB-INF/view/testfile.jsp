@@ -3,12 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>±¸ÇØµ¶ ¸ÞÀÎ ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>ìˆ˜ì • ìž˜ ë˜ë‚˜ìš”~?</title>
 </head>
 <body>
-<table>
-	<tr><th></th><th></th></tr>
-</table>
+
 </body>
 </html>
