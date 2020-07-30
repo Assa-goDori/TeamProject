@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MainController {
-	@RequestMapping("main")
-	public ModelAndView main() {
+@RequestMapping("vwork")
+public class VworkController {
+	@RequestMapping("vmain")
+	public ModelAndView vmain() {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
