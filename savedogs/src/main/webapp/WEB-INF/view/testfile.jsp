@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구해독 메인 페이지 에휴 아효....</title>
+<title>수정 잘 되나요~?</title>
 </head>
 <body>
-<table>
-	<tr><td></td><td></td></tr>
-</table>
+
 </body>
 </html>
