@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구해독 메인 페이지!!!!!!!!!!!!!!!!!!!!!!!!!</title>
+<title>구해독 메인 페이지!!!!!!!!!!!!!!!!!!!!!!!!!에휴</title>
 </head>
 <body>
 <table>
