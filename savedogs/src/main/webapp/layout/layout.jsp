@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +14,17 @@
     <meta name="keywords" content="">
     <title> <decorator:title /> </title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${path }/css/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="${path }/css/style.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i%7CPT+Serif:400,400i,700,700i" rel="stylesheet">
     <!-- Owl Carousel CSS -->
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.default.css" rel="stylesheet">
+    <link href="${path }/css/owl.carousel.css" rel="stylesheet">
+    <link href="${path }/css/owl.theme.default.css" rel="stylesheet">
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" type="text/css" href="css/fontello.css">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${path }/css/fontello.css">
+    <link href="${path }/css/font-awesome.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -64,7 +66,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <div class="logo">
-                        <a href="index.html"><img src="./images/logo.png" alt=""> </a>
+                        <a href="index.html"><img src="${path }/images/logo.png" alt=""> </a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12">
@@ -95,7 +97,7 @@
     <div class="slider">
         <div class="owl-carousel owl-one owl-theme">
             <div class="item">
-                <div class="slider-img"> <img src="./images/slider_1.jpg" alt=""></div>
+                <div class="slider-img"> <img src="${path }/images/slider_1.jpg" alt=""></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
@@ -111,7 +113,7 @@
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="./images/slider_2.jpg" alt=""></div>
+                <div class="slider-img"> <img src="${path }/images/slider_2.jpg" alt=""></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
@@ -126,7 +128,7 @@
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="./images/slider_3.jpg" alt=""></div>
+                <div class="slider-img"> <img src="${path }/images/slider_3.jpg" alt=""></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
@@ -170,7 +172,7 @@
             <div class="row">
                 <!-- footer-contact links -->
                 <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="ft-logo"><img src="./images/ft_logo.png" alt=""></div>
+                    <div class="ft-logo"><img src="${path }/images/ft_logo.png" alt=""></div>
                     <div class="footer-widget">
                         <div class="contact-info">
                             <span class="contact-text">951 Meadow View Drive Bristol,USA06010 </span>
