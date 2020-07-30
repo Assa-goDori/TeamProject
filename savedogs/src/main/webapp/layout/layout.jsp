@@ -70,13 +70,14 @@
                     <!-- navigations-->
                     <div class="navigation">
                         <div id="navigation">
-                            <ul>
+                           <ul>
                                 <li class="active"><a href="index.html">Home</a></li>
-                                
-                                <li class="has-sub"><a href="#">Article</a>
+                                <li class="active"><a href="index.html">유기견</a></li>
+                                <li class="active"><a href="index.html">봉사</a></li>
+                                <li class="has-sub"><a href="#">후원</a>
                                     <ul>
-                                        <li><a href="blog-default.html">Articles</a></li>
-                                        <li><a href="blog-single.html">Article Single</a></li>
+                                        <li><a href="blog-default.html">펀딩</a></li>
+                                        <li><a href="blog-single.html">봉사</a></li>
                                     </ul>
                                 </li>
                                

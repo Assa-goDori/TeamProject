@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>구해독 메인 페이지 에휴 아효....</title>
+<meta charset="EUC-KR">
+<title>메인페이지 입니다.</title>
 </head>
 <body>
 <table>
-	<tr><td></td><td></td></tr>
+	<tr><th></th><th></th></tr>
 </table>
 </body>
 </html>
