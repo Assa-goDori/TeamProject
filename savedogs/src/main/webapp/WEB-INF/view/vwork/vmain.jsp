@@ -3,9 +3,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>봉사 메인페이지</title>
+<title>구해독 : 봉사 메인 </title>
 </head>
 <body>
-
+<h3>봉사 메인 페이지</h3>
 </body>
 </html>

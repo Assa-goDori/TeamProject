@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.Member;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("member")
 public class MemberController {
 	
 	@GetMapping("*")
