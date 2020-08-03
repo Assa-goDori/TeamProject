@@ -183,4 +183,8 @@
 		</table>
 	</form:form>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> refs/remotes/origin/master

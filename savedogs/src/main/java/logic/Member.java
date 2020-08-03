@@ -11,23 +11,23 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Member {
-	@Size(min=4, message="¾ÆÀÌµğ´Â 4ÀÚ ÀÌ»óÀ¸·Î ÀÔ·ÂÇÏ¼¼¿ä.")
+	@Size(min=4, message="ì•„ì´ë””ëŠ” 4ì ì´ìƒìœ¼ë¡œ ì…ë ¥í•˜ì„¸ìš”.")
 	private String member_id;
-	@NotEmpty(message="ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.")
+	@NotEmpty(message="ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.")
 	private String member_name;
-	@Size(min=4, message="ºñ¹Ğ¹øÈ£´Â 4ÀÚ¸® ÀÌ»óÀ¸·Î ÀÔ·ÂÇÏ¼¼¿ä.")
+	@Size(min=4, message="ë¹„ë°€ë²ˆí˜¸ëŠ” 4ìë¦¬ ì´ìƒìœ¼ë¡œ ì…ë ¥í•˜ì„¸ìš”.")
 	private String member_pass;
 	private String member_pass2;
-	@NotEmpty(message="ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.")
-	@Email(message="emailÇü½Ä¿¡ ¸Â°Ô ÀÔ·ÂÇÏ¼¼¿ä.")
+	@NotEmpty(message="ì´ë©”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.")
+	@Email(message="emailí˜•ì‹ì— ë§ê²Œ ì…ë ¥í•˜ì„¸ìš”.")
 	private String member_email;
-	@NotNull(message="ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.")
+	@NotNull(message="ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.")
 	private String member_tel;
 	private int member_postcode;
 	private String member_address;
 	private String member_daddress;
-	@NotNull(message="»ıÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.")
-	@Past(message="»ıÀÏÀº °ú°Å ³¯Â¥¸¸ °¡´ÉÇÕ´Ï´Ù..")
+	@NotNull(message="ìƒì¼ì„ ì…ë ¥í•˜ì„¸ìš”")
+	@Past(message="ìƒì¼ì€ ê³¼ê±° ë‚ ì§œë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date member_birthday;
 	private boolean del_df;
