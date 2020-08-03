@@ -13,6 +13,6 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		Member mem = new Member();
 		mav.addObject(mem);
-		return mav;
+		return mav;  
 	}
 }
