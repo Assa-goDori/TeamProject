@@ -55,7 +55,7 @@ public class MemberController {
 		try {
 		   Member dbmem = service.getMember(mem.getMember_id());
 		   if(mem.getMember_pass().equals(dbmem.getMember_pass())) {
- 			  session.setAttribute("login", dbmem);
+ 			  session.setAttribute("loginmem", dbmem);
 			  mav.setViewName("redirect:../main.dog");
 		   } else {
 			  bresult.reject("error.login.password");
