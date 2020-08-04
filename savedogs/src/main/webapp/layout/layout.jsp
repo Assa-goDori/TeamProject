@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" style="margin-left: 10%; width: 15%; float: left;">
                     <div class="logo">
-                        <a href="${path}/main.dog"><img src="${path}/../../images/logo.png" style="width: 50%; height: 50%;"> </a>
+                        <a href="${path}/main.dog"><img src="${path}/images/logo.png" style="width: 50%; height: 50%;"> </a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12" style="width: 75%; float: right;" >
