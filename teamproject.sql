@@ -130,6 +130,7 @@ CREATE TABLE member
 (
 	member_id varchar(20) NOT NULL,
 	member_pass varchar(20) NOT NULL,
+	member_name varchar(20) NOT NULL,
 	member_email varchar(30) NOT NULL,
 	member_tel varchar(20) NOT NULL,
 	member_postcode int NOT NULL,
