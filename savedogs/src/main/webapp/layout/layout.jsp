@@ -5,10 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-=======
->>>>>>> refs/remotes/origin/master
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,18 +40,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12">
-                    <p class="welcome-text">구해독 페이지에 오신걸 .</p>
-                    <p class="welcome-text">환영해.</p>
+                    <p class="welcome-text">구해독 페이지에 오신걸 환영합니다.</p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                       <!--  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li>|</li>
-                        <li>028570081</li> -->
+                    <c:if test="${!empty sessionScope.loginmem}">
+                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
+                    </c:if>
+                    <c:if test="${empty sessionScope.loginmem}">
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">마이페이지</a>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.loginshelter}">
+                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
+                    </c:if>
                     </ul>
                 </div>
             </div>
@@ -68,23 +66,30 @@
     <div class="header-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" style="margin-left: 10%; width: 15%; float: left;">
                     <div class="logo">
-                        <a href="index.html"><img src="${path }/images/logo.png" alt=""> </a>
+                        <a href="../main.dog"><img src="${path}/images/logo.png" style="width: 50%; height: 50%;"> </a>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12">
+                <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12" style="width: 75%; float: right;" >
                     <!-- navigations-->
                     <div class="navigation">
-                        <div id="navigation">
+                        <div id="navigation" style="margin-right: 10%;">
                            <ul>
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li class="active"><a href="index.html">유기견</a></li>
-                                <li class="active"><a href="index.html">봉사</a></li>
-                                <li class="has-sub"><a href="#">후원</a>
+                                <li class="active"><a href="index.html">입양</a></li>
+                                  <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">펀딩</a></li>
                                         <li><a href="blog-single.html">쇼핑</a></li>
+                                    </ul>
+                                </li>
+                                <li class="active"><a href="index.html">봉사</a></li>
+                              	<li class="active"><a href="index.html">정보</a></li>
+                                 <li class="has-sub"><a href="#">커뮤니티</a>
+                                    <ul>
+                                        <li><a href="blog-default.html">Q&A게시판</a></li>
+                                        <li><a href="blog-single.html">입양 후기 게시판</a></li>
+                                        <li><a href="blog-single.html">정보</a></li>
                                     </ul>
                                 </li>
                                
@@ -98,52 +103,23 @@
     </div>
     <!-- /. header-section-->
     <!-- slider -->
-    <div class="slider">
+    <div class="slider" style="width: 100%; height: 20%;">
         <div class="owl-carousel owl-one owl-theme">
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/slider_1.jpg" alt=""></div>
+                <div class="slider-img"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
-                            <div class="slider-captions">
-                                <!-- <h1 class="slider-title">I Am John Deo</h1>
-                                <h3>Your Life Coach</h3> -->
-                                <p class="hidden-sm hidden-xs hidden-md">Close the gap between where you are today & where you want to be...</p>
-                                <a href="#" class="btn btn-primary  hidden-xs">Get Template</a>
-                            </div>
-                           
-                        </div>
-                    </div>
+                 
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/slider_2.jpg" alt=""></div>
+                <div class="slider-img"> <img src="${path }/images/dogitem.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
-                             <div class="slider-captions">
-                                <h1 class="slider-title">Design The Life You Want</h1>
-                                <h3>Read My Latest Book</h3>
-                                <p class="hidden-sm hidden-xs hidden-md">Enduring, energetic love isn't something you discover of good fortune — it's something you make.</p>
-                                <a href="#" class="btn btn-primary hidden-xs">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/slider_3.jpg" alt=""></div>
+                <div class="slider-img"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
-                            <div class="slider-captions">
-                                <h1 class="slider-title">Life Coach Website Template</h1>
-                                <h3>Free Website Templates</h3>
-                                <p class="hidden-sm hidden-xs hidden-md">Nunc utnisi sapivamus auctor hendrerit feliseu interlente squesed aliquet velitin viverraorci.</p>
-                                <a href="#" class="btn btn-primary  hidden-xs">Download Now</a>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
