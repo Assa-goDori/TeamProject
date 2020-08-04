@@ -24,30 +24,39 @@ DROP TABLE IF EXISTS shelter;
 
 CREATE TABLE adopt
 (
-	member_id varchar(10) NOT NULL,
+	member_id varchar(20) NOT NULL,
 	shelter_no int NOT NULL,
-	adopt_date date,
-	dog_no varchar(30)
+	adopt_date date NOT NULL,
+	dog_no varchar(50) NOT NULL,
+	-- 0:Ïã†Ï≤≠
+	-- 1:Í±∞Î∂Ä
+	-- 2:ÏäπÏù∏
+	-- 3:ÏôÑÎ£å
+	adopt_etc int NOT NULL COMMENT '0:Ïã†Ï≤≠
+1:Í±∞Î∂Ä
+2:ÏäπÏù∏
+3:ÏôÑÎ£å'
 );
 
 
 CREATE TABLE board
 (
 	board_no int NOT NULL,
-	member_id varchar(10) NOT NULL,
-	subject varchar(20),
-	content varchar(100),
-	-- 0 : ¿‘æÁ»ƒ±‚
-	-- 1 : ∞¯¡ˆªÁ«◊
+	member_id varchar(20) NOT NULL,
+	shelter_id varchar(20) NOT NULL,
+	subject varchar(20) NOT NULL,
+	content varchar(100) NOT NULL,
+	-- 0 : ÏûÖÏñëÌõÑÍ∏∞
+	-- 1 : Í≥µÏßÄÏÇ¨Ìï≠
 	-- 2 : Q&A
-	type int COMMENT '0 : ¿‘æÁ»ƒ±‚
-1 : ∞¯¡ˆªÁ«◊
+	type int NOT NULL COMMENT '0 : ÏûÖÏñëÌõÑÍ∏∞
+1 : Í≥µÏßÄÏÇ¨Ìï≠
 2 : Q&A',
-	grp int,
-	grplevel int,
-	grpstep int,
-	regdate datetime,
-	readcnt int,
+	grp int NOT NULL,
+	grplevel int NOT NULL,
+	grpstep int NOT NULL,
+	regdate datetime NOT NULL,
+	readcnt int NOT NULL,
 	file1 varchar(50),
 	PRIMARY KEY (board_no)
 );
@@ -58,6 +67,7 @@ CREATE TABLE buydetail
 	seq int NOT NULL,
 	buy_no int NOT NULL,
 	item_no int NOT NULL,
+	item_each int NOT NULL,
 	PRIMARY KEY (seq, buy_no)
 );
 
@@ -65,22 +75,22 @@ CREATE TABLE buydetail
 CREATE TABLE buylist
 (
 	buy_no int NOT NULL,
-	member_id varchar(10) NOT NULL,
-	buy_date date,
+	member_id varchar(20) NOT NULL,
+	buy_date date NOT NULL,
 	PRIMARY KEY (buy_no)
 );
 
 
 CREATE TABLE funding
 (
-	fundno int NOT NULL,
-	shelter_id varchar(10) NOT NULL,
-	funding_subject varchar(20),
-	sheltername varchar(20),
-	count int,
-	start_date date,
-	end_date date,
-	PRIMARY KEY (fundno)
+	fund_no int NOT NULL,
+	shelter_id varchar(20) NOT NULL,
+	funding_subject varchar(20) NOT NULL,
+	sheltername varchar(20) NOT NULL,
+	count int NOT NULL,
+	start_date date NOT NULL,
+	end_date date NOT NULL,
+	PRIMARY KEY (fund_no)
 );
 
 
@@ -96,10 +106,10 @@ CREATE TABLE fundinglist
 CREATE TABLE fundreply
 (
 	fund_replyno int NOT NULL,
-	fundno int NOT NULL,
-	fundreply_id varchar(20),
-	fund_comment varchar(50),
-	fund_regdate datetime,
+	fund_no int NOT NULL,
+	fundreply_id varchar(20) NOT NULL,
+	fund_comment varchar(50) NOT NULL,
+	fund_regdate datetime NOT NULL,
 	PRIMARY KEY (fund_replyno)
 );
 
@@ -107,25 +117,25 @@ CREATE TABLE fundreply
 CREATE TABLE item
 (
 	item_no int NOT NULL,
-	item_name varchar(20),
-	item_price int,
-	item_content varchar(100),
-	item_picture varchar(30),
+	item_name varchar(20) NOT NULL,
+	item_price int NOT NULL,
+	item_content varchar(100) NOT NULL,
+	item_picture varchar(50) NOT NULL,
 	PRIMARY KEY (item_no)
 );
 
 
 CREATE TABLE member
 (
-	member_id varchar(10) NOT NULL,
-	member_pass varchar(20),
-	member_email varchar(30),
-	member_tel varchar(10),
-	member_postcode int,
-	member_address varchar(30),
-	member_daddress varchar(20),
+	member_id varchar(20) NOT NULL,
+	member_pass varchar(20) NOT NULL,
+	member_email varchar(30) NOT NULL,
+	member_tel varchar(20) NOT NULL,
+	member_postcode int NOT NULL,
+	member_address varchar(30) NOT NULL,
+	member_daddress varchar(20) NOT NULL,
 	member_birthday date,
-	del_tf boolean,
+	del_tf boolean NOT NULL,
 	PRIMARY KEY (member_id)
 );
 
@@ -134,9 +144,10 @@ CREATE TABLE reply
 (
 	board_replyno int NOT NULL,
 	board_no int NOT NULL,
-	member_id varchar(10) NOT NULL,
-	board_comment varchar(50),
-	board_regdate datetime,
+	member_id varchar(20) NOT NULL,
+	shelter_id varchar(20) NOT NULL,
+	board_comment varchar(50) NOT NULL,
+	board_regdate datetime NOT NULL,
 	PRIMARY KEY (board_replyno)
 );
 
@@ -144,21 +155,22 @@ CREATE TABLE reply
 CREATE TABLE shelter
 (
 	shelter_no int NOT NULL,
-	shelter_name varchar(20),
-	shelter_address varchar(30),
-	shelter_tel varchar(10),
+	shelter_name varchar(40) NOT NULL,
+	shelter_address varchar(40),
+	shelter_tel varchar(30),
 	PRIMARY KEY (shelter_no)
 );
 
 
 CREATE TABLE sheltermember
 (
-	shelter_id varchar(10) NOT NULL,
+	shelter_id varchar(20) NOT NULL,
 	shelter_no int NOT NULL,
-	shelter_pass varchar(20),
-	shelter_email varchar(30),
-	shelter_tel varchar(10),
-	file1 varchar(30),
+	shelter_pass varchar(20) NOT NULL,
+	shelter_email varchar(30) NOT NULL,
+	shelter_tel varchar(20) NOT NULL,
+	file1 varchar(50) NOT NULL,
+	file2 varchar(50) NOT NULL,
 	PRIMARY KEY (shelter_id)
 );
 
@@ -166,11 +178,11 @@ CREATE TABLE sheltermember
 CREATE TABLE vwork
 (
 	vwork_no int NOT NULL,
-	shelter_id varchar(10) NOT NULL,
-	vwork_date date,
-	shelter_name varchar(20),
-	vwork_member int,
-	vwork_content varchar(50),
+	shelter_id varchar(20) NOT NULL,
+	vwork_date date NOT NULL,
+	shelter_name varchar(20) NOT NULL,
+	vwork_member int NOT NULL,
+	vwork_content varchar(50) NOT NULL,
 	PRIMARY KEY (vwork_no)
 );
 
@@ -178,9 +190,9 @@ CREATE TABLE vwork
 CREATE TABLE vworklist
 (
 	vwork_no int NOT NULL,
-	vwork_id varchar(20),
-	vwork_date date,
-	vwork_tel varchar(10)
+	vwork_id varchar(20) NOT NULL,
+	vwork_date date NOT NULL,
+	vwork_tel varchar(20) NOT NULL
 );
 
 
@@ -205,15 +217,15 @@ ALTER TABLE buydetail
 
 ALTER TABLE fundinglist
 	ADD FOREIGN KEY (fund_no)
-	REFERENCES funding (fundno)
+	REFERENCES funding (fund_no)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE fundreply
-	ADD FOREIGN KEY (fundno)
-	REFERENCES funding (fundno)
+	ADD FOREIGN KEY (fund_no)
+	REFERENCES funding (fund_no)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
@@ -275,7 +287,23 @@ ALTER TABLE sheltermember
 ;
 
 
+ALTER TABLE board
+	ADD FOREIGN KEY (shelter_id)
+	REFERENCES sheltermember (shelter_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE funding
+	ADD FOREIGN KEY (shelter_id)
+	REFERENCES sheltermember (shelter_id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE reply
 	ADD FOREIGN KEY (shelter_id)
 	REFERENCES sheltermember (shelter_id)
 	ON UPDATE RESTRICT
