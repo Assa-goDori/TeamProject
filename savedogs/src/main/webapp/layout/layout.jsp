@@ -33,6 +33,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<script type="text/javascript">
+ 	var path = '${path}';
+	console.log(path);
+</script>
 <decorator:head />
 <body>
     <!-- top-header-section-->
@@ -89,7 +93,6 @@
                                     <ul>
                                         <li><a href="blog-default.html">Q&A게시판</a></li>
                                         <li><a href="blog-single.html">입양 후기 게시판</a></li>
-                                        <li><a href="blog-single.html">정보</a></li>
                                     </ul>
                                 </li>
                                
