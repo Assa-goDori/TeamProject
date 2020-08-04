@@ -121,6 +121,7 @@ CREATE TABLE item
 	item_price int NOT NULL,
 	item_content varchar(100) NOT NULL,
 	item_picture varchar(50) NOT NULL,
+	item_code varchar(30) NOT NULL,
 	PRIMARY KEY (item_no)
 );
 
