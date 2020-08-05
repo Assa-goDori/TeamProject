@@ -52,10 +52,10 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                    <c:if test="${!empty sessionScope.loginmem}">
+                    <c:if test="${empty sessionScope.loginmem}">
                     	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
-                    <c:if test="${empty sessionScope.loginmem}">
+                    <c:if test="${!empty sessionScope.loginmem}">
                     	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginshelter}">
@@ -87,7 +87,7 @@
                                 <li class="active"><a href="index.html">입양</a></li>
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
-                                        <li><a href="blog-default.html">펀딩</a></li>
+                                        <li><a href="blog-default.html">기부</a></li>
                                         <li><a href="blog-single.html">쇼핑</a></li>
                                     </ul>
                                 </li>
@@ -95,8 +95,9 @@
                               	<li class="active"><a href="index.html">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
-                                        <li><a href="blog-default.html">Q&A게시판</a></li>
-                                        <li><a href="blog-single.html">입양 후기 게시판</a></li>
+                                        <li><a href="blog-default.html">Q&A</a></li>
+                                        <li><a href="blog-single.html">공지사항</a></li>
+                                        <li><a href="blog-single.html">입양 후기 </a></li>
                                     </ul>
                                 </li>
                                
