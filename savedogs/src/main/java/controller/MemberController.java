@@ -66,4 +66,11 @@ public class MemberController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping("logout")
+	public String loginChecklogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login.dog";
+	}
+	
 }
