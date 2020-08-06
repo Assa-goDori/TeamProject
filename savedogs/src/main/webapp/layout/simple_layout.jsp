@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
+<%-- 슬라이드없는 심플 레이아웃 버전 --%>
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -96,7 +96,7 @@
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
                                         <li><a href="blog-default.html">Q&A</a></li>
-                                        <li><a href="${path }/board/noticeList">공지사항</a></li>
+                                        <li><a href="${path }/board/noticeList.dog">공지사항</a></li>
                                         <li><a href="blog-single.html">입양 후기 </a></li>
                                     </ul>
                                 </li>
@@ -110,31 +110,8 @@
         </div>
     </div>
     <!-- /. header-section-->
-    <!-- slider -->
-    <div class="slider" style="width: 100%; height: 20%;">
-        <div class="owl-carousel owl-one owl-theme">
-            <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
-                <div class="container">
-                 
-                </div>
-            </div>
-            <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogitem.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
-                <div class="container">
-                </div>
-            </div>
-            <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
-                <div class="container">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.slider -->
+
     <!-- coachservice-section -->
-    
     <div class="space-medium">
         <decorator:body />
     </div>
@@ -166,12 +143,12 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="${path}/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="${path}/js/menumaker.js" type="text/javascript"></script>
-    <script type="text/javascript" src="${path}/js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="${path}/js/sticky-header.js"></script>
-    <script type="text/javascript" src="${path}/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="${path}/js/multiple-carousel.js"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/sticky-header.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/multiple-carousel.js"></script>
    
     <script type="text/javascript">
     $("#dots").click(function() {
@@ -192,11 +169,11 @@
         });
     });
     </script>
-    <script type="text/javascript" src="${path}/js/video-play.js">
+    <script type="text/javascript" src="js/video-play.js">
     </script>
 
 
-<script type="text/javascript" src="${path}/js/return-to-top.js">     
+<script type="text/javascript" src="js/return-to-top.js">     
 </script>
 
 </body>

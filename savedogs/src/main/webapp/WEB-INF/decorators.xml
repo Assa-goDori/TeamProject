@@ -2,9 +2,13 @@
 <!-- /WEB-INF/decorators.xml -->
 <decorators defaultdir="/layout">
 	<decorator name="main" page="layout.jsp">
-		<pattern>*.dog</pattern>
-		<pattern>/member/*.dog</pattern>
+		<pattern>/main.dog</pattern>
+		<pattern>/board/*.dog</pattern>
+		
+	</decorator>
+	<decorator name="simple" page="simple_layout.jsp">
 		<pattern>/vwork/*.dog</pattern>
+		<pattern>/member/*.dog</pattern>
 	</decorator>
 	<excludes>
 	
