@@ -52,10 +52,10 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                    <c:if test="${!empty sessionScope.loginmem}">
+                    <c:if test="${empty sessionScope.loginmem}">
                     	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
-                    <c:if test="${empty sessionScope.loginmem}">
+                    <c:if test="${!empty sessionScope.loginmem}">
                     	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginshelter}">
@@ -87,16 +87,17 @@
                                 <li class="active"><a href="index.html">입양</a></li>
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
-                                        <li><a href="blog-default.html">펀딩</a></li>
+                                        <li><a href="blog-default.html">기부</a></li>
                                         <li><a href="blog-single.html">쇼핑</a></li>
                                     </ul>
                                 </li>
-                                <li class="active"><a href="index.html">봉사</a></li>
+                                <li class="active"><a href="vwork/vmain.dog">봉사</a></li>
                               	<li class="active"><a href="index.html">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
-                                        <li><a href="blog-default.html">Q&A게시판</a></li>
-                                        <li><a href="blog-single.html">입양 후기 게시판</a></li>
+                                        <li><a href="blog-default.html">Q&A</a></li>
+                                        <li><a href="blog-single.html">공지사항</a></li>
+                                        <li><a href="blog-single.html">입양 후기 </a></li>
                                     </ul>
                                 </li>
                                
@@ -141,83 +142,12 @@
     <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb60">
-                    <div class="footer-social">
-                        <div class="">
-                            <a href="#" class="btn-social-rectangle btn-facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="btn-social-rectangle btn-twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="btn-social-rectangle btn-googleplus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="btn-social-rectangle btn-instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="btn-social-rectangle btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" class="btn-social-rectangle btn-youtube"><i class="fa fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <!-- footer-contact links -->
-                <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="ft-logo"><img src="${path }/images/ft_logo.png" alt=""></div>
-                    <div class="footer-widget">
-                        <div class="contact-info">
-                            <span class="contact-text">951 Meadow View Drive Bristol,USA06010 </span>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-text">+180-123-4567</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.footer-useful links -->
-                <!-- footer-company-links -->
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="footer-widget">
-                        <h3 class="footer-title">Quick Links</h3>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul>
-                                    <li><a href="#">Home </a></li>
-                                    <li><a href="#">Coaching</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Article</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul>
-                                    <li><a href="#">Podcast</a></li>
-                                    <li><a href="#">Books</a></li>
-                                    <li><a href="#">Ask me</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.footer-services-links -->
-                <!-- newsletter -->
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="footer-widget">
-                        <h3 class="footer-title">Join Our Newsletter!</h3>
-                        <p>Get inspiration and education delivered to your inbox.</p>
-                        <form>
-                            <!-- input-group -->
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Here" aria-describedby="basic-addon2">
-                                <span class="input-group-addon" id="basic-addon2">
-                                                    <i class="fa fa-paper-plane"></i></span>
-                            </div>
-                            <!-- /.input-group -->
-                        </form>
-                    </div>
-                </div>
-                <!-- /.newsletter -->
-            </div>
+                
             <!-- tiny-footer -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                     <div class="tiny-footer">
-                        <p>Copyright © All Rights Reserved 2020 Template Design by
-                            <a href="https://easetemplate.com/" target="_blank" class="copyrightlink">EaseTemplate</a></p>
+                        <p>Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
                     </div>
                 </div>
                 <!-- /. tiny-footer -->
