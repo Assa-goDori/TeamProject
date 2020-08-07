@@ -8,7 +8,6 @@
 </head>
 <body>
 	<h1>키워드 검색</h1>
-	<hr>
 	<h2>상태</h2>
 	<select>
 		<option value="">전체</option>
@@ -25,5 +24,6 @@
 		<option value="">암컷</option>
 		<option value="">수컷</option>
 	</select>
+	<hr>
 </body>
 </html>

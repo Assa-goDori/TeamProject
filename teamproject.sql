@@ -146,13 +146,13 @@ CREATE TABLE member
 	member_name varchar(20) NOT NULL,
 	member_email varchar(30) NOT NULL,
 	member_tel varchar(20) NOT NULL,
-	member_postcode int NOT NULL,
-	member_address varchar(30) NOT NULL,
-	member_daddress varchar(20) NOT NULL,
+	member_postcode int,
+	member_address varchar(30),
+	member_daddress varchar(20),
 	member_birthday date,
 	del_tf boolean NOT NULL,
-	file1 varchar(50) NOT NULL,
-	file2 varchar(50) NOT NULL,
+	file1 varchar(50),
+	file2 varchar(50),
 	-- 0 : 일반회원
 	-- 1 : 보호소관리자
 	-- 2 : 관리자
