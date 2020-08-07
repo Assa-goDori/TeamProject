@@ -39,7 +39,6 @@
 </head>
 <script type="text/javascript">
  	var path = '${path}';
-	console.log(path);
 </script>
 <decorator:head />
 <body>

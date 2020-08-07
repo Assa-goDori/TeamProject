@@ -8,7 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	var path = "${path}";
-	console.log(path);
 </script>
 <head>
     <meta charset="utf-8">
@@ -39,7 +38,7 @@
 </head>
 <script type="text/javascript">
  	var path = '${path}';
-	console.log(path);
+
 </script>
 <decorator:head />
 <body>
@@ -141,14 +140,14 @@
   
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="${path }/js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/menumaker.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="js/sticky-header.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/multiple-carousel.js"></script>
+    <script src="${path }/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="${path }/js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${path }/js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="${path }/js/sticky-header.js"></script>
+    <script type="text/javascript" src="${path }/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="${path }/js/multiple-carousel.js"></script>
    
     <script type="text/javascript">
     $("#dots").click(function() {
@@ -169,11 +168,11 @@
         });
     });
     </script>
-    <script type="text/javascript" src="js/video-play.js">
+    <script type="text/javascript" src="${path }/js/video-play.js">
     </script>
 
 
-<script type="text/javascript" src="js/return-to-top.js">     
+<script type="text/javascript" src="${path }/js/return-to-top.js">     
 </script>
 
 </body>
