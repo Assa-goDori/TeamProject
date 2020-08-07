@@ -31,10 +31,7 @@ public class Member {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date member_birthday;
 	private boolean del_df;
-	
-	@NotNull(message="보호소번호를 선택하세요")
 	private int shelter_no;
-	@NotNull(message="파일을 첨부하세요")
 	private String file1;
 	private String file2;
 	private int member_type;

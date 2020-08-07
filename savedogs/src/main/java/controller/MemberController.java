@@ -38,8 +38,6 @@ public class MemberController {
 			return mav;
 		}
 		try {
-			mem.setShelter_no(Integer.parseInt(request.getParameter("shelter_no")));
-			System.out.println(mem);
 			service.memberInsert(mem);
 			mav.setViewName("redirect:login.dog");
 		} catch(Exception e) {
