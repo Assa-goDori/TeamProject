@@ -75,7 +75,7 @@
   <div class="row">
  	 <div style="width: 40%; height: 40%; float: left; margin-left: 5%; ">
     	<table style="border: 3px solid black; width: 100%;">
-    	<caption>구현전 임시 크롤링 자리</caption>
+    	<caption>유기견 관련 뉴스</caption>
     	<c:forEach items="${list}" var="news">
     		<tr><th>${news}</th></tr>
     	</c:forEach>
