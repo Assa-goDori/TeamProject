@@ -11,52 +11,13 @@
  <div class="row">
 	<div style="width: 40%; height: 40%; float: left; margin-left: 5%;" class="slider">
         <div class="owl-carousel owl-one owl-theme">
-            <div class="item">
-                <div class="slider-img"> <img src="" alt=""></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
-                            <div class="slider-captions">
-                                <h1 class="slider-title">I Am John Deo</h1>
-                                <h3>Your Life Coach</h3>
-                                <p class="hidden-sm hidden-xs hidden-md">Close the gap between where you are today & where you want to be...</p>
-                                <a href="#" class="btn btn-primary  hidden-xs">Get Template</a>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="slider-img"> <img src="" alt=""></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
-                             <div class="slider-captions">
-                                <h1 class="slider-title">Design The Life You Want</h1>
-                                <h3>Read My Latest Book</h3>
-                                <p class="hidden-sm hidden-xs hidden-md">Enduring, energetic love isn't something you discover of good fortune — it's something you make.</p>
-                                <a href="#" class="btn btn-primary hidden-xs">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="slider-img"> <img src="" alt=""></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-right">
-                            <div class="slider-captions">
-                                <h1 class="slider-title">Life Coach Website Template</h1>
-                                <h3>Free Website Templates</h3>
-                                <p class="hidden-sm hidden-xs hidden-md">Nunc utnisi sapivamus auctor hendrerit feliseu interlente squesed aliquet velitin viverraorci.</p>
-                                <a href="#" class="btn btn-primary  hidden-xs">Download Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <c:forEach items="${imglist}" var="im">
+            	<div class="item">
+                	<div class="slider-img" style="margin: 30%;"> 
+                		<img src="${im}" style="width: 200px; height: 240px;">
+                	</div>
+            	</div>
+            </c:forEach>
         </div>
     </div>
       <!-- /.slider -->
