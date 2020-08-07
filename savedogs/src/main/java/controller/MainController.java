@@ -26,6 +26,7 @@ public class MainController {
 		
 		String url = "https://search.naver.com/search.naver?where=news&sm=tab_jum&query=%EC%9C%A0%EA%B8%B0%EA%B2%AC";
 		List<String> list = new ArrayList<String>(); 
+		int a = 0;
 		try{
 			Document doc = Jsoup.connect(url).get();
 			Elements body = doc.select(".type01> li");
@@ -35,7 +36,10 @@ public class MainController {
 					Elements atag = dt.select("dt");
 					for(Element val : atag){
 						Elements title = val.select("a");
-						list.add(title.toString());
+						if(a<5) {
+							list.add(title.toString());
+							a++;
+						}
 					}
 				}
 			}
