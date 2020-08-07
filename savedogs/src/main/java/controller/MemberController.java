@@ -1,5 +1,6 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -29,7 +30,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberSignup")
-	public ModelAndView memberSignup(@Valid Member mem, BindingResult bresult) {
+	public ModelAndView memberSignup(@Valid Member mem, BindingResult bresult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		if (bresult.hasErrors()) {
 			bresult.reject("error.input.user");
@@ -37,6 +38,7 @@ public class MemberController {
 			return mav;
 		}
 		try {
+			mem.setShelter_no(Integer.parseInt(request.getParameter("shelter_no")));
 			service.memberInsert(mem);
 			mav.setViewName("redirect:login.dog");
 		} catch(Exception e) {

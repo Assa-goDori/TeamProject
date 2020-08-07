@@ -68,6 +68,7 @@
 	<h2>회원 가입</h2>
 	<hr>
 	<form:form modelAttribute="member" method="post" action="memberSignup.dog">
+		<input type="hidden" value="0000000" id="shelter_no" />
 		<spring:hasBindErrors name="member">
 			<font color="red">
 				<%--globalErrors : error.reject(코드값) --%>

@@ -32,6 +32,13 @@ public class Member {
 	private Date member_birthday;
 	private boolean del_df;
 	
+	@NotNull(message="보호소번호를 선택하세요")
+	private int shelter_no;
+	@NotNull(message="파일을 첨부하세요")
+	private String file1;
+	private String file2;
+	private int member_type;
+	
 	//getter,setter
 	public String getMember_id() {
 		return member_id;
@@ -99,11 +106,29 @@ public class Member {
 	public void setDel_df(boolean del_df) {
 		this.del_df = del_df;
 	}
-	@Override
-	public String toString() {
-		return "Member [member_id=" + member_id + ", member_name=" + member_name + ", member_pass=" + member_pass
-				+ ", member_pass2=" + member_pass2 + ", member_email=" + member_email + ", member_tel=" + member_tel
-				+ ", member_postcode=" + member_postcode + ", member_address=" + member_address + ", member_daddress="
-				+ member_daddress + ", member_birthday=" + member_birthday + ", del_df=" + del_df + "]";
+	public int getShelter_no() {
+		return shelter_no;
 	}
+	public void setShelter_no(int shelter_no) {
+		this.shelter_no = shelter_no;
+	}
+	public String getFile1() {
+		return file1;
+	}
+	public void setFile1(String file1) {
+		this.file1 = file1;
+	}
+	public String getFile2() {
+		return file2;
+	}
+	public void setFile2(String file2) {
+		this.file2 = file2;
+	}
+	public int getMember_type() {
+		return member_type;
+	}
+	public void setMember_type(int member_type) {
+		this.member_type = member_type;
+	}
+	
 }
