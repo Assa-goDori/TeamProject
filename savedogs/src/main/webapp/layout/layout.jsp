@@ -53,13 +53,11 @@
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
                     <c:if test="${empty sessionScope.loginmem}">
-                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
+                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
-                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">마이페이지</a>
-                    </c:if>
-                    <c:if test="${!empty sessionScope.loginshelter}">
-                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberM
+                    	ypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
