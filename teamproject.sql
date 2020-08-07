@@ -141,7 +141,7 @@ CREATE TABLE member
 (
 	member_id varchar(20) NOT NULL,
 	-- 일반회원가입시 : 0000000
-	shelter_no int COMMENT '일반회원가입시 : 0000000',
+	shelter_no int NOT NULL COMMENT '일반회원가입시 : 0000000',
 	member_pass varchar(20) NOT NULL,
 	member_name varchar(20) NOT NULL,
 	member_email varchar(30) NOT NULL,
