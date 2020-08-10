@@ -58,6 +58,10 @@
                     	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberM
                     	ypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
+                    <c:if test="${!empty sessionScope.loginsmem}">
+                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/smemberM
+                    	ypage.dog" style="color: white;">마이페이지</a>
+                    </c:if>
                     </ul>
                 </div>
             </div>

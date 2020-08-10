@@ -1,7 +1,5 @@
 package config;
 
-
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
