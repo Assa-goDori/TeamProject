@@ -21,7 +21,7 @@
 		<div style="width: 300px; height: 150px; float: left;">
 			<h2>품종</h2>
 			<select>
-				<option value="000000">전체</option>
+				<option value="000000" selected="selected">전체</option>
 				<option value="000054">골든 리트리버</option>
 				<option value="000056">그레이 하운드</option>
 				<option value="000055">그레이트 덴</option>
