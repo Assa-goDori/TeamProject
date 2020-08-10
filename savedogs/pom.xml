@@ -131,12 +131,7 @@
 		<version>1.11.3</version>
 	</dependency>
 	<!-- json-simple 설정 -->
-	<dependency>
-		<groupId>com.googlecode.json-simple</groupId>
-		<artifactId>json-simple</artifactId>
-		<version>1.1.1</version>
-	</dependency>
-	<dependency>
+<dependency>
     <groupId>javax.validation</groupId>
     <artifactId>validation-api</artifactId>
     <version>2.0.1.Final</version>
@@ -145,7 +140,7 @@
     <groupId>org.hibernate.validator</groupId>
     <artifactId>hibernate-validator</artifactId>
     <version>6.0.7.Final</version>
-	</dependency>
+</dependency>
 	<!-- https://mvnrepository.com/artifact/org.webjars/fullcalendar -->
 <dependency>
     <groupId>org.webjars</groupId>

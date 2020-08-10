@@ -1,10 +1,14 @@
 package logic;
 
+
 import java.util.Date;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Funding {
@@ -12,16 +16,18 @@ public class Funding {
 	private int fund_no;
 	private String member_id;
 	private String sheltername;
+	@NotNull(message="제목을 입력하세요")
 	private String funding_subject;
-	@NotEmpty(message="제목을 입력하세요")
+	@NotNull(message="목표금액을 입력하세요")
 	private int count;
-	@NotEmpty(message="목표금액을 입력하세요")
+	//@NotEmpty(message="날짜를 선택하세요")
+	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
-	@NotEmpty(message="날짜를 선택하세요")
-	@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
+	//@NotEmpty(message="날짜를 선택하세요")
+	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
+	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
-	@NotEmpty(message="날짜를 선택하세요")
-	@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
 	private String fund_pic; //사진 파일 명
 	private MultipartFile picture; //사진
 	public int getFundno() {

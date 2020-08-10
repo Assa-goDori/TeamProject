@@ -21,6 +21,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.Funding;
+import logic.Item;
 import logic.Member;
 
 @Controller
@@ -107,5 +109,14 @@ public class MainController {
 		request.setAttribute("kindlist", kindlist);
 		request.setAttribute("orglist", orglist);
 		return mav; 
+	}
+	@RequestMapping("fundinganditem/list")
+	public ModelAndView fundinganditem() {
+		ModelAndView mav = new ModelAndView();
+		Item item = new Item();
+		Funding funding = new Funding();
+		mav.addObject(item);
+		mav.addObject(funding);
+		return mav;
 	}
 }

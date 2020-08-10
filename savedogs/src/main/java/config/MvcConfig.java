@@ -58,6 +58,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		SimpleMappingExceptionResolver ser = new SimpleMappingExceptionResolver();
 		Properties pr = new Properties();
 		pr.put("exception.LoginException", "exception");
+		pr.put("exception.VworkException", "exception");
 		ser.setExceptionMappings(pr);
 		return ser;
 	}

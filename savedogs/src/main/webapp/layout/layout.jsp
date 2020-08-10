@@ -64,6 +64,10 @@
                     	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberM
                     	ypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
+                    <c:if test="${!empty sessionScope.loginsmem}">
+                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterM
+                    	ypage.dog" style="color: white;">마이페이지</a>
+                    </c:if>
                     </ul>
                 </div>
             </div>
@@ -91,7 +95,7 @@
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">기부</a></li>
-                                        <li><a href="${path}/item/list.dog">쇼핑</a></li>
+                                        <li><a href="${path}/fundinganditem/list.dog">쇼핑</a></li>
                                     </ul>
                                 </li>
                                 <li class="active"><a href="${path}/vwork/vmain.dog">봉사</a></li>

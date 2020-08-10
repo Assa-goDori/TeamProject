@@ -9,7 +9,7 @@
 	<decorator name="simple" page="simple_layout.jsp">
 		<pattern>/vwork/*.dog</pattern>
 		<pattern>/member/*.dog</pattern>
-		<pattern>/funding/*.dog</pattern>
+		<pattern>/fundinganditem/*.dog</pattern>
 	</decorator>
 	<excludes>
 	
