@@ -9,6 +9,7 @@
 <script>
 	var path = "${path}";
 	console.log(path);
+	
 </script>
 <head>
     <meta charset="utf-8">
@@ -39,6 +40,11 @@
 </head>
 <script type="text/javascript">
  	var path = '${path}';
+	console.log(path);
+	
+	function directpage(dir,view){
+		location.href="${path}/"+dir+"/"+view+".dog";
+	}
 </script>
 <decorator:head />
 <body>
@@ -111,7 +117,7 @@
     <div class="slider" style="width: 100%; height: 20%;">
         <div class="owl-carousel owl-one owl-theme">
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
+                <div class="slider-img" onclick="directpage('adopt','main')"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
                 <div class="container">
                  
                 </div>
@@ -122,7 +128,7 @@
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
+                <div class="slider-img" onclick="directpage('vwork','vmain')"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
                     
                 </div>

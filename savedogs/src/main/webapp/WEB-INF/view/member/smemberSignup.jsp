@@ -66,9 +66,10 @@
 </head>
 <body>
 	<div style="margin-left: 30%; width:40%;">
-	<h2>일반 회원 가입</h2>
+	<h2>보호소 관리자 가입</h2>
 	<hr>
-	<form:form modelAttribute="member" method="post" action="memberSignup.dog">
+	<form:form modelAttribute="member" method="post" action="smemberSignup.dog" enctype="multipart/form-data">
+		<input type="hidden" name="member_name" value="보호소관리자">
 		<spring:hasBindErrors name="member">
 			<font color="red">
 				<%--globalErrors : error.reject(코드값) --%>
@@ -109,55 +110,6 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>이름</td>
-				<td>
-					<form:input path="member_name" />
-					<font color="red">
-						<form:errors path="member_name" />
-					</font>
-				</td>
-			</tr>
-			<tr height="40px">
-				<td>생년월일</td>
-				<td>
-					<form:input path="member_birthday" />
-					<font color="red">
-						<form:errors path="member_birthday" />
-					</font>
-				</td>
-			</tr>
-			<tr height="40px">
-				<td>우편번호</td>
-				<td>
-					<form:input path="member_postcode" style="width:20%"/>
-					<input type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
-				</td>
-				<td>
-					<font color="red">
-						<form:errors path="member_postcode" />
-					</font>
-					
-				</td>
-			</tr>
-			<tr height="40px">
-				<td>주소</td>
-				<td>
-					<form:input path="member_address" />
-					<font color="red">
-						<form:errors path="member_address" />
-					</font>
-				</td>
-			</tr>
-			<tr height="40px">
-				<td>상세주소</td>
-				<td>
-					<form:input path="member_daddress" />
-					<font color="red">
-						<form:errors path="member_daddress" />
-					</font>
-				</td>
-			</tr>
-			<tr height="40px">
 				<td>전화번호</td>
 				<td>
 					<form:input path="member_tel" />
@@ -173,6 +125,22 @@
 					<font color="red">
 						<form:errors path="member_email" />
 					</font>
+				</td>
+			</tr>
+			<tr height="40px">
+				<td>보호소 번호</td>
+				<td>
+					<form:input path="shelter_no" />
+					<font color="red">
+						<form:errors path="shelter_no" />
+					</font>
+				</td>
+			</tr>
+			<tr height="40px">
+				<td>첨부파일</td>
+				<td>
+					<input type="file" name="f1" />
+					<!-- <input type="file" name="file2" /> -->
 				</td>
 			</tr>
 			<tr height="40px">

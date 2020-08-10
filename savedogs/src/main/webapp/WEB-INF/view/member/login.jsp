@@ -8,9 +8,12 @@
 <title>로그인화면</title>
 </head>
 <body>
+	<div style="margin-left: 30%; width:40%;">
 	<h2>사용자 로그인</h2>
 	<form:form modelAttribute="member" method="post" action="login.dog">
-		<input type="hidden" name="username" value="의미없는 이름">
+		<input type="hidden" name="member_name" value="의미없는 이름">
+		<input type="hidden" name="member_email" value="not@not">
+		<input type="hidden" name="member_tel" value="의미없는 전화번호">
 		<spring:hasBindErrors name="member">
 			<font color="red">
 				<c:forEach items="${errors.globalErrors}" var="error">
@@ -44,5 +47,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 </body>
 </html>

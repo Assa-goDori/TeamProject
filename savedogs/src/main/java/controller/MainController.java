@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,7 +32,7 @@ public class MainController {
 		mav.addObject(mem);
 		
 		String url = "https://search.naver.com/search.naver?where=news&sm=tab_jum&query=%EC%9C%A0%EA%B8%B0%EA%B2%AC";
-		List<String> list = new ArrayList<String>();
+		List<String> newslist = new ArrayList<String>();
 		int a = 0;
 		try{
 			Document doc = Jsoup.connect(url).get();
@@ -42,7 +44,7 @@ public class MainController {
 					for(Element val : atag){
 						Elements title = val.select("a");
 						if(a<5) {
-							list.add(title.toString());
+							newslist.add(title.toString());
 							a++;
 						}
 					}
@@ -51,8 +53,14 @@ public class MainController {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		List<String> imglist = new ArrayList();
-		String imgurl = "http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?upr_cd=6110000&care_reg_no=311320201300001&bgnde=20200801&endde=20200805&upkind=417000&pageNo=1&numOfRows=10&ServiceKey=LBFXEs0hIGvsna06ms6DL%2BOAQJeCCzkEcJLsSEjqrgxVvyB6owDk7VJh8QnuXz9qthbzx%2FqHbGbPP1MbJH7agA%3D%3D";
+		
+		List<String> picturelist = new ArrayList<String>();
+		List<String> kindlist = new ArrayList<String>();
+		List<String> sexlist = new ArrayList<String>();
+		List<String> agelist = new ArrayList<String>();
+		List<String> orglist = new ArrayList<String>();
+//		List<Map<String, String>> infolist = new ArrayList<Map<String,String>>();
+		String imgurl = "http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?upr_cd=6110000&bgnde=20200801&endde=20200810&upkind=417000&pageNo=1&numOfRows=10&ServiceKey=LBFXEs0hIGvsna06ms6DL%2BOAQJeCCzkEcJLsSEjqrgxVvyB6owDk7VJh8QnuXz9qthbzx%2FqHbGbPP1MbJH7agA%3D%3D";
 		URL u = new URL(imgurl); 
 		HttpURLConnection urlcon = (HttpURLConnection)u.openConnection(); //실제  url에 맞도록 url에 접속
 		urlcon.setRequestProperty("Accept", "application/xml");
@@ -72,13 +80,32 @@ public class MainController {
 			Elements body = doc.select("item");
 			for(Element ele : body){
 				Elements picture = ele.select("popfile");
+				Elements kindCd = ele.select("kindCd");
+				Elements sexCd = ele.select("sexCd");
+				Elements age = ele.select("age");
+				Elements orgNm = ele.select("orgNm");
 				if(im<9) {
-					imglist.add(picture.html());
+//					Map<String, String> info = new HashMap<String, String>();
+//					info.put("picture",picture.html());
+//					info.put("kindCd",kindCd.html());
+//					info.put("sexCd",sexCd.html());
+//					info.put("age",age.html());
+//					infolist.add(info);
+					picturelist.add(picture.html());
+					kindlist.add(kindCd.html().substring(3));
+					agelist.add(age.html());
+					sexlist.add((sexCd.html()=="F")?"암컷":"수컷");
+					orglist.add(orgNm.html().substring(5));
+					im++;
 				}
 			}
 		}catch(IOException e){e.printStackTrace();}
-		request.setAttribute("list", list);
-		request.setAttribute("imglist", imglist);
+		request.setAttribute("newslist", newslist);
+		request.setAttribute("picturelist", picturelist);
+		request.setAttribute("agelist", agelist);
+		request.setAttribute("sexlist", sexlist);
+		request.setAttribute("kindlist", kindlist);
+		request.setAttribute("orglist", orglist);
 		return mav; 
 	}
 }
