@@ -60,20 +60,6 @@ public class DogService {
 		      fundingDao.insert(funding);
 		   }
 
-		private void uploadFileCreate(MultipartFile picture, HttpServletRequest request, String path) {
-			//fund_pic : ������ ���� ����
-			String orgFile = picture.getOriginalFilename();
-			String uploadPath=request.getServletContext().getRealPath("/")
-					+ path;
-			File fpath = new File(uploadPath);
-			if(!fpath.exists()) fpath.mkdirs();
-			try {
-				//������ ������ ���� ���Ϸ� ����
-				picture.transferTo(new File(uploadPath + orgFile));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 		public void fundUpdate(Funding funding, HttpServletRequest request) {
 		  if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
 		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
