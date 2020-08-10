@@ -91,7 +91,7 @@
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">기부</a></li>
-                                        <li><a href="blog-single.html">쇼핑</a></li>
+                                        <li><a href="${path}/item/list.dog">쇼핑</a></li>
                                     </ul>
                                 </li>
                                 <li class="active"><a href="${path}/vwork/vmain.dog">봉사</a></li>

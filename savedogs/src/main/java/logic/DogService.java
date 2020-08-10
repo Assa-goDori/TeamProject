@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import dao.FundingDao;
 import dao.MemberDao;
 
 @Service
@@ -42,4 +43,28 @@ public class DogService {
 	public Member getMember(String member_id) {
 		return memberDao.getMember(member_id);
 	}
+	//다원
+		   @Autowired
+		   private FundingDao fundingDao;
+
+			/*
+			 * public List<Funding> getFundingList() { return fundingDao.list(); }
+			 */
+
+		   public void fundCreate(Funding funding, HttpServletRequest request) { 
+		      if(funding.getFund_pic() != null && !funding.getFund_pic().isEmpty()) {
+		         uploadFileCreate(funding.getPicture(),request,"funding/img/");
+		         funding.setFund_pic
+		                    (funding.getPicture().getOriginalFilename());
+		      }
+		      fundingDao.insert(funding);
+		   }
+
+		public void fundUpdate(Funding funding, HttpServletRequest request) {
+		  if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
+		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
+		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
+		}
+		  fundingDao.update(funding); //다원
+		}
 }

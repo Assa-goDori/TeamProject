@@ -8,24 +8,61 @@
 <title>메인페이지 입니다.</title>
 </head>
 <body>
- <div class="row" style="height: 30%; width: 80%; margin-left: 10%;">
-	<div style="width: 40%; height: 24%; float: left; margin-left: 5%;" class="slider">
-        <div class="owl-carousel owl-one owl-theme" style="width: 60%; height: 15%;">
-            <c:forEach items="${picturelist}" var="m" varStatus="i">
-            	<div class="item" style="margin-left: 10%;">
-                	<div class="slider-img" style="margin: 20%; height: 50%;"> 
-                		<img src="${m}" style="width: 200px; height: 240px;">
-                	</div>
-                	<h3 style="margin-left: 20%;">지역 :${orglist[i.index]} </h3>
-                	<h3 style="margin-left: 20%;">종류 :${kindlist[i.index]} </h3>
-                	<h3 style="margin-left: 20%;">${sexlist[i.index]}/${agelist[i.index]}</h3>
+ <div class="row" style="height: 30%; width: 80%; margin-left: 10%;" align="center">
+	<div style="width: 40%; height: 24%; float: left; background-color: #e1e1e1;" class="slider">
+	<div align="center"><h3>실시간 유기견들</h3></div>
+        <div class="owl-carousel owl-one owl-theme" style="height: 15%;">
+            <c:forEach begin="0" end="2" var="m">
+            	<div class="item">
+                	<table>
+                		<tr>
+                			<td>
+                			<div align="center">
+                				<img src="${picturelist[3*m]}" style="width: 200px; height: 240px;">
+                			</div>
+                			</td>
+                			
+                			<td>
+                			<div align="center">
+                				<img src="${picturelist[3*m+1]}" style="width: 200px; height: 240px;">
+                			</div>
+                			</td>
+                			
+                			<td>
+                			<div align="center">
+                				<img src="${picturelist[3*m+2]}" style="width: 200px; height: 240px;">
+                			</div>
+                			</td>
+                		</tr>
+                		<tr>
+                			<td>
+                			<div align="center">
+                				<h3>지역 :${orglist[3*m]} <br>
+                				종류 :${kindlist[3*m]} <br>
+                				${sexlist[3*m]}/${agelist[3*m]}</h3>
+                			</div>
+                			</td><td>
+                			<div align="center">
+                				<h3>지역 :${orglist[3*m+1]} <br>
+                				종류 :${kindlist[3*m+1]} <br>
+                				${sexlist[3*m+1]}/${agelist[3*m+1]}</h3>
+                			</div>
+                			</td><td>
+                			<div align="center">
+                				<h3>지역 :${orglist[3*m+2]} <br>
+                				종류 :${kindlist[3*m+2]} <br>
+                				${sexlist[3*m+2]}/${agelist[3*m+2]}</h3>
+                			</div>
+                			</td>
+                		</tr>
+                	</table>
                 	
-            	</div>
+				</div>
             </c:forEach>
         </div>
     </div>
       <!-- /.slider -->
-    <div style="width: 40%; height: 20%; float: right; margin-right: 5%;">
+    <div style="width: 40%; height: 20%; float: right;">
     	<table style="border: 3px solid black; width: 100%;">
     	<caption>구현전 임시 공지사항 자리</caption>
     	<tr><th>번호</th><th>글제목</th></tr>
@@ -37,10 +74,11 @@
     	</table>
     </div>
   </div>
-  <div class="row" style="width: 80%; margin-left: 10%;">
- 	 <div style="width: 40%; height: 40%; float: left; margin-left: 5%; ">
-    	<table style="border: 3px solid black; width: 100%;">
-    	<caption>유기견 관련 뉴스</caption>
+  <br>
+  <div class="row" style="width: 80%; margin-left: 10%;" align="center">
+ 	 <div style="width: 40%; float: left; background-color: #e1e1e1;">
+ 	 <div align="left"><h3>관련 소식</h3></div>
+    	<table style="border: 3px solid black; width: 95%;">
     	<c:forEach items="${newslist}" var="news">
     		<tr><th>${news}</th></tr>
     	</c:forEach>
