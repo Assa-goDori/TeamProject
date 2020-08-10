@@ -8,7 +8,7 @@
 <title>메인페이지 입니다.</title>
 </head>
 <body>
- <div class="row" style="height: 30%;">
+ <div class="row" style="height: 30%; width: 80%; margin-left: 10%;">
 	<div style="width: 40%; height: 24%; float: left; margin-left: 5%;" class="slider">
         <div class="owl-carousel owl-one owl-theme" style="width: 60%; height: 15%;">
             <c:forEach items="${picturelist}" var="m" varStatus="i">
@@ -37,7 +37,7 @@
     	</table>
     </div>
   </div>
-  <div class="row">
+  <div class="row" style="width: 80%; margin-left: 10%;">
  	 <div style="width: 40%; height: 40%; float: left; margin-left: 5%; ">
     	<table style="border: 3px solid black; width: 100%;">
     	<caption>유기견 관련 뉴스</caption>
