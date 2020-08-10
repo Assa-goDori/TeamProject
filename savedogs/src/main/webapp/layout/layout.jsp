@@ -9,6 +9,7 @@
 <script>
 	var path = "${path}";
 	console.log(path);
+	
 </script>
 <head>
     <meta charset="utf-8">
@@ -39,6 +40,11 @@
 </head>
 <script type="text/javascript">
  	var path = '${path}';
+	console.log(path);
+	
+	function directpage(dir,view){
+		location.href="${path}/"+dir+"/"+view+".dog";
+	}
 </script>
 <decorator:head />
 <body>
@@ -52,14 +58,10 @@
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
                     <c:if test="${empty sessionScope.loginmem}">
-                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
+                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
                     	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberM
-                    	ypage.dog" style="color: white;">마이페이지</a>
-                    </c:if>
-                    <c:if test="${!empty sessionScope.loginsmem}">
-                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/smemberM
                     	ypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
@@ -115,7 +117,7 @@
     <div class="slider" style="width: 100%; height: 20%;">
         <div class="owl-carousel owl-one owl-theme">
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
+                <div class="slider-img" onclick="directpage('adopt','main')"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
                 <div class="container">
                  
                 </div>
@@ -126,7 +128,7 @@
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
+                <div class="slider-img" onclick="directpage('vwork','vmain')"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
                     
                 </div>
