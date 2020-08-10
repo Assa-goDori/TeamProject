@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.MemberDao;
+import dao.VworkDao;
 
 @Service
 public class DogService {
 	@Autowired
 	private MemberDao memberDao;
+	@Autowired
+	private VworkDao vworkDao;
 
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
@@ -41,5 +44,12 @@ public class DogService {
 	
 	public Member getMember(String member_id) {
 		return memberDao.getMember(member_id);
+	}
+
+	
+	//봉사 관련 
+	public void vworkWrite(Vwork vwork, HttpServletRequest request) {
+		
+		
 	}
 }
