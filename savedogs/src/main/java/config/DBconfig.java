@@ -1,5 +1,7 @@
 package config;
 
+import java.beans.PropertyVetoException;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
