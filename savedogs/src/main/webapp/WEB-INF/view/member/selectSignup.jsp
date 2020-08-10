@@ -1,15 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function check(href) {
+		if(!$("input:checkbox[id='btn1']").is(":checked")) {
+			alert("이용 약관에 동의하세요.")
+			//location.href=selectSignup.dog
+		}
+		if(!$("input:checkbox[id='btn2']").is(":checked")) {
+			alert("개인정보 수집 이용 약관에 동의하세요.")
+			//location.href=selectSignup.dog
+		}
+		if($("input:checkbox[id='btn1']").is(":checked") && $("input:checkbox[id='btn2']").is(":checked")) {
+			location.href=href;
+		}
+	}
+</script>
 </head>
 <body>
-	<div style="margin-left: 30%; width:40%;">
-		<h5>이용약관 동의</h5>
-		<textarea>
+	<div align="right" style="margin-left: 30%; width:40%;">
+		<div align="center">
+			<h5>이용약관 동의</h5>
+		</div>
+		<textarea style="width:100%; height:200px;">
 			제 1조 총칙
 			제 1조 (목적)
 			이 이용약관은 구해독 (이하 “당 사이트”)에서 제공하는 인터넷 서비스(이하 '서비스')의 가입조건 및 이용에 관한 제반 사항과 기타 필요한 사항을 구체적으로 규정함을 목적으로 합니다. 
@@ -19,15 +38,16 @@
 		<table>
 			<tr>
 				<td colspan="3"><h4>위의 이용약관에 동의합니다</h4></td>
-				<td><input type="radio" name="btn1"></td>
+				<td><input type="checkbox" id="btn1"></td>
 			</tr>
 		</table>
 		<br>
 		<br>
 		<br>
-		
-		<h5>개인정보 수집 이용 동의</h5>
-		<textarea>
+		<div align="center">
+			<h5>개인정보 수집 이용 동의</h5>
+		</div>
+		<textarea style="width:100%; height:200px;">
 			1. 개인정보의 수집·이용에 관한 사항
 			I. 개인정보의 수집·이용 목적
 			가. 구해독 정책연동 : 
@@ -35,18 +55,23 @@
 			나. 회원관리 :
 			회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인, 개인식별, 가입의사 확인, 가입 및 가입횟수 제한, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리,
 		</textarea>
-		<h6>위의 이용약관에 동의합니다</h6>
-		<input type="radio" name="btn2">
+		<table>
+			<tr>
+				<td colspan="3"><h4>위의 이용약관에 동의합니다</h4></td>
+				<td><input type="checkbox" id="btn2"></td>
+			</tr>
+		</table>
 		<br>
 		<br>
 		<br>
 		<br>
 		<br>
 		<br>
-		
-		<input type="button" value="일반회원" onclick="location.href='memberSignup.dog'">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="button" value="보호소관리자" onclick="location.href='smemberSignup.dog'">
+		<div align="center">
+			<input type="button" value="일반회원" onclick="check('memberSignup.dog')">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="보호소관리자" onclick="check('smemberSignup.dog')">
+		</div>
 	</div>
 </body>
 </html>
