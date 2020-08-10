@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -21,26 +21,30 @@
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	  
-	   
-
-   var calendarEl = document.getElementById('calendar');
-   var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins : [ 'interaction', 'dayGrid', 'timeGrid' ],
-      locale : 'ko',
-      selectable : true,
-      header : {
-         left : 'title', //년,월
-         center : '',
-         right : 'today,prev,next' //오늘, 전월, 다음월
-      },
-      dateClick : function(info) { //빈 날짜 선택
-         var dateStr = prompt(info.dateStr);
-         var date = new Date(info.dateStr);
-         
-      },
-	  	events: 
-	  		[{"title":"봉사 신청","start":"2020-08-16","color":"#A2BEE0"}],eventLimit: true //event가 많으면 more로 표시
+	var calendarEl = document.getElementById('calendar');
+   	var calendar = new FullCalendar.Calendar(calendarEl, {
+   		plugins : [ 'interaction', 'dayGrid', 'timeGrid' ],
+   		locale : 'ko',
+   		selectable : true,
+		header : {
+			left : 'title', 
+			center : '',
+			right : 'today,prev,next' 
+		},dateClick : function(info) { 
+			var dateStr = prompt(info.dateStr);
+			var date = new Date(info.dateStr);
+		},
+		eventClick: function(info) { //이벤트 클릭
+			info.jsEvent.preventDefault();
+			window.location.href = "vjoin.dog?date="+info.event.start; //dateformat 필요
+		}, 
+		select: function(info) { //클릭
+			info.jsEvent.preventDefault();
+      	 	var op = "width=550, height=500, left=500, top=150";
+		    open("vwrite.dog?date="+info.startStr,"",op) <%-- +"&id="+document.f.id.value --%>
+	    },
+		events: 
+			[{"title":"봉사 신청","start":"2020-08-16","color":"#A2BEE0"}]
    })
    calendar.render();
 });

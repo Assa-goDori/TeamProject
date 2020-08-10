@@ -20,7 +20,7 @@
 <!-- db에서 불러오기 -->
 <table style="border-collapse:collapse;">
 <tr height="40px"><td>보호소 명</td> <!-- db에서 불러올것 입력값아님~ -->
-<td><form:input path="sheltername" />
+<td><form:input path="sheltername" /><!-- ${sessionScope.loginUser.sheltername},readonly--> 
 <font color="red"><form:errors path="sheltername" /></font></td></tr>
 
 <tr height="40px"><td>후원 제목</td>
