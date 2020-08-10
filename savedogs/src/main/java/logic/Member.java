@@ -9,11 +9,12 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Member {
 	@Size(min=4, message="아이디는 4자 이상으로 입력하세요.")
 	private String member_id;
-	@NotEmpty(message="이름을 입력하세요.")
+	@NotNull(message="이름을 입력하세요.")
 	private String member_name;
 	@Size(min=4, message="비밀번호는 4자리 이상으로 입력하세요.")
 	private String member_pass;
@@ -26,7 +27,6 @@ public class Member {
 	private int member_postcode;
 	private String member_address;
 	private String member_daddress;
-	@NotNull(message="생일을 입력하세요")
 	@Past(message="생일은 과거 날짜만 가능합니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date member_birthday;
@@ -34,6 +34,8 @@ public class Member {
 	private int shelter_no;
 	private String file1;
 	private String file2;
+	private MultipartFile f1;
+	private MultipartFile f2;
 	private int member_type;
 	
 	//getter,setter
@@ -121,18 +123,23 @@ public class Member {
 	public void setFile2(String file2) {
 		this.file2 = file2;
 	}
+	public MultipartFile getF1() {
+		return f1;
+	}
+	public void setF1(MultipartFile f1) {
+		this.f1 = f1;
+	}
+	public MultipartFile getF2() {
+		return f2;
+	}
+	public void setF2(MultipartFile f2) {
+		this.f2 = f2;
+	}
 	public int getMember_type() {
 		return member_type;
 	}
 	public void setMember_type(int member_type) {
 		this.member_type = member_type;
 	}
-	@Override
-	public String toString() {
-		return "Member [member_id=" + member_id + ", member_name=" + member_name + ", member_pass=" + member_pass
-				+ ", member_pass2=" + member_pass2 + ", member_email=" + member_email + ", member_tel=" + member_tel
-				+ ", member_postcode=" + member_postcode + ", member_address=" + member_address + ", member_daddress="
-				+ member_daddress + ", member_birthday=" + member_birthday + ", del_df=" + del_df + ", shelter_no="
-				+ shelter_no + ", file1=" + file1 + ", file2=" + file2 + ", member_type=" + member_type + "]";
-	}
+		
 }

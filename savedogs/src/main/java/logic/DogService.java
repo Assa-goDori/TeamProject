@@ -20,6 +20,26 @@ public class DogService {
 		memberDao.memberInsert(mem);
 	}
 
+	public void smemberInsert(Member mem, HttpServletRequest request) {
+		if(mem.getF1() != null && !mem.getF1().isEmpty()) {
+			uploadFileCreate(mem.getF1(),request,"member/img/");
+			mem.setFile1(mem.getF1().getOriginalFilename());
+		}
+		memberDao.smemberInsert(mem);
+	}
+	
+	private void uploadFileCreate(MultipartFile picture, HttpServletRequest request, String path) {
+		String orgFile = picture.getOriginalFilename();
+		String uploadPath = request.getServletContext().getRealPath("/") + path;
+		File fpath = new File(uploadPath);
+		if(!fpath.exists()) fpath.mkdirs();
+		try {
+			picture.transferTo(new File(uploadPath + orgFile));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Member getMember(String member_id) {
 		return memberDao.getMember(member_id);
 	}

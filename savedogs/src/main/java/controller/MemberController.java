@@ -30,10 +30,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberSignup")
-	public ModelAndView memberSignup(@Valid Member mem, BindingResult bresult, HttpServletRequest request) {
+	public ModelAndView memberSignup(@Valid Member mem, BindingResult bresult) {
 		ModelAndView mav = new ModelAndView();
 		if (bresult.hasErrors()) {
-			bresult.reject("error.input.user");
+			bresult.reject("error.input.member");
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
@@ -47,23 +47,49 @@ public class MemberController {
 		return mav;
 	}
 	
+	@PostMapping("smemberSignup")
+	public ModelAndView smemberSignup(@Valid Member mem, BindingResult bresult, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		if (bresult.hasErrors()) {
+			bresult.reject("error.input.member");
+			System.out.println(bresult);
+			mav.getModel().putAll(bresult.getModel());
+			return mav;
+		}
+		try {
+			service.smemberInsert(mem, request);
+			mav.setViewName("redirect:login.dog");
+		} catch(Exception e) {
+			e.printStackTrace();
+			mav.getModel().putAll(bresult.getModel());
+		}
+		return mav;
+	}
+	
 	@PostMapping("login")
 	public ModelAndView login(@Valid Member mem, BindingResult bresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		/*
-		 * if(bresult.hasErrors()) { bresult.reject("error.input.user"); return mav; }
-		 */
+		if(bresult.hasErrors()) {
+			bresult.reject("error.login.member");
+			System.out.println(bresult);
+			return mav;
+		}	
 		try {
 		   Member dbmem = service.getMember(mem.getMember_id());
 		   if(mem.getMember_pass().equals(dbmem.getMember_pass())) {
- 			  session.setAttribute("loginmem", dbmem);
+			  int type = dbmem.getMember_type();
+			  if(type == 0) {
+				  session.setAttribute("loginmem", dbmem);
+			  } else if (type == 1) {
+				  session.setAttribute("loginsmem", dbmem);
+			  }
 			  mav.setViewName("redirect:../main.dog");
 		   } else {
-			  bresult.reject("error.login.password");
+			  bresult.reject("error.login.member_pass");
 		   }
 		} catch (Exception e) {
 			e.printStackTrace();
-			bresult.reject("error.login.id");
+			bresult.reject("error.login.member_id");
 		}
 		return mav;
 	}
