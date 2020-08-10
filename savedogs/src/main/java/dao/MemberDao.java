@@ -20,6 +20,10 @@ public class MemberDao {
 		template.getMapper(MemberMapper.class).memberInsert(mem);
 	}
 
+	public void smemberInsert(Member mem) {
+		template.getMapper(MemberMapper.class).smemberInsert(mem);
+	}
+	
 	public Member getMember(String member_id) {
 		return template.getMapper(MemberMapper.class).selectMem(member_id);
 	}
