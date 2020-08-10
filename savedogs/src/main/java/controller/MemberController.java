@@ -47,12 +47,18 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping("shelterlist")
+	public ModelAndView shelterlist() {
+		ModelAndView mav = new ModelAndView();
+		
+		return mav;
+	}
+	
 	@PostMapping("smemberSignup")
 	public ModelAndView smemberSignup(@Valid Member mem, BindingResult bresult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		if (bresult.hasErrors()) {
 			bresult.reject("error.input.member");
-			System.out.println(bresult);
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}

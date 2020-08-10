@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import dao.AdminDao;
 import dao.FundingDao;
 import dao.MemberDao;
 
@@ -15,6 +17,8 @@ import dao.MemberDao;
 public class DogService {
 	@Autowired
 	private MemberDao memberDao;
+	private AdminDao adminDao;
+	private FundingDao fundingDao;
 
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
@@ -44,10 +48,7 @@ public class DogService {
 		return memberDao.getMember(member_id);
 	}
 	//다원
-		   @Autowired
-		   private FundingDao fundingDao;
-
-			/*
+		   	/*
 			 * public List<Funding> getFundingList() { return fundingDao.list(); }
 			 */
 
@@ -66,5 +67,15 @@ public class DogService {
 		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
 		}
 		  fundingDao.update(funding); //다원
+		}
+
+		public void insertSlist(Map<String, Map<String, String>> data, Shelter shelter) {
+			for(Map.Entry<String, Map<String,String>> me : data.entrySet()) {
+				shelter.setShelter_no(me.getKey());
+				shelter.setShelter_name(me.getValue().toString().split("=")[0].substring(1));
+				shelter.setShelter_address(me.getValue().toString().split("=")[1].substring(0, me.getValue().toString().split("=")[1].indexOf("}")));
+				//System.out.println("보호소 코드 : " + me.getKey() + " 보호소명 : " + me.getValue().toString().split("=")[0].substring(1) + " 지역구 : " + me.getValue().toString().split("=")[1].substring(0, me.getValue().toString().split("=")[1].indexOf("}")) + "<br>");
+				adminDao.insert(shelter);
+			}
 		}
 }
