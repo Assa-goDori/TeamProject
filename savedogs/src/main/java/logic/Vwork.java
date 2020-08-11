@@ -10,7 +10,7 @@ public class Vwork {
 	private String member_id;
 	private Date vwork_date;
 	@NotEmpty(message="모집인원을 입력해주세요")
-	private int vwor_member;
+	private int vwork_member;
 	@NotEmpty(message="설명을 입력해주세요")
 	private String vwork_content;
 	
@@ -39,10 +39,10 @@ public class Vwork {
 		this.vwork_date = vwork_date;
 	}
 	public int getVwor_member() {
-		return vwor_member;
+		return vwork_member;
 	}
 	public void setVwor_member(int vwor_member) {
-		this.vwor_member = vwor_member;
+		this.vwork_member = vwor_member;
 	}
 	public String getVwork_content() {
 		return vwork_content;
@@ -53,7 +53,7 @@ public class Vwork {
 	@Override
 	public String toString() {
 		return "Vwork [vwork_no=" + vwork_no + ", shelter=" + shelter + ", member_id=" + member_id + ", vwork_date="
-				+ vwork_date + ", vwor_member=" + vwor_member + ", vwork_content=" + vwork_content + "]";
+				+ vwork_date + ", vwork_member=" + vwork_member + ", vwork_content=" + vwork_content + "]";
 	}
 	
 }
