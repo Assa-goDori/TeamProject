@@ -17,6 +17,7 @@ public class AdminDao {
 	Map<String, Object> param = new HashMap<>();
 
 	public void insert(Shelter shelter) {
+		System.out.println("AdminDao : " + shelter);
 		template.getMapper(AdminMapper.class).insert(shelter);
 	}
 }

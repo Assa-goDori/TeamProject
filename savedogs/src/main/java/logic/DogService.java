@@ -18,8 +18,11 @@ import dao.VworkDao;
 public class DogService {
 	@Autowired
 	private MemberDao memberDao;
+	@Autowired
 	private AdminDao adminDao;
+	@Autowired
 	private FundingDao fundingDao;
+	@Autowired
 	private VworkDao vworkDao;
 
 	public void memberInsert(Member mem) {
@@ -80,11 +83,13 @@ public class DogService {
 		  fundingDao.update(funding); //다원
 		}
 
-		public void insertSlist(Map<String, Map<String, String>> data, Shelter shelter) {
+		public void insertSlist(Map<String, Map<String, String>> data) {
 			for(Map.Entry<String, Map<String,String>> me : data.entrySet()) {
-				shelter.setShelter_no(me.getKey());
+				Shelter shelter = new Shelter();
+				shelter.setShelter_no(me.getKey().toString());
 				shelter.setShelter_name(me.getValue().toString().split("=")[0].substring(1));
 				shelter.setShelter_address(me.getValue().toString().split("=")[1].substring(0, me.getValue().toString().split("=")[1].indexOf("}")));
+				shelter.setShelter_tel(" ");
 				//System.out.println("보호소 코드 : " + me.getKey() + " 보호소명 : " + me.getValue().toString().split("=")[0].substring(1) + " 지역구 : " + me.getValue().toString().split("=")[1].substring(0, me.getValue().toString().split("=")[1].indexOf("}")) + "<br>");
 				adminDao.insert(shelter);
 			}

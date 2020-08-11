@@ -30,4 +30,10 @@ public class Shelter {
 	public void setShelter_tel(String shelter_tel) {
 		this.shelter_tel = shelter_tel;
 	}
+	
+	@Override
+	public String toString() {
+		return "Shelter [shelter_no=" + shelter_no + ", shelter_name=" + shelter_name + ", shelter_address="
+				+ shelter_address + ", shelter_tel=" + shelter_tel + "]";
+	}
 }

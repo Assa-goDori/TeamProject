@@ -100,7 +100,7 @@ public class AdminController {
 				while((len = in.read(buf)) != -1) {
 					sb.append(new String(buf,0,len));
 				}
-				System.out.println(new String(sb.toString().getBytes(), "UTF-8"));
+				//System.out.println(new String(sb.toString().getBytes(), "UTF-8"));
 				doc = Jsoup.parse(sb.toString());
 				item = doc.select("item");
 				
@@ -110,7 +110,7 @@ public class AdminController {
 					data.put(src.select("careRegNo").html(), name);
 				}
 			}
-			service.insertSlist(data, new Shelter());
+			service.insertSlist(data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -67,7 +67,7 @@
 		</table>
 		<div id="linfo" class="info">
 			<h3>회원 탭입니다.</h3>
-			<form name="f">
+			<form name="f" method="post">
 				<input type="button" value="보호소정보 최신화" onclick="newlist()">
 			</form>
 		</div>
