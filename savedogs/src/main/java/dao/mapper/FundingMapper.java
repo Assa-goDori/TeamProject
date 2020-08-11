@@ -6,11 +6,9 @@ import org.apache.ibatis.annotations.Update;
 
 import logic.Funding;
 
-
-
 public interface FundingMapper {
 	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
-			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
+			   + " values (1, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
 	  void insert(Funding funding);
 
 	/*

@@ -35,7 +35,7 @@
 <style type="text/css">
 	.select {
 		padding:3px;
-		background-color: #0000ff;
+		background-color: #3598DA;
 	}
 	
 	.select>a {
@@ -50,21 +50,21 @@
 	<h3>My Page</h3>
 	<hr>
 	<div style=" width:100%;">
-		<table>
+		<table style="width:100%;">
 			<tr>
-				<td id="tab1" class="tab">
+				<td id="tab1" align="center" class="tab" style="width:20%">
 					<a href="javascript:disp_div('minfo','tab1')">내 정보</a>
 				</td>
-				<td id="tab2" class="tab">
+				<td id="tab2" align="center" class="tab" style="width:20%">
 					<a href="javascript:disp_div('vinfo', 'tab2')">봉사</a>
 				</td>
-				<td id="tab3" class="tab">
+				<td id="tab3" align="center" class="tab" style="width:20%">
 					<a href="javascript:disp_div('finfo', 'tab3')">기부</a>
 				</td>
-				<td id="tab4" class="tab">
+				<td id="tab4" align="center" class="tab" style="width:20%">
 					<a href="javascript:disp_div('ainfo', 'tab4')">입양</a>
 				</td>
-				<td id="tab5" class="tab">
+				<td id="tab5" align="center" class="tab" style="width:20%">
 					<a href="javascript:disp_div('sinfo', 'tab5')">쇼핑</a>
 				</td>
 			</tr>

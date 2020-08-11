@@ -76,8 +76,7 @@ public class DogService {
 		   public void fundCreate(Funding funding, HttpServletRequest request) { 
 		      if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
 		         uploadFileCreate(funding.getPicture(),request,"funding/img/");
-		         funding.setFund_pic
-		                    (funding.getPicture().getOriginalFilename());
+		         funding.setFund_pic(funding.getPicture().getOriginalFilename());
 		      }
 		      fundingDao.insert(funding);
 		   }

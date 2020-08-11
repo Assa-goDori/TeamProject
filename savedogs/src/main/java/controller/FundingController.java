@@ -28,16 +28,17 @@ public class FundingController {
           mav.addObject(f);
           return mav; // WEB-INF/view/userEntry.jsp
         }
+      
       @PostMapping("fregForm") 
-        public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult,
-               HttpServletRequest request) {
-            ModelAndView mav = new ModelAndView("funding/fregForm");
-            if(bresult.hasErrors()) {
-               mav.getModel().putAll(bresult.getModel());
-               return mav;
-            }
+        public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult, HttpServletRequest request) {
+            ModelAndView mav = new ModelAndView();
+		/*
+		 * if(bresult.hasErrors()) { mav.getModel().putAll(bresult.getModel()); return
+		 * mav; }
+		 */
+            System.out.println(funding);
             service.fundCreate(funding,request);
-            mav.setViewName("redirect:/funding/fregForm.dog");
+            mav.setViewName("redirect:../main.dog");
             return mav;      
         
           }
@@ -51,7 +52,7 @@ public class FundingController {
   		}
   		//db,파일업로드
   		service.fundUpdate(funding,request);
-  		mav.setViewName("redirect:/funding/fregForm.dog?id="+funding.getFundno());
+  		mav.setViewName("redirect:/funding/fregForm.dog?id="+funding.getFund_no());
   		return mav;
   	}
       
