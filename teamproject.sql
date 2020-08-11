@@ -348,4 +348,3 @@ ALTER TABLE vworklist
 	ON DELETE RESTRICT
 ;
 
-INSERT INTO shelter (shelter_no, shelter_name) VALUES('111111111111111','일반회원')
