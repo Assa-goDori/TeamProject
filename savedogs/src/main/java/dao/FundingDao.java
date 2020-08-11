@@ -16,6 +16,12 @@ public class FundingDao {
 	  private SqlSessionTemplate template;
 	  private Map<String,Object> param = new HashMap<>();
 	  
+	
+	// fund_no 증가
+	  public int maxfundno() { return
+	  template.getMapper(FundingMapper.class).maxfundno(); }
+	 
+	 
 	  public void insert(Funding funding) {
 		   template.getMapper(FundingMapper.class).insert(funding);
 		}

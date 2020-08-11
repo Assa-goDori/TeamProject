@@ -1,14 +1,23 @@
 package dao.mapper;
 
 
+
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import logic.Funding;
 
 public interface FundingMapper {
+	
+
+	
+	 @Select("select ifnull(max(fund_no),0) from funding") int maxfundno();
+	 
+	
+	
 	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
-			   + " values (1, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
+			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
 	  void insert(Funding funding);
 
 	/*
@@ -25,6 +34,8 @@ public interface FundingMapper {
 		   + " count=#{count}, start_date=#{start_date},"
 		   + " end_date=#{end_date}, picture=#{fund_pic} where fund_no=#{fund_no}")
 	void update(Funding funding);
+
+	int maxfund_no();
 	 
 	/*
 	 * @Delete( "delete from usersecurity where userid = #{userid} ") void
