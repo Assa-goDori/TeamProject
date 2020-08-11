@@ -83,7 +83,7 @@
                     <div class="navigation">
                         <div id="navigation" style="margin-right: 10%;">
                            <ul>
-                                <li class="active"><a href="index.html">입양</a></li>
+                                <li class="active"><a href="${path}/adopt/main.dog">입양</a></li>
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">기부</a></li>
