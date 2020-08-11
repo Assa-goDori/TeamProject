@@ -39,4 +39,10 @@ public class AdminDao {
 		param.put("goo", goo);
 		return template.getMapper(AdminMapper.class).getShelterName(param);
 	}
+
+	public String getOneShelterName(String shelter_no) {
+		param.clear();
+		param.put("no",shelter_no);
+		return template.getMapper(AdminMapper.class).getOneShelterName(param);
+	}
 }

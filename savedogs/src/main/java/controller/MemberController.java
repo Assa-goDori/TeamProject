@@ -103,6 +103,7 @@ public class MemberController {
 				  session.setAttribute("loginmem", dbmem);
 			  } else if (type == 1) {
 				  session.setAttribute("loginsmem", dbmem);
+				  session.setAttribute("smemName", service.getOneShelterName(dbmem.getShelter_no()));
 			  }
 			  mav.setViewName("redirect:../main.dog");
 		   } else {

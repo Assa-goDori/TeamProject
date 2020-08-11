@@ -29,6 +29,9 @@ public interface AdminMapper {
 	@Select("select * from shelter where shelter_address=#{goo} and shelter_name != '일반회원'")
 	List<Shelter> getShelterName(Map<String, Object> param);
 
+	@Select("select shelter_name from shelter where shelter_no=#{no}")
+	String getOneShelterName(Map<String, Object> param);
+
 	
 
 }
