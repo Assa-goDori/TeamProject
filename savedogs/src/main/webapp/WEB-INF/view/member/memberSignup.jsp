@@ -49,15 +49,12 @@
                     if(extraAddr !== ''){
                         extraAddr = ' (' + extraAddr + ')';
                     }
-                   // document.getElementById("sample6_extraAddress").value = extraAddr;
-                   $("#member_address").append(extraAddr);
-                
+                   //document.getElementById("member_daddress").value = extraAddr;
                 } else {
-                    //document.getElementById("sample6_extraAddress").value = '';
-                    $("#member_address").append('');
+                   //document.getElementById("member_daddress").value = '';
                 }
                 document.getElementById('member_postcode').value = data.zonecode;
-                document.getElementById("member_address").value = addr;
+                document.getElementById("member_address").value = addr + extraAddr;
                 document.getElementById("member_daddress").focus();
             }
         }).open();
