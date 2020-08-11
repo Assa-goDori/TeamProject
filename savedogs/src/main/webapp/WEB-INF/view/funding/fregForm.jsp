@@ -15,7 +15,7 @@
 	<h2>후원 모집 등록</h2>
 	<form:form modelAttribute="funding" method="post" action="fregForm.dog" enctype="multipart/form-data">
 		<%-- globalErrors error.reject(코드값) --%>
-		<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id }">
+		<input type="hidden" name="member_id" value="${sessionScope.loginsmem.member_id }">
 		<spring:hasBindErrors name="funding">
 			<font color="red"> <c:forEach items="${errors.globalErrors}"
 					var="error">
