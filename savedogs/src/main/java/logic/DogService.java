@@ -94,4 +94,12 @@ public class DogService {
 				adminDao.insert(shelter);
 			}
 		}
+
+		public void deleteAllList() {
+			adminDao.deleteAllList();
+		}
+
+		public void insertInit() {
+			adminDao.insertInit();
+		}
 }

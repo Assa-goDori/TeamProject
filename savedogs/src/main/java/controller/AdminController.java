@@ -110,6 +110,8 @@ public class AdminController {
 					data.put(src.select("careRegNo").html(), name);
 				}
 			}
+			service.deleteAllList();
+			service.insertInit();
 			service.insertSlist(data);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -20,4 +20,12 @@ public class AdminDao {
 		System.out.println("AdminDao : " + shelter);
 		template.getMapper(AdminMapper.class).insert(shelter);
 	}
+
+	public void deleteAllList() {
+		template.getMapper(AdminMapper.class).deleteAll();
+	}
+
+	public void insertInit() {
+		template.getMapper(AdminMapper.class).insertInit();
+	}
 }
