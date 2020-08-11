@@ -69,7 +69,7 @@
 				</td>
 			</tr>
 		</table>
-		<div id="minfo" class="info">
+		<div id="minfo" class="info" style="width:100%;">
 			<h3>내 정보 탭입니다.</h3>
 			<table>
 				<tr>
@@ -98,8 +98,8 @@
 				</tr>
 			</table>
 			<div align="center">
-				<input type="button" value="수정하기">
-				<input type="button" value="탈퇴">
+				<input type="button" value="수정하기" onclick="location.href='memberUpdate.dog'">
+				<input type="button" value="탈퇴" onclick="location.href='memberDelete.dog'">
 			</div>
 		</div>
 		<div id="vinfo" class="info" style="display: none; width:100%;">
