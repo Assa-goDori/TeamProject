@@ -5,21 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>구해독 : 봉사 등록</title>
+<link rel='stylesheet' href='../css/style.css' />
+<link rel='stylesheet' href='../css/savedogs1.css' />
 </head>
 <body>
+<div class="vdiv">
+<h3>봉사 등록</h3>
 <form:form modelAttribute="vwork" action="vregister.dog" enctype="multipart/form-data" name="f">
-	<input type="hidden" name="id" value="${param.id }"> <%--로그인 user id --%>
-	<input type="hidden" name="shelter_no" value="${param.shelter_no }"> <%--shelter_no --%>
 	<table>
-		<tr><td>날짜</td><td><input type="text" name="vwork_date" value="${param.date }" readonly="readonly"></td></tr>
-		<tr><td>보호소</td><td><input type="text" value="${param.date }" readonly="readonly">
-							 <input type="text" value="${param.date }" readonly="readonly"></td></tr>
-		<tr><td>모집인원</td><td><form:input path="vwork_member"/><font color="red"><form:errors path="vwork_member"/></font></td></tr>
-		<tr><td>설명</td><td><form:textarea path="vwork_content" rows="15" cols="80"/>
-		<font color="red"><form:errors path="vwork_content"/></font></td></tr>
-		<tr><td colspan="2"><input type="submit" value="등록"></td>
+		<tr><th>날짜</th><td><input type="text" name="vwork_date" value="${param.date }" readonly="readonly"></td></tr>
+		<tr><th>보호소</th><td><input type="text" value="${shelter.shelter_address }" readonly="readonly">
+							 <input type="text" value="${shelter.shelter_name }" readonly="readonly"></td></tr>
+		<tr><th>모집인원</th><td><form:input path="vwork_member"/>&nbsp;명</td></tr>
+		<tr><th>설명</th><td><form:textarea path="vwork_content" rows="15" cols="80"/></td></tr>
+		<tr><th colspan="2"><input type="submit" value="등록"></th>
 		</tr>
 	</table>
 </form:form>
+</div>
 </body>
 </html>

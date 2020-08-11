@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import dao.AdminDao;
 import dao.FundingDao;
 import dao.MemberDao;
+import dao.ShelterDao;
 import dao.VworkDao;
 
 @Service
@@ -25,6 +26,8 @@ public class DogService {
 	private FundingDao fundingDao;
 	@Autowired
 	private VworkDao vworkDao;
+	@Autowired
+	private ShelterDao shelterDao;
 
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
@@ -104,6 +107,7 @@ public class DogService {
 			adminDao.insertInit();
 		}
 
+
 		public List<Shelter> getShelterAddress() {
 			return adminDao.getAddressList();
 		}
@@ -114,5 +118,10 @@ public class DogService {
 
 		public String getOneShelterName(String shelter_no) {
 			return adminDao.getOneShelterName(shelter_no);
+		}
+	
+		public Shelter getShelter(String shelter_no) {
+			return shelterDao.getShelter(shelter_no);
+
 		}
 }
