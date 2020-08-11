@@ -26,7 +26,7 @@ CREATE TABLE adopt
 (
 	member_id varchar(20) NOT NULL,
 	dog_no varchar(50) NOT NULL,
-	shelter_no int NOT NULL,
+	shelter_no varchar(30) NOT NULL,
 	adopt_date date NOT NULL,
 	-- 0:신청
 	-- 1:거부
@@ -141,7 +141,7 @@ CREATE TABLE member
 (
 	member_id varchar(20) NOT NULL,
 	-- 일반회원가입시 : 0000000
-	shelter_no int NOT NULL COMMENT '일반회원가입시 : 0000000',
+	shelter_no varchar(30) NOT NULL COMMENT '일반회원가입시 : 0000000',
 	member_pass varchar(20) NOT NULL,
 	member_name varchar(20) NOT NULL,
 	member_email varchar(30) NOT NULL,
@@ -176,7 +176,7 @@ CREATE TABLE reply
 
 CREATE TABLE shelter
 (
-	shelter_no int NOT NULL,
+	shelter_no varchar(30) NOT NULL,
 	shelter_name varchar(40) NOT NULL,
 	shelter_address varchar(40),
 	shelter_tel varchar(30),
@@ -187,7 +187,7 @@ CREATE TABLE shelter
 CREATE TABLE vwork
 (
 	vwork_no int NOT NULL,
-	shelter_no int NOT NULL,
+	shelter_no varchar(30) NOT NULL,
 	member_id varchar(20) NOT NULL,
 	vwork_date date NOT NULL,
 	vwork_member int NOT NULL,
@@ -347,6 +347,4 @@ ALTER TABLE vworklist
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
-
-
 
