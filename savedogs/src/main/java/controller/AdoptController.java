@@ -21,7 +21,7 @@ public class AdoptController {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"); // 유기동물 조회
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-				+ "=LBFXEs0hIGvsna06ms6DL%2BOAQJeCCzkEcJLsSEjqrgxVvyB6owDk7VJh8QnuXz9qthbzx%2FqHbGbPP1MbJH7agA%3D%3D" // 서비스키
+				+ "=LkKlaYPxZnedB774kYO9uNzE0Eaa07yjZfE05Sh3BR%2F7GLjPuQd%2BdSErZFAPjdkiyM4cDxpkdBOQZ1ckRjyERw%3D%3D" // 서비스키
 				+ "&upkind=417000" // upkind : 개(41700)
 				+ "&upr_cd=6110000" // upr_cd : 서울특별시(6110000)
 				+ "&state=null" // state : 전체(null)
