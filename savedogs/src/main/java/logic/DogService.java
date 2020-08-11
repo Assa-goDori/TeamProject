@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
 import dao.FundingDao;
+import dao.ItemDao;
 import dao.MemberDao;
+import dao.ShelterDao;
 import dao.VworkDao;
 
 @Service
@@ -24,7 +27,11 @@ public class DogService {
 	private FundingDao fundingDao;
 	@Autowired
 	private VworkDao vworkDao;
-
+	@Autowired
+	private ShelterDao shelterDao;
+	@Autowired
+	private ItemDao itemDao;
+	
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
 	}
@@ -67,7 +74,7 @@ public class DogService {
 			 */
 
 		   public void fundCreate(Funding funding, HttpServletRequest request) { 
-		      if(funding.getFund_pic() != null && !funding.getFund_pic().isEmpty()) {
+		      if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
 		         uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		         funding.setFund_pic
 		                    (funding.getPicture().getOriginalFilename());
@@ -102,4 +109,30 @@ public class DogService {
 		public void insertInit() {
 			adminDao.insertInit();
 		}
+
+
+		public List<Shelter> getShelterAddress() {
+			return adminDao.getAddressList();
+		}
+
+		public List<Shelter> getShelterName(String goo) {
+			return adminDao.getShelterName(goo);
+		}
+
+		public String getOneShelterName(String shelter_no) {
+			return adminDao.getOneShelterName(shelter_no);
+		}
+	
+		public Shelter getShelter(String shelter_no) {
+			return shelterDao.getShelter(shelter_no);
+
+		}
+		
+		
+//-------------------쇼핑관련 시작-------------------------------------------------
+		public List<Item> getItemList() {
+			return itemDao.list();
+		}
+		
+//-------------------쇼핑관련 끝--------------------------------------------------
 }

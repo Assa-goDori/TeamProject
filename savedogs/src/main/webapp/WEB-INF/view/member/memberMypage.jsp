@@ -69,8 +69,38 @@
 				</td>
 			</tr>
 		</table>
-		<div id="minfo" class="info">
+		<div id="minfo" class="info" style="width:100%;">
 			<h3>내 정보 탭입니다.</h3>
+			<table>
+				<tr>
+					<th>아이디</th>
+					<td>${mem.member_id }</td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td>${mem.member_name }</td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td>${mem.member_birthday }</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td>${mem.member_tel }</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>${mem.member_postcode }${mem.member_address } ${mem.member_daddress }</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>${mem.member_email }</td>
+				</tr>
+			</table>
+			<div align="center">
+				<input type="button" value="수정하기" onclick="location.href='memberUpdate.dog'">
+				<input type="button" value="탈퇴" onclick="location.href='memberDelete.dog'">
+			</div>
 		</div>
 		<div id="vinfo" class="info" style="display: none; width:100%;">
 			<h3>봉사 탭입니다.</h3>

@@ -163,6 +163,7 @@
 	<%-- minfo  : 기부 정보 출력 --%>
 	<div id="minfo" class="info">
 	
+	
 	</div>
 </div>
 </body></html>

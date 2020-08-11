@@ -32,7 +32,13 @@ public class Funding {
 	private MultipartFile picture; //사진
 	public int getFundno() {
 		return fund_no;
-		
+	}
+	
+public int getFund_no() {
+		return fund_no;
+	}
+	public void setFund_no(int fund_no) {
+		this.fund_no = fund_no;
 	}
 	public String getMember_id() {
 		return member_id;
@@ -82,14 +88,12 @@ public class Funding {
 	public void setPicture(MultipartFile picture) {
 		this.picture = picture;
 	}
-	public void setFundno(int fund_no) {
-		this.fund_no = fund_no;
-	}
+
 	@Override
 	public String toString() {
 		return "Funding [fund_no=" + fund_no + ", member_id=" + member_id + ", funding_subject=" + funding_subject
 				+ ", sheltername=" + sheltername + ", count=" + count + ", start_date=" + start_date + ", end_date="
-				+ end_date + "]";
+				+ end_date + ", fund_pic=" + fund_pic + ", picture=" + picture +"]";
 	} 
 	
 	

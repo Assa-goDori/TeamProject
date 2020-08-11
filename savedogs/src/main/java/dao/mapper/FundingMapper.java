@@ -9,10 +9,8 @@ import logic.Funding;
 
 
 public interface FundingMapper {
-	 @Insert(" insert into funding "
-			   + "(fund_no,member_id,sheltername,funding_subject,count,start_date,end_date,fund_pic) "
-			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, "
-			   + " #{count}, #{start_date},#{end_date},#{fund_pic}) ")
+	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
+			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
 	  void insert(Funding funding);
 
 	/*
@@ -27,7 +25,7 @@ public interface FundingMapper {
 
 	@Update(" update funding set funding_subject = #{funding_subject},"
 		   + " count=#{count}, start_date=#{start_date},"
-		   + " end_date=#{end_date}, fund_pic=#{fund_pic} where fund_no=#{fund_no}")
+		   + " end_date=#{end_date}, picture=#{fund_pic} where fund_no=#{fund_no}")
 	void update(Funding funding);
 	 
 	/*

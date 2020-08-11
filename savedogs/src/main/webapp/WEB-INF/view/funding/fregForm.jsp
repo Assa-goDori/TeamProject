@@ -10,7 +10,7 @@
 <title>후원 모집 등록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head><body><h2>후원 모집 등록</h2>
-<form:form modelAttribute="funding" method="post" action="fregForm.dog">
+<form:form modelAttribute="funding" method="post" action="fregForm.dog" enctype="multipart/form-data">
 <%-- globalErrors error.reject(코드값) --%>
 <spring:hasBindErrors name="funding">
 <font color="red">
@@ -41,8 +41,8 @@
 <font color="red"><form:errors path="end_date" /></font></td></tr>
 
 <tr height="40px"><td>배너사진</td>
-<td><input type="file" name="picture" />
-<font color="red"><form:errors path="picture" /></font></td></tr>
+<td><input type="file" name="fund_pic" />
+<font color="red"><form:errors path="fund_pic" /></font></td></tr>
 
 <tr height="40px">
 <td colspan="2" align="center">

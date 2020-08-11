@@ -7,11 +7,19 @@
 		
 	</decorator>
 	<decorator name="simple" page="simple_layout.jsp">
-		<pattern>/vwork/*.dog</pattern>
+		<pattern>/vwork/*</pattern>
 		<pattern>/member/*.dog</pattern>
+		<pattern>/funding/*.dog</pattern>
+		<pattern>/item/*.dog</pattern>
 		<pattern>/fundinganditem/*.dog</pattern>
 	</decorator>
+<<<<<<< Updated upstream
 	<excludes>
+		<pattern>/member/shelterlist.*</pattern>
+=======
 	
+	<excludes>
+		<pattern>/vwork/vwrite*</pattern>
+>>>>>>> Stashed changes
 	</excludes>
 </decorators>

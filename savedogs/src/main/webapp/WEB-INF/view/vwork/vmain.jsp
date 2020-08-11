@@ -40,8 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		}, 
 		select: function(info) { //클릭
 			info.jsEvent.preventDefault();
-      	 	var op = "width=550, height=500, left=500, top=150";
-		    open("vwrite.dog?date="+info.startStr,"",op) <%-- +"&id="+document.f.id.value --%>
+      	 	var op = "width=800, height=700, left=500, top=150";
+      	 	if(${smem.member_type}==1){
+      	 		open("vwrite.dog?date="+info.startStr,"",op) <%-- +"&id="+document.f.id.value --%>	
+      	 	}
+		    
 	    },
 		events: 
 			[{"title":"봉사 신청","start":"2020-08-16","color":"#A2BEE0"}]
