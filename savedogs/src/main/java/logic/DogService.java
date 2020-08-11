@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -128,6 +129,14 @@ public class DogService {
 //-------------------쇼핑관련 시작-------------------------------------------------
 		public List<Item> getItemList() {
 			return itemDao.list();
+		}
+
+		public void itemCreate(@Valid Item item, HttpServletRequest request) {
+			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
+				uploadFileCreate(item.getPicture(),request,"item/img/");
+				item.setItem_picture(item.getPicture().getOriginalFilename());
+			}
+			itemDao.insert(item);
 		}
 		
 //-------------------쇼핑관련 끝--------------------------------------------------
