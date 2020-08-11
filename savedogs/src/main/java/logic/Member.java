@@ -31,7 +31,7 @@ public class Member {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date member_birthday;
 	private boolean del_df;
-	private int shelter_no;
+	private String shelter_no;
 	private String file1;
 	private String file2;
 	private MultipartFile f1;
@@ -105,10 +105,10 @@ public class Member {
 	public void setDel_df(boolean del_df) {
 		this.del_df = del_df;
 	}
-	public int getShelter_no() {
+	public String getShelter_no() {
 		return shelter_no;
 	}
-	public void setShelter_no(int shelter_no) {
+	public void setShelter_no(String shelter_no) {
 		this.shelter_no = shelter_no;
 	}
 	public String getFile1() {
