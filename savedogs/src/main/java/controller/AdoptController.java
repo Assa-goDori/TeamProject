@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("adopt")
 public class AdoptController {
 
-	@RequestMapping("main")
+	@GetMapping("main")
 	public ModelAndView main() throws IOException {
 		ModelAndView mav = new ModelAndView();
 		StringBuilder urlBuilder = new StringBuilder(
@@ -49,4 +50,6 @@ public class AdoptController {
 
 		return mav;
 	}
+	
+//	@RequestMapping(*) 키워드 검색 
 }
