@@ -13,13 +13,8 @@
 		<pattern>/item/*.dog</pattern>
 		<pattern>/fundinganditem/*.dog</pattern>
 	</decorator>
-<<<<<<< Updated upstream
 	<excludes>
 		<pattern>/member/shelterlist.*</pattern>
-=======
-	
-	<excludes>
 		<pattern>/vwork/vwrite*</pattern>
->>>>>>> Stashed changes
 	</excludes>
 </decorators>

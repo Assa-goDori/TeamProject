@@ -115,10 +115,6 @@ public class DogService {
 		public List<Shelter> getShelterName(String goo) {
 			return adminDao.getShelterName(goo);
 		}
-
-		public String getOneShelterName(String shelter_no) {
-			return adminDao.getOneShelterName(shelter_no);
-		}
 	
 		public Shelter getShelter(String shelter_no) {
 			return shelterDao.getShelter(shelter_no);
