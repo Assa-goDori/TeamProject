@@ -20,6 +20,7 @@ public class FundingController {
 
       @Autowired
       private DogService service;
+      
       @RequestMapping("*")
       public ModelAndView fregForm() {
           ModelAndView mav = new ModelAndView();
