@@ -8,13 +8,20 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import logic.Adopt;
+import logic.AdoptUtils;
 
 @Controller
 @RequestMapping("adopt")
 public class AdoptController {
+	
+//	private static final Logger logger = LoggerFactory.getLogger(AdoptController.class);
 
 	@GetMapping("main")
 	public ModelAndView main() throws IOException {
@@ -51,5 +58,11 @@ public class AdoptController {
 		return mav;
 	}
 	
-//	@RequestMapping(*) 키워드 검색 
+	@RequestMapping(value="/main", method=RequestMethod.POST)
+	public String airport(Adopt adopt, Model model) throws Exception {
+		
+//		String state = Adopt.getState();
+		return "main";
+	}
+	
 }

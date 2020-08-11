@@ -12,11 +12,13 @@
 	<div style="width: 100%">
 		<div style="width: 200px; height: 150px; float: left;">
 			<h2>상태</h2>
-			<select>
-				<option value="null" selected="selected">전체</option>
-				<option value="notice">공고중</option>
-				<option value="protected">보호중</option>
-			</select>
+			<form action="adopt/main" method="POST">
+				<select name="state">
+					<option value="null" selected="selected">전체</option>
+					<option value="notice">공고중</option>
+					<option value="protected">보호중</option>
+				</select>
+			</form>
 		</div>
 		<div style="width: 300px; height: 150px; float: left;">
 			<h2>품종</h2>
@@ -193,14 +195,6 @@
 				<option value="000130">화이트리트리버</option>
 				<option value="000134">화이트테리어</option>
 				<option value="000111">휘펫</option>
-			</select> 
-		</div>
-		<div style="width: 200px; height: 150px; float: left;">
-			<h2>성별</h2>
-			<select>
-				<option value="null" selected="selected">전체</option>
-				<option value="">암컷</option>
-				<option value="">수컷</option>
 			</select>
 		</div>
 	</div>
