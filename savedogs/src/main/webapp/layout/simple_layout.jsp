@@ -55,10 +55,10 @@
                     	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
-                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
-                    <c:if test="${!empty sessionScope.loginshelter}">
-                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
+                    <c:if test="${!empty sessionScope.loginsmem}">
+                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
@@ -87,7 +87,7 @@
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">기부</a></li>
-                                        <li><a href="blog-single.html">쇼핑</a></li>
+                                        <li><a href="${path }/item/list.dog">쇼핑</a></li>
                                     </ul>
                                 </li>
                                 <li class="active"><a href="${path }/vwork/vmain.dog">봉사</a></li>

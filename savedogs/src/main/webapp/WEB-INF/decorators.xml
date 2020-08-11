@@ -14,6 +14,6 @@
 		<pattern>/fundinganditem/*.dog</pattern>
 	</decorator>
 	<excludes>
-	
+		<pattern>/member/shelterlist.*</pattern>
 	</excludes>
 </decorators>

@@ -57,16 +57,14 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                    <c:if test="${empty sessionScope.loginmem}">
-                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/memberSignup.dog" style="color: white;">회원가입</a>
+                    <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
+                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
-                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberM
-                    	ypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
-                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterM
-                    	ypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
@@ -95,7 +93,7 @@
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
                                         <li><a href="blog-default.html">기부</a></li>
-                                        <li><a href="${path}/fundinganditem/list.dog">쇼핑</a></li>
+                                        <li><a href="${path}/item/list.dog">쇼핑</a></li>
                                     </ul>
                                 </li>
                                 <li class="active"><a href="${path}/vwork/vmain.dog">봉사</a></li>

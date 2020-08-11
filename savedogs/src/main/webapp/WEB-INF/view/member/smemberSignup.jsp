@@ -131,6 +131,9 @@
 				<td>보호소 번호</td>
 				<td>
 					<form:input path="shelter_no" />
+					<input type="button" value="보호소 찾기" onclick="window.open('shelterlist.dog','','width=500, height=250, left=150,top=150')">
+				</td>
+				<td>
 					<font color="red">
 						<form:errors path="shelter_no" />
 					</font>

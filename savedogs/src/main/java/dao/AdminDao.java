@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -27,5 +28,21 @@ public class AdminDao {
 
 	public void insertInit() {
 		template.getMapper(AdminMapper.class).insertInit();
+	}
+
+	public List<Shelter> getAddressList() {
+		return template.getMapper(AdminMapper.class).getAddressList();
+	}
+
+	public List<Shelter> getShelterName(String goo) {
+		param.clear();
+		param.put("goo", goo);
+		return template.getMapper(AdminMapper.class).getShelterName(param);
+	}
+
+	public String getOneShelterName(String shelter_no) {
+		param.clear();
+		param.put("no",shelter_no);
+		return template.getMapper(AdminMapper.class).getOneShelterName(param);
 	}
 }

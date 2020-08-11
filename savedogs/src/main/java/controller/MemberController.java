@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.DogService;
 import logic.Member;
+import logic.Shelter;
 
 @Controller
 @RequestMapping("member")
@@ -47,10 +50,22 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping("shelterlist")
-	public ModelAndView shelterlist() {
+	@GetMapping("shelterlist")
+	public ModelAndView shelterlistmain() {
 		ModelAndView mav = new ModelAndView();
-		
+		List<Shelter> list = service.getShelterAddress();
+		mav.addObject("list",list);
+		return mav;
+	}
+	
+	@PostMapping("shelterlist")
+	public ModelAndView shelterlist(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		String goo = request.getParameter("goo");
+		List<Shelter> list = service.getShelterAddress();
+		List<Shelter> namelist = service.getShelterName(goo);
+		mav.addObject("list",list);
+		mav.addObject("namelist", namelist);
 		return mav;
 	}
 	
@@ -88,6 +103,7 @@ public class MemberController {
 				  session.setAttribute("loginmem", dbmem);
 			  } else if (type == 1) {
 				  session.setAttribute("loginsmem", dbmem);
+				  session.setAttribute("smemName", service.getOneShelterName(dbmem.getShelter_no()));
 			  }
 			  mav.setViewName("redirect:../main.dog");
 		   } else {
@@ -105,5 +121,4 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:login.dog";
 	}
-	
 }
