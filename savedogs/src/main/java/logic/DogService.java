@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
 import dao.FundingDao;
+import dao.ItemDao;
 import dao.MemberDao;
 import dao.ShelterDao;
 import dao.VworkDao;
@@ -28,7 +29,9 @@ public class DogService {
 	private VworkDao vworkDao;
 	@Autowired
 	private ShelterDao shelterDao;
-
+	@Autowired
+	private ItemDao itemDao;
+	
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
 	}
@@ -120,4 +123,12 @@ public class DogService {
 			return shelterDao.getShelter(shelter_no);
 
 		}
+		
+		
+//-------------------쇼핑관련 시작-------------------------------------------------
+		public List<Item> getItemList() {
+			return itemDao.list();
+		}
+		
+//-------------------쇼핑관련 끝--------------------------------------------------
 }
