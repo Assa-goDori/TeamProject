@@ -68,7 +68,7 @@ public class DogService {
 			 */
 
 		   public void fundCreate(Funding funding, HttpServletRequest request) { 
-		      if(funding.getFund_pic() != null && !funding.getFund_pic().isEmpty()) {
+		      if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
 		         uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		         funding.setFund_pic
 		                    (funding.getPicture().getOriginalFilename());
@@ -81,7 +81,9 @@ public class DogService {
 		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
 		}
-		  fundingDao.update(funding); //다원
+		  fundingDao.update(funding); 
+		  
+		  //다원
 		}
 
 		public void insertSlist(Map<String, Map<String, String>> data) {
