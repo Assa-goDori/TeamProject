@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -101,5 +102,13 @@ public class DogService {
 
 		public void insertInit() {
 			adminDao.insertInit();
+		}
+
+		public List<Shelter> getShelterAddress() {
+			return adminDao.getAddressList();
+		}
+
+		public List<Shelter> getShelterName(String goo) {
+			return adminDao.getShelterName(goo);
 		}
 }
