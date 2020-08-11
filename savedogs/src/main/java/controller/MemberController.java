@@ -87,6 +87,14 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping("memberMypage")
+	public ModelAndView memberMypage(String id, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member mem = service.getMember(id);
+		mav.addObject("mem", mem);
+		return mav;
+	}
+	
 	@PostMapping("login")
 	public ModelAndView login(@Valid Member mem, BindingResult bresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
