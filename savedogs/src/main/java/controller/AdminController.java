@@ -38,7 +38,10 @@ public class AdminController {
 	@PostMapping("adminMypage")
 	public ModelAndView shelterlist() throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String serviceKey = "vqvwqgN6%2Fq8tULP9RBlZ3%2BiHyy2X4cm2M6%2BimTAeJ1y9HiH1ECvwfptH26lZp%2F%2FZzKZ7AUpKNVKHqDchKnZ7wg%3D%3D";
+		//영현
+		//String serviceKey = "vqvwqgN6%2Fq8tULP9RBlZ3%2BiHyy2X4cm2M6%2BimTAeJ1y9HiH1ECvwfptH26lZp%2F%2FZzKZ7AUpKNVKHqDchKnZ7wg%3D%3D";
+		//동욱
+		String serviceKey = "LBFXEs0hIGvsna06ms6DL%2BOAQJeCCzkEcJLsSEjqrgxVvyB6owDk7VJh8QnuXz9qthbzx%2FqHbGbPP1MbJH7agA%3D%3D";
 		String url = "http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido?&ServiceKey=" + serviceKey;
 		URL u = new URL(url);
 		HttpURLConnection urlcon = (HttpURLConnection)u.openConnection();
