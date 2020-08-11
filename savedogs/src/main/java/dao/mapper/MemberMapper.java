@@ -9,7 +9,7 @@ public interface MemberMapper {
 
 	@Insert("insert into member "
 			+ "(member_id, shelter_no, member_pass, member_name, member_email, member_tel, member_postcode, member_address, member_daddress, member_birthday, del_tf, member_type)"
-			+ " values (#{member_id}, 111111111111111, #{member_pass}, #{member_name}, #{member_email}, #{member_tel}, #{member_postcode}, #{member_address}, #{member_daddress}, #{member_birthday}, true, 0)")
+			+ " values (#{member_id}, '111111111111111', #{member_pass}, #{member_name}, #{member_email}, #{member_tel}, #{member_postcode}, #{member_address}, #{member_daddress}, #{member_birthday}, true, 0)")
 	void memberInsert(Member mem);
 
 	@Insert("insert into member "
