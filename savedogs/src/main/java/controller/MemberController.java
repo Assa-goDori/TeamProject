@@ -87,11 +87,23 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping("memberMypage")
-	public ModelAndView memberMypage(String id, HttpSession session) {
+	@GetMapping("memberMypage")
+	public ModelAndView memberMypageMain(String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
 		mav.addObject("mem", mem);
+		return mav;
+	}
+	
+	@PostMapping("memberMypage")
+	public ModelAndView memberMypage(String member_pass, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member mem = (Member)session.getAttribute("loginmem");
+		if(member_pass.equals(mem.getMember_pass())) {
+			mav.setViewName("redirect:memberMypage.dog?id=" + mem.getMember_id());
+		} else {
+			mav.setViewName("redirect:../main.dog");
+		}
 		return mav;
 	}
 	

@@ -15,6 +15,11 @@
 		$("#ainfo").hide();
 		$("#sinfo").hide();
 		$("#tab1").addClass("select");
+		
+		$("#updatebtn").click(function() {
+			$("#minfo").hide();
+			$("#checkpass").show();
+		})
 	})
 	
 	function disp_div(id, tab) {
@@ -28,6 +33,7 @@
 		$("#" + tab).addClass("select");
 	}
 	
+	
 	/*function list_disp(id) {
 		$("#" + id).toggle();	//show()와 hide() 기능을 모두 담고있음
 	}*/
@@ -35,7 +41,7 @@
 <style type="text/css">
 	.select {
 		padding:3px;
-		background-color: #0000ff;
+		background-color: #3598DA;
 	}
 	
 	.select>a {
@@ -50,22 +56,22 @@
 	<h3>My Page</h3>
 	<hr>
 	<div style=" width:100%;">
-		<table>
+		<table style="width:100%;">
 			<tr>
-				<td id="tab1" class="tab">
-					<a href="javascript:disp_div('minfo','tab1')">내 정보</a>
+				<td id="tab1" align="center" class="tab" style="width:20%">
+					<a href="memberMypage.dog?id=${sessionScope.loginmem.member_id }">내 정보</a>
 				</td>
-				<td id="tab2" class="tab">
-					<a href="javascript:disp_div('vinfo', 'tab2')">봉사</a>
+				<td id="tab2" align="center" class="tab" style="width:20%">
+					<a href="vworkMypage.dog?id=${sessionScope.loginmem.member_id }">봉사</a>
 				</td>
-				<td id="tab3" class="tab">
-					<a href="javascript:disp_div('finfo', 'tab3')">기부</a>
+				<td id="tab3" align="center" class="tab" style="width:20%">
+					<a href="fundingMypage.dog?id=${sessionScope.loginmem.member_id }">기부</a>
 				</td>
-				<td id="tab4" class="tab">
-					<a href="javascript:disp_div('ainfo', 'tab4')">입양</a>
+				<td id="tab4" align="center" class="tab" style="width:20%">
+					<a href="adoptMypage.dog?id=${sessionScope.loginmem.member_id }">입양</a>
 				</td>
-				<td id="tab5" class="tab">
-					<a href="javascript:disp_div('sinfo', 'tab5')">쇼핑</a>
+				<td id="tab5" align="center" class="tab" style="width:20%">
+					<a href="shopMypage.dog?id=${sessionScope.loginmem.member_id }">쇼핑</a>
 				</td>
 			</tr>
 		</table>
@@ -98,9 +104,17 @@
 				</tr>
 			</table>
 			<div align="center">
-				<input type="button" value="수정하기" onclick="location.href='memberUpdate.dog'">
-				<input type="button" value="탈퇴" onclick="location.href='memberDelete.dog'">
+				<input type="button" value="수정하기" id="updatebtn">
+				<input type="button" value="탈퇴" id="deletebtn">
 			</div>
+		</div>
+		<div id="checkpass" style="display: none; width:100%;">
+			<h3><font style="color: red;">회원 정보 확인을 위해 비밀번호를 한번 더 확인합니다.</font></h3>
+			<form name="f" method="post">
+				<h5>비밀번호 입력</h5>
+				<input type="password" name="member_pass">
+				<input type="submit" value="입력">
+			</form>
 		</div>
 		<div id="vinfo" class="info" style="display: none; width:100%;">
 			<h3>봉사 탭입니다.</h3>

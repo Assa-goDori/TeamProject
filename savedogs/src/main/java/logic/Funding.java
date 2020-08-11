@@ -30,11 +30,8 @@ public class Funding {
 	private Date end_date;
 	private String fund_pic; //사진 파일 명
 	private MultipartFile picture; //사진
-	public int getFundno() {
-		return fund_no;
-	}
-	
-public int getFund_no() {
+
+	public int getFund_no() {
 		return fund_no;
 	}
 	public void setFund_no(int fund_no) {
@@ -91,10 +88,8 @@ public int getFund_no() {
 
 	@Override
 	public String toString() {
-		return "Funding [fund_no=" + fund_no + ", member_id=" + member_id + ", funding_subject=" + funding_subject
-				+ ", sheltername=" + sheltername + ", count=" + count + ", start_date=" + start_date + ", end_date="
-				+ end_date + ", fund_pic=" + fund_pic + ", picture=" + picture +"]";
-	} 
-	
-	
+		return "Funding [fund_no=" + fund_no + ", member_id=" + member_id + ", sheltername=" + sheltername
+				+ ", funding_subject=" + funding_subject + ", count=" + count + ", start_date=" + start_date
+				+ ", end_date=" + end_date + ", fund_pic=" + fund_pic + ", picture=" + picture + "]";
+	}
 }
