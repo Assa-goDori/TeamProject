@@ -9,9 +9,9 @@ public class Vwork {
 	private int shelter;
 	private String member_id;
 	private Date vwork_date;
-	@NotEmpty(message="모집인원을 입력해주세요")
+//	@NotEmpty(message="모집인원을 입력해주세요")
 	private int vwork_member;
-	@NotEmpty(message="설명을 입력해주세요")
+//	@NotEmpty(message="설명을 입력해주세요")
 	private String vwork_content;
 	
 	public int getVwork_no() {
@@ -38,11 +38,11 @@ public class Vwork {
 	public void setVwork_date(Date vwork_date) {
 		this.vwork_date = vwork_date;
 	}
-	public int getVwor_member() {
+	public int getVwork_member() {
 		return vwork_member;
 	}
-	public void setVwor_member(int vwor_member) {
-		this.vwork_member = vwor_member;
+	public void setVwork_member(int vwork_member) {
+		this.vwork_member = vwork_member;
 	}
 	public String getVwork_content() {
 		return vwork_content;
