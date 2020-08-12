@@ -3,6 +3,7 @@ package logic;
 import java.util.Date;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -11,7 +12,7 @@ public class Vwork {
 	private int shelter_no;
 	private String member_id;
 	private Date vwork_date;
-	@Min(value=0,message = "모집인원을 입력해주세요")
+	@NotNull(message="모집인원을 입력해주세요")
 	private int vwork_member;
 	@NotEmpty(message="설명을 입력해주세요")
 	private String vwork_content;

@@ -52,23 +52,23 @@ public class VworkController {
 		return mav;
 	}
 	
-	
-	@PostMapping("vregister")
-	public ModelAndView write(@Valid Vwork vwork, BindingResult bresult, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("");
+	@PostMapping("vwrite")
+	public ModelAndView vwriteform1(@Valid Vwork vwork, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		String shelter_no = smem.getShelter_no();
+		Shelter shelter = service.getShelter(shelter_no);
+		mav.addObject("shelter",shelter);
 		if(bresult.hasErrors()) {
-			mav.setViewName("vwrite.dog?date="+vwork.getVwork_date());
 			mav.getModel().putAll(bresult.getModel());
-			
 			return mav;
 		}
 		try {
-			service.vRegister(vwork, request);
-			//mav.setViewName("redirect:detail.dog?vwork_no="+vwork.getVwork_no());
+			service.vWrite(vwork, request);
 			mav.setViewName("redirect:vmain.dog");
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new VworkException("봉사 등록에 실패했습니다","vwrite.dog");
+			throw new VworkException("봉사 등록에 실패했습니다","vwrite.dog?date="+vwork.getVwork_date());
 		}
 		return mav;
 	}
