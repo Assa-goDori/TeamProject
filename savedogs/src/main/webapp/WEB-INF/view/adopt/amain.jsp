@@ -221,7 +221,9 @@
 	</div>
 	<div>
 		<c:forEach var="item" items="${go}">
-			${item.kindCd}
+		<img src="${item.filename}">
+		${item.processState}
+		${item.kindCd}
 		</c:forEach>
 	</div>
 </body>

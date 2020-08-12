@@ -21,22 +21,27 @@ public class ApiExplorer {
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
 				+ "=LkKlaYPxZnedB774kYO9uNzE0Eaa07yjZfE05Sh3BR%2F7GLjPuQd%2BdSErZFAPjdkiyM4cDxpkdBOQZ1ckRjyERw%3D%3D"); // 서비스키
 		urlBuilder.append("&" + URLEncoder.encode("upkind", "UTF-8") + "=" 
-				+ URLEncoder.encode("41700", "UTF-8")); // upkind : 개(41700)
+				+ URLEncoder.encode("417000", "UTF-8")); // upkind : 개(417000)
 		urlBuilder.append("&" + URLEncoder.encode("upr_cd", "UTF-8") + "=" 
 				+ URLEncoder.encode("6110000", "UTF-8")); // upr_cd : 서울특별시(6110000)
 		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" 
 				+ URLEncoder.encode("1", "UTF-8")); // pageNo : 페이지 번호(1)
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
 				+ URLEncoder.encode("16", "UTF-8")); // numOfRows : 페이지당 보여줄 개수(4*4 = 16)
+		
 		if(state==null) {
 			state = "null";
 			urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
 					+ URLEncoder.encode(state, "UTF-8")); // state : 상태
 		}
+		/*
 		urlBuilder.append("&" + URLEncoder.encode("kind", "UTF-8") + "="
 				+ URLEncoder.encode(kind, "UTF-8")); // kind : 품종
+		*/
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); // json으로 받음
+		
+		System.out.println("urlBuilder=>"+urlBuilder);
 		URL url = new URL(urlBuilder.toString());
 		
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -50,7 +55,6 @@ public class ApiExplorer {
 		} else {
 			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 		}
-		
 		StringBuilder sb = new StringBuilder();
 		String line;
 		while ((line = rd.readLine()) != null) {
@@ -58,7 +62,7 @@ public class ApiExplorer {
 		}
 		rd.close();
 		conn.disconnect();
-		System.out.println(sb.toString());
+		System.out.println("sb=>"+sb.toString());
 
 		return sb.toString();
 	}
@@ -81,11 +85,13 @@ public class ApiExplorer {
 		System.out.println("item : " + a_item);
 		
 		Gson gson = new Gson();
+		
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>(){}.getType());
 		
 		for(Adopt adopt : list) {
 			System.out.println(adopt);
 		}
+		 
 		return list;
 	}
 }

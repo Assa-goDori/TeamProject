@@ -1,6 +1,5 @@
 package logic;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class Adopt {
 
@@ -21,7 +20,7 @@ public class Adopt {
 	private String resultCode; // 결과 코드
 	private String resultMsg; // 결과 메세지
 	private String desertionNo; // 유기 번호
-	private MultipartFile filename; // Thumbnail image
+	private String filename; // Thumbnail image
 	private String happenDt; // 접수일
 	private String happenPlace; // 발견 장소
 	private String kindCd; // 품종
@@ -31,7 +30,7 @@ public class Adopt {
 	private String noticeNo; // 공고 번호
 	private String noticeSdt; // 공고 시작일
 	private String noticeEdt; // 공고 종료일
-	private MultipartFile popfile; // image
+	private String popfile; // image
 	private String processState; // 상태
 	private char sexCd; // 성별
 	private char neuterYn; // 중성화 여부
@@ -102,7 +101,7 @@ public class Adopt {
 		return desertionNo;
 	}
 
-	public MultipartFile getFilename() {
+	public String getFilename() {
 		return filename;
 	}
 
@@ -142,7 +141,7 @@ public class Adopt {
 		return noticeEdt;
 	}
 
-	public MultipartFile getPopfile() {
+	public String getPopfile() {
 		return popfile;
 	}
 
@@ -251,7 +250,7 @@ public class Adopt {
 		this.desertionNo = desertionNo;
 	}
 
-	public void setFilename(MultipartFile filename) {
+	public void setFilename(String filename) {
 		this.filename = filename;
 	}
 
@@ -291,7 +290,7 @@ public class Adopt {
 		this.noticeEdt = noticeEdt;
 	}
 
-	public void setPopfile(MultipartFile popfile) {
+	public void setPopfile(String popfile) {
 		this.popfile = popfile;
 	}
 
