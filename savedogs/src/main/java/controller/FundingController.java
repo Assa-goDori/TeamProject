@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -56,10 +58,13 @@ public class FundingController {
   		return mav;
   	}
       
-	/*
-	 * @RequestMapping("list") // /item/list.shop public ModelAndView list() {
-	 * ModelAndView mav = new ModelAndView(); List<Funding> fundingList =
-	 * service.getFundingList(); mav.addObject("fundingList",fundingList); return
-	 * mav; }
-	 */
+	
+	 @RequestMapping("list") // /item/list.shop
+	  public ModelAndView list() {
+	  ModelAndView mav = new ModelAndView(); 
+	  List<Funding> fundinglist = service.getFundingList(); 
+	  mav.addObject("fundinglist",fundinglist); 
+	 return mav; 
+	 }
+	 
 }

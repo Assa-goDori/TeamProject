@@ -2,6 +2,9 @@ package dao.mapper;
 
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -16,7 +19,7 @@ public interface FundingMapper {
 	
 	
 	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
-			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
+			   + " values (2, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
 	  void insert(Funding funding);
 
 	/*
@@ -35,6 +38,12 @@ public interface FundingMapper {
 	void update(Funding funding);
 
 	int maxfund_no();
+
+    @Select({"<script>" ,
+    		"select * from funding",
+    		"<if test='fund_no != null'> where fund_no=#{fund_no} </if>",
+    		"</script>"})
+	List<Funding> select(Map<String, Object> param);
 	 
 	/*
 	 * @Delete( "delete from usersecurity where userid = #{userid} ") void
