@@ -1,60 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>기부</title>
 </head>
 <body>
+<div style="width: 80%; margin-left: 10%;" >
+	<div align="center">
+		<table style="width: 80%;">
+			<tr>
+			    <td align="center">기부</td>
+				<td style="width: 50%;" align="center">
+				<a href="../item/list.dog">후원쇼핑몰</a>
+			</tr>
+		</table>
+	</div>
 <div class="w3-panel">
-    <div class="w3-row-padding" style="margin: -16px">
-      <div class="w3-third">
-        <h2></h2>
         <hr>
-        <img src="" style="width:100%" alt="Google Regional Map">
-      </div>
-      <div class="w3-twothird">
-        <h5>Feeds</h5>
-        <table class="w3-table w3-striped w3-white">
-          <tr>
-            <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-            <td>New record, over 90 views.</td>
-            <td><i>10 mins</i></td>
-          </tr>
-          <tr>
-            <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-            <td>Database error.</td>
-            <td><i>15 mins</i></td>
-          </tr>
-          <tr>
-            <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-            <td>New record, over 40 users.</td>
-            <td><i>17 mins</i></td>
-          </tr>
-          <tr>
-            <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-            <td>New comments.</td>
-            <td><i>25 mins</i></td>
-          </tr>
-          <tr>
-            <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-            <td>Check transactions.</td>
-            <td><i>28 mins</i></td>
-          </tr>
-          <tr>
-            <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-            <td>CPU overload.</td>
-            <td><i>35 mins</i></td>
-          </tr>
-          <tr>
-            <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-            <td>New shares.</td>
-            <td><i>39 mins</i></td>
-          </tr>
+        <table class="w3-table" style="width:1000px">
+        <c:forEach var="f" items="${fundinglist}">
+        <c:if test="${f.fund_no == '1'}">
+        <tr><td rowspan="4"><img src="" style="width:150%;" align="center" alt="후원 배너 사진"></td>
+          <td colspan='2'><a href="detail.dog?id=${f.fund_no}">"${f.funding_subject}"</a></td></tr>
+            <tr><td>"${f.sheltername}"</td></tr>
+            <tr><td>달력 아이콘 : 1일 남음</td></tr>
+            <td>게이지바</td>
+          </c:if>
+          </form>
+          </c:forEach>
         </table>
+        <h2>후원모집작성<h2></h2>
+        </div>
       </div>
-    </div>
-  </div>
 </body>
 </html>

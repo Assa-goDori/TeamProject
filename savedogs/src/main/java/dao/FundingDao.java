@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,7 +17,10 @@ public class FundingDao {
 	  private SqlSessionTemplate template;
 	  private Map<String,Object> param = new HashMap<>();
 	  
-	
+	  public List<Funding> list() { //list() -> foreach items
+		  return template.getMapper(FundingMapper.class).select(null); 
+	  }
+	  
 	// fund_no 증가
 	  public int maxfundno() { return
 	  template.getMapper(FundingMapper.class).maxfundno(); }
@@ -26,13 +30,14 @@ public class FundingDao {
 		   template.getMapper(FundingMapper.class).insert(funding);
 		}
 
-	/*
-	 * public Funding selectOne(String userid) { param.clear();
-	 * param.put("userid",userid); return
-	 * template.getMapper(FundingMapper.class).select(param).get(0);
-	 * 
-	 * }
-	 */
+	
+	 public Funding selectOne(Integer fund_no) {
+	 param.clear();
+	 param.put("fund_no",fund_no); 
+	 return template.getMapper(FundingMapper.class).select(param).get(0);
+	 
+	 }
+	 
 
 		public void update(Funding funding) {
 				   template.getMapper(FundingMapper.class).update(funding);
@@ -43,8 +48,7 @@ public class FundingDao {
 	 * param.put("userid",userid);
 	 * template.getMapper(FundingMapper.class).delete(param); }
 	 * 
-	 * public List<Funding> list() { return
-	 * template.getMapper(FundingMapper.class).select(null); }
+	 
 	 * 
 	 * public List<Funding> list(String[] idchks) { //select * from useraccount
 	 * where userid in ('test1','test3') param.clear(); param.put("userids",idchks);

@@ -28,8 +28,11 @@ public class ApiExplorer {
 				+ URLEncoder.encode("1", "UTF-8")); // pageNo : 페이지 번호(1)
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
 				+ URLEncoder.encode("16", "UTF-8")); // numOfRows : 페이지당 보여줄 개수(4*4 = 16)
-		urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
-				+ URLEncoder.encode(state, "UTF-8")); // state : 상태
+		if(state==null) {
+			state = "null";
+			urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
+					+ URLEncoder.encode(state, "UTF-8")); // state : 상태
+		}
 		urlBuilder.append("&" + URLEncoder.encode("kind", "UTF-8") + "="
 				+ URLEncoder.encode(kind, "UTF-8")); // kind : 품종
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
@@ -67,7 +70,6 @@ public class ApiExplorer {
 		JSONObject jsonObj = (JSONObject)parser.parse(result); // 리턴값 object -> json
 		
 		// response
-		System.out.println(jsonObj);
 		JSONObject j_response = (JSONObject)jsonObj.get("response"); // 리턴값 object -> json
 		System.out.println("response : " + j_response);
 		JSONObject j_body = (JSONObject)j_response.get("body"); 
