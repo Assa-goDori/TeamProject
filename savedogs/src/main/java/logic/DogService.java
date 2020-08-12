@@ -108,9 +108,12 @@ public class DogService {
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
-		   	/*
-			 * public List<Funding> getFundingList() { return fundingDao.list(); }
-			 */
+		   
+	
+			  public List<Funding> getFundingList() { 
+				  return fundingDao.list();
+			  }
+			 
 
 		   public void fundCreate(Funding funding, HttpServletRequest request) { 
 		      if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
@@ -125,7 +128,7 @@ public class DogService {
 		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
 		}
-		  fundingDao.update(funding); //다원
+		  fundingDao.update(funding); 
 		}
 
 		
