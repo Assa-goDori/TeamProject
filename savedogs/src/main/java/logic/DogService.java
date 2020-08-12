@@ -144,6 +144,9 @@ public class DogService {
 		}
 
 
+		public Item itemselect(int item_no) {
+			return itemDao.selectOne(item_no);
+		}
 		
 		
 //-------------------쇼핑관련 끝--------------------------------------------------

@@ -37,16 +37,16 @@
            		<div class="post-block">
             	   	<!-- post block -->
             		<div class="post-img">
-            	    	<a href="#" class="imghover">
+            	    	<a href="detail.dog?item_no=${item.item_no}" class="imghover">
             	        	<img src="img/${item.item_picture}">
             	        </a>
             	    </div>
             	</div>
             	<div class="post-content">
             	   	<div class="meta">
-            	   		<a href="#" class="meta-categories text-primary">${item.item_name}</a>
+            	   		<a href="detail.dog?item_no=${item.item_no}" class="meta-categories text-primary">${item.item_name}</a>
             	   	</div>
-            	   	<h3 class="post-title"><a href="#" class="title">${item.item_price}</a></h3>
+            	   	<h3 class="post-title"><a href="detail.dog?item_no=${item.item_no}" class="title">${item.item_price}</a></h3>
             	</div>
 			</div>
 		</c:forEach>
