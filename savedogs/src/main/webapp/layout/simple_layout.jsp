@@ -86,11 +86,11 @@
                                 <li class="active"><a href="${path}/adopt/amain.dog">입양</a></li>
                                   <li class="has-sub"><a href="#">후원</a>
                                     <ul>
-                                        <li><a href="blog-default.html">기부</a></li>
-                                        <li><a href="${path }/item/list.dog">쇼핑</a></li>
+                                        <li><a href="${path}/funding/list.dog">기부</a></li>
+                                        <li><a href="${path}/item/list.dog">쇼핑</a></li>
                                     </ul>
                                 </li>
-                                <li class="active"><a href="${path }/vwork/vmain.dog">봉사</a></li>
+                                <li class="active"><a href="${path}/vwork/vmain.dog">봉사</a></li>
                               	<li class="active"><a href="index.html">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>

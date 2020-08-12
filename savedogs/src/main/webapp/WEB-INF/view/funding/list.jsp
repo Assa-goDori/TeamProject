@@ -29,7 +29,8 @@
             <td>게이지바</td>
           </c:forEach>
         </table>
-        <h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}">후원모집작성(로그인세션)</a></h6>
+        <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}">후원모집작성(로그인세션)</a></h6>
+        </c:if>
         </div>
       </div>
 </body>
