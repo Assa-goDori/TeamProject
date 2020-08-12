@@ -13,7 +13,6 @@ public interface FundingMapper {
 
 	
 	 @Select("select ifnull(max(fund_no),0) from funding") int maxfundno();
-	 
 	
 	
 	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
