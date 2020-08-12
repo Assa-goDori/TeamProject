@@ -6,13 +6,15 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Vwork {
 	private int vwork_no;
-	private int shelter_no;
+	private String shelter_no;
 	private String member_id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date vwork_date;
-	@NotNull(message="모집인원을 입력해주세요")
+	@Min(value = 1, message = "1명 이상 입력해주세요")
 	private int vwork_member;
 	@NotEmpty(message="설명을 입력해주세요")
 	private String vwork_content;
@@ -23,10 +25,10 @@ public class Vwork {
 	public void setVwork_no(int vwork_no) {
 		this.vwork_no = vwork_no;
 	}
-	public int getShelter_no() {
+	public String getShelter_no() {
 		return shelter_no;
 	}
-	public void setShelter_no(int shelter_no) {
+	public void setShelter_no(String shelter_no) {
 		this.shelter_no = shelter_no;
 	}
 	public String getMember_id() {
@@ -58,5 +60,4 @@ public class Vwork {
 		return "Vwork [vwork_no=" + vwork_no + ", shelter_no=" + shelter_no + ", member_id=" + member_id + ", vwork_date="
 				+ vwork_date + ", vwork_member=" + vwork_member + ", vwork_content=" + vwork_content + "]";
 	}
-	
 }

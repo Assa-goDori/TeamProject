@@ -98,6 +98,7 @@ public class DogService {
 	}
 
 	public void vWrite(Vwork vwork, HttpServletRequest request) {
+		System.out.println(1);
 		int max = vworkDao.maxno();
 		vwork.setVwork_no(++max);
 		

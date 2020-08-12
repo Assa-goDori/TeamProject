@@ -12,6 +12,8 @@
 <div class="vdiv">
 <h3>봉사 등록</h3>
 <form:form modelAttribute="vwork" action="vwrite.dog" method="post" enctype="multipart/form-data" name="f">
+	<form:hidden path="member_id" value="${sessionScope.loginsmem.member_id }"/>
+	<form:hidden path="shelter_no" value="${sessionScope.loginsmem.shelter_no }"/>
 	<table>
 		<tr><th>날짜</th><td><form:input type="text" path="vwork_date" readonly="readonly" value="${param.date }"/></td></tr>
 		<tr><th>보호소</th><td><input type="text" value="${shelter.shelter_address }" readonly="readonly">
