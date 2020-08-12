@@ -16,7 +16,7 @@ import logic.Member;;
 @Order(1)	
 public class MemberLoginAspect {
 	@Around // adivce중 하나.
-	("execution(* controller.*.*(..))")
+	("execution(* controller.*chkm.*(..))")
 	public Object userLoginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
 		Member loginmem = null;
 		for(Object o : joinPoint.getArgs()) {
@@ -33,7 +33,7 @@ public class MemberLoginAspect {
 	}
 	
 	@Around // adivce중 하나.
-	("execution(* controller.*.*(..))")
+	("execution(* controller.*chks.*(..))")
 	public Object shelterLoginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
 		Member loginsmem = null;
 		for(Object o : joinPoint.getArgs()) {
