@@ -4,7 +4,20 @@
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8">
-<title>상품 상세 보기</title></head>
+<title>상품 상세 보기</title>
+<script type="text/javascript">
+ 	function cartChk(){
+ 		
+ 		msg = "장바구니에 상품이 추가되었습니다. \n계속해서 쇼핑을 진행할까요? \n아니요 선택시 장바구니로 이동됩니다." 
+ 		if (confirm(msg) != 0){   
+ 		     location.href = "cartadd.dog"
+ 		 }else{
+ 			 
+ 			 location.href="../cart/cartadd.dog"
+ 		 }
+ 	}
+</script>
+</head>
 <body>
 <div style="width: 80%; margin-left: 10%;" >
 	<div align="center">
@@ -49,7 +62,7 @@
 					 					</tr>
 					 					<tr style="height: 15%;">
 				 							<td width="100%" align="center">
-				 								<input style="width: 100%;" type="button" value="장바구니">
+				 								<input style="width: 100%;" type="button" value="장바구니" onclick="cartChk()">
 				 							</td>
 				 						</tr>
 				 						

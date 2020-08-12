@@ -131,6 +131,10 @@ public class DogService {
 		}
 		  fundingDao.update(funding); 
 		}
+		public Funding getfundingdetail(int fund_no) {
+	           return fundingDao.selectOne(fund_no);
+			}
+			
 
 		
 		
@@ -153,10 +157,7 @@ public class DogService {
 			return itemDao.selectOne(item_no);
 		}
 
-		public Funding getfundingdetail(int fund_no) {
-           return fundingDao.selectOne(fund_no);
-		}
-		
+	
 		
 //-------------------쇼핑관련 끝--------------------------------------------------
 }

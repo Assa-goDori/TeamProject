@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.ItemException;
+import logic.Cart;
 import logic.DogService;
 import logic.Item;
+import logic.ItemSet;
 
 @Controller
 @RequestMapping("item")
@@ -57,4 +60,18 @@ public class ItemController {
 			throw new ItemException("없는 상품입니다.","list.shop");
 		}
 	}
+	@RequestMapping("cartadd")
+	public ModelAndView add(Integer item_no, Integer quantity, HttpSession session) {
+		ModelAndView mav = new ModelAndView("list");
+		Item item = service.itemselect(item_no);
+		Cart cart = (Cart)session.getAttribute("CART");
+		if(cart == null) {
+			cart = new Cart();
+			session.setAttribute("CART", cart);
+		}
+		cart.push(new ItemSet(item, quantity));
+		mav.addObject("message",item.getItem_name() + ":" + quantity + "개 장바구니 추가");
+		mav.addObject("cart",cart);
+		return mav;
+		}
 }
