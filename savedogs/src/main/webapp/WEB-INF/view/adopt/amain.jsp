@@ -13,7 +13,7 @@
 	<div style="width: 100%">
 		<div style="width: 200px; height: 150px; float: left;">
 			<h2>상태</h2>
-			<form action="main.dog" method="POST">
+			<form action="amain.dog" method="POST">
 				<select name="state" onchange="this.form.submit()">
 					<option value="">전체</option>
 					<option value="notice">공고중</option>
@@ -23,7 +23,7 @@
 		</div>
 		<div style="width: 300px; height: 150px; float: left;">
 			<h2>품종</h2>
-			<form action="main.dog" method="POST">
+			<form action="amain.dog" method="POST">
 				<select name="kind" onchange="this.form.submit()">
 					<option value="000000">전체</option>
 					<option value="000054">골든 리트리버</option>

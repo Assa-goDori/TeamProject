@@ -1,14 +1,19 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.VworkException;
 import logic.DogService;
 import logic.Member;
 import logic.Shelter;
@@ -25,7 +30,14 @@ public class VworkController {
 	public ModelAndView vmain(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
-		mav.addObject("smem",smem);
+		if(smem != null) {
+			mav.addObject("smem",smem);
+		} else {
+			Member mem = (Member)session.getAttribute("loginmem");
+			mav.addObject("mem",mem);
+		}
+		
+		
 		return mav;
 	}
 	
@@ -40,21 +52,24 @@ public class VworkController {
 		return mav;
 	}
 	
-	
-/*	@PostMapping("vregister")
-	public ModelAndView write(@Valid Vwork vwork, BindingResult bresult, HttpServletRequest request) {
+	@PostMapping("vwrite")
+	public ModelAndView vwriteform1(@Valid Vwork vwork, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		String shelter_no = smem.getShelter_no();
+		Shelter shelter = service.getShelter(shelter_no);
+		mav.addObject("shelter",shelter);
 		if(bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
 		try {
-			service.vworkWrite(vwork, request);
-			mav.setViewName("redirect:detail.dog?vwork_no="+vwork.getVwork_no());
+			service.vWrite(vwork, request);
+			mav.setViewName("redirect:vmain.dog");
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new VworkException("봉사 등록에 실패했습니다","vwrite.dog");
+			throw new VworkException("봉사 등록에 실패했습니다","vwrite.dog?date="+vwork.getVwork_date());
 		}
 		return mav;
-	}*/
+	}
 }

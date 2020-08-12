@@ -7,14 +7,51 @@
 <meta charset="UTF-8">
 <title>회원 마이페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<c:set var="type" value="${param.type }"/>
+<c:set var="show" value="${param.show }"/>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#minfo").show();
-		$("#vinfo").hide();
-		$("#finfo").hide();
-		$("#ainfo").hide();
-		$("#sinfo").hide();
-		$("#tab1").addClass("select");
+		var type = ${type}
+		if(type==1) {
+			if(show==1) {
+				$("#update").show();
+			} else {
+				$("#minfo").show();
+			}
+			$("#vinfo").hide();
+			$("#finfo").hide();
+			$("#ainfo").hide();
+			$("#sinfo").hide();
+			$("#tab1").addClass("select");
+		} else if (type==2) {
+			$("#minfo").hide();
+			$("#vinfo").show();
+			$("#finfo").hide();
+			$("#ainfo").hide();
+			$("#sinfo").hide();
+			$("#tab2").addClass("select");
+		} else if (type==3) {
+			$("#minfo").hide();
+			$("#vinfo").hide();
+			$("#finfo").show();
+			$("#ainfo").hide();
+			$("#sinfo").hide();
+			$("#tab3").addClass("select");
+		} else if (type==4) {
+			$("#minfo").hide();
+			$("#vinfo").hide();
+			$("#finfo").hide();
+			$("#ainfo").show();
+			$("#sinfo").hide();
+			$("#tab4").addClass("select");
+		} else if (type==5) {
+			$("#minfo").hide();
+			$("#vinfo").hide();
+			$("#finfo").hide();
+			$("#ainfo").hide();
+			$("#sinfo").show();
+			$("#tab5").addClass("select");
+		}
 		
 		$("#updatebtn").click(function() {
 			$("#minfo").hide();
@@ -32,7 +69,6 @@
 		$("#" + id).show();
 		$("#" + tab).addClass("select");
 	}
-	
 	
 	/*function list_disp(id) {
 		$("#" + id).toggle();	//show()와 hide() 기능을 모두 담고있음
@@ -59,19 +95,19 @@
 		<table style="width:100%;">
 			<tr>
 				<td id="tab1" align="center" class="tab" style="width:20%">
-					<a href="memberMypage.dog?id=${sessionScope.loginmem.member_id }">내 정보</a>
+					<a href="javascript:disp_div('minfo','tab1')">내 정보</a>
 				</td>
 				<td id="tab2" align="center" class="tab" style="width:20%">
-					<a href="vworkMypage.dog?id=${sessionScope.loginmem.member_id }">봉사</a>
+					<a href="javascript:disp_div('vinfo','tab2')">봉사</a>
 				</td>
 				<td id="tab3" align="center" class="tab" style="width:20%">
-					<a href="fundingMypage.dog?id=${sessionScope.loginmem.member_id }">기부</a>
+					<a href="javascript:disp_div('finfo','tab3')">기부</a>
 				</td>
 				<td id="tab4" align="center" class="tab" style="width:20%">
-					<a href="adoptMypage.dog?id=${sessionScope.loginmem.member_id }">입양</a>
+					<a href="javascript:disp_div('ainfo','tab4')">입양</a>
 				</td>
 				<td id="tab5" align="center" class="tab" style="width:20%">
-					<a href="shopMypage.dog?id=${sessionScope.loginmem.member_id }">쇼핑</a>
+					<a href="javascript:disp_div('sinfo','tab5')">쇼핑</a>
 				</td>
 			</tr>
 		</table>
@@ -88,7 +124,8 @@
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td>${mem.member_birthday }</td>
+					<fmt:formatDate var="birth" value="${mem.member_birthday }" pattern="yyyy년MM월dd일"/>
+					<td>${birth }</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
@@ -108,14 +145,48 @@
 				<input type="button" value="탈퇴" id="deletebtn">
 			</div>
 		</div>
+		<!-- 비밀번호 확인 -->
 		<div id="checkpass" style="display: none; width:100%;">
 			<h3><font style="color: red;">회원 정보 확인을 위해 비밀번호를 한번 더 확인합니다.</font></h3>
-			<form name="f" method="post">
+			<form name="f" method="post" action="checkpass.dog" onsubmit="chksubmit()">
 				<h5>비밀번호 입력</h5>
 				<input type="password" name="member_pass">
 				<input type="submit" value="입력">
 			</form>
 		</div>
+		<!-- 수정 폼 -->
+		<div id="update" style="display: none; width:100%;">
+			<form name="updatef" method="post" action="memberupdate.dog">
+				<table>
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" value="${mem.member_id }" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type="text" value="${mem.member_name }"></td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<fmt:formatDate var="birth" value="${mem.member_birthday }" pattern="yyyy년 MM월 dd일"/>
+					<td>${birth }</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td>${mem.member_tel }</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>${mem.member_postcode }${mem.member_address } ${mem.member_daddress }</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>${mem.member_email }</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+		
 		<div id="vinfo" class="info" style="display: none; width:100%;">
 			<h3>봉사 탭입니다.</h3>
 		</div>

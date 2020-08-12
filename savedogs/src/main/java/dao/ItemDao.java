@@ -31,4 +31,10 @@ public class ItemDao {
 		template.getMapper(ItemMapper.class).insert(item);		
 	}
 
+	public Item selectOne(int item_no) {
+		param.clear();
+		param.put("item_no", item_no);
+		return template.getMapper(ItemMapper.class).select(param).get(0);
+	}
+
 }
