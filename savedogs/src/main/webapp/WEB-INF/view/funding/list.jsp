@@ -22,17 +22,14 @@
         <hr>
         <table class="w3-table" style="width:1000px">
         <c:forEach var="f" items="${fundinglist}">
-        <c:if test="${f.fund_no == '1'}">
         <tr><td rowspan="4"><img src="" style="width:150%;" align="center" alt="후원 배너 사진"></td>
           <td colspan='2'><a href="detail.dog?id=${f.fund_no}">"${f.funding_subject}"</a></td></tr>
             <tr><td>"${f.sheltername}"</td></tr>
             <tr><td>달력 아이콘 : 1일 남음</td></tr>
             <td>게이지바</td>
-          </c:if>
-          </form>
           </c:forEach>
         </table>
-        <h2>후원모집작성<h2></h2>
+        <h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}">후원모집작성(로그인세션)</a></h6>
         </div>
       </div>
 </body>

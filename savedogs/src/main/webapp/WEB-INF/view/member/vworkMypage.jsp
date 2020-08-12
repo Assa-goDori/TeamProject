@@ -15,7 +15,7 @@
 			<table style="width: 100%;">
 				<tr>
 					<td id="tab1" align="center" class="tab" style="width: 20%"><a
-						href="memberMypage.dog?id=${sessionScope.loginmem.member_id }">내정보</a></td>
+						href="memberMypage.dog?id=}">내정보</a></td>
 					<td id="tab2" align="center" class="tab" style="width: 20%"><a
 						href="vworkMypage.dog?id=${sessionScope.loginmem.member_id }">봉사</a>
 					</td>

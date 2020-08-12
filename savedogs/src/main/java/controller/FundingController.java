@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,5 +67,12 @@ public class FundingController {
 	  mav.addObject("fundinglist",fundinglist); 
 	 return mav; 
 	 }
-	 
+	 @PostMapping("detail")
+	   public ModelAndView detail(Integer fund_no) {
+		 ModelAndView mav = new ModelAndView();
+		 Funding funding = service.getfundingdetail(fund_no);
+		 //service.readcnt(num);
+		 mav.addObject("funding",funding);
+		 return mav;
+	 }
 }

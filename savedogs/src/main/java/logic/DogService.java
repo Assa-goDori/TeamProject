@@ -119,6 +119,8 @@ public class DogService {
 		         uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		         funding.setFund_pic(funding.getPicture().getOriginalFilename());
 		      }
+		      int fund_no =fundingDao.maxfundno() ;
+		      funding.setFund_no(++fund_no);
 		      fundingDao.insert(funding);
 		   }
 
@@ -149,6 +151,10 @@ public class DogService {
 
 		public Item itemselect(int item_no) {
 			return itemDao.selectOne(item_no);
+		}
+
+		public Funding getfundingdetail(int fund_no) {
+           return fundingDao.selectOne(fund_no);
 		}
 		
 		
