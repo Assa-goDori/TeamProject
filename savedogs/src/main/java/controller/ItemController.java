@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.ItemException;
 import logic.DogService;
 import logic.Item;
 
@@ -44,5 +45,16 @@ public class ItemController {
 	public String addform(Model model) {
 		model.addAttribute(new Item());
 		return "item/add";
+	}
+	@GetMapping("*") 
+	public ModelAndView detail(int item_no) {
+		ModelAndView mav = new ModelAndView();
+		try{
+			Item item = service.getItem(item_no);
+			mav.addObject("item",item);
+			return mav;
+		}catch (Exception e) {
+			throw new ItemException("없는 상품입니다.","list.shop");
+		}
 	}
 }

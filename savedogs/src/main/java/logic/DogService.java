@@ -141,6 +141,10 @@ public class DogService {
 			itemDao.insert(item);
 		}
 
+		public Item getItem(int item_no) {
+			return itemDao.selectOne(item_no);
+		}
+
 		
 		
 //-------------------쇼핑관련 끝--------------------------------------------------
