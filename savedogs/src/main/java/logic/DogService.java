@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
+import dao.BuyitemDao;
 import dao.FundingDao;
 import dao.ItemDao;
 import dao.MemberDao;
+import dao.BuylistDao;
 import dao.ShelterDao;
 import dao.VworkDao;
 
@@ -32,6 +34,10 @@ public class DogService {
 	private ShelterDao shelterDao;
 	@Autowired
 	private ItemDao itemDao;
+	@Autowired
+	private BuylistDao buylistDao;
+	@Autowired
+	private BuyitemDao buyitemDao;
 	
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
@@ -146,6 +152,24 @@ public class DogService {
 
 		public Item itemselect(int item_no) {
 			return itemDao.selectOne(item_no);
+		}
+
+		public Buylist checkend(Member loginmem, Cart cart) {
+			Buylist buylist = new Buylist();
+			int buy_no = buylistDao.getMaxSaleid();
+			buylist.setBuy_no(++buy_no);
+			buylist.setMember_id(loginmem.getMember_id());
+			buylist.setMember(loginmem);
+			buylistDao.insert(buylist);
+			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보
+			int i = 0;
+			for(ItemSet is : itemList) {
+				int seq = ++i;
+				BuyItem buyItem = new BuyItem(buylist.getBuy_no(),seq,is);
+				buylist.getItemList().add(buyItem);
+				buyitemDao.insert(buyItem);
+			}
+			return buylist;
 		}
 		
 		
