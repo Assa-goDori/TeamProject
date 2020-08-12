@@ -153,7 +153,7 @@ public class DogService {
 		}
 
 
-		public Item itemselect(int item_no) {
+		public Item itemselect(Integer item_no) {
 			return itemDao.selectOne(item_no);
 		}
 

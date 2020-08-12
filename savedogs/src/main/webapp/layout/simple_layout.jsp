@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                    <c:if test="${empty sessionScope.loginmem}">
+                    <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
                     	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
