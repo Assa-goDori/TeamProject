@@ -13,9 +13,9 @@
 	<div style="width: 100%">
 		<div style="width: 200px; height: 150px; float: left;">
 			<h2>상태</h2>
-			<form action="main" method="POST">
+			<form action="main.dog" method="POST">
 				<select name="state" onchange="this.form.submit()">
-					<option value="null" selected="selected">전체</option>
+					<option value="">전체</option>
 					<option value="notice">공고중</option>
 					<option value="protected">보호중</option>
 				</select>
@@ -23,9 +23,9 @@
 		</div>
 		<div style="width: 300px; height: 150px; float: left;">
 			<h2>품종</h2>
-			<form action="main" method="POST">
+			<form action="main.dog" method="POST">
 				<select name="kind" onchange="this.form.submit()">
-					<option value="000000" selected="selected">전체</option>
+					<option value="000000">전체</option>
 					<option value="000054">골든 리트리버</option>
 					<option value="000056">그레이 하운드</option>
 					<option value="000055">그레이트 덴</option>

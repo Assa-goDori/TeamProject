@@ -96,12 +96,14 @@ public class DogService {
 	public Shelter getShelter(String shelter_no) {
 		return shelterDao.getShelter(shelter_no);
 	}
-	
-	public void vRegister(Vwork vwork, HttpServletRequest request) {
+
+	public void vWrite(Vwork vwork, HttpServletRequest request) {
 		int max = vworkDao.maxno();
 		vwork.setVwork_no(++max);
+		
 		vworkDao.insertVwork(vwork);
 	}
+		
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
@@ -141,10 +143,10 @@ public class DogService {
 			itemDao.insert(item);
 		}
 
-		public Item getItem(int item_no) {
+
+		public Item itemselect(int item_no) {
 			return itemDao.selectOne(item_no);
 		}
-
 		
 		
 //-------------------쇼핑관련 끝--------------------------------------------------

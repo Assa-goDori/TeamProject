@@ -65,15 +65,15 @@ public class AdoptController {
 	public String main2(Adopt adopt, Model model) throws Exception {
 		
 		Map<String, String> result = AdoptUtils.getKind();
-		
 		String state = result.get(adopt.getState());
 		System.out.println("state :" + state);
 		String kind = result.get(adopt.getKind());
 		System.out.println("kind :" + kind);
-		List<Adopt> go = ApiExplorer.getDogJson(state, kind);
-		
-		model.addAttribute("go", go);
-		return "main";
+		if(kind != null) {
+			List<Adopt> go = ApiExplorer.getDogJson(state, kind);
+			model.addAttribute("go", go);
+		}
+		return "redirect:main.dog";
 	}
 
 }
