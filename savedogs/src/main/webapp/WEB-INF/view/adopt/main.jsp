@@ -15,7 +15,7 @@
 			<h2>상태</h2>
 			<form action="main.dog" method="POST">
 				<select name="state" onchange="this.form.submit()">
-					<option value="null">전체</option>
+					<option value="">전체</option>
 					<option value="notice">공고중</option>
 					<option value="protected">보호중</option>
 				</select>
