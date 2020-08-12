@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Item {
-	private int item_no;
+	private Integer item_no;
 	@NotEmpty(message ="상품명을 입력하세요")
 	private String item_name;
 	@Min(value = 10,message = "10원 이상 가능합니다")
@@ -22,10 +22,10 @@ public class Item {
 	private MultipartFile picture ; //업로드 된 파일의 내용 저장
 	private String item_code;
 	private int item_state;
-	public int getItem_no() {
+	public Integer getItem_no() {
 		return item_no;
 	}
-	public void setItem_no(int item_no) {
+	public void setItem_no(Integer item_no) {
 		this.item_no = item_no;
 	}
 	public String getItem_name() {

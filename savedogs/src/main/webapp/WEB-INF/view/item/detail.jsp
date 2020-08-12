@@ -10,10 +10,10 @@
  		
  		msg = "장바구니에 상품이 추가되었습니다. \n계속해서 쇼핑을 진행할까요? \n아니요 선택시 장바구니로 이동됩니다." 
  		if (confirm(msg) != 0){   
- 		     location.href = "cartadd.dog"
+ 		     location.href = "cartAdd.dog"
  		 }else{
  			 
- 			 location.href="../cart/cartadd.dog"
+ 			 location.href="../cart/cartAdd.dog"
  		 }
  	}
 </script>
@@ -49,11 +49,11 @@
 						<tr>
 							<td colspan="2">
 								<form action="../cart/cartAdd.dog">
-									<input type="hidden" name="id" value="${item.item_no}">
+									<input type="hidden" name="item_no" value="${item.item_no}">
 									<table style="width: 100%; height: 100%;">
 										<tr>
 											<td width="100%" align="center">
-												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="quantity">
+												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="item_each">
 					 								<c:forEach begin="1" end="10" var="i">
 					 									<option>${i}</option>
 					 								</c:forEach>

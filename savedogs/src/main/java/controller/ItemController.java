@@ -60,18 +60,20 @@ public class ItemController {
 			throw new ItemException("없는 상품입니다.","list.shop");
 		}
 	}
-	@RequestMapping("cartadd")
-	public ModelAndView add(Integer item_no, Integer quantity, HttpSession session) {
-		ModelAndView mav = new ModelAndView("list");
+	@RequestMapping("cartAdd")
+	public ModelAndView add(Integer item_no, Integer item_each, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		Item item = service.itemselect(item_no);
 		Cart cart = (Cart)session.getAttribute("CART");
 		if(cart == null) {
 			cart = new Cart();
 			session.setAttribute("CART", cart);
 		}
-		cart.push(new ItemSet(item, quantity));
-		mav.addObject("message",item.getItem_name() + ":" + quantity + "개 장바구니 추가");
+		cart.push(new ItemSet(item, item_each));
+		mav.addObject("message",item.getItem_name() + ":" + item_each + "개 장바구니 추가");
 		mav.addObject("cart",cart);
+		mav.setViewName("redirect:/item/list.dog");
+		System.out.println(cart);
 		return mav;
 		}
 }

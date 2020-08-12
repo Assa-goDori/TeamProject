@@ -24,7 +24,7 @@ public class CartController {
 	private DogService service;
 	
 	@RequestMapping("cartAdd")
-	public ModelAndView add(Integer item_no, Integer quantity, HttpSession session) {
+	public ModelAndView add(Integer item_no, Integer item_each, HttpSession session) {
 		ModelAndView mav = new ModelAndView("cart/cart");
 		Item item = service.itemselect(item_no);
 		Cart cart = (Cart)session.getAttribute("CART");
@@ -32,8 +32,8 @@ public class CartController {
 			cart = new Cart();
 			session.setAttribute("CART", cart);
 		}
-		cart.push(new ItemSet(item, quantity));
-		mav.addObject("message",item.getItem_name() + ":" + quantity + "개 장바구니 추가");
+		cart.push(new ItemSet(item, item_each));
+		mav.addObject("message",item.getItem_name() + ":" + item_each + "개 장바구니 추가");
 		mav.addObject("cart",cart);
 		return mav;
 	}
@@ -56,7 +56,7 @@ public class CartController {
 		ModelAndView mav = new ModelAndView("cart/cart");
 		Cart cart = (Cart)session.getAttribute("CART");
 		if(cart == null || cart.getItemSetList().size()==0) {
-			throw new CartEmptyException("장바구니에 상품이 없습니다.","../item/list.shop");
+			throw new CartEmptyException("장바구니에 상품이 없습니다.","../item/list.dog");
 		}
 		mav.addObject("cart",cart);
 		return mav;
