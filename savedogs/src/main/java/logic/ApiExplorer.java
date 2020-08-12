@@ -63,18 +63,18 @@ public class ApiExplorer {
 	public static List<Adopt> getDogJson(String state, String kind) throws Exception {
 		String result = getDogData(state, kind);
 		// Json처럼 생긴 String을 json으로 만들기
-		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObj = (JSONObject)parser.parse(result); // 리턴값 object -> json
 		
 		// response
+		System.out.println(jsonObj);
 		JSONObject j_response = (JSONObject)jsonObj.get("response"); // 리턴값 object -> json
 		System.out.println("response : " + j_response);
-		JSONObject j_body = (JSONObject)jsonObj.get("body"); 
+		JSONObject j_body = (JSONObject)j_response.get("body"); 
 		System.out.println("body : " + j_body);
-		JSONObject j_items = (JSONObject)jsonObj.get("items"); 
+		JSONObject j_items = (JSONObject)j_body.get("items"); 
 		System.out.println("items : " + j_items);
-		JSONArray a_item = (JSONArray)jsonObj.get("item"); 
+		JSONArray a_item = (JSONArray)j_items.get("item"); 
 		a_item.remove(0);
 		System.out.println("item : " + a_item);
 		
