@@ -81,11 +81,9 @@ public class ApiExplorer {
 		Gson gson = new Gson();
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>(){}.getType());
 		
-		/*
 		for(Adopt adopt : list) {
-			System.out.println(adopt.get());
+			System.out.println(adopt);
 		}
-		*/
 		return list;
 	}
 }

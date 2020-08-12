@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.Adopt;
 import logic.AdoptUtils;
+import logic.ApiExplorer;
 
 @Controller
 @RequestMapping("adopt")
 public class AdoptController {
-	
+
 //	private static final Logger logger = LoggerFactory.getLogger(AdoptController.class);
 
 	@GetMapping("main")
@@ -54,15 +57,23 @@ public class AdoptController {
 		rd.close();
 		conn.disconnect();
 		System.out.println(sb.toString());
-
+		
 		return mav;
 	}
-	
-	@RequestMapping(value="/main", method=RequestMethod.POST)
-	public String airport(Adopt adopt, Model model) throws Exception {
+
+	@RequestMapping("main")
+	public String main2(Adopt adopt, Model model) throws Exception {
 		
-//		String state = Adopt.getState();
+		Map<String, String> result = AdoptUtils.getKind();
+		
+		String state = result.get(adopt.getState());
+		System.out.println("state :" + state);
+		String kind = result.get(adopt.getKind());
+		System.out.println("kind :" + kind);
+		List<Adopt> go = ApiExplorer.getDogJson(state, kind);
+		
+		model.addAttribute("go", go);
 		return "main";
 	}
-	
+
 }
