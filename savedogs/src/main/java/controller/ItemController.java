@@ -50,7 +50,7 @@ public class ItemController {
 	public ModelAndView detail(int item_no) {
 		ModelAndView mav = new ModelAndView();
 		try{
-			Item item = service.getItem(item_no);
+			Item item = service.itemselect(item_no);
 			mav.addObject("item",item);
 			return mav;
 		}catch (Exception e) {
