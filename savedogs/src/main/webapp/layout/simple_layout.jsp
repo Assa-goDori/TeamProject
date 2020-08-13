@@ -55,10 +55,10 @@
                     	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
-                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp;<a href="../member/logout.dog" style="color: white;">로그아웃</a><a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
-                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp;<a href="../member/logout.dog" style="color: white;">로그아웃</a> <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
