@@ -168,6 +168,9 @@ public class DogService {
 			int buy_no = buylistDao.getMaxSaleid();
 			buylist.setBuy_no(++buy_no);
 			buylist.setMember_id(loginmem.getMember_id());
+			buylist.setBuy_address(loginmem.getMember_address());
+			buylist.setBuy_daddress(loginmem.getMember_daddress());
+			buylist.setBuy_postcode(loginmem.getMember_postcode());
 			buylist.setUser(loginmem);
 			buylistDao.insert(buylist);
 			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보

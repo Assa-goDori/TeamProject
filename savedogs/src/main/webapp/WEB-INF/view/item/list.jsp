@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>후원 쇼핑몰</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 <div style="width: 80%; margin-left: 10%;" >
