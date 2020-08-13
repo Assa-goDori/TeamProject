@@ -16,9 +16,12 @@
 	</decorator>
 	<decorator name="membermypage" page="memberMypage_layout.jsp">
 		<pattern>/member/*Mypage.dog</pattern>
+		<pattern>/member/checkpass.dog</pattern>
+		<pattern>/member/*Member.dog</pattern>
 	</decorator>
 	<excludes>
 		<pattern>/member/shelterlist.*</pattern>
 		<pattern>/vwork/vwrite*</pattern>
+		<pattern>/member/changepass*</pattern>
 	</excludes>
 </decorators>

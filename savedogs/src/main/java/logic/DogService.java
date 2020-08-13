@@ -96,6 +96,14 @@ public class DogService {
 	public List<Shelter> getShelterName(String goo) {
 		return adminDao.getShelterName(goo);
 	}
+	
+	public void memUpdate(Member mem) {
+		memberDao.memUpdate(mem);
+	}
+	
+	public void memPassUpdate(String newpass, String id) {
+		memberDao.memPassUpdate(newpass,id);
+	}
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -180,6 +188,6 @@ public class DogService {
 			}
 			return buylist;
 		}
-		
+
 //-------------------쇼핑관련 끝--------------------------------------------------
 }

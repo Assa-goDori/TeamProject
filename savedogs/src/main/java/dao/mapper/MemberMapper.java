@@ -1,7 +1,10 @@
 package dao.mapper;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import logic.Member;
 
@@ -19,5 +22,14 @@ public interface MemberMapper {
 	
 	@Select("select * from member where member_id=#{member_id}")
 	Member selectMem(String member_id);
+
+	@Update("update member"
+			+ " set member_name=#{member_name}, member_birthday=#{member_birthday}, member_postcode=#{member_postcode},"
+			+ " member_address=#{member_address}, member_daddress=#{member_daddress}, member_tel=#{member_tel}, member_email=#{member_email}"
+			+ " where member_id=#{member_id}")
+	void memUpdate(Member mem);
+
+	@Update("update member set member_pass=#{pass} where member_id=#{id}")
+	void memPassUpdate(Map<String, Object> param);
 
 }
