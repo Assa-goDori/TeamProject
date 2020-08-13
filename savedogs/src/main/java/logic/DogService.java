@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -109,6 +110,10 @@ public class DogService {
 		
 		vworkDao.insertVwork(vwork);
 	}
+	
+	public HashSet<String> allvwork() {
+		return vworkDao.allvwork();
+	}
 		
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -180,6 +185,10 @@ public class DogService {
 			}
 			return buylist;
 		}
+
+		
+
+		
 		
 //-------------------쇼핑관련 끝--------------------------------------------------
 }
