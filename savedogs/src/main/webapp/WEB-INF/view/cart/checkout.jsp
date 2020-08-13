@@ -26,30 +26,40 @@
 	<hr>
 	</div>
 	
-	<div align="center">
+	<div align="center" >
+		<form >
 		<table>
 			<tr>
-				<td width="30%">주문아이디</td>
-				<td width="70%">${sessionScope.loginmem.member_id }</td>
+				<td width="30%">아이디</td>
+				<td width="70%"><input type="text" value="${sessionScope.loginmem.member_id}"></td>
 			</tr>
 			<tr>
 				<td width="30%">이름</td>
-				<td width="70%">${sessionScope.loginmem.member_name }</td>
+				<td width="70%"><input value="${sessionScope.loginmem.member_name }"></td>
 			</tr>
 			<tr>
 				<td width="30%">우편번호</td>	
-				<td width="70%">${sessionScope.loginmem.member_postcode }</td>
+				<td width="70%"><input style="width: 50%;" value=<fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
 			</tr>
 			<tr>
 				<td width="30%">주소</td>
-				<td width="70%">${sessionScope.loginmem.member_address} ${sessionScope.loginmem.member_daddress}</td>
+				<td width="70%"><input value="${sessionScope.loginmem.member_address} ${sessionScope.loginmem.member_daddress}"></td>
 			</tr>		
 			<tr>
 				<td width="30%">전화번호</td>
 				<td width="70%">${sessionScope.loginmem.member_tel}</td>
 			</tr>
 		</table>
-	</div>
+	
 	총 구입 금액 : ${sessionScope.CART.total}원
+
+		<table>	
+			<tr>
+				<td><input type="button" value="주문 완료" onclick="end.dog"></td>
+				<td><input type="button" value="취소" onclick="cart.dog"></td>
+			</tr>
+		</table>
+	</form>
+	</div>
 </div>	
 </body></html>
