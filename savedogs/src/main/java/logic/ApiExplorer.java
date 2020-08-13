@@ -34,10 +34,8 @@ public class ApiExplorer {
 			urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
 					+ URLEncoder.encode(state, "UTF-8")); // state : 상태
 		}
-		/*
 		urlBuilder.append("&" + URLEncoder.encode("kind", "UTF-8") + "="
 				+ URLEncoder.encode(kind, "UTF-8")); // kind : 품종
-		*/
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); // json으로 받음
 		
@@ -81,15 +79,15 @@ public class ApiExplorer {
 		JSONArray a_item = (JSONArray)j_items.get("item"); 
 		a_item.remove(0);
 		System.out.println("item : " + a_item);
-		
+		System.out.println();
 		Gson gson = new Gson();
 		
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>(){}.getType());
-		
 		for(Adopt adopt : list) {
 			System.out.println(adopt);
+			adopt.setKindCd(adopt.getKindCd().substring(4));
 		}
-		 
+		
 		return list;
 	}
 }

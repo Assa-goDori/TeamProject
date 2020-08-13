@@ -26,7 +26,7 @@
 			<form action="amain.dog" method="POST">
 				<select name="kind" onchange="this.form.submit()">
 					<option value="000000">전체</option>
-					<option value="000054">골든 리트리버</option>
+					<option value="골든 리트리버">골든 리트리버</option>
 					<option value="000056">그레이 하운드</option>
 					<option value="000055">그레이트 덴</option>
 					<option value="000118">그레이트 피레니즈</option>
@@ -220,12 +220,14 @@
 			onmouseout="this.style.fontWeight=''" onclick="">최근 등록순</span>
 	</div>
 	<br>
-	<div>
-		<c:forEach var="item" items="${go}">
-		<img src="${item.filename}">
-		${item.processState}
-		${item.kindCd}
+	<span style="width:; height:;"> <c:forEach var="item"
+			items="${go}">
+			<div>
+				<img src="${item.filename}">
+			</div>
+			<div>${item.processState}</div>
+			<div>${item.kindCd}</div>
 		</c:forEach>
-	</div>
+	</span>
 </body>
 </html>

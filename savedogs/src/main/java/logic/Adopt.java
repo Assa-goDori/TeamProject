@@ -342,7 +342,6 @@ public class Adopt {
 		this.totalCount = totalCount;
 	}
 
-	/*
 	@Override
 	public String toString() {
 		return "Adopt [bgnde=" + bgnde + ", endde=" + endde + ", upKind=" + upKind + ", kind=" + kind + ", upr_cd="
@@ -356,6 +355,5 @@ public class Adopt {
 				+ careTel + ", careAddr=" + careAddr + ", orgNm=" + orgNm + ", chargeNm=" + chargeNm + ", officetel="
 				+ officetel + ", noticeComment=" + noticeComment + ", totalCount=" + totalCount + "]";
 	}
-	*/
 
 }

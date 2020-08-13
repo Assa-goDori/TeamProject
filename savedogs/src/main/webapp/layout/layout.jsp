@@ -119,7 +119,7 @@
     <div class="slider" style="width: 100%; height: 20%;">
         <div class="owl-carousel owl-one owl-theme">
             <div class="item">
-                <div class="slider-img" onclick="directpage('adopt','main')"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
+                <div class="slider-img" onclick="directpage('adopt','amain')"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
                 <div class="container">
                  
                 </div>
