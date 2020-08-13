@@ -57,7 +57,7 @@ public class ItemController {
 			mav.addObject("item",item);
 			return mav;
 		}catch (Exception e) {
-			throw new ItemException("없는 상품입니다.","list.shop");
+			throw new ItemException("없는 상품입니다.","list.dog");
 		}
 	}
 	@RequestMapping("cartAdd")
