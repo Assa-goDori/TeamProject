@@ -6,16 +6,7 @@
 <html><head><meta charset="UTF-8">
 <title>상품 상세 보기</title>
 <script type="text/javascript">
- 	function cartChk(){
- 		
- 		msg = "장바구니에 상품이 추가되었습니다. \n계속해서 쇼핑을 진행할까요? \n아니요 선택시 장바구니로 이동됩니다." 
- 		if (confirm(msg) != 0){   
- 		     location.href = "cartAdd.dog"
- 		 }else{
- 			 
- 			 location.href="../cart/cartAdd.dog"
- 		 }
- 	}
+	
 </script>
 </head>
 <body>
@@ -62,7 +53,8 @@
 					 					</tr>
 					 					<tr style="height: 15%;">
 				 							<td width="100%" align="center">
-				 								<input style="width: 100%;" type="button" value="장바구니" onclick="cartChk()">
+				 								<input style="width: 100%;" type="submit" value="장바구니" >
+				 								<!-- onclick="window.open('../cart/cartAdd.dog?item_no=${item_no}&item_each=${item_each}','','width=500, height=250, left=150,top=150')" -->
 				 							</td>
 				 						</tr>
 				 						

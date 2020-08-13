@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기부상세</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 
@@ -19,11 +20,11 @@
             <td>게이지바</td>
             <tr><td>&nbsp;</tr><td>
              <c:if test="${!empty sessionScope.loginmem}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>
-             <tr><td align="center"><h5><input type="button" value="후원하기"></h5></td></tr>
+             <tr><td align="center"><h5><input type="button" value="후원하기" onclick="fundingapply()"></h5></td></tr>
              </c:if>
              <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
-             <tr><td align="right"><h5><input type="submit" value="수정하기" onclick="location.href=update.dog'"></h5></td>
-             <td><h5><input type="submit" value="삭제하기" onclick="location.href=delete.dog'"></h5></td></tr>
+             <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href=fregupdateForm.dog'"></h5></td>
+             <td><h5><input type="button" value="삭제하기" onclick="location.href=delete.dog'"></h5></td></tr>
              </c:if>
         </table>
     

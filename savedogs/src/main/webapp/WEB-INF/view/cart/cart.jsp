@@ -14,7 +14,7 @@
 			<td>${itemSet.item_each}</td>
 			<td>${itemSet.item_each * itemSet.item.item_price}
 		<c:set var="tot" value="${tot +(itemSet.item_each * itemSet.item.item_price)}"/>
-		<a href="cartDelete.shop?index=${stat.index}">ⓧ</a></td></tr>
+		<a href="cartDelete.dog?index=${stat.index}">ⓧ</a></td></tr>
 	</c:forEach>
 	<tr><td colspan="4" align="right">
 	총 구입 금액 : ${tot}원 </td></tr>

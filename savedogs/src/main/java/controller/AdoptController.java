@@ -21,13 +21,13 @@ public class AdoptController {
 	public ModelAndView main1(Adopt adopt) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		String state = null;
-		String kind = "000054";
+		String kind = null;
 		System.out.println("state :" + state);
 		System.out.println("kind :" + kind);
-		if(kind != null) {
+		
 			List<Adopt> go = ApiExplorer.getDogJson(state, kind);
 			mav.addObject("go", go);
-		}
+		
 		mav.setViewName("/adopt/amain");
 		return mav;
 	}
