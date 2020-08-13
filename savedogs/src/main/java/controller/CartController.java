@@ -15,7 +15,6 @@ import logic.DogService;
 import logic.Item;
 import logic.ItemSet;
 import logic.Member;
-import logic.Buylist;
 
 @Controller
 @RequestMapping("cart")
@@ -25,7 +24,8 @@ public class CartController {
 	
 	@RequestMapping("cartAdd")
 	public ModelAndView add(Integer item_no, Integer item_each, HttpSession session) {
-		ModelAndView mav = new ModelAndView("cart/cart");
+		System.out.println("no " + item_no + "\nitem_each : " + item_each);
+		ModelAndView mav = new ModelAndView();
 		Item item = service.itemselect(item_no);
 		Cart cart = (Cart)session.getAttribute("CART");
 		if(cart == null) {

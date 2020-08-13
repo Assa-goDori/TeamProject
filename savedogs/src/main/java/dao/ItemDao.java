@@ -26,7 +26,7 @@ public class ItemDao {
 	public void insert(@Valid Item item) {
 		param.clear();
 		int item_no = template.getMapper(ItemMapper.class).maxitem_no();
-		item.setItem_no(++item_no);
+		item.setItem_no(++item_no+"");
 		param.put("item", item);
 		template.getMapper(ItemMapper.class).insert(item);		
 	}

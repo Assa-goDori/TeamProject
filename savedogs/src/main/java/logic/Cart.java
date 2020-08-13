@@ -10,7 +10,7 @@ public class Cart {
 	}
 	public void push(ItemSet itemSet) {
 		for(int a = 0 ; a< itemSetList.size() ; a++) {
-			if(itemSet.getItem().getItem_no() == itemSetList.get(a).getItem().getItem_no()){
+			if(itemSet.getItem().getItem_no().equals(itemSetList.get(a).getItem().getItem_no())){
 				itemSetList.get(a).setItem_each(itemSetList.get(a).getItem_each()+itemSet.getItem_each());
 				return;
 			}
