@@ -27,4 +27,15 @@ public class MemberDao {
 	public Member getMember(String member_id) {
 		return template.getMapper(MemberMapper.class).selectMem(member_id);
 	}
+
+	public void memUpdate(Member mem) {
+		template.getMapper(MemberMapper.class).memUpdate(mem);
+	}
+
+	public void memPassUpdate(String newpass, String id) {
+		param.clear();
+		param.put("pass", newpass);
+		param.put("id", id);
+		template.getMapper(MemberMapper.class).memPassUpdate(param);
+	}
 }

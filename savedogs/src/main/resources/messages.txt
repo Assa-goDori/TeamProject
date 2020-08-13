@@ -3,8 +3,8 @@ error.input.member=입력정보에 문제가 있습니다.
 error.required.member_id=유저ID를 입력해 주세요
 error.required.member_pass=패스워드를 입력해 주세요
 error.required.member_name=이름을 입력해 주세요
-error.required.member_postcode=우편번호를 입력해 주세요
 error.required.member_address=주소를 입력해 주세요
+error.required.member_daddress=상세주소를 입력해주세요
 error.required.member_tel=전화번호를 입력해 주세요
 error.required.member_email=E-MAIL을 입력해 주세요
 

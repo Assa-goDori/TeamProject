@@ -5,6 +5,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -20,7 +21,7 @@ public interface FundingMapper {
 	
 	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
 			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
-	  void insert(Funding funding);
+	  void fundinsert(Funding funding);
 
 	/*
 	 * @Select({"<script>", "select * from usersecurity",
@@ -35,7 +36,7 @@ public interface FundingMapper {
 	@Update(" update funding set funding_subject = #{funding_subject},"
 		   + " count=#{count}, start_date=#{start_date},"
 		   + " end_date=#{end_date}, picture=#{fund_pic} where fund_no=#{fund_no}")
-	void update(Funding funding);
+	void fundupdate(Funding funding);
 
 	int maxfund_no();
 
@@ -44,17 +45,17 @@ public interface FundingMapper {
     		"<if test='fund_no != null'> where fund_no=#{fund_no} </if>",
     		"</script>"})
 	List<Funding> select(Map<String, Object> param);
+
+    
+    @Delete( "delete from funding where fund_no = #{fund_no} ") 
+	void funddelete(Map<String, Object> param);
 	 
 	/*  //shelter_name 가져오기 shelter_no 겹침
 	 * @Select({"<script>" "select shelter_name, "<if test='shelter_no != null'> }
 	 */
     
   
-	/*
-	 * @Delete( "delete from usersecurity where userid = #{userid} ") void
-	 * delete(Map<String, Object> param);
-	 */
-	  
+
 	       		
 
 	  }

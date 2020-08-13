@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My 봉사</title>
+<title>My 후원</title>
 
 </head>
 <body>
-	<h3>봉사 페이지입니다.</h3>
+	<h3>후원 페이지입니다.</h3>
 </body>
 </html>
