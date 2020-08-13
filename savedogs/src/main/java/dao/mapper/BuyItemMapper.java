@@ -10,10 +10,10 @@ import logic.BuyItem;
 
 public interface BuyItemMapper {
 
-	@Insert("insert into buyitem (buy_no,seq,item_no,item_each) values(#{buy_no},#{seq},#{item_no},#{item_each})")
+	@Insert("insert into buydetail (buy_no,seq,item_no,item_each) values(#{buy_no},#{seq},#{item_no},#{item_each})")
 	void insert(BuyItem saleItem);
 
-	@Select("select * from buyitem where buy_no =#{buy_no}")
+	@Select("select * from buydetail where buy_no =#{buy_no}")
 	List<BuyItem> select(Map<String, Object> param);
 
 }

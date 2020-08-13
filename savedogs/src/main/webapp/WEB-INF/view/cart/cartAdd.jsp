@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <title>장바구니 이동</title>
 </head>
 <body>
