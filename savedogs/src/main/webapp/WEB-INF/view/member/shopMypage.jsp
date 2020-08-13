@@ -7,6 +7,6 @@
 <title>My 봉사</title>
 </head>
 <body>
-	<h3>봉사페이지입니다.</h3>
+	<h3>봉사페이지 입니다.</h3>
 </body>
 </html>

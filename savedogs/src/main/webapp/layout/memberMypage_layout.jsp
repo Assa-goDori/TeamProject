@@ -1,16 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
+<c:set var="type" value="${param.type }" />
+<%-- 슬라이드없는 심플 레이아웃 버전 --%>
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	var path = "${path}";
-	console.log(path);
-	
+	$(document).ready(function() {
+		var type = ${type}
+		if(type==1) {
+			$(".tab").removeClass("select");
+			$("#tab1").addClass("select");
+		} else if(type==2) {
+			$(".tab").removeClass("select");
+			$("#tab2").addClass("select");
+		} else if(type==3) {
+			$(".tab").removeClass("select");
+			$("#tab3").addClass("select");
+		} else if(type==4) {
+			$(".tab").removeClass("select");
+			$("#tab4").addClass("select");
+		} else {
+			$(".tab").removeClass("select");
+			$("#tab5").addClass("select");
+		}
+		
+	})
 </script>
+<style type="text/css">
+.select {
+	padding: 3px;
+	background-color: #3598DA;
+}
+
+.select>a {
+	color: #ffffff;
+	text-decoration: none; /* 하이퍼링크 밑줄 제거 */
+	font-weight: bold; /* 글씨체 굵게 */
+}
+</style>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,11 +71,7 @@
 </head>
 <script type="text/javascript">
  	var path = '${path}';
-	console.log(path);
-	
-	function directpage(dir,view){
-		location.href="${path}/"+dir+"/"+view+".dog";
-	}
+
 </script>
 <decorator:head />
 <body>
@@ -58,13 +85,13 @@
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
                     <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
-                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
+                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/memberSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
-                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberMypage.dog?type=1&show=0&id=${sessionScope.loginmem.member_id}" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
-                    	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
@@ -101,7 +128,7 @@
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
                                         <li><a href="blog-default.html">Q&A</a></li>
-                                        <li><a href="${path }/board/noticeList">공지사항</a></li>
+                                        <li><a href="${path }/board/noticeList.dog">공지사항</a></li>
                                         <li><a href="blog-single.html">입양 후기 </a></li>
                                     </ul>
                                 </li>
@@ -115,33 +142,34 @@
         </div>
     </div>
     <!-- /. header-section-->
-    <!-- slider -->
-    <div class="slider" style="width: 100%; height: 20%;">
-        <div class="owl-carousel owl-one owl-theme">
-            <div class="item">
-                <div class="slider-img" onclick="directpage('adopt','amain')"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
-                <div class="container">
-                 
-                </div>
-            </div>
-            <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogitem.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
-                <div class="container">
-                </div>
-            </div>
-            <div class="item">
-                <div class="slider-img" onclick="directpage('vwork','vmain')"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
-                <div class="container">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.slider -->
+
     <!-- coachservice-section -->
-    
     <div class="space-medium">
-        <decorator:body />
+    <div style="margin-left: 30%; width: 40%;">
+		<h3>My Page</h3>
+		<hr>
+		<div style="width: 100%;">
+			<table style="width: 100%;">
+				<tr>
+					<td id="tab1" align="center" class="tab" style="width: 20%"><a
+						href="memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id }">내정보</a></td>
+					<td id="tab2" align="center" class="tab" style="width: 20%"><a
+						href="vworkMypage.dog?type=2&id=${sessionScope.loginmem.member_id }">봉사</a>
+					</td>
+					<td id="tab3" align="center" class="tab" style="width: 20%"><a
+						href="fundMypage.dog?type=3&id=${sessionScope.loginmem.member_id }">기부</a>
+					</td>
+					<td id="tab4" align="center" class="tab" style="width: 20%"><a
+						href="adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_id }">입양</a>
+					</td>
+					<td id="tab5" align="center" class="tab" style="width: 20%"><a
+						href="shopMypage.dog?type=5&id=${sessionScope.loginmem.member_id }">쇼핑</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<decorator:body />
+	</div>
     </div>
     <!-- video-section -->
     <!-- footer -->
@@ -169,14 +197,14 @@
   
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="${path }/js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="${path}/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="${path}/js/menumaker.js" type="text/javascript"></script>
-    <script type="text/javascript" src="${path}/js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="${path}/js/sticky-header.js"></script>
-    <script type="text/javascript" src="${path}/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="${path}/js/multiple-carousel.js"></script>
+    <script src="${path }/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="${path }/js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${path }/js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="${path }/js/sticky-header.js"></script>
+    <script type="text/javascript" src="${path }/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="${path }/js/multiple-carousel.js"></script>
    
     <script type="text/javascript">
     $("#dots").click(function() {
@@ -197,11 +225,11 @@
         });
     });
     </script>
-    <script type="text/javascript" src="${path}/js/video-play.js">
+    <script type="text/javascript" src="${path }/js/video-play.js">
     </script>
 
 
-<script type="text/javascript" src="${path}/js/return-to-top.js">     
+<script type="text/javascript" src="${path }/js/return-to-top.js">     
 </script>
 
 </body>
