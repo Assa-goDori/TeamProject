@@ -3,6 +3,7 @@
 <%--/webapp/WEB-INF/view/cart/end.jsp --%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <title>주문확정상품</title></head>
 <body><h2>${buylist.member.member_name}님이 주문하신 정보 입니다.</h2>
 <h2>배송지 정보</h2>
