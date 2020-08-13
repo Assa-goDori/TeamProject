@@ -45,6 +45,11 @@ public interface FundingMapper {
     		"</script>"})
 	List<Funding> select(Map<String, Object> param);
 	 
+	/*  //shelter_name 가져오기 shelter_no 겹침
+	 * @Select({"<script>" "select shelter_name, "<if test='shelter_no != null'> }
+	 */
+    
+  
 	/*
 	 * @Delete( "delete from usersecurity where userid = #{userid} ") void
 	 * delete(Map<String, Object> param);

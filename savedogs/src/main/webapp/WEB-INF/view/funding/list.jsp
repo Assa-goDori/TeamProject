@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기부</title>
+<!-- <link rel='stylesheet' href='../css/savedogs_main.css' /> -->
 </head>
 <body>
 <div style="margin-left: 30%; width:40%;">
@@ -23,7 +24,7 @@
         <table class="w3-table" style="width:1000px">
         <c:forEach var="f" items="${fundinglist}">
         <tr><td rowspan="4"><img src="" style="width:150%;" align="center" alt="후원 배너 사진"></td>
-          <td colspan='2'><a href="detail.dog?id=${f.fund_no}">"${f.funding_subject}"</a></td></tr>
+          <td colspan='2'><a href="detail.dog?fund_no=${f.fund_no}">"${f.funding_subject}"</a></td></tr>
             <tr><td>"${f.sheltername}"</td></tr>
             <tr><td>달력 아이콘 : 1일 남음</td></tr>
             <td>게이지바</td>
