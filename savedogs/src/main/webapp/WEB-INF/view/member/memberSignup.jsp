@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js?autoload=false"></script>
 <script>
@@ -62,7 +63,7 @@
 </script>
 </head>
 <body>
-	<div style="margin-left: 30%; width:40%;">
+	<div class="main_div">
 	<h2>일반 회원 가입</h2>
 	<hr>
 	<form:form modelAttribute="member" method="post" action="memberSignup.dog">
@@ -74,9 +75,10 @@
 				</c:forEach>
 			</font>
 		</spring:hasBindErrors>
-		<table style="border-collapse:collapse;">
+		<br>
+		<table style="border-collapse:collapse; ">
 			<tr height="40px">
-				<td>아이디</td>
+				<th>아이디</th>
 				<td>
 					<form:input path="member_id"/>
 					<font color="red">
@@ -85,7 +87,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>비밀번호</td>
+				<th>비밀번호</th>
 				<td>
 					<form:password path="member_pass" />
 					<font color="red">
@@ -94,7 +96,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>비밀번호 확인</td>
+				<th>비밀번호 확인</th>
 				<td>
 					<form:password path="member_pass2" />
 					<div id="alert-success" style="font:red;">
@@ -106,7 +108,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>이름</td>
+				<th>이름</th>
 				<td>
 					<form:input path="member_name" />
 					<font color="red">
@@ -115,7 +117,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>생년월일</td>
+				<th>생년월일</th>
 				<td>
 					<form:input path="member_birthday" />
 					<font color="red">
@@ -124,10 +126,10 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>우편번호</td>
+				<th>우편번호</th>
 				<td>
-					<form:input path="member_postcode" style="width:20%"/>
-					<input type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
+					<form:input path="member_postcode" style="width:120px;"/>
+					<input class="small_btn" type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
 				</td>
 				<td>
 					<font color="red">
@@ -137,7 +139,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>주소</td>
+				<th>주소</th>
 				<td>
 					<form:input path="member_address" />
 					<font color="red">
@@ -146,7 +148,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>상세주소</td>
+				<th>상세주소</th>
 				<td>
 					<form:input path="member_daddress" />
 					<font color="red">
@@ -155,7 +157,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>전화번호</td>
+				<th>전화번호</th>
 				<td>
 					<form:input path="member_tel" />
 					<font color="red">
@@ -164,7 +166,7 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td>이메일</td>
+				<th>이메일</th>
 				<td>
 					<form:input path="member_email" />
 					<font color="red">
@@ -173,9 +175,9 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td colspan="2" align="center">
-					<input type="submit" value="회원가입">
-					<input type="reset" value="초기화">
+				<td class="btn_td" colspan="2" align="center">
+					<input class="s_btn" type="submit" value="회원가입">
+					<input class="g_btn" type="reset" value="초기화">
 				</td>
 			</tr>
 		</table>
