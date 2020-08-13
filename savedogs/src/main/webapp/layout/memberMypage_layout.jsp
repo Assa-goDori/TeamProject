@@ -2,14 +2,46 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
+<c:set var="type" value="${param.type }" />
 <%-- 슬라이드없는 심플 레이아웃 버전 --%>
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	var path = "${path}";
+	$(document).ready(function() {
+		var type = ${type}
+		if(type==1) {
+			$(".tab").removeClass("select");
+			$("#tab1").addClass("select");
+		} else if(type==2) {
+			$(".tab").removeClass("select");
+			$("#tab2").addClass("select");
+		} else if(type==3) {
+			$(".tab").removeClass("select");
+			$("#tab3").addClass("select");
+		} else if(type==4) {
+			$(".tab").removeClass("select");
+			$("#tab4").addClass("select");
+		} else {
+			$(".tab").removeClass("select");
+			$("#tab5").addClass("select");
+		}
+		
+	})
 </script>
+<style type="text/css">
+.select {
+	padding: 3px;
+	background-color: #3598DA;
+}
 
+.select>a {
+	color: #ffffff;
+	text-decoration: none; /* 하이퍼링크 밑줄 제거 */
+	font-weight: bold; /* 글씨체 굵게 */
+}
+</style>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,24 +152,24 @@
 			<table style="width: 100%;">
 				<tr>
 					<td id="tab1" align="center" class="tab" style="width: 20%"><a
-						href="memberMypage.dog?id=${sessionScope.loginmem.member_id }">내정보</a></td>
+						href="memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id }">내정보</a></td>
 					<td id="tab2" align="center" class="tab" style="width: 20%"><a
-						href="vworkMypage.dog?id=${sessionScope.loginmem.member_id }">봉사</a>
+						href="vworkMypage.dog?type=2&id=${sessionScope.loginmem.member_id }">봉사</a>
 					</td>
 					<td id="tab3" align="center" class="tab" style="width: 20%"><a
-						href="fundMypage.dog?id=${sessionScope.loginmem.member_id }">기부</a>
+						href="fundMypage.dog?type=3&id=${sessionScope.loginmem.member_id }">기부</a>
 					</td>
 					<td id="tab4" align="center" class="tab" style="width: 20%"><a
-						href="adoptMypage.dog?id=${sessionScope.loginmem.member_id }">입양</a>
+						href="adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_id }">입양</a>
 					</td>
 					<td id="tab5" align="center" class="tab" style="width: 20%"><a
-						href="shopMypage.dog?id=${sessionScope.loginmem.member_id }">쇼핑</a>
+						href="shopMypage.dog?type=5&id=${sessionScope.loginmem.member_id }">쇼핑</a>
 					</td>
 				</tr>
 			</table>
 		</div>
+		<decorator:body />
 	</div>
-        <decorator:body />
     </div>
     <!-- video-section -->
     <!-- footer -->
