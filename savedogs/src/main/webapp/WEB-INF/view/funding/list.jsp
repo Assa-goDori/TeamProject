@@ -8,7 +8,7 @@
 <title>기부</title>
 </head>
 <body>
-<div style="width: 80%; margin-left: 10%;" >
+<div style="margin-left: 30%; width:40%;">
 	<div align="center">
 		<table style="width: 80%;">
 			<tr>
@@ -29,8 +29,10 @@
             <td>게이지바</td>
           </c:forEach>
         </table>
+        <div align="right">
         <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}">후원모집작성(로그인세션)</a></h6>
         </c:if>
+        </div>
         </div>
       </div>
 </body>

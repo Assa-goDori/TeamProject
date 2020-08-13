@@ -8,7 +8,7 @@
 <title>기부상세</title>
 </head>
 <body>
-<div style="width: 80%; margin-left: 10%;" >
+<div style="margin-left: 30%; width:40%;">
  <table class="w3-table" style="width:1000px">
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
         <tr><td rowspan="4"><img src="" style="width:150%;" align="center" alt="후원 배너 사진"></td>
