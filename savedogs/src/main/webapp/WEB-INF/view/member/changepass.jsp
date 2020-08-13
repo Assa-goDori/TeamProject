@@ -32,7 +32,7 @@
 				</tr>
 			</table>
 			<input type="hidden" name="id" value="${param.id }">
-			<input type="button" value="수정" onclick="checkclose()">
+			<input class="g_btn" type="button" value="수정" onclick="checkclose()">
 		</form>
 	</div>
 </body>

@@ -14,7 +14,7 @@
 		<form name="f" method="post" action="checkpass.dog">
 			<h5>비밀번호 입력</h5>
 			<input type="password" name="member_pass">
-			<input type="submit" value="입력">
+			<input class="g_btn" type="submit" value="입력">
 		</form>
 	</div>
 </body>

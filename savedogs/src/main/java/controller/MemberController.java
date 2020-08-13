@@ -112,6 +112,16 @@ public class MemberController {
 		return mav;
 	}
 	
+	@GetMapping("vworkMypage")
+	public ModelAndView vworkMypageMain(String type, String id, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member mem = service.getMember(id);
+		
+		mav.addObject("type", type);
+		mav.addObject("mem", mem);
+		return mav;
+	}
+	
 	@PostMapping("checkpass")
 	public ModelAndView checkpass(String member_pass, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
