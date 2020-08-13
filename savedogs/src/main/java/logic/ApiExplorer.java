@@ -24,22 +24,28 @@ public class ApiExplorer {
 				+ URLEncoder.encode("417000", "UTF-8")); // upkind : 개(417000)
 		urlBuilder.append("&" + URLEncoder.encode("upr_cd", "UTF-8") + "=" 
 				+ URLEncoder.encode("6110000", "UTF-8")); // upr_cd : 서울특별시(6110000)
+		/*
 		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" 
 				+ URLEncoder.encode("1", "UTF-8")); // pageNo : 페이지 번호(1)
+		*/
+		if(kind == null) {
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-				+ URLEncoder.encode("16", "UTF-8")); // numOfRows : 페이지당 보여줄 개수(4*4 = 16)
-		
-		if(state==null) {
+				+ URLEncoder.encode("17", "UTF-8")); // numOfRows : 페이지당 보여줄 개수(4*4 = 16)
+		}
+		if(state == null) {
 			state = "null";
 			urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
 					+ URLEncoder.encode(state, "UTF-8")); // state : 상태
 		}
-		urlBuilder.append("&" + URLEncoder.encode("kind", "UTF-8") + "="
-				+ URLEncoder.encode(kind, "UTF-8")); // kind : 품종
+		if(kind != null) {
+			urlBuilder.append("&" + URLEncoder.encode("kind", "UTF-8") + "="
+					+ URLEncoder.encode(kind, "UTF-8")); // kind : 품종
+		}
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); // json으로 받음
-		
+		System.out.println(urlBuilder);
 		URL url = new URL(urlBuilder.toString());
+		
 		
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");

@@ -72,8 +72,7 @@ public class ItemController {
 		cart.push(new ItemSet(item, item_each));
 		mav.addObject("message",item.getItem_name() + ":" + item_each + "개 장바구니 추가");
 		mav.addObject("cart",cart);
-		mav.setViewName("redirect:/item/list.dog");
-		System.out.println(cart);
+		System.out.println(item_each);
 		return mav;
 		}
 }

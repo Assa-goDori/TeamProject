@@ -3,7 +3,7 @@ package logic;
 public class BuyItem {
 	private int buy_no;
 	private int seq;
-	private int item_no;
+	private String item_no;
 	private int item_each;
 	private Item item;
 	public BuyItem() {}
@@ -27,10 +27,10 @@ public class BuyItem {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public int getItem_no() {
+	public String getItem_no() {
 		return item_no;
 	}
-	public void setItem_no(int item_no) {
+	public void setItem_no(String item_no) {
 		this.item_no = item_no;
 	}
 	public int getItem_each() {
