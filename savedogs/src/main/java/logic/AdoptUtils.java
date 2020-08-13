@@ -8,7 +8,7 @@ public class AdoptUtils {
 
 		Map<String, String> result = new HashMap<String, String>();
 		
-		result.put("000054", "000054");
+		result.put("골든 리트리버", "000054");
 		
 		return result;
 	}
