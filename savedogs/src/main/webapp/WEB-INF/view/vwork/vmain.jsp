@@ -18,6 +18,30 @@
 <script src='${path }/js/packages/interaction/main.js'></script>
 
 
+<script type="text/javascript">
+	$(function(){
+		$("#goo").click(function(){
+			$.ajax({
+				url : "shelterNames.dog?goo="+$("#goo").val(),
+				type : "post",
+				success : function(data){
+					console.log(data)
+		            var shelters = data;
+		            var str = '';
+		            $.each(shelters , function(i){
+		                str += '<option>' + shelters[i].shelter_name +'</option>';
+		     
+		           });
+		           $("#shelterList").append(str); 
+		        },
+				error : function(e){
+					alert("서버오류:"+e.status);
+				}
+			})			
+		})	
+	})
+</script>
+		
 <style type="text/css">
 .main_div{
 	text-align: center;
@@ -90,17 +114,22 @@ document.addEventListener('DOMContentLoaded', function() {
 <body>
 
 <div class="main_div">
+<a style="font-size: 10px;">지역구 -> 보호소목록 안됨.. 보호소만 선택 -> 검색 가능</a><br>
 	<div class="search_div">
-		<form>
+	
+		<form action="vmain.dog" method="post" name="f">
 			<select>
-				<option>전체</option>
-				<c:forEach items="${list }" var="m">
-					<option>${m.shelter_address }</option>
+				<option value="">전체</option>
+				<c:forEach items="${list }" var="s">
+					<option id="goo" value="${s.shelter_address }">${s.shelter_address }</option>
 				</c:forEach>
 			</select>
-			
-			<select>
-				<option>전체</option>
+				
+			<select id="shelterList" name="shelter_no">
+				<option value="">전체</option>
+				<c:forEach items="${list }" var="s">
+					<option id="goo" value="${s.shelter_no }">${s.shelter_name }</option>
+				</c:forEach>
 			</select>
 			<input class="s_btn" type="submit" value="검색" >
 		</form>

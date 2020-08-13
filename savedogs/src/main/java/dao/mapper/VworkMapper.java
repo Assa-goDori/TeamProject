@@ -21,4 +21,7 @@ public interface VworkMapper {
 	@Select("select vwork_date from vwork")
 	HashSet<String> allvwork();
 
+	@Select("select vwork_date from vwork where shelter_no = #{shelter_no}")
+	HashSet<String> sheltervwork(String shelter_no);
+
 }

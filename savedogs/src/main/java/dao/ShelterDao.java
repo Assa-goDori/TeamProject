@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -22,5 +23,13 @@ public class ShelterDao {
 		return template.getMapper(ShelterMapper.class).selectShelter(shelter_no);
 	}
 
-	
+	public List<Shelter> getShelters(String goo) {
+		return template.getMapper(ShelterMapper.class).selectShelters(goo);
+	}
+
+
+	public List<Shelter> getShelterlist() {
+		return template.getMapper(ShelterMapper.class).selectShelterlist();
+	}
+
 }

@@ -103,7 +103,14 @@ public class DogService {
 	public Shelter getShelter(String shelter_no) {
 		return shelterDao.getShelter(shelter_no);
 	}
+	
+	public List<Shelter> getShelters(String goo) {
+		return shelterDao.getShelters(goo);
+	}
 
+	public List<Shelter> getShelterlist() {
+		return  shelterDao.getShelterlist();
+	}
 	public void vWrite(Vwork vwork, HttpServletRequest request) {
 		int max = vworkDao.maxno();
 		vwork.setVwork_no(++max);
@@ -114,6 +121,11 @@ public class DogService {
 	public HashSet<String> allvwork() {
 		return vworkDao.allvwork();
 	}
+	
+	public HashSet<String> sheltervwork(String shelter_no) {
+		return vworkDao.sheltervwork(shelter_no);
+	}
+
 		
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -186,6 +198,10 @@ public class DogService {
 			return buylist;
 		}
 
+		
+		
+
+	
 		
 
 		

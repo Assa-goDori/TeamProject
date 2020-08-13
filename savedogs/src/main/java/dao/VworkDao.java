@@ -30,4 +30,8 @@ public class VworkDao {
 	public HashSet<String> allvwork() {
 		return template.getMapper(VworkMapper.class).allvwork();
 	}
+
+	public HashSet<String> sheltervwork(String shelter_no) {
+		return template.getMapper(VworkMapper.class).sheltervwork(shelter_no);
+	}
 }
