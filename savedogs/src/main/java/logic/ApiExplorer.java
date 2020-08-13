@@ -41,7 +41,6 @@ public class ApiExplorer {
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); // json으로 받음
 		
-		System.out.println("urlBuilder=>"+urlBuilder);
 		URL url = new URL(urlBuilder.toString());
 		
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -60,9 +59,8 @@ public class ApiExplorer {
 		while ((line = rd.readLine()) != null) {
 			sb.append(line);
 		}
-		rd.close();
+//		rd.close();
 		conn.disconnect();
-		System.out.println("sb=>"+sb.toString());
 
 		return sb.toString();
 	}
