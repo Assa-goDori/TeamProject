@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -109,6 +110,10 @@ public class DogService {
 		
 		vworkDao.insertVwork(vwork);
 	}
+	
+	public HashSet<String> allvwork() {
+		return vworkDao.allvwork();
+	}
 		
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -172,7 +177,10 @@ public class DogService {
 			int buy_no = buylistDao.getMaxSaleid();
 			buylist.setBuy_no(++buy_no);
 			buylist.setMember_id(loginmem.getMember_id());
-			buylist.setUser(loginmem);
+			buylist.setBuy_address(loginmem.getMember_address());
+			buylist.setBuy_daddress(loginmem.getMember_daddress());
+			buylist.setBuy_postcode(loginmem.getMember_postcode());
+			buylist.setMember(loginmem);
 			buylistDao.insert(buylist);
 			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보
 			int i = 0;
@@ -184,6 +192,10 @@ public class DogService {
 			}
 			return buylist;
 		}
+
+		
+
+		
 		
 //-------------------쇼핑관련 끝--------------------------------------------------
 }

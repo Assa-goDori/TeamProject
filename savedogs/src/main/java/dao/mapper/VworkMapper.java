@@ -1,5 +1,9 @@
 package dao.mapper;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,5 +17,8 @@ public interface VworkMapper {
 	@Insert("insert into vwork (vwork_no, shelter_no, member_id, vwork_date, vwork_member, vwork_content) "
 			+ "values (#{vwork_no}, #{shelter_no}, #{member_id}, #{vwork_date}, #{vwork_member}, #{vwork_content})")
 	void insertVwork(Vwork vwork);
+
+	@Select("select vwork_date from vwork")
+	HashSet<String> allvwork();
 
 }

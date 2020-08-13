@@ -72,12 +72,6 @@ public class Buylist {
 	public void setBuy_no(int buy_no) {
 		this.buy_no = buy_no;
 	}
-	public Member getUser() {
-		return member;
-	}
-	public void setUser(Member member) {
-		this.member = member;
-	}
 	public List<BuyItem> getItemList() {
 		return itemList;
 	}

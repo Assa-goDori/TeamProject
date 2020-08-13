@@ -1,6 +1,8 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -23,5 +25,9 @@ public class VworkDao {
 	public void insertVwork(Vwork vwork) {
 		template.getMapper(VworkMapper.class).insertVwork(vwork);
 		
+	}
+
+	public HashSet<String> allvwork() {
+		return template.getMapper(VworkMapper.class).allvwork();
 	}
 }

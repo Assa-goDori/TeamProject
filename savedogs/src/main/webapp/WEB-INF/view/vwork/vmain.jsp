@@ -17,7 +17,44 @@
 <script src='${path }/js/packages/daygrid/main.js'></script>
 <script src='${path }/js/packages/interaction/main.js'></script>
 
+
 <style type="text/css">
+.main_div{
+	text-align: center;
+	margin-bottom: 50px;
+}
+.search_div{
+	vertical-align: middle; 
+	display: inline-block;
+	background-color: #E4E4E4;
+	text-align: center;
+	width: 50%;
+	height: 100px;
+	margin-bottom: 50px;
+}
+.cal_div{
+	vertical-align: middle; 
+	display: inline-block;
+}
+select{
+	font-size: 15px;
+	padding: 7px;
+	width: 235px;
+}
+.s_btn {
+	background-color: #19CE60;
+	color : white;
+	font-size: 20px;
+	
+	border: 0;
+	outline: 0;
+	width: 80px;
+	height: 60%;
+	margin-left: 5px;
+}
+form{
+	padding-top: 25px;
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -44,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			}		    
 	    },
 		events: 
-			[{"title":"봉사 신청","start":"2020-08-16","color":"#A2BEE0"}]
+			${json}
    })
    calendar.render();
 });
@@ -52,10 +89,27 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body>
 
-<form name="f" style="text-align: center;">
-   <div class="vmain" style="vertical-align: middle; display: inline-block;">
-      <div id="calendar" style="width: 800px; hegiht: 1000px;"></div>
-   </div>
-</form>
+<div class="main_div">
+	<div class="search_div">
+		<form>
+			<select>
+				<option>전체</option>
+				<c:forEach items="${list }" var="m">
+					<option>${m.shelter_address }</option>
+				</c:forEach>
+			</select>
+			
+			<select>
+				<option>전체</option>
+			</select>
+			<input class="s_btn" type="submit" value="검색" >
+		</form>
+		
+	</div>
+	<br>
+   	<div class="cal_div" >
+    	<div id="calendar" style="width: 800px; hegiht: 1000px;"></div>
+   	</div>
+</div>
 </body>
 </html>
