@@ -89,7 +89,6 @@ h3{
 th{
 	width: 150px;
 	text-align: center;
-	
 }
 
 td{
@@ -97,12 +96,15 @@ td{
 	padding: 7px;
 }
 
-/* 테이블의 마지막 td with 버튼들 */
+/* 테이블의 마지막 td (버튼이 들어있는) */
 .btn_td{
 	text-align: center;
 	padding-top: 30px;
 }
 
+textarea{
+	width: 100%
+}
 font{
 	font-size: 15px;
 }

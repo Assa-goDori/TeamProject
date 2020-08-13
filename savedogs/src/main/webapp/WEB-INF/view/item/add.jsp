@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품등록</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 <div style="width: 80%; margin-left: 10%;" >
@@ -45,8 +46,8 @@
 		<tr>
 			<td colspan="4"><font color="#e65407"><form:errors path="item_content"/></font></td>
 		</tr>
-		<tr>
-			<td colspan="3" align="center"><input type="submit" value="등록"></td>
+		<tr >
+			<td class="btn_td" colspan="3" align="center"><input type="submit" class="s_btn" value="등록"></td>
 		</tr>
 	</table>
 	</form:form>
