@@ -1,5 +1,9 @@
 package controller;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -36,10 +40,11 @@ public class VworkController {
 			Member mem = (Member)session.getAttribute("loginmem");
 			mav.addObject("mem",mem);
 		}
+		
 		return mav;
 	}
 	
-	@RequestMapping("vmain")
+	@GetMapping("vmain")
 	public ModelAndView vmain(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
@@ -49,6 +54,25 @@ public class VworkController {
 			Member mem = (Member)session.getAttribute("loginmem");
 			mav.addObject("mem",mem);
 		}
+		
+		HashSet<String> hashSet = new HashSet<>(); 
+		hashSet = service.allvwork();
+		StringBuilder json = new StringBuilder("[");
+		int i = 0;
+		for(String h : hashSet) {
+			json.append("{\"start\":\""+h +"\",");
+			json.append("\"title\":\"봉사신청\",");
+			json.append("\"color\":\"#AAD292\"},");
+			i++;
+		}
+		if(i<hashSet.size()) json.append(",");
+		
+		json.append("]");
+		mav.addObject("json", json.toString().trim());
+		
+		List<Shelter> list = service.getShelterAddress();
+		mav.addObject("list",list);
+		
 		return mav;
 	}
 	
