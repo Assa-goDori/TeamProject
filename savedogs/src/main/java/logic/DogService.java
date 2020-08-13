@@ -97,6 +97,14 @@ public class DogService {
 	public List<Shelter> getShelterName(String goo) {
 		return adminDao.getShelterName(goo);
 	}
+	
+	public void memUpdate(Member mem) {
+		memberDao.memUpdate(mem);
+	}
+	
+	public void memPassUpdate(String newpass, String id) {
+		memberDao.memPassUpdate(newpass,id);
+	}
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -132,7 +140,7 @@ public class DogService {
 		      }
 		      int fund_no =fundingDao.maxfundno() ;
 		      funding.setFund_no(++fund_no);
-		      fundingDao.insert(funding);
+		      fundingDao.fundinsert(funding);
 		   }
 
 		public void fundUpdate(Funding funding, HttpServletRequest request) {
@@ -140,8 +148,12 @@ public class DogService {
 		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
 		}
-		  fundingDao.update(funding); 
+		  fundingDao.fundupdate(funding); 
 		}
+		public void fundDelete(int fund_no) {
+			fundingDao.funddelete(fund_no);		
+		}
+		
 		public Funding getfundingdetail(int fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
@@ -189,9 +201,5 @@ public class DogService {
 			return buylist;
 		}
 
-		
-
-		
-		
 //-------------------쇼핑관련 끝--------------------------------------------------
 }

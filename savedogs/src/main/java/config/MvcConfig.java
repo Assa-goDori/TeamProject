@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration	//자바 설정파일로 지정
-@ComponentScan(basePackages= {"controller", "logic", "dao"})
+@ComponentScan(basePackages= {"controller", "logic", "dao", "util"})
 @EnableAspectJAutoProxy		//AOP 설정
 @EnableWebMvc				//유효성검증을 위한 처리
 public class MvcConfig implements WebMvcConfigurer {
