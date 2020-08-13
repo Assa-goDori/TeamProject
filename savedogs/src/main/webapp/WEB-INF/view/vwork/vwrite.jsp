@@ -20,7 +20,7 @@
 							 <input type="text" value="${shelter.shelter_name }" readonly="readonly"></td></tr>
 		<tr><th>모집인원</th><td><form:input path="vwork_member"/>&nbsp;명&nbsp;<font color="red"><form:errors path="vwork_member"/></font></td></tr>
 		<tr><th>설명</th><td><form:textarea path="vwork_content" rows="15" cols="80"/><br><font color="red"><form:errors path="vwork_content"/></font></td></tr>
-		<tr><th colspan="2"><input type="submit" value="등록"></th>
+		<tr><th colspan="2"><input type="submit" class="s_btn" value="등록"></th>
 		</tr>
 	</table>
 </form:form>

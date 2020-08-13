@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
-	savedogs : 모달창 기본 css
+	savedogs : 새로운 창(layout X) 기본 css
 */
 body{
 	width: 100%;
@@ -32,11 +32,39 @@ textarea{
 	width: 90%;
 	height: 90%;
 }
-input[type=submit]{
+.s_btn{
 	background-color: #19CE60;
 	color : white;
 	font-size: 20px;
 	padding: 5px 7px;
+	border: 0;
+	outline: 0;
+	width: 100px;
+	height: 80%;
+	margin: 5px;
+}
+.g_btn {
+	background-color: #AAAAAA;
+	color : white;
+	font-size: 20px;
+	border: 0;
+	outline: 0;
+	padding: 5px 7px;
+	width: 100px;
+	height: 80%;
+	margin: 5px;
+}
+
+/* 작은 버튼 (우편번호 찾기 등) */
+.small_btn{
+	font-size: 15px;
+	border: 2;
+	border-style :solid;
+	border-color : #AAAAAA;
+	background-color : white;
+	outline: 0;
+	padding: 5px 7px;
+	
 }
 
 h3{
