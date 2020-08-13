@@ -127,7 +127,7 @@ public class DogService {
 		      }
 		      int fund_no =fundingDao.maxfundno() ;
 		      funding.setFund_no(++fund_no);
-		      fundingDao.insert(funding);
+		      fundingDao.fundinsert(funding);
 		   }
 
 		public void fundUpdate(Funding funding, HttpServletRequest request) {
@@ -135,8 +135,12 @@ public class DogService {
 		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
 		}
-		  fundingDao.update(funding); 
+		  fundingDao.fundupdate(funding); 
 		}
+		public void fundDelete(int fund_no) {
+			fundingDao.funddelete(fund_no);		
+		}
+		
 		public Funding getfundingdetail(int fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}

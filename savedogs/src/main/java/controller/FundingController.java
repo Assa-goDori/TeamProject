@@ -45,8 +45,8 @@ public class FundingController {
             return mav;      
         
           }
-  	@PostMapping("update")
-  	public ModelAndView update(@Valid Funding funding, 
+  	@PostMapping("fregupdateForm")
+  	public ModelAndView fregupdateForm(@Valid Funding funding, 
   			BindingResult bresult,HttpServletRequest request) {
   		ModelAndView mav = new ModelAndView("funding/fregupdateForm");
   		if(bresult.hasErrors()) {
