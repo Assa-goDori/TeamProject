@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js?autoload=false"></script>
 <script>
