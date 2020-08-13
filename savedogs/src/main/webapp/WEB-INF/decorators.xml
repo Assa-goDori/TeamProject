@@ -12,6 +12,7 @@
 		<pattern>/funding/*.dog</pattern>
 		<pattern>/item/*.dog</pattern>
 		<pattern>/fundinganditem/*.dog</pattern>
+		<pattern>/adopt/*.dog</pattern>
 	</decorator>
 	<excludes>
 		<pattern>/member/shelterlist.*</pattern>
