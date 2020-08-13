@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>키워드 검색</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
-	<h1>키워드 검색</h1>
+	<div>
+	<h2>키워드 검색</h2>
 	<br>
-	<div style="width: 100%">
-		<div style="width: 200px; height: 150px; float: left;">
-			<h2>상태</h2>
+	<div>
+			<h3>상태</h3>
 			<form action="amain.dog" method="POST">
 				<select name="state" onchange="this.form.submit()">
 					<option value="">전체</option>
@@ -21,11 +22,11 @@
 				</select>
 			</form>
 		</div>
-		<div style="width: 300px; height: 150px; float: left;">
-			<h2>품종</h2>
+		<div>
+			<h3>품종</h3>
 			<form action="amain.dog" method="POST">
 				<select name="kind" onchange="this.form.submit()">
-					<option value="000000">전체</option>
+					<option value="">전체</option>
 					<option value="골든 리트리버">골든 리트리버</option>
 					<option value="000056">그레이 하운드</option>
 					<option value="000055">그레이트 덴</option>
@@ -200,7 +201,6 @@
 				</select>
 			</form>
 		</div>
-	</div>
 	<br>
 	<br>
 	<br>
@@ -220,7 +220,7 @@
 			onmouseout="this.style.fontWeight=''" onclick="">최근 등록순</span>
 	</div>
 	<br>
-	<span style="width:; height:;"> <c:forEach var="item"
+	<span> <c:forEach var="item"
 			items="${go}">
 			<div>
 				<img src="${item.filename}">
@@ -229,5 +229,6 @@
 			<div>${item.kindCd}</div>
 		</c:forEach>
 	</span>
+	</div>
 </body>
 </html>
