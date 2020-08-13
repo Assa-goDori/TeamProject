@@ -9,8 +9,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#tab1").removeClass("select");
-		$("#tab2").addClass("select");
-		$("#tab3").removeClass("select");
+		$("#tab2").removeClass("select");
+		$("#tab3").addClass("select");
 		$("#tab4").removeClass("select");
 		$("#tab5").removeClass("select");
 	})
@@ -52,6 +52,6 @@
 				</tr>
 			</table>
 		</div>
-		</div>
+</div>
 </body>
 </html>
