@@ -219,6 +219,7 @@
 			onmouseover="this.style.fontWeight='bold'"
 			onmouseout="this.style.fontWeight=''" onclick="">최근 등록순</span>
 	</div>
+	<br>
 	<div>
 		<c:forEach var="item" items="${go}">
 		<img src="${item.filename}">
