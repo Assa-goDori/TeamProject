@@ -11,8 +11,11 @@ body{
 .main_div{
 	padding-top: 50px;
 	display: inline-block;	
-	width:100%;
+	width:80%;
 	
+}
+hr{
+	width: 70%;
 }
 
 table{
@@ -20,7 +23,11 @@ table{
 	
 	text-align: center;
 }
-
+select{
+	font-size: 15px;
+	padding: 5px;
+	width: 235px;
+}
 input[type=text]{
 	font-size: 15px;
 	padding: 5px;
