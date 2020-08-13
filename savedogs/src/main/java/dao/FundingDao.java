@@ -26,8 +26,8 @@ public class FundingDao {
 	  template.getMapper(FundingMapper.class).maxfundno(); }
 	 
 	 
-	  public void insert(Funding funding) {
-		   template.getMapper(FundingMapper.class).insert(funding);
+	  public void fundinsert(Funding funding) {
+		   template.getMapper(FundingMapper.class).fundinsert(funding);
 		}
 
 	
@@ -37,11 +37,16 @@ public class FundingDao {
 	 return template.getMapper(FundingMapper.class).select(param).get(0);
 	 
 	 }
-	 
 
-		public void update(Funding funding) {
-				   template.getMapper(FundingMapper.class).update(funding);
+	 public void fundupdate(Funding funding) {
+	 template.getMapper(FundingMapper.class).fundupdate(funding);
 		}
+	 
+	 public void funddelete(int fund_no) {
+		 param.clear();
+		 param.put("fund_no",fund_no);
+		 template.getMapper(FundingMapper.class).funddelete(param);
+			}
 
 	/*
 	 * public void delete(String userid) { param.clear();

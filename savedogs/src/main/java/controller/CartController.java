@@ -1,9 +1,12 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +27,6 @@ public class CartController {
 	
 	@RequestMapping("cartAdd")
 	public ModelAndView add(Integer item_no, Integer item_each, HttpSession session) {
-		System.out.println("no " + item_no + "\nitem_each : " + item_each);
 		ModelAndView mav = new ModelAndView();
 		Item item = service.itemselect(item_no);
 		Cart cart = (Cart)session.getAttribute("CART");
@@ -67,7 +69,7 @@ public class CartController {
 		return null;
 	}
 	
-	@RequestMapping("end")	
+	@GetMapping("end")	
 	public ModelAndView checkend(HttpSession session) { //CartAspect 구동
 		ModelAndView mav = new ModelAndView();
 		Cart cart = (Cart)session.getAttribute("CART");
@@ -79,4 +81,18 @@ public class CartController {
 		mav.addObject("total",total);
 		return mav;
 	}
+//	@RequestMapping("end")
+//	public ModelAndView newend(@Valid Buylist buylist, BindingResult bresult, HttpServletRequest request) {
+//		ModelAndView mav = new ModelAndView("cart/checkout");
+//		if(bresult.hasErrors()) {
+//			mav.getModel().putAll(bresult.getModel());
+//			return mav;
+//		}
+//		Cart cart = (Cart)session.getAttribute("CART");
+//		Member loginmem = (Member)session.getAttribute("loginmem");
+//		buylist = service.checkend(loginmem,cart);
+//
+//		mav.setViewName("redirect:/item/list.dog");
+//		return mav;
+//	}
 }

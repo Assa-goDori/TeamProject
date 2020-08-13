@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>후원 모집 수정</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head><body>
 <div style="margin-left: 30%; width:40%;">
@@ -48,7 +49,7 @@
 
 <tr height="40px">
 <td colspan="2" align="center">
-<input type="submit" value="수정하기">
+<input type="submit" class="s_btn" value="수정하기">
 </td></tr>
 </table>
 </form:form>

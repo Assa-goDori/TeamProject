@@ -6,10 +6,31 @@
 <head>
 <meta charset="EUC-KR">
 <title>메인페이지 입니다.</title>
+<link rel='stylesheet' href='css/savedogs_main.css' />
+<style type="text/css">
+.row{
+	width: 100%; 
+	display: inline-block;
+}
+.g_div{
+	height: 600px; 
+	width: 45%;
+	background-color: #e1e1e1; 
+	display: inline-block;
+	vertical-align : top ;
+	padding: 20px 20px;
+	margin: 20px;
+}
+.news_th{
+	width: 100%;
+	text-align: left;
+}
+</style>
 </head>
 <body>
- <div class="row" style="height: 30%; width: 80%; margin-left: 10%;" align="center">
-	<div style="width: 40%; height: 24%; float: left; background-color: #e1e1e1;" class="slider">
+<div class="main_div">
+ <div class="row" >
+	<div class="g_div">
 	<div align="center"><h3>실시간 유기견들</h3></div>
         <div class="owl-carousel owl-one owl-theme" style="height: 15%;">
             <c:forEach begin="0" end="2" var="m">
@@ -62,7 +83,7 @@
         </div>
     </div>
       <!-- /.slider -->
-    <div style="width: 40%; height: 20%; float: right;">
+    <div class="g_div">
     	<table style="border: 3px solid black; width: 100%;">
     	<caption>구현전 임시 공지사항 자리</caption>
     	<tr><th>번호</th><th>글제목</th></tr>
@@ -75,16 +96,16 @@
     </div>
   </div>
   <br>
-  <div class="row" style="width: 80%; margin-left: 10%;" align="center">
- 	 <div style="width: 40%; float: left; background-color: #e1e1e1;">
- 	 <div align="left"><h3>관련 소식</h3></div>
+  <div class="row">
+ 	 <div class="g_div">
+ 	 <div align="center"><h3>관련 소식</h3></div>
     	<table style="border: 3px solid black; width: 95%;">
     	<c:forEach items="${newslist}" var="news">
-    		<tr><th>${news}</th></tr>
+    		<tr><th class="news_th">${news}</th></tr>
     	</c:forEach>
     	</table>
     </div>
-    <div style="width: 40%; height: 40%; float: right; margin-right: 5%;">
+    <div class="g_div">
     	<table style="border: 3px solid black; width: 100%;">
     	<caption>구현전 임시 기부 자리</caption>    	
     	<tr><td>1</td><td>첫번째글</td></tr>
@@ -95,5 +116,6 @@
     	</table>
     </div>
   </div>
+ </div>	
 </body>
 </html>

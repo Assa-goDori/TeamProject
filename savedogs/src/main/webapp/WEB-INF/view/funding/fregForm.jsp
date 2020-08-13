@@ -8,6 +8,7 @@
 <%-- /webapp/WEB-INF/view/user/userEntry.jsp 
    http://localhost:8080/shop3/user/userEntry.shop 요청시 화면 출력하기 --%>
 <title>후원 모집 등록</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -58,11 +59,11 @@
 
 			<tr height="40px">
 				<td>배너사진</td>
-				<td><input type="file" name="fund_pic" /></td>
+				<td><input type="file" name="picure" /></td>
 			</tr>
 
-			<tr height="40px">
-				<td colspan="2" align="center"><input type="submit" value="등록">
+			<tr height="40px" >
+				<td colspan="2" align="center"><input type="submit" value="등록"  class="s_btn"  >
 				</td>
 			</tr>
 		</table>

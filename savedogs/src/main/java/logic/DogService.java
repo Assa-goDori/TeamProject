@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -117,6 +118,10 @@ public class DogService {
 		
 		vworkDao.insertVwork(vwork);
 	}
+	
+	public HashSet<String> allvwork() {
+		return vworkDao.allvwork();
+	}
 		
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -135,7 +140,7 @@ public class DogService {
 		      }
 		      int fund_no =fundingDao.maxfundno() ;
 		      funding.setFund_no(++fund_no);
-		      fundingDao.insert(funding);
+		      fundingDao.fundinsert(funding);
 		   }
 
 		public void fundUpdate(Funding funding, HttpServletRequest request) {
@@ -143,8 +148,12 @@ public class DogService {
 		   uploadFileCreate(funding.getPicture(),request,"funding/img/");
 		   funding.setFund_pic(funding.getPicture().getOriginalFilename());	
 		}
-		  fundingDao.update(funding); 
+		  fundingDao.fundupdate(funding); 
 		}
+		public void fundDelete(int fund_no) {
+			fundingDao.funddelete(fund_no);		
+		}
+		
 		public Funding getfundingdetail(int fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
@@ -176,7 +185,10 @@ public class DogService {
 			int buy_no = buylistDao.getMaxSaleid();
 			buylist.setBuy_no(++buy_no);
 			buylist.setMember_id(loginmem.getMember_id());
-			buylist.setUser(loginmem);
+			buylist.setBuy_address(loginmem.getMember_address());
+			buylist.setBuy_daddress(loginmem.getMember_daddress());
+			buylist.setBuy_postcode(loginmem.getMember_postcode());
+			buylist.setMember(loginmem);
 			buylistDao.insert(buylist);
 			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보
 			int i = 0;
