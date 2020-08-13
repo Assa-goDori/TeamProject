@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="main_div">
 <a style="font-size: 10px;">지역구 -> 보호소목록 안됨.. 보호소만 선택 -> 검색 가능</a><br>
 	<div class="search_div">
-	
 		<form action="vmain.dog" method="post" name="f">
 			<select>
 				<option value="">전체</option>
@@ -131,6 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					<option id="goo" value="${s.shelter_no }">${s.shelter_name }</option>
 				</c:forEach>
 			</select>
+			<script type="text/javascript">
+				f.shelter_no.value = "${shelter_no}";
+			</script>
 			<input class="s_btn" type="submit" value="검색" >
 		</form>
 		

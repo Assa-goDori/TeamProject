@@ -107,7 +107,7 @@ public class VworkController {
 		
 		json.append("]");
 		mav.addObject("json", json.toString().trim());
-		System.out.println(json);
+	
 		
 		List<Shelter> list = service.getShelterlist();
 		mav.addObject("list",list);
