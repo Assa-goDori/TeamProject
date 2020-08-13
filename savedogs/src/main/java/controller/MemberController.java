@@ -113,7 +113,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		Member mem = (Member)session.getAttribute("loginmem");
 		if(member_pass.equals(mem.getMember_pass())) {
-			mav.setViewName("redirect:memberMypage.dog?type=1&show=1&id=" + mem.getMember_id());
+			mav.setViewName("redirect:memberMypage.dog?type=4&id=" + mem.getMember_id());
 		} else {
 			mav.setViewName("redirect:../main.dog");
 		}

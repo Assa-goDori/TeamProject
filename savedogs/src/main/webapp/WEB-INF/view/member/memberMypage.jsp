@@ -13,11 +13,7 @@
 	$(document).ready(function() {
 		var type = ${type}
 		if(type==1) {
-			if(show==1) {
-				$("#update").show();
-			} else {
-				$("#minfo").show();
-			}
+			$("#minfo").show();
 			$("#vinfo").hide();
 			$("#finfo").hide();
 			$("#ainfo").hide();
@@ -148,7 +144,7 @@
 		<!-- 비밀번호 확인 -->
 		<div id="checkpass" style="display: none; width:100%;">
 			<h3><font style="color: red;">회원 정보 확인을 위해 비밀번호를 한번 더 확인합니다.</font></h3>
-			<form name="f" method="post" action="checkpass.dog" onsubmit="chksubmit()">
+			<form name="f" method="post" action="checkpass.dog">
 				<h5>비밀번호 입력</h5>
 				<input type="password" name="member_pass">
 				<input type="submit" value="입력">
@@ -156,7 +152,7 @@
 		</div>
 		<!-- 수정 폼 -->
 		<div id="update" style="display: none; width:100%;">
-			<form name="updatef" method="post" action="memberupdate.dog">
+			<!-- <form name="updatef" method="post" action="memberupdate.dog"> -->
 				<table>
 				<tr>
 					<th>아이디</th>
@@ -184,7 +180,7 @@
 					<td>${mem.member_email }</td>
 				</tr>
 			</table>
-			</form>
+			<!-- </form> -->
 		</div>
 		
 		<div id="vinfo" class="info" style="display: none; width:100%;">
