@@ -8,6 +8,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js?autoload=false"></script>
 <script>
+	$(document).ready(function(){
+		$("#chkF").show();
+		$("#chkF").hide();
+	})
+	function disp_div(id,tab){
+		$(".info").each(function(){
+			$(this).hide();
+		})
+		$("#"+id).show();
+	}
 	$(function() {
 		$("#alert-success").hide();
 		$("#alert-danger").hide();
@@ -26,8 +36,7 @@
 				}
 			}
 		});
-	});
-
+	})
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete: function(data) {
@@ -83,16 +92,15 @@
 	</div>
 	<br>
 	<hr>
-	<form>
 	<h3 align="left" style="margin-left: 15%;">배송지 정보</h3>
 	<br>
 	<div align="center">
 		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onclick=""></td></tr></table>
-		<div class = "chkT">
+		<div id = "chkT" class="info">
 			<table>
 				<tr>
 					<td width="30%">아이디</td>
-					<td width="70%">${sessionScope.loginmem.member_id}</td>
+					<td width="70%">${sessionScope.loginmem.member_id}</td>		
 				</tr>
 				<tr>
 					<td width="30%">이름</td>
@@ -100,23 +108,28 @@
 				</tr>
 				<tr>
 					<td width="30%">우편번호</td>	
-					<td width="70%"><fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기" readonly="readonly"></td>
+					<td width="70%"><fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
 				</tr>
 				<tr>
 					<td width="30%">주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_address}"></td>
+					<td width="70%">${sessionScope.loginmem.member_address}"</td>
 				</tr>
 				<tr>
 					<td width="30%">상세 주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_daddress}"></td>
+					<td width="70%">${sessionScope.loginmem.member_daddress}"</td>
 				</tr>		
 				<tr>
 					<td width="30%">전화번호</td>
 					<td width="70%"><input value="${sessionScope.loginmem.member_tel}"></td>
 				</tr>
 			</table>
+			<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
+			<input type="button" value="주문 완료" onclick="location.href='end.dog'">
+			<input type="button" value="취소" onclick="location.href='../item/list.dog'">
 		</div>
-		<div class="chkF">
+		<form:form modelAttribute="buylist" method="post" action="end.dog">
+		<input type="hidden" value="${sessionScope.loginmem.member_id}">
+		<div id="chkF" class="info">
 			<table>
 				<tr>
 					<td width="30%">아이디</td>
@@ -128,26 +141,41 @@
 				</tr>
 				<tr>
 					<td width="30%">우편번호</td>	
-					<td width="70%"><input style="width: 50%;" value=<fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
+					<td width="70%"> &nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
 				</tr>
 				<tr>
 					<td width="30%">주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_address}"></td>
+					<td>
+						<form:input path="member_address" />
+						<font color="red">
+							<form:errors path="member_address" />
+						</font>
+					</td>
 				</tr>
 				<tr>
 					<td width="30%">상세 주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_daddress}"></td>
+					<td>
+						<form:input path="member_address" />
+						<font color="red">
+							<form:errors path="member_address" />
+						</font>
+					</td>
 				</tr>		
 				<tr>
 					<td width="30%">전화번호</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_tel}"></td>
+					<td>
+						<form:input path="member_address" />
+						<font color="red">
+							<form:errors path="member_address" />
+						</font>
+					</td>
 				</tr>
 			</table>
+		<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
+		<input type="submit" value="주문 완료">
+		<input type="button" value="취소" onclick="location.href='../item/list.dog'">
+		</form:form>
 		</div>
 	</div>
-	<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
-	<input type="button" value="주문 완료" onclick="location.href='end.dog'">
-	<input type="button" value="취소" onclick="location.href='../item/list.dog'">
-	</form>
 </div>	
 </body></html>
