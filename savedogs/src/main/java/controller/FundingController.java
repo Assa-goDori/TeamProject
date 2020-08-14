@@ -62,7 +62,7 @@ public class FundingController {
 	public ModelAndView fundDelete(String fund_no) {
 		ModelAndView mav = new ModelAndView();
 		service.fundDelete(fund_no);
-		mav.setViewName("redirect:/funding/list.shop");
+		mav.setViewName("redirect:/funding/list.dog");
 		return mav;		
 	}	
 	 @RequestMapping("list") // /item/list.shop
@@ -73,7 +73,7 @@ public class FundingController {
 	 return mav; 
 	 }
 	 @PostMapping("detail")
-	   public ModelAndView detail(Integer fund_no) {
+	   public ModelAndView detail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
 		 //service.readcnt(num);

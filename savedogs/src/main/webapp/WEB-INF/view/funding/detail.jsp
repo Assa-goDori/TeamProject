@@ -23,7 +23,6 @@
  <form:form modelAttribute="funding" method="post" action="delete.dog">
 <input type="hidden" value="${param.fund_no}">
  <table class="w3-table" style="width:1000px">
-
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
         <tr><td rowspan="4"><img src="${picture}" style="width:150%;" alt="후원 배너 사진"></td>
           <td colspan='2'>"${funding_subject}"</td></tr>
@@ -32,10 +31,10 @@
             <td>게이지바</td>
             <tr><td>&nbsp;</tr><td>
              <c:if test="${!empty sessionScope.loginmem}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>
-             <tr><td align="center"><h5><input type="button" value="후원하기" onclick="win_open('fundingapplyForm')"></h5></td></tr>
+             <tr><td align="center"><h5><input type="button" value="후원하기" onclick="win_open('fundingapply')"></h5></td></tr>
              </c:if>
-             <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
-             <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href=fregupdateForm.dog?id=${fund_no}'"></h5></td>
+             <c:if test="${!empty sessionScope.loginsmem && sessionScope.loginsmem.equals(smem_id)}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
+             <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href=fregupdateForm.dog?id=${param.fund_no}'"></h5></td>
              <td><h5><input type="submit" value="삭제하기"></h5></td></tr>
              </c:if>
 
