@@ -116,7 +116,7 @@ public class MemberController {
 	@GetMapping("vworkMypage")
 	public ModelAndView vworkMypageMain(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		List<Vwork> list = service.getVworkList(id);
+		List<Vwork> list = service.getMyvworkList(id);
 		mav.addObject("type", type);
 		mav.addObject("list", list);
 		return mav;
