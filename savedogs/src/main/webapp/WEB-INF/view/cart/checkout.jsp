@@ -13,8 +13,8 @@
 	#input {
 		width: 100%;
 	}
-	#inputhalf {
-		width: 50%;
+	#input_70 {
+		width: 80%;
 	}
 </style>
 <title>주문 전 상품 목록 보기</title>
@@ -97,7 +97,13 @@
 	<h3 align="left" style="margin-left: 15%;">배송지 정보</h3>
 	<br>
 	<div align="center">
-		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onchange="disp_div()"></td></tr></table>
+		<div align="right">
+			<table style="width: 44%; margin-left:56%; float: right;">
+				<tr>
+					<td align="right">회원정보와 동일<input name="info" type="checkbox" onchange="disp_div()"></td>
+				</tr>
+			</table>
+		</div>
 		<div id = "chkT" class="info">
 			<table>
 				<tr>
@@ -142,10 +148,10 @@
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
 				<tr>
-					<th width="30%">이름</th>
+					<th width="30%">우편번호</th>
 					<td>
-						<form:input path="buy_postcode" id="inputhalf"/>
-						<input class="small_btn" type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
+						<form:input path="buy_postcode" id="input_70"/>
+						<input class="small_btn" type="button" value="찾기" onclick="openDaumZipAddress();">
 					</td>
 				</tr>
 				<tr>
@@ -157,13 +163,13 @@
 				<tr>
 					<th width="30%">상세 주소</th>
 					<td>
-						<form:input path="buy_daddress" />
+						<form:input id="input" path="buy_daddress" />
 					</td>
 				</tr>		
 				<tr>
 					<th width="30%">전화번호</th>
 					<td>
-						<form:input path="buy_tel" />
+						<form:input id="input" path="buy_tel" />
 					</td>
 				</tr>
 			</table>
