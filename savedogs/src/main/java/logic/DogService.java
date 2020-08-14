@@ -162,7 +162,7 @@ public class DogService {
 		}
 		  fundingDao.fundupdate(funding); 
 		}
-		public void fundDelete(int fund_no) {
+		public void fundDelete(String fund_no) {
 			fundingDao.fundDelete(fund_no);		
 		}
 		
