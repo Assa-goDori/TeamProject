@@ -12,20 +12,20 @@
 	$(document).ready(function() {
 		var type = ${type}
 		if(type==1) {
-			$(".tab").removeClass("select");
-			$("#tab1").addClass("select");
+			$(".mytab").removeClass("select");
+			$("#mytab1").addClass("select");
 		} else if(type==2) {
-			$(".tab").removeClass("select");
-			$("#tab2").addClass("select");
+			$(".mytab").removeClass("select");
+			$("#mytab2").addClass("select");
 		} else if(type==3) {
-			$(".tab").removeClass("select");
-			$("#tab3").addClass("select");
+			$(".mytab").removeClass("select");
+			$("#mytab3").addClass("select");
 		} else if(type==4) {
-			$(".tab").removeClass("select");
-			$("#tab4").addClass("select");
+			$(".mytab").removeClass("select");
+			$("#mytab4").addClass("select");
 		} else {
-			$(".tab").removeClass("select");
-			$("#tab5").addClass("select");
+			$(".mytab").removeClass("select");
+			$("#mytab5").addClass("select");
 		}
 		
 	})
@@ -152,18 +152,18 @@
 		<div style="width: 100%;">
 			<table style="width: 100%;">
 				<tr>
-					<td id="tab1" align="center" class="tab" style="width: 20%"><a
+					<td id="mytab1" align="center" class="mytab" style="width: 20%"><a
 						href="memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id }">내정보</a></td>
-					<td id="tab2" align="center" class="tab" style="width: 20%"><a
+					<td id="mytab2" align="center" class="mytab" style="width: 20%"><a
 						href="vworkMypage.dog?type=2&id=${sessionScope.loginmem.member_id }">봉사</a>
 					</td>
-					<td id="tab3" align="center" class="tab" style="width: 20%"><a
+					<td id="mytab3" align="center" class="mytab" style="width: 20%"><a
 						href="fundMypage.dog?type=3&id=${sessionScope.loginmem.member_id }">기부</a>
 					</td>
-					<td id="tab4" align="center" class="tab" style="width: 20%"><a
+					<td id="mytab4" align="center" class="mytab" style="width: 20%"><a
 						href="adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_id }">입양</a>
 					</td>
-					<td id="tab5" align="center" class="tab" style="width: 20%"><a
+					<td id="mytab5" align="center" class="mytab" style="width: 20%"><a
 						href="shopMypage.dog?type=5&id=${sessionScope.loginmem.member_id }">쇼핑</a>
 					</td>
 				</tr>
