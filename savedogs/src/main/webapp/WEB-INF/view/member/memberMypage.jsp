@@ -6,11 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 마이페이지</title>
-
 </head>
 <body>
-		<h3>My Page</h3>
-		<div style="width: 100%;">
+		<div class="main_div" style="width: 100%;">
 			<div id="minfo" class="info" style="width: 100%;">
 				<table>
 					<tr>
@@ -23,8 +21,7 @@
 					</tr>
 					<tr>
 						<th>생년월일</th>
-						<fmt:formatDate var="birth" value="${mem.member_birthday }"
-							pattern="yyyy년MM월dd일" />
+						<fmt:formatDate var="birth" value="${mem.member_birthday }" pattern="yyyy년MM월dd일" />
 						<td>${birth }</td>
 					</tr>
 					<tr>
@@ -42,8 +39,8 @@
 					</tr>
 				</table>
 				<div align="center">
-					<input type="button" value="수정하기" id="updatebtn">
-					<input type="button" value="탈퇴" id="deletebtn">
+					<input type="button" class="s_btn" value="수정하기" onclick="location.href='checkpass.dog?type=1&id=${mem.member_id}'">
+					<input type="button" class="s_btn" value="탈퇴" >
 				</div>
 			</div>
 		</div>

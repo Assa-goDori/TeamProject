@@ -70,11 +70,53 @@ public class VworkController {
 		json.append("]");
 		mav.addObject("json", json.toString().trim());
 		
-		List<Shelter> list = service.getShelterAddress();
+		List<Shelter> list = service.getShelterlist();
 		mav.addObject("list",list);
 		
 		return mav;
 	}
+	
+	@PostMapping("vmain")
+	public ModelAndView vmain2(String shelter_no,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		if(smem != null) {
+			mav.addObject("smem",smem);
+		} else {
+			Member mem = (Member)session.getAttribute("loginmem");
+			mav.addObject("mem",mem);
+		}
+		
+		HashSet<String> hashSet = new HashSet<>(); 
+		System.out.println(shelter_no);
+		if (shelter_no == null || shelter_no.equals("")) {
+			hashSet = service.allvwork();
+		} else {
+			hashSet = service.sheltervwork(shelter_no);
+		}
+		
+		StringBuilder json = new StringBuilder("[");
+		int i = 0;
+		for(String h : hashSet) {
+			json.append("{\"start\":\""+h +"\",");
+			json.append("\"title\":\"봉사신청\",");
+			json.append("\"color\":\"#AAD292\"},");
+			i++;
+		}
+		if(i<hashSet.size()) json.append(",");
+		
+		json.append("]");
+		mav.addObject("json", json.toString().trim());
+	
+		
+		List<Shelter> list = service.getShelterlist();
+		mav.addObject("list",list);
+		
+		mav.addObject("shelter_no",shelter_no);
+		
+		return mav;
+	}
+	
 	
 	@GetMapping("vwrite")
 	public ModelAndView vwriteform(Model model, HttpSession session) {
@@ -109,4 +151,14 @@ public class VworkController {
 		mav.setViewName("redirect:gotoMain.dog");
 		return mav;
 	}
+	
+	@PostMapping("shelterNames")
+	public ModelAndView shelterNames(String goo) {
+		ModelAndView mav = new ModelAndView();
+		List<Shelter> shelters = service.getShelters(goo);
+		mav.addObject("shelters",shelters);
+		mav.setViewName("redirect:vmain.dog");
+		return mav;
+	}
+	
 }

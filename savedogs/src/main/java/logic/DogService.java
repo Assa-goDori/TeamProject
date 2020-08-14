@@ -97,13 +97,28 @@ public class DogService {
 	public List<Shelter> getShelterName(String goo) {
 		return adminDao.getShelterName(goo);
 	}
+	
+	public void memUpdate(Member mem) {
+		memberDao.memUpdate(mem);
+	}
+	
+	public void memPassUpdate(String newpass, String id) {
+		memberDao.memPassUpdate(newpass,id);
+	}
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
 	public Shelter getShelter(String shelter_no) {
 		return shelterDao.getShelter(shelter_no);
 	}
+	
+	public List<Shelter> getShelters(String goo) {
+		return shelterDao.getShelters(goo);
+	}
 
+	public List<Shelter> getShelterlist() {
+		return  shelterDao.getShelterlist();
+	}
 	public void vWrite(Vwork vwork, HttpServletRequest request) {
 		int max = vworkDao.maxno();
 		vwork.setVwork_no(++max);
@@ -114,6 +129,11 @@ public class DogService {
 	public HashSet<String> allvwork() {
 		return vworkDao.allvwork();
 	}
+	
+	public HashSet<String> sheltervwork(String shelter_no) {
+		return vworkDao.sheltervwork(shelter_no);
+	}
+
 		
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -193,9 +213,6 @@ public class DogService {
 			return buylist;
 		}
 
-		
 
-		
-		
 //-------------------쇼핑관련 끝--------------------------------------------------
 }

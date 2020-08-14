@@ -141,5 +141,13 @@ public class Member {
 	public void setMember_type(int member_type) {
 		this.member_type = member_type;
 	}
-		
+	@Override
+	public String toString() {
+		return "Member [member_id=" + member_id + ", member_name=" + member_name + ", member_pass=" + member_pass
+				+ ", member_pass2=" + member_pass2 + ", member_email=" + member_email + ", member_tel=" + member_tel
+				+ ", member_postcode=" + member_postcode + ", member_address=" + member_address + ", member_daddress="
+				+ member_daddress + ", member_birthday=" + member_birthday + ", del_df=" + del_df + ", shelter_no="
+				+ shelter_no + ", file1=" + file1 + ", file2=" + file2 + ", f1=" + f1 + ", f2=" + f2 + ", member_type="
+				+ member_type + "]";
+	}
 }
