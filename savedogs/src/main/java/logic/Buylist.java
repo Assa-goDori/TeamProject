@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Buylist {
 	private int buy_no;
 	private String member_id;
@@ -12,6 +17,7 @@ public class Buylist {
 	private int buy_postcode;
 	private String buy_address;
 	private String buy_daddress;
+	private String buy_tel;
 	private Member member;
 	private List<BuyItem> itemList = new ArrayList<BuyItem>();
 	//getter,setter,toString
