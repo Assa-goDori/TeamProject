@@ -54,6 +54,12 @@ public class Buylist {
 	public int getBuy_postcode() {
 		return buy_postcode;
 	}
+	public String getBuy_tel() {
+		return buy_tel;
+	}
+	public void setBuy_tel(String buy_tel) {
+		this.buy_tel = buy_tel;
+	}
 	public void setBuy_postcode(int buy_postcode) {
 		this.buy_postcode = buy_postcode;
 	}

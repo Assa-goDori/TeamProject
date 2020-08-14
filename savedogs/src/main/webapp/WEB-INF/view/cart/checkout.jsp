@@ -127,12 +127,13 @@
 					<td width="30%">이름</td>
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
-				<!--  <tr>
+				<tr>
+					<td width="30%">이름</td>
 					<td>
-						<form:input path="buy_postcode" style="width:120px;"/>
+						<form:input path="buy_postcode" style="width:110px;"/>
 						<input class="small_btn" type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
 					</td>
-				</tr>-->
+				</tr>
 				<tr>
 					<td width="30%">주소</td>
 					<td>

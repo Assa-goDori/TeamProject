@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,7 +67,9 @@ public class CartController {
 	}
 	
 	@RequestMapping("checkout")	// AOP 클래스에서 첫번째 매개변수를 사용하므로 첫번때 매개변수는 httpsession 이어야함
-	public String checkout(HttpSession session) {
+	public String checkout(HttpSession session,Model model) {
+		Buylist buylist = new Buylist();
+		model.addAttribute(buylist);
 		return null;
 	}
 	
