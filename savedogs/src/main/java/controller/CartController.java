@@ -6,8 +6,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,7 +67,9 @@ public class CartController {
 	}
 	
 	@RequestMapping("checkout")	// AOP 클래스에서 첫번째 매개변수를 사용하므로 첫번때 매개변수는 httpsession 이어야함
-	public String checkout(HttpSession session) {
+	public String checkout(HttpSession session,Model model) {
+		Buylist buylist = new Buylist();
+		model.addAttribute(buylist);
 		return null;
 	}
 	
@@ -81,18 +85,32 @@ public class CartController {
 		mav.addObject("total",total);
 		return mav;
 	}
-//	@RequestMapping("end")
-//	public ModelAndView newend(@Valid Buylist buylist, BindingResult bresult, HttpServletRequest request) {
-//		ModelAndView mav = new ModelAndView("cart/checkout");
-//		if(bresult.hasErrors()) {
-//			mav.getModel().putAll(bresult.getModel());
-//			return mav;
-//		}
-//		Cart cart = (Cart)session.getAttribute("CART");
+	@PostMapping("checkout")
+	public ModelAndView newend(@Valid Buylist buylist, BindingResult bresult, HttpSession session) {
+		ModelAndView mav = new ModelAndView("cart/checkout");
+		if(bresult.hasErrors()) {
+			mav.getModel().putAll(bresult.getModel());
+			return mav;
+		}
+		Cart cart = (Cart)session.getAttribute("cart");
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		buylist.setMember(loginmem);
+		buylist.setMember_id(loginmem.getMember_id());
+		try {
+			Buylist buylist2 =service.checkend2(buylist,cart);
+			mav.setViewName("redirect:login.dog");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		long total = cart.getTotal();
+		session.removeAttribute("CART");
+		mav.addObject("buylist",buylist);
+		mav.addObject("total",total);
+		return mav;
+	}
 //		Member loginmem = (Member)session.getAttribute("loginmem");
-//		buylist = service.checkend(loginmem,cart);
-//
-//		mav.setViewName("redirect:/item/list.dog");
+//		Cart cart = (Cart)session.getAttribute("CART");
+//		Buylist buylist1 = service.checkend2(loginmem,buylist,cart);
 //		return mav;
 //	}
 }
