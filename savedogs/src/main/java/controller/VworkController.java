@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +89,7 @@ public class VworkController {
 		}
 		
 		HashSet<String> hashSet = new HashSet<>(); 
-		System.out.println(shelter_no);
+		
 		if (shelter_no == null || shelter_no.equals("")) {
 			hashSet = service.allvwork();
 		} else {
@@ -158,6 +159,39 @@ public class VworkController {
 		List<Shelter> shelters = service.getShelters(goo);
 		mav.addObject("shelters",shelters);
 		mav.setViewName("redirect:vmain.dog");
+		return mav;
+	}
+	
+	@RequestMapping("vlist")
+	public ModelAndView vlist(String date, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		if(smem != null) {
+			mav.addObject("smem",smem);
+		} else {
+			Member mem = (Member)session.getAttribute("loginmem");
+			mav.addObject("mem",mem);
+		}
+
+		List<Vwork> vworklist = service.vworklist(date); //해당 날짜의 봉사들
+		ArrayList<String> list = new ArrayList(); //지역구, 보호소. 현재인원, 총 인원
+		
+		for (Vwork v : vworklist) {
+			Shelter shelter = service.getShelter(v.getShelter_no());
+			
+			list.add(shelter.getShelter_address());
+			list.add(shelter.getShelter_name());
+			
+			int Nowmem = service.getNowmem(v.getVwork_no());
+			String Nmem = String.valueOf(Nowmem);
+			list.add(Nmem);
+			String Vmem = String.valueOf(v.getVwork_member()); 
+			list.add(Vmem);
+		}
+		int listcnt = service.getListcnt(date);
+		mav.addObject("listcnt",listcnt);
+		mav.addObject("list",list);
+
 		return mav;
 	}
 	

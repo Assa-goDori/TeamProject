@@ -24,4 +24,13 @@ public interface VworkMapper {
 	@Select("select vwork_date from vwork where shelter_no = #{shelter_no}")
 	HashSet<String> sheltervwork(String shelter_no);
 
+	@Select("select * from vwork where vwork_date = #{date}")
+	List<Vwork> vworklist(String date);
+
+	@Select("select count(*) from vworklist where vwork_no = #{vwork_no}")
+	int getNowmem(int vwork_no);
+
+	@Select("select ifnull(max(vwork_no),0) from vwork where vwork_date = #{date}")
+	int getListcnt(String date);
+
 }
