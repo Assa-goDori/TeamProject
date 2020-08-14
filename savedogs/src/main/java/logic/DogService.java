@@ -177,7 +177,7 @@ public class DogService {
 			fundingDao.fundDelete(fund_no);		
 		}
 		
-		public Funding getfundingdetail(int fund_no) {
+		public Funding getfundingdetail(String fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
 			

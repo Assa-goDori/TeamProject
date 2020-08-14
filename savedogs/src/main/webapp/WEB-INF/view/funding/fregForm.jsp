@@ -11,8 +11,9 @@
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
-<body>
+</head> 
+<body> 
+<!-- submit일때 hidden값  -->
  <div style="margin-left: 30%; width:40%;">
 	<h2>후원 모집 등록</h2>
 	<form:form modelAttribute="funding" method="post" action="fregForm.dog" enctype="multipart/form-data">
