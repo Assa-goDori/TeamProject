@@ -238,8 +238,8 @@ public class DogService {
 			}
 			return buylist;
 		}
-
-
+		
+		
 		public Buylist checkend2(@Valid Buylist buylist, Cart cart) {
 			Buylist buylist2 = new Buylist();
 			int buy_no = buylistDao.getMaxSaleid();
@@ -255,6 +255,5 @@ public class DogService {
 			}
 			return buylist2;
 		}
-
 //-------------------쇼핑관련 끝--------------------------------------------------
 }
