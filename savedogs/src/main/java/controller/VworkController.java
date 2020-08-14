@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -174,24 +175,43 @@ public class VworkController {
 		}
 
 		List<Vwork> vworklist = service.vworklist(date); //해당 날짜의 봉사들
-		ArrayList<String> list = new ArrayList(); //지역구, 보호소. 현재인원, 총 인원
+		//ArrayList<String> list = new ArrayList(); //지역구, 보호소. 현재인원, 총 인원
+		ArrayList<Map<String,String>> list = new ArrayList();
 		
 		for (Vwork v : vworklist) {
 			Shelter shelter = service.getShelter(v.getShelter_no());
-			
-			list.add(shelter.getShelter_address());
-			list.add(shelter.getShelter_name());
+			Map<String,String> map = new HashMap();
+			map.put("address",shelter.getShelter_address());
+			map.put("name",shelter.getShelter_name());
 			
 			int Nowmem = service.getNowmem(v.getVwork_no());
 			String Nmem = String.valueOf(Nowmem);
-			list.add(Nmem);
+			map.put("Nmem",Nmem);
 			String Vmem = String.valueOf(v.getVwork_member()); 
-			list.add(Vmem);
+			map.put("Vmem",Vmem);
+			String vno = String.valueOf(v.getVwork_no());
+			map.put("vwork_no",vno);
+			list.add(map);
 		}
 		int listcnt = service.getListcnt(date);
 		mav.addObject("listcnt",listcnt);
 		mav.addObject("list",list);
 
+		return mav;
+	}
+	
+	@GetMapping("vdetail")
+	public ModelAndView vdetail(String vwork_no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		if(smem != null) {
+			mav.addObject("smem",smem);
+		} else {
+			Member mem = (Member)session.getAttribute("loginmem");
+			mav.addObject("mem",mem);
+		}
+		Vwork vwork = service.getVwork(vwork_no);
+		mav.addObject("vwork",vwork);
 		return mav;
 	}
 	

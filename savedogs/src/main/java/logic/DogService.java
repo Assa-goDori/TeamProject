@@ -146,6 +146,11 @@ public class DogService {
 	public int getListcnt(String date) {
 		return vworkDao.getListcnt(date);
 	}
+	
+	public Vwork getVwork(String vwork_no) {		
+		return vworkDao.getVwork(vwork_no);
+	}
+
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
@@ -223,6 +228,7 @@ public class DogService {
 			}
 			return buylist;
 		}
+
 
 		
 

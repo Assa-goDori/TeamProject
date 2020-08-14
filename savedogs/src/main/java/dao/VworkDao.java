@@ -46,4 +46,8 @@ public class VworkDao {
 	public int getListcnt(String date) {
 		return template.getMapper(VworkMapper.class).getListcnt(date);
 	}
+
+	public Vwork getVwork(String vwork_no) {
+		return template.getMapper(VworkMapper.class).getVwork(vwork_no);
+	}
 }
