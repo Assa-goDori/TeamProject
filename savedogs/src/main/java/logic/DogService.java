@@ -163,7 +163,7 @@ public class DogService {
 		  fundingDao.fundupdate(funding); 
 		}
 		public void fundDelete(int fund_no) {
-			fundingDao.funddelete(fund_no);		
+			fundingDao.fundDelete(fund_no);		
 		}
 		
 		public Funding getfundingdetail(int fund_no) {

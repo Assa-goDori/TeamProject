@@ -42,7 +42,7 @@ public class FundingDao {
 	 template.getMapper(FundingMapper.class).fundupdate(funding);
 		}
 	 
-	 public void funddelete(int fund_no) {
+	 public void fundDelete(Integer fund_no) {
 		 param.clear();
 		 param.put("fund_no",fund_no);
 		 template.getMapper(FundingMapper.class).funddelete(param);
