@@ -20,7 +20,8 @@
 <body>
 
 <div style="margin-left: 25%; width:60%;">
- <form:form modelAttribute="funding" method="post" action="delete.dog" enctype="multipart/form-data">
+ <form:form modelAttribute="funding" method="post" action="delete.dog">
+<input type="hidden" value="${param.fund_no}">
  <table class="w3-table" style="width:1000px">
 
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->

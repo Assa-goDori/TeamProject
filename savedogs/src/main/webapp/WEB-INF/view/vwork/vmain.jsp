@@ -9,6 +9,7 @@
 <!-- calendar 관련 -->
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
 
 <link href='${path }/js/packages/core/main.css' rel='stylesheet' />
 <link href='${path }/js/packages/daygrid/main.css' rel='stylesheet' />
@@ -16,6 +17,8 @@
 <script src='${path }/js/packages/core/main.js'></script>
 <script src='${path }/js/packages/daygrid/main.js'></script>
 <script src='${path }/js/packages/interaction/main.js'></script>
+
+
 
 
 <script type="text/javascript">
@@ -95,7 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		},
 		eventClick: function(info) { //이벤트 클릭
 			info.jsEvent.preventDefault();
-			window.location.href = "vjoin.dog?date="+info.event.start; //dateformat 필요
+			var date = moment(info.event.start).format('YYYY-MM-DD');
+			window.location.href = "vlist.dog?date="+date; //dateformat 필요
 		}, 
 		select: function(info) { //클릭
 			if(${smem != null}){

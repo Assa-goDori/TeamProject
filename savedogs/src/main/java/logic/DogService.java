@@ -134,7 +134,18 @@ public class DogService {
 		return vworkDao.sheltervwork(shelter_no);
 	}
 
+
+	public List<Vwork> vworklist(String date) {
+		return vworkDao.vworklist(date);
+	}
 		
+	public int getNowmem(int Vno) {
+		return vworkDao.getNowmem(Vno);
+	}
+	
+	public int getListcnt(String date) {
+		return vworkDao.getListcnt(date);
+	}
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
@@ -212,6 +223,11 @@ public class DogService {
 			}
 			return buylist;
 		}
+
+		
+
+		
+
 
 
 //-------------------쇼핑관련 끝--------------------------------------------------
