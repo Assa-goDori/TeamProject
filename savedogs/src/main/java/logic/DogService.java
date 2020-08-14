@@ -113,8 +113,8 @@ public class DogService {
 		memberDao.memPassUpdate(newpass,id);
 	}
 	
-	public List<Vwork> getVworkList(String id) {
-		return vworklistDao.getVworkList(id);
+	public List<Vwork> getMyvworkList(String id) {
+		return vworklistDao.getMyvworkList(id);
 	}
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -239,14 +239,7 @@ public class DogService {
 			return buylist;
 		}
 
-<<<<<<< HEAD
 
-		
-
-		
-
-
-=======
 		public Buylist checkend2(@Valid Buylist buylist, Cart cart) {
 			Buylist buylist2 = new Buylist();
 			int buy_no = buylistDao.getMaxSaleid();
@@ -262,7 +255,6 @@ public class DogService {
 			}
 			return buylist2;
 		}
->>>>>>> 6f7ca500f939200677635a572e6f362c5f27f035
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 }
