@@ -8,24 +8,31 @@
 <title>키워드 검색</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <style>
-	select {
-		margin: 5px;
-	}
+hr {
+	width: 100%;
+}
+
+.nb {
+	text-align: left;
+	font-size: 25px;
+	padding-left: 100px;
+}
+
+.array {
+	text-align: left;
+	padding-left: 100px;
+}
 </style>
 
 </head>
 <body>
 	<div>
-		<h2>키워드 검색</h2>
+		<h2 class="array">&nbsp;키워드 검색</h2>
 		<br>
-		<br>
-		<table>
-			<tr>
-				<th><h3>상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></th>
-				<th><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;품종</h3></th>
-			</tr>
-		</table>
-		<form action="amain.dog" method="POST" name="keyword">
+		<div class="nb">
+			&nbsp;상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;품종
+		</div>
+		<form class="array" action="amain.dog" method="POST" name="keyword">
 			<select name="state" onchange="this.form.submit()">
 				<option value="">전체</option>
 				<option value="notice">공고중</option>
@@ -214,7 +221,7 @@
 		</form>
 		<div id="tag"></div>
 		<hr>
-		<div>
+		<div class="array">
 			<span id="deadline" onmouseover="this.style.fontWeight='bold'"
 				onmouseout="this.style.fontWeight=''" onclick="">공고
 				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="registration"
@@ -225,8 +232,9 @@
 		<c:forEach var="item" items="${go}">
 			<div
 				style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-				<a class="imghover"><img src="${item.popfile}" style="width: 350px; height: 350px;"></a>
-				<br> ${item.processState} &nbsp; ${item.kindCd} <br>
+				<a class="imghover"><img src="${item.popfile}"
+					style="width: 350px; height: 350px;"></a> <br>
+				${item.processState} &nbsp; ${item.kindCd} <br>
 			</div>
 		</c:forEach>
 		<div>
