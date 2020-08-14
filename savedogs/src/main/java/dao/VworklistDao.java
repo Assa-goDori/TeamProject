@@ -17,9 +17,9 @@ public class VworklistDao {
 	private SqlSessionTemplate template;
 	private Map<String, String> param = new HashMap<>();
 
-	public List<Vwork> getVworkList(String id) {
+	public List<Vwork> getMyvworkList(String id) {
 		param.clear();
 		param.put("id", id);
-		return template.getMapper(vworklistMapper.class).getVworkList(id);
+		return template.getMapper(vworklistMapper.class).getMyvworkList(id);
 	}
 }
