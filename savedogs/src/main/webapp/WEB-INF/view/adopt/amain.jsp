@@ -23,7 +23,8 @@ hr {
 	padding-left: 100px;
 }
 </style>
-
+<script>
+</script>
 </head>
 <body>
 	<div>
@@ -219,12 +220,12 @@ hr {
 				keyword.kind.value = "${param.kind}";
 			</script>
 		</form>
-		<div id="tag"></div>
 		<hr>
 		<div class="array">
 			<span id="deadline" onmouseover="this.style.fontWeight='bold'"
 				onmouseout="this.style.fontWeight=''" onclick="">공고
-				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="registration"
+				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+			<span id="registration"
 				onmouseover="this.style.fontWeight='bold'"
 				onmouseout="this.style.fontWeight=''" onclick="">최근 등록순</span>
 		</div>
@@ -232,7 +233,7 @@ hr {
 		<c:forEach var="item" items="${go}">
 			<div
 				style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-				<a class="imghover"><img src="${item.popfile}"
+				<a href="adetail.dog?desertionNo=${item.desertionNo}" class="imghover"><img src="${item.popfile}"
 					style="width: 350px; height: 350px;"></a> <br>
 				${item.processState} &nbsp; ${item.kindCd} <br>
 			</div>
