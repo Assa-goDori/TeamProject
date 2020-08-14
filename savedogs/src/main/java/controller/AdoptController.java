@@ -23,7 +23,7 @@ public class AdoptController {
 		System.out.println("state :" + state);
 		System.out.println("kind :" + kind);
 
-		List<Adopt> go = ApiExplorer.getDogJson(state, kind);
+		List<Adopt> go = ApiExplorer.getDogsJson(state, kind);
 		mav.addObject("go", go);
 
 		mav.setViewName("/adopt/amain");
@@ -46,7 +46,7 @@ public class AdoptController {
 		System.out.println("state :" + state);
 		System.out.println("kind :" + kind);
 		try {
-			List<Adopt> go = ApiExplorer.getDogJson(state, kind);
+			List<Adopt> go = ApiExplorer.getDogsJson(state, kind);
 			mav.addObject("go", go);
 			mav.setViewName("/adopt/amain");
 		} catch (Exception e) {
@@ -54,6 +54,14 @@ public class AdoptController {
 			String message = "검색결과가 없습니다.";
 			mav.addObject("message", message);
 		}
+		return mav;
+	}
+
+	@RequestMapping("adetail")
+	public ModelAndView detail(String desertionNo) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		Adopt go = ApiExplorer.getDogJson(desertionNo);
+		mav.addObject("go", go);
 		return mav;
 	}
 
