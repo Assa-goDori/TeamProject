@@ -159,6 +159,9 @@ public class DogService {
 		return vworkDao.getVwork(vwork_no);
 	}
 
+	public List<Vwork> getVlist(String date) {
+		return vworkDao.getVlist(date);
+	}
 
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -254,4 +257,6 @@ public class DogService {
 			return buylist2;
 		}
 //-------------------쇼핑관련 끝--------------------------------------------------
+
+	
 }

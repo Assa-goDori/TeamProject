@@ -174,7 +174,7 @@ public class VworkController {
 			mav.addObject("mem",mem);
 		}
 
-		List<Vwork> vworklist = service.vworklist(date); //해당 날짜의 봉사들
+		List<Vwork> vworklist = service.getVlist(date); //해당 날짜의 봉사들
 		//ArrayList<String> list = new ArrayList(); //지역구, 보호소. 현재인원, 총 인원
 		ArrayList<Map<String,String>> list = new ArrayList();
 		
