@@ -28,7 +28,7 @@ public class ApiExplorer {
 		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" 
 				+ URLEncoder.encode("1", "UTF-8")); // pageNo : 페이지 번호(1)
 		*/
-		if(state == null) {
+		if(state == null || state.equals("")) {
 			state = "null";
 			urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
 					+ URLEncoder.encode(state, "UTF-8")); // state : 상태
@@ -42,7 +42,7 @@ public class ApiExplorer {
 					+ URLEncoder.encode(kind, "UTF-8")); // kind : 품종
 		}
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-				+ URLEncoder.encode("17", "UTF-8")); // numOfRows : 페이지당 보여줄 개수(4*4 = 16)
+				+ URLEncoder.encode("1000", "UTF-8")); // numOfRows : 페이지당 보여줄 개수(4*4 = 16)
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); // json으로 받음
 		System.out.println(urlBuilder);
@@ -92,7 +92,7 @@ public class ApiExplorer {
 		
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>(){}.getType());
 		for(Adopt adopt : list) {
-			System.out.println(adopt);
+//			System.out.println(adopt);
 			adopt.setKindCd(adopt.getKindCd().substring(4));
 		}
 		

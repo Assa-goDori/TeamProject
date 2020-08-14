@@ -47,7 +47,7 @@ public interface FundingMapper {
 	List<Funding> select(Map<String, Object> param);
 
     
-    @Delete( "delete from funding where fund_no = #{fund_no} ") 
+    @Delete( " delete from funding where fund_no = #{fund_no} ") 
 	void funddelete(Map<String, Object> param);
 	 
 	/*  //shelter_name 가져오기 shelter_no 겹침

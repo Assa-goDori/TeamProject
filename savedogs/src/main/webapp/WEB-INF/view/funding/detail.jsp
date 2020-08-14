@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기부상세</title>
+
 <!-- <link rel='stylesheet' href='../css/savedogs_main.css' /> -->
 <script type="text/javascript">
 
@@ -19,7 +20,10 @@
 <body>
 
 <div style="margin-left: 25%; width:60%;">
+ <form:form modelAttribute="funding" method="post" action="delete.dog">
+<input type="hidden" value="${param.fund_no}">
  <table class="w3-table" style="width:1000px">
+
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
         <tr><td rowspan="4"><img src="${picture}" style="width:150%;" alt="후원 배너 사진"></td>
           <td colspan='2'>"${funding_subject}"</td></tr>
@@ -32,9 +36,12 @@
              </c:if>
              <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
              <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href=fregupdateForm.dog?id=${fund_no}'"></h5></td>
-             <td><h5><input type="button" value="삭제하기" onclick="location.href='delete.dog?id=${fund_no}'"></h5></td></tr>
+             <td><h5><input type="submit" value="삭제하기"></h5></td></tr>
              </c:if>
+
         </table>    
+                </form:form>
+        
         <hr>
         <!-- 댓글 작성칸 -->
        

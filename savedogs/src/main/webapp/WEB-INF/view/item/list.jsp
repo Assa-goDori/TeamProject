@@ -47,7 +47,11 @@
             	   	<div class="meta">
             	   		<a href="detail.dog?item_no=${item.item_no}" class="meta-categories text-primary">${item.item_name}</a>
             	   	</div>
-            	   	<h3 class="post-title"><a href="detail.dog?item_no=${item.item_no}" class="title">${item.item_price}</a></h3>
+            	   	<h3 class="post-title">
+            	   		<a href="detail.dog?item_no=${item.item_no}" class="title">
+            	   			<fmt:formatNumber pattern="#,###원" value="${item.item_price}"/>
+            	   		</a>
+            	   	</h3>
             	</div>
 			</div>
 		</c:forEach>

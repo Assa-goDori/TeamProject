@@ -58,8 +58,13 @@ public class FundingController {
   		mav.setViewName("redirect:/funding/fregForm.dog?id="+funding.getFund_no());
   		return mav;
   	}
-      
-	
+	@PostMapping("delete")
+	public ModelAndView fundDelete(Integer fund_no) {
+		ModelAndView mav = new ModelAndView();
+		service.fundDelete(fund_no);
+		mav.setViewName("redirect:/funding/list.shop");
+		return mav;		
+	}	
 	 @RequestMapping("list") // /item/list.shop
 	  public ModelAndView list() {
 	  ModelAndView mav = new ModelAndView(); 
