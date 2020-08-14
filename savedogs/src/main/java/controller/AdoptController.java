@@ -18,7 +18,7 @@ public class AdoptController {
 	@GetMapping("amain")
 	public ModelAndView main1(Adopt adopt) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String state = "notice";
+		String state = "";
 		String kind = null;
 		System.out.println("state :" + state);
 		System.out.println("kind :" + kind);
