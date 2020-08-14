@@ -18,7 +18,21 @@ public class Vwork {
 	private int vwork_member;
 	@NotEmpty(message="설명을 입력해주세요")
 	private String vwork_content;
+	private String shelter_name;
+	private String shelter_address;
 	
+	public String getShelter_address() {
+		return shelter_address;
+	}
+	public void setShelter_address(String shelter_address) {
+		this.shelter_address = shelter_address;
+	}
+	public String getShelter_name() {
+		return shelter_name;
+	}
+	public void setShelter_name(String shelter_name) {
+		this.shelter_name = shelter_name;
+	}
 	public int getVwork_no() {
 		return vwork_no;
 	}

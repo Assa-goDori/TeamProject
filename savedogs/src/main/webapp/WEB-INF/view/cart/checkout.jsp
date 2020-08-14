@@ -10,33 +10,21 @@
 <script>
 	$(document).ready(function(){
 		$("#chkF").show();
-		$("#chkF").hide();
+		$("#chkT").hide();
 	})
-	function disp_div(id,tab){
-		$(".info").each(function(){
-			$(this).hide();
-		})
-		$("#"+id).show();
-	}
-	$(function() {
-		$("#alert-success").hide();
-		$("#alert-danger").hide();
-		$("#member_pass2").keyup(function() {
-			var pass=$("#member_pass").val();
-			var pass2=$("#member_pass2").val();
-			if(pass != "" || pass2 != "") {
-				if(pass == pass2) {
-					$("#alert-success").show();
-					$("#alert-danger").hide();
-					$("#submit").removeAttr("disabled");
-				} else {
-					$("#alert-success").hide();
-					$("#alert-danger").show();
-					$("#submit").attr("disabled", "disabled");
-				}
-			}
-		});
-	})
+	function disp_div(){
+		if($("input:checkbox[name='info']").is(":checked")){
+			$(".info").each(function(){
+				$(this).hide();
+			})
+			$("#chkT").show();
+		}else{
+			$(".info").each(function(){
+				$(this).hide();
+			})
+			$("#chkF").show();
+		}
+	}	
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete: function(data) {
@@ -61,9 +49,9 @@
                 } else {
                    //document.getElementById("member_daddress").value = '';
                 }
-                document.getElementById('member_postcode').value = data.zonecode;
-                document.getElementById("member_address").value = addr + extraAddr;
-                document.getElementById("member_daddress").focus();
+                document.getElementById('buy_postcode').value = data.zonecode;
+                document.getElementById("buy_address").value = addr + extraAddr;
+                document.getElementById("buy_daddress").focus();
             }
         }).open();
 	}
@@ -95,7 +83,7 @@
 	<h3 align="left" style="margin-left: 15%;">배송지 정보</h3>
 	<br>
 	<div align="center">
-		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onclick=""></td></tr></table>
+		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onchange="disp_div()"></td></tr></table>
 		<div id = "chkT" class="info">
 			<table>
 				<tr>
@@ -112,15 +100,15 @@
 				</tr>
 				<tr>
 					<td width="30%">주소</td>
-					<td width="70%">${sessionScope.loginmem.member_address}"</td>
+					<td width="70%">${sessionScope.loginmem.member_address}</td>
 				</tr>
 				<tr>
 					<td width="30%">상세 주소</td>
-					<td width="70%">${sessionScope.loginmem.member_daddress}"</td>
+					<td width="70%">${sessionScope.loginmem.member_daddress}</td>
 				</tr>		
 				<tr>
 					<td width="30%">전화번호</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_tel}"></td>
+					<td width="70%">${sessionScope.loginmem.member_tel}</td>
 				</tr>
 			</table>
 			<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
@@ -140,34 +128,28 @@
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
 				<tr>
-					<td width="30%">우편번호</td>	
-					<td width="70%"> &nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
+					<td width="30%">이름</td>
+					<td>
+						<form:input path="buy_postcode" style="width:110px;"/>
+						<input class="small_btn" type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
+					</td>
 				</tr>
 				<tr>
 					<td width="30%">주소</td>
 					<td>
-						<form:input path="member_address" />
-						<font color="red">
-							<form:errors path="member_address" />
-						</font>
+						<form:input path="buy_address" />
 					</td>
 				</tr>
 				<tr>
 					<td width="30%">상세 주소</td>
 					<td>
-						<form:input path="member_address" />
-						<font color="red">
-							<form:errors path="member_address" />
-						</font>
+						<form:input path="buy_daddress" />
 					</td>
 				</tr>		
 				<tr>
 					<td width="30%">전화번호</td>
 					<td>
-						<form:input path="member_address" />
-						<font color="red">
-							<form:errors path="member_address" />
-						</font>
+						<form:input path="buy_tel" />
 					</td>
 				</tr>
 			</table>

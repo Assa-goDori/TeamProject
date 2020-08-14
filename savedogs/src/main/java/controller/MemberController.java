@@ -19,6 +19,7 @@ import exception.VworkException;
 import logic.DogService;
 import logic.Member;
 import logic.Shelter;
+import logic.Vwork;
 import util.MemberValidator;
 
 @Controller
@@ -115,10 +116,9 @@ public class MemberController {
 	@GetMapping("vworkMypage")
 	public ModelAndView vworkMypageMain(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		Member mem = service.getMember(id);
-		
+		List<Vwork> list = service.getVworkList(id);
 		mav.addObject("type", type);
-		mav.addObject("mem", mem);
+		mav.addObject("list", list);
 		return mav;
 	}
 	
@@ -197,6 +197,7 @@ public class MemberController {
 				  session.setAttribute("loginmem", dbmem);
 			  } else if (type == 1) {
 				  session.setAttribute("loginsmem", dbmem);
+				  System.out.println(service.getShelter(dbmem.getShelter_no()).getShelter_name());
 				  session.setAttribute("smemName", service.getShelter(dbmem.getShelter_no()).getShelter_name());
 			  }
 			  mav.setViewName("redirect:../main.dog");
