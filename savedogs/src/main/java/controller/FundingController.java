@@ -59,7 +59,7 @@ public class FundingController {
   		return mav;
   	}
 	@PostMapping("delete")
-	public ModelAndView fundDelete(int fund_no) {
+	public ModelAndView fundDelete(Integer fund_no) {
 		ModelAndView mav = new ModelAndView();
 		service.fundDelete(fund_no);
 		mav.setViewName("redirect:/funding/list.shop");
