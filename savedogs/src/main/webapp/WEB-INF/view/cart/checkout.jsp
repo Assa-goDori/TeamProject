@@ -3,31 +3,42 @@
 <%--/webapp/WEB-INF/view/cart/checkout.jsp --%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
+<style type="text/css">
+	th{
+		background-color: #eaeaea;
+	}
+	th,td{
+		border: 1px solid #e0e0e0; 
+	}
+	#input {
+		width: 100%;
+	}
+	#inputhalf {
+		width: 50%;
+	}
+</style>
 <title>주문 전 상품 목록 보기</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js?autoload=false"></script>
 <script>
-	$(function() {
-		$("#alert-success").hide();
-		$("#alert-danger").hide();
-		$("#member_pass2").keyup(function() {
-			var pass=$("#member_pass").val();
-			var pass2=$("#member_pass2").val();
-			if(pass != "" || pass2 != "") {
-				if(pass == pass2) {
-					$("#alert-success").show();
-					$("#alert-danger").hide();
-					$("#submit").removeAttr("disabled");
-				} else {
-					$("#alert-success").hide();
-					$("#alert-danger").show();
-					$("#submit").attr("disabled", "disabled");
-				}
-			}
-		});
-	});
-
+	$(document).ready(function(){
+		$("#chkF").show();
+		$("#chkT").hide();
+	})
+	function disp_div(){
+		if($("input:checkbox[name='info']").is(":checked")){
+			$(".info").each(function(){
+				$(this).hide();
+			})
+			$("#chkT").show();
+		}else{
+			$(".info").each(function(){
+				$(this).hide();
+			})
+			$("#chkF").show();
+		}
+	}	
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete: function(data) {
@@ -52,9 +63,9 @@
                 } else {
                    //document.getElementById("member_daddress").value = '';
                 }
-                document.getElementById('member_postcode').value = data.zonecode;
-                document.getElementById("member_address").value = addr + extraAddr;
-                document.getElementById("member_daddress").focus();
+                document.getElementById('buy_postcode').value = data.zonecode;
+                document.getElementById("buy_address").value = addr + extraAddr;
+                document.getElementById("buy_daddress").focus();
             }
         }).open();
 	}
@@ -75,79 +86,92 @@
 		<tr><th>상품명</th><th>상품코드</th><th>가격</th><th>수량</th></tr>
 		<c:forEach items="${sessionScope.CART.itemSetList}" var="itemSet" varStatus="stat">
 			<tr>
-				<td align="center">${itemSet.item.item_name}</td><td align="center">${itemSet.item.item_code}</td><td align="center">${itemSet.item.item_price*itemSet.item_each}</td>
-				<td align="center">${itemSet.item_each}</td>
+				<td style="text-align: center;">${itemSet.item.item_name}</td><td style="text-align: center;">${itemSet.item.item_code}</td><td style="text-align: center;">${itemSet.item.item_price*itemSet.item_each}</td>
+				<td style="text-align: center;">${itemSet.item_each}</td>
 			</tr>
 		</c:forEach>
 	</table>
 	</div>
 	<br>
 	<hr>
-	<form>
 	<h3 align="left" style="margin-left: 15%;">배송지 정보</h3>
 	<br>
 	<div align="center">
-		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onclick=""></td></tr></table>
-		<div class = "chkT">
+		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onchange="disp_div()"></td></tr></table>
+		<div id = "chkT" class="info">
 			<table>
 				<tr>
-					<td width="30%">아이디</td>
-					<td width="70%">${sessionScope.loginmem.member_id}</td>
+					<th width="30%">아이디</th>
+					<td width="70%">${sessionScope.loginmem.member_id}</td>		
 				</tr>
 				<tr>
-					<td width="30%">이름</td>
+					<th width="30%">이름</th>
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
 				<tr>
-					<td width="30%">우편번호</td>	
-					<td width="70%"><fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기" readonly="readonly"></td>
+					<th width="30%">우편번호</th>	
+					<td width="70%"><fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
 				</tr>
 				<tr>
-					<td width="30%">주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_address}"></td>
+					<th width="30%">주소</th>
+					<td width="70%">${sessionScope.loginmem.member_address}</td>
 				</tr>
 				<tr>
-					<td width="30%">상세 주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_daddress}"></td>
+					<th width="30%">상세 주소</th>
+					<td width="70%">${sessionScope.loginmem.member_daddress}</td>
 				</tr>		
 				<tr>
-					<td width="30%">전화번호</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_tel}"></td>
+					<th width="30%">전화번호</th>
+					<td width="70%">${sessionScope.loginmem.member_tel}</td>
 				</tr>
 			</table>
+			<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
+			<input type="button" value="주문 완료" onclick="location.href='end.dog'">
+			<input type="button" value="취소" onclick="location.href='../item/list.dog'">
 		</div>
-		<div class="chkF">
+		<form:form modelAttribute="buylist" method="post" action="end.dog">
+		<input type="hidden" value="${sessionScope.loginmem.member_id}">
+		<div id="chkF" class="info">
 			<table>
 				<tr>
-					<td width="30%">아이디</td>
+					<th width="30%">아이디</th>
 					<td width="70%">${sessionScope.loginmem.member_id}</td>
 				</tr>
 				<tr>
-					<td width="30%">이름</td>
+					<th width="30%">이름</th>
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
 				<tr>
-					<td width="30%">우편번호</td>	
-					<td width="70%"><input style="width: 50%;" value=<fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
+					<th width="30%">이름</th>
+					<td>
+						<form:input path="buy_postcode" id="inputhalf"/>
+						<input class="small_btn" type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
+					</td>
 				</tr>
 				<tr>
-					<td width="30%">주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_address}"></td>
+					<th width="30%">주소</th>
+					<td>
+						<form:input id="input" path="buy_address"/>
+					</td>
 				</tr>
 				<tr>
-					<td width="30%">상세 주소</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_daddress}"></td>
+					<th width="30%">상세 주소</th>
+					<td>
+						<form:input path="buy_daddress" />
+					</td>
 				</tr>		
 				<tr>
-					<td width="30%">전화번호</td>
-					<td width="70%"><input value="${sessionScope.loginmem.member_tel}"></td>
+					<th width="30%">전화번호</th>
+					<td>
+						<form:input path="buy_tel" />
+					</td>
 				</tr>
 			</table>
+		<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
+		<input type="submit" value="주문 완료">
+		<input type="button" value="취소" onclick="location.href='../item/list.dog'">
+		</form:form>
 		</div>
 	</div>
-	<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
-	<input type="button" value="주문 완료" onclick="location.href='end.dog'">
-	<input type="button" value="취소" onclick="location.href='../item/list.dog'">
-	</form>
 </div>	
 </body></html>
