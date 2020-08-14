@@ -34,4 +34,16 @@ public class VworkDao {
 	public HashSet<String> sheltervwork(String shelter_no) {
 		return template.getMapper(VworkMapper.class).sheltervwork(shelter_no);
 	}
+
+	public List<Vwork> vworklist(String date) {
+		return template.getMapper(VworkMapper.class).vworklist(date);
+	}
+
+	public int getNowmem(int Vno) {
+		return template.getMapper(VworkMapper.class).getNowmem(Vno);
+	}
+
+	public int getListcnt(String date) {
+		return template.getMapper(VworkMapper.class).getListcnt(date);
+	}
 }
