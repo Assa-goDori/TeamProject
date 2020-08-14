@@ -88,7 +88,35 @@
 	<br>
 	<div align="center">
 		<table style="width: 100%;"><tr><td align="right">회원정보와 동일<input name="info" type="checkbox" onclick=""></td></tr></table>
-		<div>
+		<div class = "chkT">
+			<table>
+				<tr>
+					<td width="30%">아이디</td>
+					<td width="70%">${sessionScope.loginmem.member_id}</td>
+				</tr>
+				<tr>
+					<td width="30%">이름</td>
+					<td width="70%">${sessionScope.loginmem.member_name }</td>
+				</tr>
+				<tr>
+					<td width="30%">우편번호</td>	
+					<td width="70%"><fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td width="30%">주소</td>
+					<td width="70%"><input value="${sessionScope.loginmem.member_address}"></td>
+				</tr>
+				<tr>
+					<td width="30%">상세 주소</td>
+					<td width="70%"><input value="${sessionScope.loginmem.member_daddress}"></td>
+				</tr>		
+				<tr>
+					<td width="30%">전화번호</td>
+					<td width="70%"><input value="${sessionScope.loginmem.member_tel}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="chkF">
 			<table>
 				<tr>
 					<td width="30%">아이디</td>
