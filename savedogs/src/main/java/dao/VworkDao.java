@@ -35,15 +35,19 @@ public class VworkDao {
 		return template.getMapper(VworkMapper.class).sheltervwork(shelter_no);
 	}
 
-	public List<Vwork> vworklist(String date) {
-		return template.getMapper(VworkMapper.class).vworklist(date);
-	}
-
 	public int getNowmem(int Vno) {
 		return template.getMapper(VworkMapper.class).getNowmem(Vno);
 	}
 
 	public int getListcnt(String date) {
 		return template.getMapper(VworkMapper.class).getListcnt(date);
+	}
+
+	public Vwork getVwork(String vwork_no) {
+		return template.getMapper(VworkMapper.class).getVwork(vwork_no);
+	}
+
+	public List<Vwork> getVlist(String date) {
+		return template.getMapper(VworkMapper.class).getVlist(date);
 	}
 }

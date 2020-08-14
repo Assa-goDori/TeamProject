@@ -6,32 +6,55 @@
 <meta charset="UTF-8">
 <title>구해독 : 봉사 목록</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
+<style type="text/css">
+.vlistdiv{
+	padding: 30px;
+}
+.btn_th{
+	width: 260px;
+}
+th{
+	width: 200px;
+	padding: 15px;
+	font-size: 22px;
+}
+td{
+	text-align: center;
+}
+
+
+</style>
 </head>
 <body>
 <div class="main_div">
 	<h2>봉사 신청</h2>
 	<hr>
-	<table><tr><th>보호소 선택</th><th>></th><th>최종 신청</th></tr></table>
+	<table class="sel_table"><tr><th>보호소 선택</th><th>></th><th style="color: #AAAAAA;">최종 신청</th></tr></table>
 	
-	<div>
-		<div>
-			날짜 : <input type="date" value="${param.date }">
+	<div class="vlistdiv">
+		<div class="vlistdiv">
+			날짜&nbsp;:&nbsp;&nbsp;<input type="date" value="${param.date }">
+			<input type="button" class="small_btn" value="검색"> 
 		</div>
-		<div>
+		<div class="vlistdiv">
 			<table>
 			<c:if test="${listcnt > 0 }"> 
-				<tr><th>no</th><th>지역</th><th>보호소</th><th>모집인원</th><th>&nbsp;</th></tr>
-				<c:forEach var="vwork" items="${vworklist }">
-				<tr><td>${vworkno}</td><c:set var="vworkno" value="${vworkno-1 }"/>
-					<td>지역구</td>
-					<td>보호소명</td>
-					<td>/${vwork.vwork_member }</td>
+				<tr><th>no</th><th>지역</th><th>보호소</th><th>모집인원</th><th class="btn_th">&nbsp;</th></tr>
+				
+				<c:forEach var="vwork" items="${list }" varStatus="stat">
+				<tr>
+					<td>${stat.count}</td>
+					<td>${vwork.address }</td>
+					<td>${vwork.name }</td>
+					<td>${vwork.Nmem }/${vwork.Vmem }</td>
+					
 					<td>
-						<input type="button" value="상세보기">
-						<input type="button" value="신청">
+						<input type="button" class="g_btn" value="상세보기" onclick="location.href='vdetail.dog?vwork_no=${vwork.vwork_no}'">
+						<input type="button" class="s_btn" value="신청" onclick="location.href='vjoin.dog?vwork_no=${vwork.vwork_no}'">
 					</td>
 				</tr>
 				</c:forEach>
+					
 			</c:if>
 			<c:if test="${listcnt == 0 }"> 
 				<tr><td colspan="5">해당 날짜 봉사활동이 없습니다.</td></tr>

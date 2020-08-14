@@ -42,22 +42,17 @@ public interface FundingMapper {
 
     @Select({"<script>" ,
     		"select * from funding",
-    		"<if test='fund_no != null'> where fund_no=#{fund_no} </if>",
+    		"<if test='fund_no != null'> where fund_no=${fund_no} </if>",
     		"</script>"})
 	List<Funding> select(Map<String, Object> param);
 
     
-    @Delete( " delete from funding where fund_no = ${fund_no} ") 
+    @Delete( "delete from funding where fund_no = ${fund_no}") 
 	void funddelete(Map<String, Object> param);
 	 
 	/*  //shelter_name 가져오기 shelter_no 겹침
 	 * @Select({"<script>" "select shelter_name, "<if test='shelter_no != null'> }
 	 */
     
-  
-
-	       		
-
 	  }
-
 
