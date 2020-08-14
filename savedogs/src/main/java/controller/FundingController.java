@@ -61,6 +61,7 @@ public class FundingController {
 	@PostMapping("delete")
 	public ModelAndView fundDelete(String fund_no) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(fund_no);
 		service.fundDelete(fund_no);
 		mav.setViewName("redirect:/funding/list.dog");
 		return mav;		
