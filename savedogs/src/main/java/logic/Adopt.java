@@ -28,7 +28,7 @@ public class Adopt {
 	private String age; // 나이
 	private String weight; // 체중
 	private String noticeNo; // 공고 번호
-	private String noticeSdt; // 공고 시작일
+	private int noticeSdt; // 공고 시작일
 	private String noticeEdt; // 공고 종료일
 	private String popfile; // image
 	private String processState; // 상태
@@ -133,7 +133,7 @@ public class Adopt {
 		return noticeNo;
 	}
 
-	public String getNoticeSdt() {
+	public int getNoticeSdt() {
 		return noticeSdt;
 	}
 
@@ -282,7 +282,7 @@ public class Adopt {
 		this.noticeNo = noticeNo;
 	}
 
-	public void setNoticeSdt(String noticeSdt) {
+	public void setNoticeSdt(int noticeSdt) {
 		this.noticeSdt = noticeSdt;
 	}
 
