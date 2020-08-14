@@ -20,6 +20,7 @@ import dao.ItemDao;
 import dao.MemberDao;
 import dao.ShelterDao;
 import dao.VworkDao;
+import dao.VworklistDao;
 
 @Service
 public class DogService {
@@ -39,6 +40,8 @@ public class DogService {
 	private BuylistDao buylistDao;
 	@Autowired
 	private BuyitemDao buyitemDao;
+	@Autowired
+	private VworklistDao vworklistDao;
 	
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
@@ -77,7 +80,11 @@ public class DogService {
 			shelter.setShelter_address(me.getValue().toString().split("=")[1].substring(0, me.getValue().toString().split("=")[1].indexOf("}")));
 			shelter.setShelter_tel(" ");
 			//System.out.println("보호소 코드 : " + me.getKey() + " 보호소명 : " + me.getValue().toString().split("=")[0].substring(1) + " 지역구 : " + me.getValue().toString().split("=")[1].substring(0, me.getValue().toString().split("=")[1].indexOf("}")) + "<br>");
-			adminDao.insert(shelter);
+			try {
+			    adminDao.insert(shelter);
+			} catch (Exception e) {
+//				adminDao.update(shelter);
+			}
 		}
 	}
 
@@ -104,6 +111,10 @@ public class DogService {
 	
 	public void memPassUpdate(String newpass, String id) {
 		memberDao.memPassUpdate(newpass,id);
+	}
+	
+	public List<Vwork> getVworkList(String id) {
+		return vworklistDao.getVworkList(id);
 	}
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -223,12 +234,5 @@ public class DogService {
 			}
 			return buylist;
 		}
-
-		
-
-		
-
-
-
 //-------------------쇼핑관련 끝--------------------------------------------------
 }
