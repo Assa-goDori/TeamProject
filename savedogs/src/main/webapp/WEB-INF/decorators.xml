@@ -24,5 +24,6 @@
 		<pattern>/member/shelterlist.*</pattern>
 		<pattern>/vwork/vwrite*</pattern>
 		<pattern>/member/changepass*</pattern>
+		<pattern>/funding/fundingapply*</pattern>
 	</excludes>
 </decorators>

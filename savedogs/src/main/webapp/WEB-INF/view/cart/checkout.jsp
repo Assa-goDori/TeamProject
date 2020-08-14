@@ -3,6 +3,20 @@
 <%--/webapp/WEB-INF/view/cart/checkout.jsp --%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
+<style type="text/css">
+	th{
+		background-color: #eaeaea;
+	}
+	th,td{
+		border: 1px solid #e0e0e0; 
+	}
+	#input {
+		width: 100%;
+	}
+	#inputhalf {
+		width: 50%;
+	}
+</style>
 <title>주문 전 상품 목록 보기</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -72,8 +86,8 @@
 		<tr><th>상품명</th><th>상품코드</th><th>가격</th><th>수량</th></tr>
 		<c:forEach items="${sessionScope.CART.itemSetList}" var="itemSet" varStatus="stat">
 			<tr>
-				<td align="center">${itemSet.item.item_name}</td><td align="center">${itemSet.item.item_code}</td><td align="center">${itemSet.item.item_price*itemSet.item_each}</td>
-				<td align="center">${itemSet.item_each}</td>
+				<td style="text-align: center;">${itemSet.item.item_name}</td><td style="text-align: center;">${itemSet.item.item_code}</td><td style="text-align: center;">${itemSet.item.item_price*itemSet.item_each}</td>
+				<td style="text-align: center;">${itemSet.item_each}</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -87,27 +101,27 @@
 		<div id = "chkT" class="info">
 			<table>
 				<tr>
-					<td width="30%">아이디</td>
+					<th width="30%">아이디</th>
 					<td width="70%">${sessionScope.loginmem.member_id}</td>		
 				</tr>
 				<tr>
-					<td width="30%">이름</td>
+					<th width="30%">이름</th>
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
 				<tr>
-					<td width="30%">우편번호</td>	
+					<th width="30%">우편번호</th>	
 					<td width="70%"><fmt:formatNumber pattern="00000" value="${sessionScope.loginmem.member_postcode }"/>&nbsp;&nbsp;<input style="width: 20%;" type="button" value="찾기"></td>
 				</tr>
 				<tr>
-					<td width="30%">주소</td>
+					<th width="30%">주소</th>
 					<td width="70%">${sessionScope.loginmem.member_address}</td>
 				</tr>
 				<tr>
-					<td width="30%">상세 주소</td>
+					<th width="30%">상세 주소</th>
 					<td width="70%">${sessionScope.loginmem.member_daddress}</td>
 				</tr>		
 				<tr>
-					<td width="30%">전화번호</td>
+					<th width="30%">전화번호</th>
 					<td width="70%">${sessionScope.loginmem.member_tel}</td>
 				</tr>
 			</table>
@@ -120,34 +134,34 @@
 		<div id="chkF" class="info">
 			<table>
 				<tr>
-					<td width="30%">아이디</td>
+					<th width="30%">아이디</th>
 					<td width="70%">${sessionScope.loginmem.member_id}</td>
 				</tr>
 				<tr>
-					<td width="30%">이름</td>
+					<th width="30%">이름</th>
 					<td width="70%">${sessionScope.loginmem.member_name }</td>
 				</tr>
 				<tr>
-					<td width="30%">이름</td>
+					<th width="30%">이름</th>
 					<td>
-						<form:input path="buy_postcode" style="width:110px;"/>
+						<form:input path="buy_postcode" id="inputhalf"/>
 						<input class="small_btn" type="button" value="우편번호 찾기" onclick="openDaumZipAddress();">
 					</td>
 				</tr>
 				<tr>
-					<td width="30%">주소</td>
+					<th width="30%">주소</th>
 					<td>
-						<form:input path="buy_address" />
+						<form:input id="input" path="buy_address"/>
 					</td>
 				</tr>
 				<tr>
-					<td width="30%">상세 주소</td>
+					<th width="30%">상세 주소</th>
 					<td>
 						<form:input path="buy_daddress" />
 					</td>
 				</tr>		
 				<tr>
-					<td width="30%">전화번호</td>
+					<th width="30%">전화번호</th>
 					<td>
 						<form:input path="buy_tel" />
 					</td>

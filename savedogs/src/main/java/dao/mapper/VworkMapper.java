@@ -30,7 +30,10 @@ public interface VworkMapper {
 	@Select("select count(*) from vworklist where vwork_no = #{vwork_no}")
 	int getNowmem(int vwork_no);
 
-	@Select("select ifnull(max(vwork_no),0) from vwork where vwork_date = #{date}")
+	@Select("select count(*) from vwork where vwork_date = #{date}")
 	int getListcnt(String date);
+
+	@Select("select * from vwork where vwork_no = #{vwork_no}")
+	Vwork getVwork(String vwork_no);
 
 }

@@ -146,6 +146,20 @@ public class DogService {
 	}
 
 		
+
+	public int getNowmem(int Vno) {
+		return vworkDao.getNowmem(Vno);
+	}
+	
+	public int getListcnt(String date) {
+		return vworkDao.getListcnt(date);
+	}
+	
+	public Vwork getVwork(String vwork_no) {		
+		return vworkDao.getVwork(vwork_no);
+	}
+
+
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
@@ -173,7 +187,7 @@ public class DogService {
 		}
 		  fundingDao.fundupdate(funding); 
 		}
-		public void fundDelete(int fund_no) {
+		public void fundDelete(String fund_no) {
 			fundingDao.fundDelete(fund_no);		
 		}
 		
@@ -211,6 +225,7 @@ public class DogService {
 			buylist.setBuy_address(loginmem.getMember_address());
 			buylist.setBuy_daddress(loginmem.getMember_daddress());
 			buylist.setBuy_postcode(loginmem.getMember_postcode());
+			buylist.setBuy_tel(loginmem.getMember_tel());
 			buylist.setMember(loginmem);
 			buylistDao.insert(buylist);
 			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보
@@ -224,6 +239,14 @@ public class DogService {
 			return buylist;
 		}
 
+<<<<<<< HEAD
+
+		
+
+		
+
+
+=======
 		public Buylist checkend2(@Valid Buylist buylist, Cart cart) {
 			Buylist buylist2 = new Buylist();
 			int buy_no = buylistDao.getMaxSaleid();
@@ -239,6 +262,7 @@ public class DogService {
 			}
 			return buylist2;
 		}
+>>>>>>> 6f7ca500f939200677635a572e6f362c5f27f035
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 }
