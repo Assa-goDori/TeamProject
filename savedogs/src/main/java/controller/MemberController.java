@@ -19,6 +19,7 @@ import exception.VworkException;
 import logic.BuyItem;
 import logic.Buylist;
 import logic.DogService;
+import logic.Fundinglist;
 import logic.Item;
 import logic.Member;
 import logic.Shelter;
@@ -138,6 +139,16 @@ public class MemberController {
 			bl.setItemList(buyitemlist);
 		}
 		mav.addObject("buylist", buylist);
+		return mav;
+	}
+	
+	@GetMapping("fundMypage")
+	public ModelAndView fundMypageMain(String type, String id, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<Fundinglist> fundlist = service.getMyfundlist(id);
+		List<Fundinglist> endfundlist = service.getMyendfundlist(id);
+		mav.addObject("fundlist", fundlist);
+		mav.addObject("endfundlist", endfundlist);
 		return mav;
 	}
 	

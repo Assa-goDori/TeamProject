@@ -16,6 +16,7 @@ import dao.AdminDao;
 import dao.BuyitemDao;
 import dao.BuylistDao;
 import dao.FundingDao;
+import dao.FundinglistDao;
 import dao.ItemDao;
 import dao.MemberDao;
 import dao.ShelterDao;
@@ -42,6 +43,8 @@ public class DogService {
 	private BuyitemDao buyitemDao;
 	@Autowired
 	private VworklistDao vworklistDao;
+	@Autowired
+	private FundinglistDao fundlistDao;
 	
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
@@ -124,6 +127,15 @@ public class DogService {
 	public List<BuyItem> getbuyitemlist(int buy_no) {
 		return buyitemDao.list(buy_no);
 	}
+	
+	public List<Fundinglist> getMyfundlist(String id) {
+		return fundlistDao.list(id);
+	}
+	
+	public List<Fundinglist> getMyendfundlist(String id) {
+		return fundlistDao.endlist(id);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -265,6 +277,10 @@ public class DogService {
 			}
 			return buylist2;
 		}
+
+		
+
+		
 
 		
 

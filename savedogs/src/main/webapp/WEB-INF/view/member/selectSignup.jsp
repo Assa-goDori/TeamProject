@@ -69,9 +69,9 @@
 		<br>
 		<br>
 		<div align="center">
-			<input type="button" value="일반회원" onclick="check('memberSignup.dog')">
+			<input class="s_btn" type="button" value="일반회원" onclick="check('memberSignup.dog')">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="button" value="보호소관리자" onclick="check('smemberSignup.dog')">
+			<input class="s_btn" type="button" value="보호소관리자" onclick="check('smemberSignup.dog')">
 		</div>
 	</div>
 </body>
