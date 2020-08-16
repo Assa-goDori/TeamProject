@@ -163,6 +163,10 @@ public class DogService {
 		return vworkDao.getVlist(date);
 	}
 
+	public void vJoin(Vworklist vworklist, HttpServletRequest request) {
+		vworkDao.vJoin(vworklist);
+	}
+
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
@@ -257,6 +261,7 @@ public class DogService {
 			}
 			return buylist2;
 		}
+
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 
