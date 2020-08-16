@@ -116,6 +116,14 @@ public class DogService {
 	public List<Vwork> getMyvworkList(String id) {
 		return vworklistDao.getMyvworkList(id);
 	}
+	
+	public List<Buylist> getbuylist(String id) {
+		return buylistDao.list(id);
+	}
+	
+	public List<BuyItem> getbuyitemlist(int buy_no) {
+		return buyitemDao.list(buy_no);
+	}
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -257,6 +265,10 @@ public class DogService {
 			}
 			return buylist2;
 		}
+
+		
+
+		
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 

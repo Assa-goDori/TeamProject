@@ -16,7 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import exception.LoginException;
 import exception.VworkException;
+import logic.BuyItem;
+import logic.Buylist;
 import logic.DogService;
+import logic.Item;
 import logic.Member;
 import logic.Shelter;
 import logic.Vwork;
@@ -119,6 +122,22 @@ public class MemberController {
 		List<Vwork> list = service.getMyvworkList(id);
 		mav.addObject("type", type);
 		mav.addObject("list", list);
+		return mav;
+	}
+	
+	@GetMapping("shopMypage")
+	public ModelAndView shopMypageMain(String type, String id, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<Buylist> buylist = service.getbuylist(id);
+		for(Buylist bl : buylist) {
+			List<BuyItem> buyitemlist = service.getbuyitemlist(bl.getBuy_no());
+			for(BuyItem bi : buyitemlist) {
+				Item item = service.itemselect(bi.getBuy_no());
+				bi.setItem(item);
+			}
+			bl.setItemList(buyitemlist);
+		}
+		mav.addObject("buylist", buylist);
 		return mav;
 	}
 	
