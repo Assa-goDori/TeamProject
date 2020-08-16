@@ -47,7 +47,7 @@
 			<tr height="40px">
 				<td class="btn_td" colspan="3" >
 					<input class="s_btn" type="submit" value="로그인">
-					<input class="g_btn" type="button" value="회원가입" onclick="location.href='memberSignup.dog'">
+					<input class="g_btn" type="button" value="회원가입" onclick="location.href='selectSignup.dog'">
 				</td>
 			</tr>
 		</table>
