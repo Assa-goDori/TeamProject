@@ -24,6 +24,13 @@ td{
 
 
 </style>
+<script type="text/javascript">
+function date_search() {
+	var date = $('#date').val();
+	location.href='vlist.dog?date='+date;
+}
+
+</script>
 </head>
 <body>
 <div class="main_div">
@@ -33,8 +40,8 @@ td{
 	
 	<div class="vlistdiv">
 		<div class="vlistdiv">
-			날짜&nbsp;:&nbsp;&nbsp;<input type="date" value="${param.date }">
-			<input type="button" class="small_btn" value="검색"> 
+			날짜&nbsp;:&nbsp;&nbsp;<input type="date" value="${param.date }" id="date">
+			<input type="button" class="small_btn" value="검색" onclick="date_search()"> 
 		</div>
 		<div class="vlistdiv">
 			<table>
@@ -50,7 +57,12 @@ td{
 					
 					<td>
 						<input type="button" class="g_btn" value="상세보기" onclick="location.href='vdetail.dog?vwork_no=${vwork.vwork_no}'">
-						<input type="button" class="s_btn" value="신청" onclick="location.href='vjoin.dog?vwork_no=${vwork.vwork_no}'">
+						<c:if test="${vwork.Nmem != vwork.Vmem }">
+							<input type="button" value="신청" class="s_btn" onclick="location.href='vjoin.dog?vwork_no=${vwork.vwork_no}'">
+						</c:if>
+						<c:if test="${vwork.Nmem == vwork.Vmem }">
+							<input type="button" value="모집완료" class="g_btn">
+						</c:if>
 					</td>
 				</tr>
 				</c:forEach>
