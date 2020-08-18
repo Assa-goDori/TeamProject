@@ -290,7 +290,8 @@ public class VworkController {
 		
 		vworklist.setVwork_date(date);
 		vworklist.setVwork_no(vwork_no);
-		System.out.println(vwork_no);
+		
+		
 		
 		try {
 			service.vJoin(vworklist, request);
