@@ -83,7 +83,7 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
-		mav.setViewName("/item/list");
+		mav.setViewName("redirect:../item/list.dog");
 		return mav;
 	}
 
@@ -108,7 +108,7 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
-		mav.setViewName("/item/list");
+		mav.setViewName("redirect:../item/list.dog");
 		return mav;
 	}
 //		Member loginmem = (Member)session.getAttribute("loginmem");
