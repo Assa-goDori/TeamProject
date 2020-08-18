@@ -24,12 +24,13 @@
 <!-- db에서 불러오기 -->
 <table style="border-collapse:collapse;">
 <tr height="40px"><td>보호소 명</td> <!-- db에서 불러올것 입력값아님~ -->
-<td><form:input path="sheltername" /><!-- ${sessionScope.loginUser.sheltername},readonly--> 
+<td><input type="text" name="sheltername" readonly="readonly" value="${funding.sheltername}" /><!-- ${sessionScope.loginUser.sheltername},readonly--> 
 <font color="red"><form:errors path="sheltername" /></font></td></tr>
 
 <tr height="40px"><td>후원 제목</td>
-<td><form:input path="funding_subject" />
-<font color="red"><form:errors path="funding_subject" /></font></td></tr>
+<td><td><input type="text" name="funding_subject" readonly="readonly" value="${funding.funding_subject}" />
+<font color="red">
+<form:errors path="funding_subject" /></font></td></tr>
 
 <tr height="40px"><td>목표 금액</td>
 <td><form:input path="count" />
