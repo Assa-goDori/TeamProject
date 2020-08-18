@@ -288,8 +288,18 @@ public class MemberController {
 	public ModelAndView shelterMypageMain(String type, String id) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
-		System.out.println(mem);
+		mav.addObject("type", type);
 		mav.addObject("mem", mem);
+		return mav;
+	}
+	
+	@GetMapping("sheltervworkMypage")
+	public ModelAndView sheltervworkMypageMain(String type, String id) {
+		ModelAndView mav = new ModelAndView();
+		//List<Vwork> writelist = service.getwritev
+		
+		//mav.addObject("writelist", writelist);
+		mav.addObject("type", type);
 		return mav;
 	}
 }

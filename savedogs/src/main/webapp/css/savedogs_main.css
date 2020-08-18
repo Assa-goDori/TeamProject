@@ -50,7 +50,7 @@ textarea{
 
 /* submit 버튼 == 초록색 버튼 */
 .s_btn {
-	background-color: #19CE60;
+	background-color: #34b2a4;
 	color : white;
 	font-size: 20px;
 	padding: 5px 7px;
@@ -86,8 +86,6 @@ textarea{
 	
 }
 
-
-
 th{
 	width: 150px;
 	text-align: center;
@@ -109,4 +107,22 @@ textarea{
 }
 font{
 	font-size: 15px;
+}
+
+/* 초록색 폰트 (강조용) */
+.g_font{
+	font-size: 25px;
+	color: #34b2a4;
+}
+
+/* 후원 탭 div */
+.hw_div {
+	font-size: 25px;
+	text-align: center;
+}
+
+/* 후원 선택 탭 */
+.hw_clicked{
+	color: #34b2a4;
+	font-weight: 600;
 }
