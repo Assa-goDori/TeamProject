@@ -165,8 +165,6 @@ public class DogService {
 		return vworkDao.sheltervwork(shelter_no);
 	}
 
-		
-
 	public int getNowmem(int Vno) {
 		return vworkDao.getNowmem(Vno);
 	}
@@ -186,6 +184,17 @@ public class DogService {
 	public void vJoin(Vworklist vworklist, HttpServletRequest request) {
 		vworkDao.vJoin(vworklist);
 	}
+	
+	public void vUpdate(Vwork vwork, HttpServletRequest request) {
+		vworkDao.updateVwork(vwork);
+	}
+	
+	public void vdelete(String vwork_no) {
+		vworkDao.deleteVwork(vwork_no);
+	}
+
+
+	
 
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -282,8 +291,9 @@ public class DogService {
 			return buylist2;
 		}
 
-
 		
+
+
 
 		
 

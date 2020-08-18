@@ -57,5 +57,15 @@ public class VworkDao {
 		
 	}
 
+	public void updateVwork(Vwork vwork) {
+		template.getMapper(VworkMapper.class).vUpdate(vwork);
+		
+	}
+
+	public void deleteVwork(String vwork_no) {
+		template.getMapper(VworkMapper.class).vDelete(vwork_no);
+		
+	}
+
 
 }
