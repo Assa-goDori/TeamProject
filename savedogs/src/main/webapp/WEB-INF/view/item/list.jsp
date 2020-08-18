@@ -11,7 +11,7 @@
 <body>
 <div style="width: 80%; margin-left: 10%;" >
 	<div align="center">
-		<table style="width: 80%;">
+		<table>
 			<tr>
 				<td style="width: 50%;" align="center">
 					<a href="../funding/list.dog">기부</a>

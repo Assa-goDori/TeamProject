@@ -28,7 +28,7 @@ public class Funding {
 	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
-	private int restdate;
+	private int restdate; //마감날짜-오늘날짜
 	private String fund_pic; //사진 파일 명
 	private MultipartFile picture; //사진
 	public int getFund_no() {
