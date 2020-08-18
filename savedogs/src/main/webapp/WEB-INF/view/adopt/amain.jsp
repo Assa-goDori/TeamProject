@@ -22,8 +22,22 @@ hr {
 	text-align: left;
 	padding-left: 100px;
 }
+
+.tag {
+	border-radius: 20px 20px 20px 20px;
+	background-color: #AAAAAA;
+	color: white;
+	font-size: 20px;
+	padding: 5px 7px;
+	border: 0;
+	outline: 0;
+	width: 100px;
+	height: 80%;
+	margin: 5px;
+}
 </style>
 <script>
+	
 </script>
 </head>
 <body>
@@ -224,8 +238,7 @@ hr {
 		<div class="array">
 			<span id="deadline" onmouseover="this.style.fontWeight='bold'"
 				onmouseout="this.style.fontWeight=''" onclick="">공고
-				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> 
-			<span id="registration"
+				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="registration"
 				onmouseover="this.style.fontWeight='bold'"
 				onmouseout="this.style.fontWeight=''" onclick="">최근 등록순</span>
 		</div>
@@ -233,9 +246,11 @@ hr {
 		<c:forEach var="item" items="${go}">
 			<div
 				style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-				<a href="adetail.dog?desertionNo=${item.desertionNo}" class="imghover"><img src="${item.popfile}"
-					style="width: 350px; height: 350px;"></a> <br>
-				${item.processState} &nbsp; ${item.kindCd} <br>
+				<a href="adetail.dog?desertionNo=${item.desertionNo}"
+					class="imghover"><img src="${item.popfile}"
+					style="width: 350px; height: 350px;"></a><br> <span
+					class="tag">${item.processState}</span> &nbsp; <span class="tag">${item.kindCd}</span>
+				<br>
 			</div>
 		</c:forEach>
 		<div>

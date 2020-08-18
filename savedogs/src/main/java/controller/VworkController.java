@@ -1,6 +1,5 @@
 package controller;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,8 +44,7 @@ public class VworkController {
 		} else {
 			Member mem = (Member)session.getAttribute("loginmem");
 			mav.addObject("mem",mem);
-		}
-		
+		}		
 		return mav;
 	}
 	
@@ -91,16 +89,13 @@ public class VworkController {
 		} else {
 			Member mem = (Member)session.getAttribute("loginmem");
 			mav.addObject("mem",mem);
-		}
-		
+		}	
 		HashSet<String> hashSet = new HashSet<>(); 
-		
 		if (shelter_no == null || shelter_no.equals("")) {
 			hashSet = service.allvwork();
 		} else {
 			hashSet = service.sheltervwork(shelter_no);
 		}
-		
 		StringBuilder json = new StringBuilder("[");
 		int i = 0;
 		for(String h : hashSet) {
@@ -109,20 +104,15 @@ public class VworkController {
 			json.append("\"color\":\"#AAD292\"},");
 			i++;
 		}
-		if(i<hashSet.size()) json.append(",");
-		
+		if(i<hashSet.size()) json.append(",");	
 		json.append("]");
-		mav.addObject("json", json.toString().trim());
-	
-		
+		mav.addObject("json", json.toString().trim());		
 		List<Shelter> list = service.getShelterlist();
 		mav.addObject("list",list);
-		
 		mav.addObject("shelter_no",shelter_no);
 		
 		return mav;
-	}
-	
+	}	
 	
 	@GetMapping("vwrite")
 	public ModelAndView vwriteform(Model model, HttpSession session) {
@@ -146,10 +136,8 @@ public class VworkController {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
-		
 		try {
-			service.vWrite(vwork, request);
-			
+			service.vWrite(vwork, request);		
 		} catch(Exception e) {
 			e.printStackTrace();
 			throw new VworkException("봉사 등록에 실패했습니다","vwrite.dog?date="+vwork.getVwork_date());
@@ -231,11 +219,17 @@ public class VworkController {
 		String date = format.format(dbvwork.getVwork_date());
 		map.put("date",date);
 		
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+		String vwork_date = format2.format(dbvwork.getVwork_date());
+		map.put("vwork_date",vwork_date);
+		
+		map.put("member_id",dbvwork.getMember_id());
+		
 		mav.addObject("vwork",map);
 		return mav;
 	}
 	
-	@GetMapping("vjoin")
+	@GetMapping("vjoin") 
 	public ModelAndView vjoinform(Model model, String vwork_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
@@ -246,7 +240,6 @@ public class VworkController {
 			mav.addObject("mem",mem);
 		}
 		model.addAttribute(new Vworklist());
-
 		Map<String,String> map = new HashMap<>();
 		Vwork dbvwork = service.getVwork(vwork_no);
 		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
@@ -264,14 +257,15 @@ public class VworkController {
 		String date = format.format(dbvwork.getVwork_date());
 		map.put("date",date);
 		
+		
+		
 		mav.addObject("vwork",map);
 		return mav;
 	}
 		
 	@PostMapping("vjoin")
 	public ModelAndView vjoin(@Valid Vworklist vworklist, Model model,BindingResult bresult, String vwork_no, HttpSession session,HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
-		
+		ModelAndView mav = new ModelAndView();	
 		Member smem = (Member)session.getAttribute("loginsmem");
 		Member mem = (Member)session.getAttribute("loginmem");
 		if(smem != null) {
@@ -283,26 +277,80 @@ public class VworkController {
 		if(bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
-		}
-		
+		}	
 		Vwork dbvwork = service.getVwork(vwork_no);
-		Date date = dbvwork.getVwork_date();
-		
+		Date date = dbvwork.getVwork_date();		
 		vworklist.setVwork_date(date);
 		vworklist.setVwork_no(vwork_no);
-		
-		
-		
+
 		try {
 			service.vJoin(vworklist, request);
 		} catch(Exception e) {
-			e.printStackTrace();
 			throw new VworkException("이미 해당 봉사를 신청했습니다.","vdetail.dog?vwork_no="+vwork_no);
 		}		
 		mav.setViewName("redirect:vmain.dog"); //해당 멤버의 마이페이지(봉사신청)
 		return mav;
 	}
 	
-
+	@GetMapping("vupdate")
+	public ModelAndView vupdateform(String vwork_no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Vwork dbvwork = service.getVwork(vwork_no);
+		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
+		mav.addObject("shelter",shelter);
+		mav.addObject("vwork",dbvwork);
+		return mav;
+	}
 	
+	@PostMapping("vupdate")
+	public ModelAndView vupdate(@Valid Vwork vwork, String vwork_no, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		
+		if(bresult.hasErrors()) {
+			mav.getModel().putAll(bresult.getModel());
+			return mav;
+		}
+		int vworkno =  Integer.parseInt(vwork_no);
+		vwork.setVwork_no(vworkno);
+		vwork.setMember_id(smem.getMember_id());
+		Vwork dbvwork = service.getVwork(vwork_no);
+		vwork.setShelter_no(dbvwork.getShelter_no());
+		try {
+			service.vUpdate(vwork, request);
+		} catch(Exception e) {
+			throw new VworkException("봉사 수정에 실패했습니다","vupdate.dog?vwork_no="+vwork_no);
+		}
+		mav.setViewName("redirect:vdetail.dog?vwork_no="+vwork.getVwork_no());
+		return mav;
+	}
+	
+	@GetMapping("vdelete")
+	public ModelAndView vdeleteform(String vwork_no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Vwork dbvwork = service.getVwork(vwork_no);
+		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
+		int Nmem = service.getNowmem(dbvwork.getVwork_no());
+		mav.addObject("shelter",shelter);
+		mav.addObject("vwork",dbvwork);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String date = format.format(dbvwork.getVwork_date());
+		mav.addObject("date",date);
+		mav.addObject("Nmem",Nmem);
+		return mav;
+	}
+	
+	@PostMapping("vdelete")
+	public ModelAndView vdelete(String vwork_no, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			service.vdelete(vwork_no);
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new VworkException("봉사 삭제에 실패했습니다","vdetail.dog?vwork_no="+vwork_no);
+		}
+		mav.setViewName("redirect:vmain.dog");
+		return mav;
+	}
+
 }

@@ -108,7 +108,11 @@ public class DogService {
 		return adminDao.getShelterName(goo);
 	}
 	
-	public void memUpdate(Member mem) {
+	public void memUpdate(Member mem, HttpServletRequest request) {
+		if(mem.getF1() != null && !mem.getF1().isEmpty()) {
+			uploadFileCreate(mem.getF1(),request,"member/img/");
+			mem.setFile1(mem.getF1().getOriginalFilename());
+		}
 		memberDao.memUpdate(mem);
 	}
 	
@@ -165,8 +169,6 @@ public class DogService {
 		return vworkDao.sheltervwork(shelter_no);
 	}
 
-		
-
 	public int getNowmem(int Vno) {
 		return vworkDao.getNowmem(Vno);
 	}
@@ -186,6 +188,17 @@ public class DogService {
 	public void vJoin(Vworklist vworklist, HttpServletRequest request) {
 		vworkDao.vJoin(vworklist);
 	}
+	
+	public void vUpdate(Vwork vwork, HttpServletRequest request) {
+		vworkDao.updateVwork(vwork);
+	}
+	
+	public void vdelete(String vwork_no) {
+		vworkDao.deleteVwork(vwork_no);
+	}
+
+
+	
 
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -293,7 +306,8 @@ public class DogService {
 			}
 			return buylist;
 		}
-		
+
+
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 

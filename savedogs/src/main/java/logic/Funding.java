@@ -28,9 +28,9 @@ public class Funding {
 	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
+	private int restdate; //마감날짜-오늘날짜
 	private String fund_pic; //사진 파일 명
 	private MultipartFile picture; //사진
-
 	public int getFund_no() {
 		return fund_no;
 	}
@@ -73,6 +73,12 @@ public class Funding {
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
+	public int getRestdate() {
+		return restdate;
+	}
+	public void setRestdate(int restdate) {
+		this.restdate = restdate;
+	}
 	public String getFund_pic() {
 		return fund_pic;
 	}
@@ -85,11 +91,12 @@ public class Funding {
 	public void setPicture(MultipartFile picture) {
 		this.picture = picture;
 	}
-
 	@Override
 	public String toString() {
 		return "Funding [fund_no=" + fund_no + ", member_id=" + member_id + ", sheltername=" + sheltername
 				+ ", funding_subject=" + funding_subject + ", count=" + count + ", start_date=" + start_date
-				+ ", end_date=" + end_date + ", fund_pic=" + fund_pic + ", picture=" + picture + "]";
+				+ ", end_date=" + end_date + ", restdate=" + restdate + ", fund_pic=" + fund_pic + ", picture="
+				+ picture + "]";
 	}
+
 }

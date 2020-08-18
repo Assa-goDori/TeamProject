@@ -41,7 +41,8 @@
 </style>
 </head>
 <body>
-	<div class="maiv_div" style="width: 100%;">
+	<div class="maiv_div" style="width: 100%;"> 
+	<div align="center" style="width: 100%; margin-left:42%;">
 	<table style="width: 100%;">
 		<tr>
 			<td id="tab1" class ="tab" style="width: 50%;" align="center">
@@ -52,6 +53,7 @@
 			</td>
 		</tr>
 	</table>
+	</div>
 	<div id="minfo" class="info" style="width:100%;">
 		<h3>관심 가는 아이</h3>
 	</div>

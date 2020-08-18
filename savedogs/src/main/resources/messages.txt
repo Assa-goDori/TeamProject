@@ -7,6 +7,7 @@ error.required.member_address=주소를 입력해 주세요
 error.required.member_daddress=상세주소를 입력해주세요
 error.required.member_tel=전화번호를 입력해 주세요
 error.required.member_email=E-MAIL을 입력해 주세요
+error.required.shelter_no=보호소번호를 선택해 주세요
 
 error.login.member=로그인이 필요합니다.
 error.login.member_id=아이디를 확인하세요.

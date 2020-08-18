@@ -31,12 +31,14 @@ th{
 <br>
 <div class="btn_div">
 <c:if test="${smem != null }">
-	<input type="button" class="g_btn" value="목록" onclick="history.back(-1);">
-	<input type="button" class="g_btn" value="수정" onclick="location.href='vupdate.dog?vwork_no=${vwork.vwork_no}'">
-	<input type="button" class="g_btn" value="삭제" onclick="location.href='vdelete.dog?vwork_no=${vwork.vwork_no}'">
+	<input type="button" value="목록" class="g_btn" onclick="location.href='vlist.dog?date=${vwork.vwork_date}'">
+	<c:if test="${smem.member_id == vwork.member_id }">
+		<input type="button" class="g_btn" value="수정" onclick="location.href='vupdate.dog?vwork_no=${vwork.vwork_no}'">
+		<input type="button" class="g_btn" value="삭제" onclick="location.href='vdelete.dog?vwork_no=${vwork.vwork_no}'">
+	</c:if>
 </c:if>
 <c:if test="${mem != null }">
-	<input type="button" value="목록" class="g_btn" onclick="history.back(-1);">
+	<input type="button" class="g_btn" value="목록" onclick="history.back(-1);">
 	<c:if test="${vwork.Nmem != vwork.Vmem }">
 		<input type="button" value="신청" class="s_btn" onclick="location.href='vjoin.dog?vwork_no=${vwork.vwork_no}'">
 	</c:if>
