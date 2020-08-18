@@ -19,8 +19,8 @@ public interface FundingMapper {
 	 @Select("select ifnull(max(fund_no),0) from funding") int maxfundno();
 	
 	
-	 @Insert(" insert into funding (fund_no, member_id,sheltername,funding_subject, count, start_date,end_date,fund_pic)"
-			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{funding_subject}, #{count}, #{start_date}, #{end_date}, #{fund_pic})")
+	 @Insert(" insert into funding (fund_no, member_id,sheltername,fund_subject, fund_count, start_date,end_date,fund_pic)"
+			   + " values (#{fund_no}, #{member_id}, #{sheltername}, #{fund_subject}, #{fund_count}, #{start_date}, #{end_date}, #{fund_pic})")
 	  void fundinsert(Funding funding);
 
 	/*
@@ -41,7 +41,7 @@ public interface FundingMapper {
 	int maxfund_no();
 
     @Select({"<script>" ,
-    		"select * from funding",
+    		"select * ,datediff(end_date,now()) restdate from funding",
     		"<if test='fund_no != null'> where fund_no=${fund_no} </if>",
     		"</script>"})
 	List<Funding> select(Map<String, Object> param);

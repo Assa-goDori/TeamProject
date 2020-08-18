@@ -36,16 +36,16 @@
 			</tr>
 			<tr height="40px">
 				<td>후원 제목</td>
-				<td><input type="text" name="funding_subject" /> 
+				<td><input type="text" name="fund_subject" /> 
 				<font color="red">
-				<form:errors path="funding_subject" /></font></td>
+				<form:errors path="fund_subject" /></font></td>
 			</tr>
 
 			<tr height="40px">
 				<td>목표 금액</td>
-				<td><input type="text" name="count" /> 
+				<td><input type="text" name="fund_count" /> 
 				<font color="red">
-				<form:errors path="count" /></font></td>
+				<form:errors path="fund_count" /></font></td>
 			</tr>
 
 			<tr height="40px">
@@ -64,7 +64,7 @@
 
 			<tr height="40px">
 				<td>배너사진</td>
-				<td><input type="file" name="picure" /></td>
+				<td><input type="file" name="picture"/></td>
 			</tr>
 
 			<tr height="40px" >

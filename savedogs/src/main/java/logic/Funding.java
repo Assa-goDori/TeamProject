@@ -11,15 +11,19 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * @author GDJ24
+ *
+ */
 public class Funding {
 
 	private int fund_no;
 	private String member_id;
 	private String sheltername;
 	@NotNull(message="제목을 입력하세요")
-	private String funding_subject;
+	private String fund_subject;
 	@NotNull(message="목표금액을 입력하세요")
-	private int count;
+	private int fund_count;
 	//@NotEmpty(message="날짜를 선택하세요")
 	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -49,18 +53,7 @@ public class Funding {
 	public void setSheltername(String sheltername) {
 		this.sheltername = sheltername;
 	}
-	public String getFunding_subject() {
-		return funding_subject;
-	}
-	public void setFunding_subject(String funding_subject) {
-		this.funding_subject = funding_subject;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
+	
 	public Date getStart_date() {
 		return start_date;
 	}
@@ -91,12 +84,25 @@ public class Funding {
 	public void setPicture(MultipartFile picture) {
 		this.picture = picture;
 	}
+	public String getFund_subject() {
+		return fund_subject;
+	}
+	public void setFund_subject(String fund_subject) {
+		this.fund_subject = fund_subject;
+	}
+	public int getFund_count() {
+		return fund_count;
+	}
+	public void setFund_count(int fund_count) {
+		this.fund_count = fund_count;
+	}
 	@Override
 	public String toString() {
 		return "Funding [fund_no=" + fund_no + ", member_id=" + member_id + ", sheltername=" + sheltername
-				+ ", funding_subject=" + funding_subject + ", count=" + count + ", start_date=" + start_date
+				+ ", fund_subject=" + fund_subject + ", fund_count=" + fund_count + ", start_date=" + start_date
 				+ ", end_date=" + end_date + ", restdate=" + restdate + ", fund_pic=" + fund_pic + ", picture="
 				+ picture + "]";
 	}
+	
 
 }
