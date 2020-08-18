@@ -42,8 +42,8 @@
 </head>
 <body>
 	<div class="maiv_div" style="width: 100%;">
-	<div align="center" style="width: 100%; margin-left:45%;">
-	<table style="width: 100%;">
+	<div align="center" style="width: 100%;">
+	<table>
 		<tr>
 			<td id="tab1" class ="tab" style="width: 50%;" align="center">
 				<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">장바구니</a>

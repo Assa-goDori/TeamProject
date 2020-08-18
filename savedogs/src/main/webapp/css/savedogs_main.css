@@ -126,3 +126,9 @@ font{
 	color: #34b2a4;
 	font-weight: 600;
 }
+
+/* 마지막에 버튼만 있는 div  */
+.btn_div{
+	text-align: center;
+	padding-top: 70px;
+}

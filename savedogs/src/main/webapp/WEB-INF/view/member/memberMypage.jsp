@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 마이페이지</title>
+
 </head>
 <body>
 		<div class="main_div" style="width: 100%;">
@@ -37,9 +38,9 @@
 						<td>${mem.member_email }</td>
 					</tr>
 				</table>
-				<div align="center">
+				<div class="btn_div">
 					<input type="button" class="s_btn" value="수정하기" onclick="location.href='checkpass.dog?type=1&id=${mem.member_id}'">
-					<input type="button" class="s_btn" value="탈퇴" >
+					<input type="button" class="g_btn" value="탈퇴" >
 				</div>
 		</div>
 </body>
