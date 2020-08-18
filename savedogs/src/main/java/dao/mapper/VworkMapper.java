@@ -2,10 +2,11 @@ package dao.mapper;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import logic.Vwork;
 import logic.Vworklist;
@@ -40,5 +41,11 @@ public interface VworkMapper {
 	
 	@Insert("insert into vworklist (vwork_no, vwork_id, vwork_date, vwork_tel) values (#{vwork_no}, #{vwork_id}, #{vwork_date}, #{vwork_tel})")
 	void vJoin(Vworklist vworklist);
+
+	@Update("update vwork set vwork_member=#{vwork_member}, vwork_content=#{vwork_content} where vwork_no = #{vwork_no} ")
+	void vUpdate(Vwork vwork);
+
+	@Delete("delete from vwork where vwork_no=#{vwork_no}")
+	void vDelete(String vwork_no);
 
 }

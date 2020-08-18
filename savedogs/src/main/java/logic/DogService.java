@@ -165,8 +165,6 @@ public class DogService {
 		return vworkDao.sheltervwork(shelter_no);
 	}
 
-		
-
 	public int getNowmem(int Vno) {
 		return vworkDao.getNowmem(Vno);
 	}
@@ -186,6 +184,17 @@ public class DogService {
 	public void vJoin(Vworklist vworklist, HttpServletRequest request) {
 		vworkDao.vJoin(vworklist);
 	}
+	
+	public void vUpdate(Vwork vwork, HttpServletRequest request) {
+		vworkDao.updateVwork(vwork);
+	}
+	
+	public void vdelete(String vwork_no) {
+		vworkDao.deleteVwork(vwork_no);
+	}
+
+
+	
 
 //-------------------봉사관련 끝-------------------------------------------------
 
@@ -246,7 +255,7 @@ public class DogService {
 
 		public void itemCreate(@Valid Item item, HttpServletRequest request) {
 			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
-				uploadFileCreate(item.getPicture(),request,"item/img");
+				uploadFileCreate(item.getPicture(),request,"item/img/");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
 			itemDao.insert(item);
@@ -293,7 +302,8 @@ public class DogService {
 			}
 			return buylist;
 		}
-		
+
+
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 

@@ -56,7 +56,9 @@
 			</div>
 		</c:forEach>
 	</div>
+	<c:if test="${loginmem.member_id eq 'admin'}">
 	<div align="right"><a href="insert.dog">상품등록</a></div>
+	</c:if>
 </div>
 </body>
 </html>
