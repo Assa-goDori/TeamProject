@@ -27,14 +27,14 @@ public class ItemController {
 	private DogService service;
 	
 	@RequestMapping("list")
-	public ModelAndView list() {
+	public ModelAndView chkmlist(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Item> itemlist = service.getItemList();
 		mav.addObject("itemlist",itemlist);
 		return mav;
 	}
 	@RequestMapping("register")
-	public ModelAndView add(@Valid Item item, BindingResult bresult, HttpServletRequest request) {
+	public ModelAndView addadmin(@Valid Item item, BindingResult bresult, HttpServletRequest request,HttpSession session) {
 		ModelAndView mav = new ModelAndView("item/add");
 		if(bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
@@ -45,12 +45,12 @@ public class ItemController {
 		return mav;
 	}
 	@RequestMapping("insert")
-	public String addform(Model model) {
+	public String addformadmin(Model model,HttpSession session) {
 		model.addAttribute(new Item());
 		return "item/add";
 	}
-	@GetMapping("*") 
-	public ModelAndView detail(int item_no) {
+	@GetMapping("detail") 
+	public ModelAndView chkmdetail(int item_no,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		try{
 			Item item = service.itemselect(item_no);
@@ -60,19 +60,4 @@ public class ItemController {
 			throw new ItemException("없는 상품입니다.","list.dog");
 		}
 	}
-	@RequestMapping("cartAdd")
-	public ModelAndView add(Integer item_no, Integer item_each, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		Item item = service.itemselect(item_no);
-		Cart cart = (Cart)session.getAttribute("CART");
-		if(cart == null) {
-			cart = new Cart();
-			session.setAttribute("CART", cart);
-		}
-		cart.push(new ItemSet(item, item_each));
-		mav.addObject("message",item.getItem_name() + ":" + item_each + "개 장바구니 추가");
-		mav.addObject("cart",cart);
-		System.out.println(item_each);
-		return mav;
-		}
 }

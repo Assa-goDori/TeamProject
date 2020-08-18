@@ -1,5 +1,5 @@
 package logic;
-
+//후원자리스트
 import java.util.Date;
 
 public class Fundinglist {

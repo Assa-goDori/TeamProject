@@ -30,7 +30,7 @@
 			<tr height="40px">
 				<td>보호소 명</td>
 				<!-- db에서 불러올것 입력값아님~ -->
-				<td><input type="text" name="sheltername" readonly="readonly" value="${sessionScope.loginsmem.sheltername}" />
+				<td><input type="text" name="sheltername" readonly="readonly" value="${sessionScope.smemName}" />
 				 <font color="red">
 				 <form:errors path="sheltername" /></font></td>
 			</tr>

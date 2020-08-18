@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.CartEmptyException;
 import exception.LoginException;
 import exception.VworkException;
 import logic.BuyItem;
 import logic.Buylist;
+import logic.Cart;
 import logic.DogService;
 import logic.Fundinglist;
 import logic.Item;
@@ -25,6 +27,7 @@ import logic.Member;
 import logic.Shelter;
 import logic.Vwork;
 import util.MemberValidator;
+import util.ShelterValidator;
 
 @Controller
 @RequestMapping("member")
@@ -33,6 +36,8 @@ public class MemberController {
 	private DogService service;
 	@Autowired
 	private MemberValidator memvalidator;
+	@Autowired
+	private ShelterValidator shelvalidator;
 	
 	@GetMapping("alerturl")
 	public ModelAndView alerturl(HttpSession session) {
@@ -139,6 +144,8 @@ public class MemberController {
 			bl.setItemList(buyitemlist);
 		}
 		mav.addObject("buylist", buylist);
+		Cart cart = (Cart)session.getAttribute("CART");
+		mav.addObject("cart",cart);
 		return mav;
 	}
 	
@@ -156,16 +163,27 @@ public class MemberController {
 	public ModelAndView checkpass(String member_pass, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member loginmem = (Member)session.getAttribute("loginmem");
-		Member mem = service.getMember(loginmem.getMember_id());
-		if(member_pass.equals(mem.getMember_pass())) {
-			mav.setViewName("redirect:updateMember.dog?type=1&id=" + mem.getMember_id());
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		if(loginmem != null) {
+			Member mem = service.getMember(loginmem.getMember_id());
+			if(member_pass.equals(mem.getMember_pass())) {
+				mav.setViewName("redirect:updateMember.dog?type=1&id=" + mem.getMember_id());
+			} else {
+				throw new LoginException("비밀번호 오류","../member/memberMypage.dog?type=1&id=" + mem.getMember_id());
+			}
 		} else {
-			throw new LoginException("비밀번호 오류","../member/memberMypage.dog?type=1&id=" + mem.getMember_id());
+			Member mem = service.getMember(loginsmem.getMember_id());
+			if(member_pass.equals(mem.getMember_pass())) {
+				mav.setViewName("redirect:updateMember.dog?type=1&id=" + mem.getMember_id());
+			} else {
+				throw new LoginException("비밀번호 오류","../member/shelterMypage.dog?type=1&id=" + mem.getMember_id());
+			}
 		}
+		
 		return mav;
 	}
 	
-	@GetMapping("updateMember")
+	@GetMapping({"updateMember", "updateShelter"})
 	public ModelAndView updateform(String id) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
@@ -174,21 +192,38 @@ public class MemberController {
 	}
 	
 	@PostMapping("updateMember")
-	public ModelAndView memberupdate(Member mem, BindingResult bresult, HttpSession session) {
+	public ModelAndView memberupdate(Member mem, BindingResult bresult, HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		memvalidator.validate(mem, bresult);
+		Member login = null;
+		int type = 0;
+		if(session.getAttribute("loginmem") != null) {
+			memvalidator.validate(mem, bresult);
+			login = (Member)session.getAttribute("loginmem");
+		} else {
+			shelvalidator.validate(mem, bresult);
+			login = (Member)session.getAttribute("loginsmem");
+			type = 1;
+		}
 		if (bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
+			mav.setViewName("redirect:updateMember.dog?id="+mem.getMember_id());
 			return mav;
 		}
 		try {
-			Member loginmem = (Member)session.getAttribute("loginmem");
-			mem.setMember_pass(loginmem.getMember_pass());
-			service.memUpdate(mem);
-			mav.setViewName("redirect:memberMypage.dog?type=1&id="+mem.getMember_id());
-			if(loginmem.getMember_id().equals(mem.getMember_id())) {
-				session.setAttribute("loginmem", mem);
+			mem.setMember_pass(login.getMember_pass());
+			service.memUpdate(mem, request);
+			if(type == 0) {
+				mav.setViewName("redirect:memberMypage.dog?type=1&id="+mem.getMember_id());
+				if(login.getMember_id().equals(mem.getMember_id())) {
+					session.setAttribute("loginmem", mem);
+				}
+			} else {
+				mav.setViewName("redirect:shelterMypage.dog?type=1&id="+mem.getMember_id());
+				if(login.getMember_id().equals(mem.getMember_id())) {
+					session.setAttribute("loginsmem", mem);
+				}
 			}
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 			mav.getModel().putAll(bresult.getModel());
@@ -245,5 +280,26 @@ public class MemberController {
 	public String loginChecklogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:login.dog";
+	}
+	
+	//보호소관리자
+	
+	@GetMapping("shelterMypage")
+	public ModelAndView shelterMypageMain(String type, String id) {
+		ModelAndView mav = new ModelAndView();
+		Member mem = service.getMember(id);
+		mav.addObject("type", type);
+		mav.addObject("mem", mem);
+		return mav;
+	}
+	
+	@GetMapping("sheltervworkMypage")
+	public ModelAndView sheltervworkMypageMain(String type, String id) {
+		ModelAndView mav = new ModelAndView();
+		//List<Vwork> writelist = service.getwritev
+		
+		//mav.addObject("writelist", writelist);
+		mav.addObject("type", type);
+		return mav;
 	}
 }

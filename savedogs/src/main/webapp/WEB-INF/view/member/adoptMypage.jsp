@@ -41,21 +41,20 @@
 </style>
 </head>
 <body>
-	<div class="maiv_div" style="width: 100%;">
+	<div class="maiv_div" style="width: 100%;"> 
+	<div align="center" style="width: 100%; margin-left:42%;">
 	<table style="width: 100%;">
 		<tr>
 			<td id="tab1" class ="tab" style="width: 50%;" align="center">
-				<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">관심 가는 아이</a>
+				<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">입양신청 조회</a>
 			</td>
 			<td id="tab2" class="tab" align="center">
-				<a href="javascript:disp_div('oinfo','tab2')" style="color: gray; width: 50%;">입양신청 조회</a>
+				<a href="javascript:disp_div('oinfo','tab2')" style="color: gray; width: 50%;">관심 가는 아이</a>
 			</td>
 		</tr>
 	</table>
-	<div id="minfo" class="info" style="width:100%;">
-		<h3>관심 가는 아이</h3>
 	</div>
-	<div id="oinfo" class="info" style="display:none; width:100%;">
+	<div id="minfo" class="info" style="display:none; width:100%;">
 		<c:if test="${empty myadoptlist }" >
 			<h3>유기견을 찾아보세요.</h3>
 			<input class="s_btn" type="button" value="검색" onclick="location.href='../adopt/amain.dog'">
@@ -76,6 +75,9 @@
 			</tr>
 		</table>
 	</c:if>
+	</div>
+	<div id="oinfo" class="info" style="width:100%;">
+		<h3>관심 가는 아이</h3>
 	</div>
 	</div>
 </body>

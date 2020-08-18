@@ -30,16 +30,6 @@ public class AdoptController {
 		return mav;
 	}
 
-	/*
-	 * @PostMapping("amain") public ModelAndView main2(Adopt adopt) throws Exception
-	 * { ModelAndView mav = new ModelAndView(); Map<String, String> result =
-	 * AdoptUtils.getKind(); String state = result.get(adopt.getState());
-	 * System.out.println("state :" + state); String kind =
-	 * result.get(adopt.getKind()); System.out.println("kind :" + kind); if(kind !=
-	 * null) { List<Adopt> go = ApiExplorer.getDogJson(state, kind);
-	 * mav.addObject("go", go); } mav.setViewName("/adopt/amain"); return mav; }
-	 */
-
 	@PostMapping("amain")
 	public ModelAndView main2(Adopt adopt, String state, String kind) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -62,6 +52,12 @@ public class AdoptController {
 		ModelAndView mav = new ModelAndView();
 		Adopt go = ApiExplorer.getDogJson(desertionNo);
 		mav.addObject("go", go);
+		return mav;
+	}
+
+	@RequestMapping("adoptSignup")
+	public ModelAndView asignup() throws Exception {
+		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
 

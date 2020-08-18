@@ -42,6 +42,7 @@
 </head>
 <body>
 	<div class="maiv_div" style="width: 100%;">
+	<div align="center" style="width: 100%; margin-left:45%;">
 	<table style="width: 100%;">
 		<tr>
 			<td id="tab1" class ="tab" style="width: 50%;" align="center">
@@ -52,8 +53,38 @@
 			</td>
 		</tr>
 	</table>
+	</div>
 	<div id="minfo" class="info" style="width:100%;">
-		<h3>장바구니</h3>
+	<hr>
+	<c:if test="${empty cart }">
+		<h3>장바구니에 물품이 없습니다.</h3>
+	</c:if>
+	<c:if test="${!empty cart }">	
+	<div align="center">
+		<table> 
+		<tr style="width: 100%;"><th width="250px">상품명</th><th width="250px">수량</th><th width="250px">합계</th></tr>
+		<c:set var="tot" value="${0}"/>
+		<c:forEach items="${cart.itemSetList}" var="itemSet" varStatus="stat">
+			<tr><td width="250px" style="text-align: center;">${itemSet.item.item_name}</td>
+				<td width="250px" style="text-align: center;">${itemSet.item_each}</td>
+				<td width="250px" style="text-align: center;">${itemSet.item_each * itemSet.item.item_price}
+			<c:set var="tot" value="${tot +(itemSet.item_each * itemSet.item.item_price)}"/>
+			<a href="cartDelete.dog?index=${stat.index}">ⓧ</a></td></tr>
+		</c:forEach>
+		</table>
+	</div>
+	<hr>
+	<h3 align="left" style="margin-left: 15%; ">총 구입 금액 : ${tot}원</h3>
+	<div>
+	<form>
+		<table>
+			<tr>
+				<td><input type="button" onclick="location.href='checkout.dog'" value="구매하러가기"></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+	</c:if>
 	</div>
 	<div id="oinfo" class="info" style="display:none; width:100%;">
 		<c:if test="${empty buylist }" >

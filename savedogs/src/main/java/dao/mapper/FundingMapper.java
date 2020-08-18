@@ -49,7 +49,8 @@ public interface FundingMapper {
     
     @Delete( "delete from funding where fund_no = ${fund_no}") 
 	void funddelete(Map<String, Object> param);
-	 
+	
+ 
 	/*  //shelter_name 가져오기 shelter_no 겹침
 	 * @Select({"<script>" "select shelter_name, "<if test='shelter_no != null'> }
 	 */
