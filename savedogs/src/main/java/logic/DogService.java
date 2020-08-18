@@ -246,7 +246,7 @@ public class DogService {
 
 		public void itemCreate(@Valid Item item, HttpServletRequest request) {
 			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
-				uploadFileCreate(item.getPicture(),request,"item/img");
+				uploadFileCreate(item.getPicture(),request,"item/img/");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
 			itemDao.insert(item);
