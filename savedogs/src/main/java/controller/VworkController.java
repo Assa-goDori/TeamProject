@@ -1,6 +1,9 @@
 package controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +27,7 @@ import logic.DogService;
 import logic.Member;
 import logic.Shelter;
 import logic.Vwork;
+import logic.Vworklist;
 
 
 @Controller
@@ -210,9 +214,95 @@ public class VworkController {
 			Member mem = (Member)session.getAttribute("loginmem");
 			mav.addObject("mem",mem);
 		}
-		Vwork vwork = service.getVwork(vwork_no);
-		mav.addObject("vwork",vwork);
+		Map<String,String> map = new HashMap<>();
+		Vwork dbvwork = service.getVwork(vwork_no);
+		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
+		map.put("address",shelter.getShelter_address());
+		map.put("name",shelter.getShelter_name());		
+		int Nowmem = service.getNowmem(dbvwork.getVwork_no());
+		String Nmem = String.valueOf(Nowmem);
+		map.put("Nmem",Nmem);
+		String Vmem = String.valueOf(dbvwork.getVwork_member()); 
+		map.put("Vmem",Vmem);
+		String vno = String.valueOf(dbvwork.getVwork_no());
+		map.put("vwork_no",vno);
+		map.put("vwork_content",dbvwork.getVwork_content());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String date = format.format(dbvwork.getVwork_date());
+		map.put("date",date);
+		
+		mav.addObject("vwork",map);
 		return mav;
 	}
+	
+	@GetMapping("vjoin")
+	public ModelAndView vjoinform(Model model, String vwork_no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member smem = (Member)session.getAttribute("loginsmem");
+		if(smem != null) {
+			mav.addObject("smem",smem);
+		} else {
+			Member mem = (Member)session.getAttribute("loginmem");
+			mav.addObject("mem",mem);
+		}
+		model.addAttribute(new Vworklist());
+
+		Map<String,String> map = new HashMap<>();
+		Vwork dbvwork = service.getVwork(vwork_no);
+		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
+		map.put("address",shelter.getShelter_address());
+		map.put("name",shelter.getShelter_name());		
+		int Nowmem = service.getNowmem(dbvwork.getVwork_no());
+		String Nmem = String.valueOf(Nowmem);
+		map.put("Nmem",Nmem);
+		String Vmem = String.valueOf(dbvwork.getVwork_member()); 
+		map.put("Vmem",Vmem);
+		String vno = String.valueOf(dbvwork.getVwork_no());
+		map.put("vwork_no",vno);
+		map.put("vwork_content",dbvwork.getVwork_content());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String date = format.format(dbvwork.getVwork_date());
+		map.put("date",date);
+		
+		mav.addObject("vwork",map);
+		return mav;
+	}
+		
+	@PostMapping("vjoin")
+	public ModelAndView vjoin(@Valid Vworklist vworklist, Model model,BindingResult bresult, String vwork_no, HttpSession session,HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		Member smem = (Member)session.getAttribute("loginsmem");
+		Member mem = (Member)session.getAttribute("loginmem");
+		if(smem != null) {
+			mav.addObject("smem",smem);
+		} 
+		if(mem != null) {
+			mav.addObject("mem",mem);
+		}
+		if(bresult.hasErrors()) {
+			mav.getModel().putAll(bresult.getModel());
+			return mav;
+		}
+		
+		Vwork dbvwork = service.getVwork(vwork_no);
+		Date date = dbvwork.getVwork_date();
+		
+		vworklist.setVwork_date(date);
+		vworklist.setVwork_no(vwork_no);
+		
+		
+		
+		try {
+			service.vJoin(vworklist, request);
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new VworkException("이미 해당 봉사를 신청했습니다.","vdetail.dog?vwork_no="+vwork_no);
+		}		
+		mav.setViewName("redirect:vmain.dog"); //해당 멤버의 마이페이지(봉사신청)
+		return mav;
+	}
+	
+
 	
 }

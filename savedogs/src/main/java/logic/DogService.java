@@ -16,6 +16,7 @@ import dao.AdminDao;
 import dao.BuyitemDao;
 import dao.BuylistDao;
 import dao.FundingDao;
+import dao.FundinglistDao;
 import dao.ItemDao;
 import dao.MemberDao;
 import dao.ShelterDao;
@@ -42,6 +43,8 @@ public class DogService {
 	private BuyitemDao buyitemDao;
 	@Autowired
 	private VworklistDao vworklistDao;
+	@Autowired
+	private FundinglistDao fundlistDao;
 	
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
@@ -116,6 +119,23 @@ public class DogService {
 	public List<Vwork> getMyvworkList(String id) {
 		return vworklistDao.getMyvworkList(id);
 	}
+	
+	public List<Buylist> getbuylist(String id) {
+		return buylistDao.list(id);
+	}
+	
+	public List<BuyItem> getbuyitemlist(int buy_no) {
+		return buyitemDao.list(buy_no);
+	}
+	
+	public List<Fundinglist> getMyfundlist(String id) {
+		return fundlistDao.list(id);
+	}
+	
+	public List<Fundinglist> getMyendfundlist(String id) {
+		return fundlistDao.endlist(id);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -163,6 +183,10 @@ public class DogService {
 		return vworkDao.getVlist(date);
 	}
 
+	public void vJoin(Vworklist vworklist, HttpServletRequest request) {
+		vworkDao.vJoin(vworklist);
+	}
+
 //-------------------봉사관련 끝-------------------------------------------------
 
 //-------------------펀딩관련 시작-------------------------------------------------
@@ -206,10 +230,23 @@ public class DogService {
 		public List<Item> getItemList() {
 			return itemDao.list();
 		}
+		
+		private void uploadItemImg(MultipartFile itemimg, HttpServletRequest request, String path) {
+			String orgFile = itemimg.getOriginalFilename();
+			String uploadPath = request.getServletContext().getContextPath()+ "/" + path;
+			System.out.println(uploadPath);	
+			File fpath = new File(uploadPath);
+			if(!fpath.exists()) fpath.mkdirs();
+			try {
+				itemimg.transferTo(new File(uploadPath + orgFile));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		public void itemCreate(@Valid Item item, HttpServletRequest request) {
 			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
-				uploadFileCreate(item.getPicture(),request,"item/img/");
+				uploadFileCreate(item.getPicture(),request,"item/img");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
 			itemDao.insert(item);
@@ -243,20 +280,20 @@ public class DogService {
 		}
 
 		public Buylist checkend2(@Valid Buylist buylist, Cart cart) {
-			Buylist buylist2 = new Buylist();
 			int buy_no = buylistDao.getMaxSaleid();
-			buylist2.setBuy_no(++buy_no);
-			buylistDao.insert(buylist2);
+			buylist.setBuy_no(++buy_no);
+			buylistDao.insert(buylist);
 			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보
 			int i = 0;
 			for(ItemSet is : itemList) {
 				int seq = ++i;
-				BuyItem saleItem = new BuyItem(buylist2.getBuy_no(),seq,is);
-				buylist2.getItemList().add(saleItem);
+				BuyItem saleItem = new BuyItem(buylist.getBuy_no(),seq,is);
+				buylist.getItemList().add(saleItem);
 				buyitemDao.insert(saleItem);
 			}
-			return buylist2;
+			return buylist;
 		}
+		
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 

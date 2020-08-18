@@ -113,7 +113,7 @@
 			<tr height="40px">
 				<td>전화번호</td>
 				<td>
-					<form:input path="member_tel" />
+					<form:input path="member_tel" placeholder="010-0000-0000"/>
 					<font color="red">
 						<form:errors path="member_tel" />
 					</font>

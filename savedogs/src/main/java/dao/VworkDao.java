@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.VworkMapper;
 import logic.Vwork;
+import logic.Vworklist;
 
 @Repository
 public class VworkDao {
@@ -50,4 +51,11 @@ public class VworkDao {
 	public List<Vwork> getVlist(String date) {
 		return template.getMapper(VworkMapper.class).getVlist(date);
 	}
+
+	public void vJoin(Vworklist vworklist) {
+		template.getMapper(VworkMapper.class).vJoin(vworklist);
+		
+	}
+
+
 }

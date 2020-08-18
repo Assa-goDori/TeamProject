@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import logic.Vwork;
+import logic.Vworklist;
 
 public interface VworkMapper {
 
@@ -35,5 +36,9 @@ public interface VworkMapper {
 
 	@Select("select * from vwork where vwork_date = #{date}")
 	List<Vwork> getVlist(String date);
+
+	
+	@Insert("insert into vworklist (vwork_no, vwork_id, vwork_date, vwork_tel) values (#{vwork_no}, #{vwork_id}, #{vwork_date}, #{vwork_tel})")
+	void vJoin(Vworklist vworklist);
 
 }

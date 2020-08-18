@@ -8,21 +8,26 @@
 <title>유기견 상세</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <style>
-	img {
-		width : 500px;
-		height : 500px;
-	}
+img {
+	width: 500px;
+	height: 500px;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
 	<div>
 		<h2>상세 정보</h2>
 		<br>
-		<h3>유기견 정보</h3><table>
-				<tr><td><img src="${go.popfile}"></td></tr>
-				</table>
+		<h3>유기견 정보</h3>
 		<table>
-			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<th colspan="2"><img src="${go.popfile}"></th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
 			<tr>
 				<th>공고 기간</th>
 				<td>${go.noticeSdt}부터${go.noticeEdt}까지</td>
@@ -64,7 +69,9 @@
 				<td>${go.happenPlace}</td>
 			</tr>
 		</table>
-		<input type="submit" value="입양 신청" class="s_btn" onclick="location.href='adoptSignup.dog'">
+		<br>
+		<input type="submit" value="입양 신청" class="s_btn"
+			onclick="location.href='adoptSignup.dog'">
 	</div>
 </body>
 </html>

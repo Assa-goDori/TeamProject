@@ -20,6 +20,9 @@ public class DBconfig {
 		ComboPooledDataSource ds = new ComboPooledDataSource();	//Connection Pool 객체
 		try {
 			ds.setDriverClass("org.mariadb.jdbc.Driver");
+
+			//192.168.0.113
+
 			ds.setJdbcUrl("jdbc:mariadb://192.168.0.113:3306/savedogs");
 			ds.setUser("scott");
 			ds.setPassword("1234");
