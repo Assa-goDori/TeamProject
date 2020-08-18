@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>구해독 : 봉사 등록</title>
 <link rel='stylesheet' href='../css/style.css' />
-<link rel='stylesheet' href='../css/savedogs1.css' />
+<link rel='stylesheet' href='../css/savedogs_exc.css' />
 </head>
 <body>
 <div class="vdiv">
