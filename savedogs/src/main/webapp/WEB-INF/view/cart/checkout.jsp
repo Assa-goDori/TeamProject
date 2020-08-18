@@ -169,7 +169,7 @@
 				<tr>
 					<th width="30%">전화번호</th>
 					<td>
-						<form:input path="buy_tel" />
+						<form:input path="buy_tel" placeholder="010-0000-0000"/>
 					</td>
 				</tr>
 			</table>

@@ -30,32 +30,36 @@
 			<tr height="40px">
 				<td>보호소 명</td>
 				<!-- db에서 불러올것 입력값아님~ -->
-				<td><form:input path="sheltername" /> <font color="red"><form:errors
-							path="sheltername" /></font></td>
+				<td><input type="text" name="sheltername" readonly="readonly" value="${sessionScope.smemName}" />
+				 <font color="red">
+				 <form:errors path="sheltername" /></font></td>
 			</tr>
-
 			<tr height="40px">
 				<td>후원 제목</td>
-				<td><form:input path="funding_subject" /> <font color="red"><form:errors
-							path="funding_subject" /></font></td>
+				<td><input type="text" name="funding_subject" /> 
+				<font color="red">
+				<form:errors path="funding_subject" /></font></td>
 			</tr>
 
 			<tr height="40px">
 				<td>목표 금액</td>
-				<td><form:input path="count" /> <font color="red"><form:errors
-							path="count" /></font></td>
+				<td><input type="text" name="count" /> 
+				<font color="red">
+				<form:errors path="count" /></font></td>
 			</tr>
 
 			<tr height="40px">
 				<td>시작 날짜</td>
-				<td><input type="date" name="start_date" /> <font color="red"><form:errors
-							path="start_date" /></font></td>
+				<td><input type="date" name="start_date" /> 
+				<font color="red">
+				<form:errors path="start_date" /></font></td>
 			</tr>
 
 			<tr height="40px">
 				<td>마감날짜</td>
-				<td><input type="date" name="end_date" /> <font color="red"><form:errors
-							path="end_date" /></font></td>
+				<td><input type="date" name="end_date" /> 
+				<font color="red">
+				<form:errors path="end_date" /></font></td>
 			</tr>
 
 			<tr height="40px">
