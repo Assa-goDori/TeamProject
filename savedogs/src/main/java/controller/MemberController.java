@@ -133,7 +133,7 @@ public class MemberController {
 		for(Buylist bl : buylist) {
 			List<BuyItem> buyitemlist = service.getbuyitemlist(bl.getBuy_no());
 			for(BuyItem bi : buyitemlist) {
-				Item item = service.itemselect(bi.getBuy_no());
+				Item item = service.itemselect(Integer.parseInt(bi.getItem_no()));
 				bi.setItem(item);
 			}
 			bl.setItemList(buyitemlist);

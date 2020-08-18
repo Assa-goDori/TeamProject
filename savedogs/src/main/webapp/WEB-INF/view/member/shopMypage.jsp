@@ -69,7 +69,7 @@
 			<c:forEach items="${buylist }" var="buy" varStatus="stat">
 				<tr>
 					<td align="center">
-						<a href="javascript:list_disp('saleLine${buy.index }')">${buy.buy_no }</a>
+						<a href="javascript:list_disp('saleLine${stat.index+1 }')">${stat.index+1 }</a>
 					</td>
 					<td align="center">
 						<fmt:formatDate value="${buy.buy_date }" pattern="yyyy-MM-dd" />
@@ -78,7 +78,7 @@
 						<fmt:formatNumber value="${buy.total }" pattern="#,###" />원
 					</td>
 				</tr>
-				<tr id="saleLine${stat.index }" class="saleLine">
+				<tr id="saleLine${stat.index+1 }" class="saleLine">
 					<td colspan="3" align="center">
 						<table>
 							<tr>
