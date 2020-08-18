@@ -40,11 +40,15 @@
             }
         }).open();
 	}
+	
+	function file_delete() {
+		file_desc.style.display = "none";
+	}
 </script>
 </head>
 <body>
 	<div class="main_div">
-	<form:form modelAttribute="member" method="post" action="updateMember.dog">
+	<form:form modelAttribute="member" method="post" action="updateMember.dog" name="f">
 		<spring:hasBindErrors name="member">
 			<font color="red">
 				<c:forEach items="${errors.globalErrors }" var="error">
@@ -53,6 +57,7 @@
 			</font>
 		</spring:hasBindErrors>
 		<br>
+		<c:if test="${!empty sessionScope.loginmem }">
 		<table style="border-collapse:collapse; ">
 			<tr height="40px">
 				<th>아이디</th>
@@ -134,7 +139,69 @@
 				</td>
 			</tr>
 		</table>
-	</form:form>
+		</c:if>
+		<c:if test="${!empty sessionScope.loginsmem }">
+		<table style="border-collapse:collapse; ">
+			<tr height="40px">
+				<th>아이디</th>
+				<td>
+					<input type="text" name="member_id" value="${member.member_id }" readonly="readonly">
+					<font color="red">
+						<form:errors path="member_id" />
+					</font>
+				</td>
+			</tr>
+			<tr height="40px">
+				<th>전화번호</th>
+				<td>
+					<input type="text" name="member_tel" value="${member.member_tel }">
+					<font color="red">
+						<form:errors path="member_tel" />
+					</font>
+				</td>
+			</tr>
+			<tr height="40px">
+				<th>이메일</th>
+				<td>
+					<input type="text" name="member_email" value="${member.member_email }">
+					<font color="red">
+						<form:errors path="member_email" />
+					</font>
+				</td>
+			</tr>
+			<tr height="40px">
+				<td>보호소 번호</td>
+				<td>
+					<input type="text" id="shelter_no" name="shelter_no" value="${member.shelter_no }">
+					<input type="button" value="보호소 찾기" onclick="window.open('shelterlist.dog','','width=500, height=250, left=150,top=150')">
+				</td>
+				<td>
+					<font color="red">
+						<form:errors path="shelter_no" />
+					</font>
+				</td>
+			</tr>
+			<tr height="40px">
+				<td>첨부파일</td>
+				<td>&nbsp;
+				<c:if test="${!empty member.file1 }">
+					<div id="file_desc">
+						<a href="member/img/${member.file1 }">${member.file1 }</a>
+						<a href="javascript:file_delete()">[파일첨부삭제]</a>
+					</div>
+				</c:if>
+				<input type="file" name="file1">
+			</td>
+			</tr>
+			<tr height="40px">
+				<td class="btn_td" colspan="2" align="center">
+					<input class="s_btn" type="button" value="비밀번호 변경" onclick="window.open('changepass.dog?id=${member.member_id}','','width=500, height=250, left=150,top=150')">
+					<input class="s_btn" type="submit" value="수정 완료">
+				</td>
+			</tr>
+		</table>
+		</c:if>
+		</form:form>
 	</div>
 </body>
 </html>

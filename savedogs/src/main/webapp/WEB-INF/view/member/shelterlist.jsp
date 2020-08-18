@@ -10,6 +10,7 @@
 <script>
 	$(function() {
 		$("li").click(function() {
+			$(opener.document).find("#shelter_no").val("");
 			$(opener.document).find("#shelter_no").val($(this).text().substr(0,15));
 			window.close();
 		})

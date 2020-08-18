@@ -92,7 +92,7 @@
                     	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id}" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
-                    	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id}" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
@@ -146,10 +146,11 @@
 
     <!-- coachservice-section -->
     <div class="space-medium">
-    <div style="margin-left: 30%; width: 40%;">
+    <!-- <div style="margin-left: 30%; width: 40%;"> -->
 		<h3>My Page</h3>
 		<hr>
-		<div style="width: 100%;">
+		<c:if test="${!empty sessionScope.loginmem }">
+		<div align="center" style="width: 100%; margin-left:40%;">
 			<table style="width: 100%;">
 				<tr>
 					<td id="mytab1" align="center" class="mytab" style="width: 20%"><a
@@ -169,9 +170,29 @@
 				</tr>
 			</table>
 		</div>
+		</c:if>
+		<c:if test="${!empty sessionScope.loginsmem }">
+		<div align="center" style="width: 100%; margin-left:40%;">
+			<table style="width: 100%;">
+				<tr>
+					<td id="mytab1" align="center" class="mytab" style="width: 20%"><a
+						href="shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id }">내정보</a></td>
+					<td id="mytab2" align="center" class="mytab" style="width: 20%"><a
+						href="sheltervworkMypage.dog?type=2&id=${sessionScope.loginsmem.member_id }">봉사</a>
+					</td>
+					<td id="mytab3" align="center" class="mytab" style="width: 20%"><a
+						href="shelterfundMypage.dog?type=3&id=${sessionScope.loginsmem.member_id }">기부</a>
+					</td>
+					<td id="mytab4" align="center" class="mytab" style="width: 20%"><a
+						href="shelteradoptMypage.dog?type=4&id=${sessionScope.loginsmem.member_id }">보호소</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</c:if>
 		<decorator:body />
 	</div>
-    </div>
+    <!-- </div>  -->
     <!-- video-section -->
     <!-- footer -->
     <div class="footer">

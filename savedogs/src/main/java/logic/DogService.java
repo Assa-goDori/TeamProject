@@ -108,7 +108,11 @@ public class DogService {
 		return adminDao.getShelterName(goo);
 	}
 	
-	public void memUpdate(Member mem) {
+	public void memUpdate(Member mem, HttpServletRequest request) {
+		if(mem.getF1() != null && !mem.getF1().isEmpty()) {
+			uploadFileCreate(mem.getF1(),request,"member/img/");
+			mem.setFile1(mem.getF1().getOriginalFilename());
+		}
 		memberDao.memUpdate(mem);
 	}
 	

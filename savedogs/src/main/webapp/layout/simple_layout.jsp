@@ -52,13 +52,13 @@
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
                     <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
-                    	<a style="color: white;" href="../member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="../member/selectSignup.dog" style="color: white;">회원가입</a>
+                    	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
-                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp;<a href="../member/logout.dog" style="color: white;">로그아웃</a>&nbsp;|&nbsp;<a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.loginmem.member_name}님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id}" style="color: white;">마이페이지</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
-                    	${sessionScope.loginsmem.member_name}님 반갑습니다.&nbsp;|&nbsp;<a href="../member/logout.dog" style="color: white;">로그아웃</a>&nbsp;|&nbsp; <a href="../member/memberMypage.dog" style="color: white;">마이페이지</a>
+                    	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id}" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>

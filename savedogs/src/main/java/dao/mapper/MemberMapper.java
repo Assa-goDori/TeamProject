@@ -23,10 +23,21 @@ public interface MemberMapper {
 	@Select("select * from member where member_id=#{member_id}")
 	Member selectMem(String member_id);
 
-	@Update("update member"
-			+ " set member_name=#{member_name}, member_birthday=#{member_birthday}, member_postcode=#{member_postcode},"
-			+ " member_address=#{member_address}, member_daddress=#{member_daddress}, member_tel=#{member_tel}, member_email=#{member_email}"
-			+ " where member_id=#{member_id}")
+	@Update({"<script>",
+			"update member set",
+			"<if test='member_name != null'> member_name=#{member_name}, </if>",
+			"<if test='member_birthday != null'> member_birthday=#{member_birthday}, </if>",
+			"<if test='member_postcode != null'> member_postcode=#{member_postcode}, </if>",
+			"<if test='member_address != null'> member_address=#{member_address}, </if>",
+			"<if test='member_daddress != null'> member_daddress=#{member_daddress}, </if>",
+			"<if test='shelter_no != null'> shelter_no=#{shelter_no}, </if>",
+			"<if test='file1 != null'> file1=#{file1}, </if>",
+			" member_tel=#{member_tel}, member_email=#{member_email} where member_id=#{member_id}",
+			"</script>"
+	})
+			//"update member set member_name=#{member_name}, member_birthday=#{member_birthday}, member_postcode=#{member_postcode},"
+			//+ " member_address=#{member_address}, member_daddress=#{member_daddress}, member_tel=#{member_tel}, member_email=#{member_email}"
+			//+ " where member_id=#{member_id}")
 	void memUpdate(Member mem);
 
 	@Update("update member set member_pass=#{pass} where member_id=#{id}")
