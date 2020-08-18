@@ -67,5 +67,11 @@ public class VworkDao {
 		
 	}
 
+	public List<Vwork> getwritelist(String id) {
+		param.clear();
+		param.put("id", id);
+		return template.getMapper(VworkMapper.class).getwritelist(id);
+	}
+
 
 }
