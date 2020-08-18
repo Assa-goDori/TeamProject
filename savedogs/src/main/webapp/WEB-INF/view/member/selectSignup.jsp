@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
-
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function check(href) {
@@ -23,11 +23,21 @@
 		}
 	}
 </script>
+<style type="text/css">
+.s_btn{
+	width: 150px;
+}
+
+h4{
+	margin: 0;
+	padding: 0;
+}
+</style>
 </head>
 <body>
 	<div align="right" style="margin-left: 30%; width:40%;">
 		<div align="center">
-			<h5>이용약관 동의</h5>
+			<h4>이용약관 동의</h4>
 		</div>
 		<textarea style="width:100%; height:200px;">
 			제 1조 총칙
@@ -39,14 +49,14 @@
 		<table>
 			<tr>
 				<td colspan="3"><h4>위의 이용약관에 동의합니다</h4></td>
-				<td><input type="checkbox" id="btn1"></td>
+				<td><input type="checkbox" id="btn1" class="chk"></td>
 			</tr>
 		</table>
 		<br>
 		<br>
 		<br>
 		<div align="center">
-			<h5>개인정보 수집 이용 동의</h5>
+			<h4>개인정보 수집 이용 동의</h4>
 		</div>
 		<textarea style="width:100%; height:200px;">
 			1. 개인정보의 수집·이용에 관한 사항
@@ -59,11 +69,9 @@
 		<table>
 			<tr>
 				<td colspan="3"><h4>위의 이용약관에 동의합니다</h4></td>
-				<td><input type="checkbox" id="btn2"></td>
+				<td><input type="checkbox" id="btn2" class="chk"></td>
 			</tr>
 		</table>
-		<br>
-		<br>
 		<br>
 		<br>
 		<br>
