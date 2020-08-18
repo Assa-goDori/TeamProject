@@ -12,10 +12,7 @@
 	display: inline-block;
 	width: 65%;
 }
-.g_font{
-	font-size: 25px;
-	color: #19CE60;
-}
+
 </style>
 </head>
 <body>
@@ -32,8 +29,8 @@
 		<tr><th colspan="2">&nbsp;</th></tr>
 		<tr><th colspan="2">현재 <font class="g_font">${Nmem }명</font>의 봉사 지원자가 있습니다.</th></tr>
 		<tr><th colspan="2">정말로 삭제하시겠습니까?</th></tr>
-		<tr><th colspan="2">&nbsp;</th></tr>
-		<tr><th colspan="2">
+		
+		<tr><th colspan="2" class="btn_td">
 							<input type="button" class="g_btn" value="취소"  onclick="history.back(-1);">
 							<input type="submit" class="s_btn" value="삭제"></th></tr>
 </table>

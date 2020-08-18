@@ -18,7 +18,7 @@
 <script src='${path }/js/packages/daygrid/main.js'></script>
 <script src='${path }/js/packages/interaction/main.js'></script>
 
-
+<link rel='stylesheet' href='../css/savedogs_cal.css' />
 
 
 <script type="text/javascript">
@@ -45,44 +45,6 @@
 	})
 </script>
 		
-<style type="text/css">
-.main_div{
-	text-align: center;
-	margin-bottom: 50px;
-}
-.search_div{
-	vertical-align: middle; 
-	display: inline-block;
-	background-color: #E4E4E4;
-	text-align: center;
-	width: 50%;
-	height: 100px;
-	margin-bottom: 50px;
-}
-.cal_div{
-	vertical-align: middle; 
-	display: inline-block;
-}
-select{
-	font-size: 15px;
-	padding: 7px;
-	width: 235px;
-}
-.s_btn {
-	background-color: #19CE60;
-	color : white;
-	font-size: 20px;
-	
-	border: 0;
-	outline: 0;
-	width: 80px;
-	height: 60%;
-	margin-left: 5px;
-}
-form{
-	padding-top: 25px;
-}
-</style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 	var calendarEl = document.getElementById('calendar');

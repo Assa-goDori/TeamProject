@@ -265,7 +265,7 @@ label {}
     outline: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-bottom-color: #19CE60;
+    border-bottom-color: #34b2a4;
     font-size: 12px;
 }
 
@@ -287,7 +287,7 @@ input::-webkit-input-placeholder {
 }
 
 input:focus::-webkit-input-placeholder {
-    color: #19CE60 !important;
+    color: #34b2a4 !important;
     bottom: 20px;
     position: relative;
 }
@@ -297,7 +297,7 @@ textarea::-webkit-input-placeholder {
 }
 
 textarea:focus::-webkit-input-placeholder {
-    color: #19CE60 !important;
+    color: #34b2a4 !important;
     bottom: 20px;
     position: relative;
     font-size: 12px;
@@ -305,7 +305,7 @@ textarea:focus::-webkit-input-placeholder {
 
 .input-group-addon {
     background-color: transparent;
-    border: 1px solid #19CE60;
+    border: 1px solid #34b2a4;
     border-radius: 0px;
 }
 
@@ -347,7 +347,7 @@ textarea:focus::-webkit-input-placeholder {
 }
 
 .has-error .form-control:focus {
-    border-color: #19CE60;
+    border-color: #34b2a4;
     outline: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -360,7 +360,7 @@ textarea:focus::-webkit-input-placeholder {
 }
 
 .input-group-addon i {
-    color: #19CE60;
+    color: #34b2a4;
 }
 
 option {

@@ -7,16 +7,17 @@
 <meta charset="UTF-8">
 <title>후원 쇼핑몰</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
+
 </head>
 <body>
 <div style="width: 80%; margin-left: 10%;" >
-	<div align="center">
-		<table style="width: 80%;">
+	<div align="center" class="hw_div">
+		<table >
 			<tr>
 				<td style="width: 50%;" align="center">
 					<a href="../funding/list.dog">기부</a>
 				</td>
-				<td align="center">후원쇼핑몰</td>
+				<td align="center" class="hw_clicked">후원쇼핑몰</td>
 			</tr>
 		</table>
 	</div>
