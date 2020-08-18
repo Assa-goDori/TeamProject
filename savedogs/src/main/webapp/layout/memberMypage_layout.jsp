@@ -31,15 +31,22 @@
 	})
 </script>
 <style type="text/css">
+.tab_a{
+	font-size: 25px;
+	
+}
 .select {
 	padding: 3px;
-	background-color: #3598DA;
 }
 
 .select>a {
-	color: #ffffff;
+	color: #34b2a4;
 	text-decoration: none; /* 하이퍼링크 밑줄 제거 */
 	font-weight: bold; /* 글씨체 굵게 */
+}
+.mytab{
+	padding: 30px;
+	text-align: center;
 }
 </style>
 <head>
@@ -150,41 +157,41 @@
 		<h3>My Page</h3>
 		<hr>
 		<c:if test="${!empty sessionScope.loginmem }">
-		<div align="center" style="width: 100%; margin-left:40%;">
-			<table style="width: 100%;">
+		<div align="center" style="width: 100%;">
+			<table>
 				<tr>
-					<td id="mytab1" align="center" class="mytab" style="width: 20%"><a
-						href="memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id }">내정보</a></td>
-					<td id="mytab2" align="center" class="mytab" style="width: 20%"><a
-						href="vworkMypage.dog?type=2&id=${sessionScope.loginmem.member_id }">봉사</a>
+					<td id="mytab1" align="center" class="mytab"><a
+						href="memberMypage.dog?type=1&id=${sessionScope.loginmem.member_id }" class="tab_a">내정보</a></td>
+					<td id="mytab2" align="center" class="mytab"><a
+						href="vworkMypage.dog?type=2&id=${sessionScope.loginmem.member_id }" class="tab_a">봉사</a>
 					</td>
-					<td id="mytab3" align="center" class="mytab" style="width: 20%"><a
-						href="fundMypage.dog?type=3&id=${sessionScope.loginmem.member_id }">기부</a>
+					<td id="mytab3" align="center" class="mytab"><a
+						href="fundMypage.dog?type=3&id=${sessionScope.loginmem.member_id }" class="tab_a">기부</a>
 					</td>
-					<td id="mytab4" align="center" class="mytab" style="width: 20%"><a
-						href="adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_id }">입양</a>
+					<td id="mytab4" align="center" class="mytab"><a
+						href="adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_id }" class="tab_a">입양</a>
 					</td>
-					<td id="mytab5" align="center" class="mytab" style="width: 20%"><a
-						href="shopMypage.dog?type=5&id=${sessionScope.loginmem.member_id }">쇼핑</a>
+					<td id="mytab5" align="center" class="mytab" ><a
+						href="shopMypage.dog?type=5&id=${sessionScope.loginmem.member_id }" class="tab_a">쇼핑</a>
 					</td>
 				</tr>
 			</table>
 		</div>
 		</c:if>
 		<c:if test="${!empty sessionScope.loginsmem }">
-		<div align="center" style="width: 100%; margin-left:40%;">
-			<table style="width: 100%;">
+		<div align="center" style="width: 100%; ">
+			<table>
 				<tr>
-					<td id="mytab1" align="center" class="mytab" style="width: 20%"><a
-						href="shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id }">내정보</a></td>
-					<td id="mytab2" align="center" class="mytab" style="width: 20%"><a
-						href="sheltervworkMypage.dog?type=2&id=${sessionScope.loginsmem.member_id }">봉사</a>
+					<td id="mytab1" align="center" class="mytab"><a
+						href="shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id }" class="tab_a">내정보</a></td>
+					<td id="mytab2" align="center" class="mytab"><a
+						href="sheltervworkMypage.dog?type=2&id=${sessionScope.loginsmem.member_id }" class="tab_a">봉사</a>
 					</td>
-					<td id="mytab3" align="center" class="mytab" style="width: 20%"><a
-						href="shelterfundMypage.dog?type=3&id=${sessionScope.loginsmem.member_id }">기부</a>
+					<td id="mytab3" align="center" class="mytab"><a
+						href="shelterfundMypage.dog?type=3&id=${sessionScope.loginsmem.member_id }" class="tab_a">기부</a>
 					</td>
-					<td id="mytab4" align="center" class="mytab" style="width: 20%"><a
-						href="shelteradoptMypage.dog?type=4&id=${sessionScope.loginsmem.member_id }">보호소</a>
+					<td id="mytab4" align="center" class="mytab"><a
+						href="shelteradoptMypage.dog?type=4&id=${sessionScope.loginsmem.member_id }" class="tab_a">보호소</a>
 					</td>
 				</tr>
 			</table>
