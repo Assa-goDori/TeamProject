@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구해독 : 공지사항 게시판</title>
+<title>구해독 : Q&amp;A 게시판</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 <div class="main_div">
-<h2>공지사항 게시판</h2>
+<h2>Q&amp;A 게시판</h2>
 <hr>
 
 </div>
