@@ -20,7 +20,14 @@ public class Vwork {
 	private String vwork_content;
 	private String shelter_name;
 	private String shelter_address;
+	private int state;
 	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public String getShelter_address() {
 		return shelter_address;
 	}

@@ -23,10 +23,10 @@
         <hr>
         <table class="w3-table" style="width:1000px">
         <c:forEach var="f" items="${fundinglist}">
-        <tr><td rowspan="4"><img src="${f.fund_pic}" style="width:150%;" align="center" alt="후원 배너 사진"></td>
-          <td colspan='2'><a href="detail.dog?fund_no=${f.fund_no}">"${f.funding_subject}"</a></td></tr>
+        <tr><td rowspan="4"><img src="img/${f.fund_pic}" style="width:150%;" align="center" alt="후원 배너 사진"></td>
+          <td colspan='2'><a href="detail.dog?fund_no=${f.fund_no}">"${f.fund_subject}"</a></td></tr>
             <tr><td>"${f.sheltername}"</td></tr>
-            <tr><td>달력 아이콘 : 1일 남음</td></tr>
+            <tr><td>달력 아이콘 : ${f.restdate}일 남음</td></tr>
             <td>게이지바</td>
           </c:forEach>
         </table>

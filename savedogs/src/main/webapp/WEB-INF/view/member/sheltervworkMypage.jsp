@@ -64,11 +64,12 @@
 				<c:forEach items="${writelist }" var="list">
 					<tr>
 						<td>
-							<a href="#">${list.vwork_date }</a>
+							<fmt:formatDate value="${list.vwork_date }" pattern="yyyy-MM-dd" var="day"/>
+							<a href="#">${day }</a>
 						</td>
 						<td>${list.vwork_member }</td>
 						<td>
-							
+							${list.state>0?"모집중":"완료" }
 						</td>
 					</tr>
 				</c:forEach>

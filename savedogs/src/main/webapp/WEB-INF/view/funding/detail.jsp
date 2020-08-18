@@ -24,10 +24,12 @@
 <input type="hidden" value="${param.fund_no}" name="fund_no">
  <table class="w3-table" style="width:1000px">
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
-        <tr><td rowspan="4"><img src="${f.picture}" style="width:150%;" alt="후원 배너 사진"></td>
-          <td colspan='2'>"${f.funding_subject}"</td></tr>
-            <tr><td>"${f.sheltername}"</td></tr>
-            <tr><td>달력 아이콘 : 1일 남음</td></tr>
+        <tr><td rowspan="4"><img src="${funding.picture}" style="width:150%;" alt="후원 배너 사진"></td>
+          <td colspan='2'>"${funding.fund_subject}"</td></tr>
+            <tr><td>"${funding.sheltername}"</td></tr>
+            <tr><td>달력 아이콘 : <fmt:formatDate value="${funding.start_date}" pattern="yyyy-MM-dd" var="startdate" />
+             <fmt:formatDate value="${funding.end_date}" pattern="yyyy-MM-dd" var="enddate" />
+            ${funding.start_date} - ${funding.end_date}</td></tr>
             <td>게이지바</td>
             <tr><td>&nbsp;</tr><td>
              <c:if test="${!empty sessionScope.loginmem}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>

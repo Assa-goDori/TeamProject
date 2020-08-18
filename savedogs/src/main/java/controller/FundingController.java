@@ -28,7 +28,7 @@ public class FundingController {
       public ModelAndView fregForm() {
           ModelAndView mav = new ModelAndView();
           Funding f = new Funding();
-          mav.addObject(f);
+          mav.addObject("f",f);
           return mav; // WEB-INF/view/userEntry.jsp
         }
       
@@ -73,7 +73,7 @@ public class FundingController {
 	  mav.addObject("fundinglist",fundinglist); 
 	 return mav; 
 	 }
-	 @PostMapping("detail")
+	 @GetMapping("detail")
 	   public ModelAndView detail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
@@ -81,4 +81,13 @@ public class FundingController {
 		 mav.addObject("funding",funding);
 		 return mav;
 	 }
+	 
+	/*
+	 * @GetMapping("detail") public ModelAndView detail(String fund_no) {
+	 * ModelAndView mav = new ModelAndView(); Funding funding =
+	 * service.getfundingdetail(fund_no); //service.readcnt(num);
+	 * mav.addObject("funding",funding); return mav; }
+	 */
+	 
+	 
 }

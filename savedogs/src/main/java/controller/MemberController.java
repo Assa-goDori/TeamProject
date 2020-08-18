@@ -296,9 +296,8 @@ public class MemberController {
 	@GetMapping("sheltervworkMypage")
 	public ModelAndView sheltervworkMypageMain(String type, String id) {
 		ModelAndView mav = new ModelAndView();
-		//List<Vwork> writelist = service.getwritev
-		
-		//mav.addObject("writelist", writelist);
+		List<Vwork> writelist = service.getwritelist(id);		
+		mav.addObject("writelist", writelist);
 		mav.addObject("type", type);
 		return mav;
 	}

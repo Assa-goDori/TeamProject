@@ -140,6 +140,10 @@ public class DogService {
 		return fundlistDao.endlist(id);
 	}
 	
+	public List<Vwork> getwritelist(String id) {
+		return vworkDao.getwritelist(id);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -306,6 +310,8 @@ public class DogService {
 			}
 			return buylist;
 		}
+
+		
 
 
 

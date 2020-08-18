@@ -48,4 +48,7 @@ public interface VworkMapper {
 	@Delete("delete from vwork where vwork_no=#{vwork_no}")
 	void vDelete(String vwork_no);
 
+	@Select("select *, datediff(vwork_date, now()) state from vwork where member_id=#{id}")
+	List<Vwork> getwritelist(String id);
+
 }
