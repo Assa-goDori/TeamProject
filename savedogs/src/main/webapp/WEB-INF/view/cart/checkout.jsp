@@ -135,7 +135,7 @@
 			<input type="button" value="주문 완료" onclick="location.href='end.dog'">
 			<input type="button" value="취소" onclick="location.href='../item/list.dog'">
 		</div>
-		<form:form modelAttribute="buylist" method="post" action="end.dog">
+		<form:form modelAttribute="buylist" action="checkout.dog" method="post">
 		<input type="hidden" value="${sessionScope.loginmem.member_id}">
 		<div id="chkF" class="info">
 			<table>
@@ -150,26 +150,26 @@
 				<tr>
 					<th width="30%">우편번호</th>
 					<td>
-						<form:input path="buy_postcode" id="input_70"/>
+						<form:input path="buy_postcode"/>
 						<input class="small_btn" type="button" value="찾기" onclick="openDaumZipAddress();">
 					</td>
 				</tr>
 				<tr>
 					<th width="30%">주소</th>
 					<td>
-						<form:input id="input" path="buy_address"/>
+						<form:input path="buy_address"/>
 					</td>
 				</tr>
 				<tr>
 					<th width="30%">상세 주소</th>
 					<td>
-						<form:input id="input" path="buy_daddress" />
+						<form:input path="buy_daddress" />
 					</td>
 				</tr>		
 				<tr>
 					<th width="30%">전화번호</th>
 					<td>
-						<form:input id="input" path="buy_tel" />
+						<form:input path="buy_tel" placeholder="010-0000-0000"/>
 					</td>
 				</tr>
 			</table>

@@ -3,7 +3,6 @@ package logic;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
@@ -50,7 +49,6 @@ public class ApiExplorer {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("accept", "application/json");
-		System.out.println(url);
 		System.out.println("Response code: " + conn.getResponseCode());
 		
 		BufferedReader rd;
@@ -107,6 +105,8 @@ public class ApiExplorer {
 				+ URLEncoder.encode("6110000", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "="
 					+ URLEncoder.encode("null", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
+				+ URLEncoder.encode("300", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8"));
 		URL url = new URL(urlBuilder.toString());
@@ -139,14 +139,14 @@ public class ApiExplorer {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObj = (JSONObject)parser.parse(result);
 		JSONObject j_response = (JSONObject)jsonObj.get("response");
-//		System.out.println("response : " + j_response);
+		System.out.println("response : " + j_response);
 		JSONObject j_body = (JSONObject)j_response.get("body"); 
-//		System.out.println("body : " + j_body);
+		System.out.println("body : " + j_body);
 		JSONObject j_items = (JSONObject)j_body.get("items"); 
-//		System.out.println("items : " + j_items);
+		System.out.println("items : " + j_items);
 		JSONArray a_item = (JSONArray)j_items.get("item"); 
 		a_item.remove(0);
-//		System.out.println("item : " + a_item);
+		System.out.println("item : " + a_item);
 		Gson gson = new Gson();
 		
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>(){}.getType());
