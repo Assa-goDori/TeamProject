@@ -73,16 +73,21 @@ public class CartController {
 		return null;
 	}
 	
-	@GetMapping("end")	
+//	@GetMapping("end")	
+//	public ModelAndView checkend(HttpSession session) { //CartAspect 구동
+//		ModelAndView mav = new ModelAndView();
+//		Cart cart = (Cart)session.getAttribute("CART");
+//		Member loginmem = (Member)session.getAttribute("loginmem");
+//		Buylist buylist = service.checkend(loginmem,cart);
+//		long total = cart.getTotal();
+//		session.removeAttribute("CART");
+//		mav.addObject("buylist",buylist);
+//		mav.addObject("total",total);
+//		return mav;
+//	}
+	@RequestMapping("end")
 	public ModelAndView checkend(HttpSession session) { //CartAspect 구동
 		ModelAndView mav = new ModelAndView();
-		Cart cart = (Cart)session.getAttribute("CART");
-		Member loginmem = (Member)session.getAttribute("loginmem");
-		Buylist buylist = service.checkend(loginmem,cart);
-		long total = cart.getTotal();
-		session.removeAttribute("CART");
-		mav.addObject("buylist",buylist);
-		mav.addObject("total",total);
 		return mav;
 	}
 	@PostMapping("checkout")
@@ -92,13 +97,13 @@ public class CartController {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
-		Cart cart = (Cart)session.getAttribute("cart");
+		Cart cart = (Cart)session.getAttribute("CART");
 		Member loginmem = (Member)session.getAttribute("loginmem");
 		buylist.setMember(loginmem);
 		buylist.setMember_id(loginmem.getMember_id());
 		try {
 			Buylist buylist2 =service.checkend2(buylist,cart);
-			mav.setViewName("redirect:login.dog");
+			mav.setViewName("redirect:../member/login.dog");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -106,6 +111,7 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
+		mav.setViewName("/cart/end");
 		return mav;
 	}
 //		Member loginmem = (Member)session.getAttribute("loginmem");

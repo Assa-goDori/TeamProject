@@ -267,30 +267,19 @@ public class DogService {
 		}
 
 		public Buylist checkend2(@Valid Buylist buylist, Cart cart) {
-			Buylist buylist2 = new Buylist();
 			int buy_no = buylistDao.getMaxSaleid();
-			buylist2.setBuy_no(++buy_no);
-			buylistDao.insert(buylist2);
+			buylist.setBuy_no(++buy_no);
+			buylistDao.insert(buylist);
 			List<ItemSet> itemList = cart.getItemSetList(); //cart 상품 정보
 			int i = 0;
 			for(ItemSet is : itemList) {
 				int seq = ++i;
-				BuyItem saleItem = new BuyItem(buylist2.getBuy_no(),seq,is);
-				buylist2.getItemList().add(saleItem);
+				BuyItem saleItem = new BuyItem(buylist.getBuy_no(),seq,is);
+				buylist.getItemList().add(saleItem);
 				buyitemDao.insert(saleItem);
 			}
-			return buylist2;
+			return buylist;
 		}
-
-
-		
-
-		
-
-		
-
-		
-
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 
