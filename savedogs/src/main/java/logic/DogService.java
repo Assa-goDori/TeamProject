@@ -230,10 +230,23 @@ public class DogService {
 		public List<Item> getItemList() {
 			return itemDao.list();
 		}
+		
+		private void uploadItemImg(MultipartFile itemimg, HttpServletRequest request, String path) {
+			String orgFile = itemimg.getOriginalFilename();
+			String uploadPath = request.getServletContext().getContextPath()+ "/" + path;
+			System.out.println(uploadPath);	
+			File fpath = new File(uploadPath);
+			if(!fpath.exists()) fpath.mkdirs();
+			try {
+				itemimg.transferTo(new File(uploadPath + orgFile));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		public void itemCreate(@Valid Item item, HttpServletRequest request) {
 			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
-				uploadFileCreate(item.getPicture(),request,"item/img/");
+				uploadFileCreate(item.getPicture(),request,"item/img");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
 			itemDao.insert(item);
@@ -280,6 +293,7 @@ public class DogService {
 			}
 			return buylist;
 		}
+		
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 
