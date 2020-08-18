@@ -73,23 +73,20 @@ public class CartController {
 		return null;
 	}
 	
-//	@GetMapping("end")	
-//	public ModelAndView checkend(HttpSession session) { //CartAspect 구동
-//		ModelAndView mav = new ModelAndView();
-//		Cart cart = (Cart)session.getAttribute("CART");
-//		Member loginmem = (Member)session.getAttribute("loginmem");
-//		Buylist buylist = service.checkend(loginmem,cart);
-//		long total = cart.getTotal();
-//		session.removeAttribute("CART");
-//		mav.addObject("buylist",buylist);
-//		mav.addObject("total",total);
-//		return mav;
-//	}
-	@RequestMapping("end")
+	@GetMapping("end")	
 	public ModelAndView checkend(HttpSession session) { //CartAspect 구동
 		ModelAndView mav = new ModelAndView();
+		Cart cart = (Cart)session.getAttribute("CART");
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		Buylist buylist = service.checkend(loginmem,cart);
+		long total = cart.getTotal();
+		session.removeAttribute("CART");
+		mav.addObject("buylist",buylist);
+		mav.addObject("total",total);
+		mav.setViewName("/item/list");
 		return mav;
 	}
+
 	@PostMapping("checkout")
 	public ModelAndView newend(@Valid Buylist buylist, BindingResult bresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView("cart/checkout");
@@ -111,7 +108,7 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
-		mav.setViewName("/cart/end");
+		mav.setViewName("/item/list");
 		return mav;
 	}
 //		Member loginmem = (Member)session.getAttribute("loginmem");
