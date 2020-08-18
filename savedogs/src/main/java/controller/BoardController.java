@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("board")
 public class BoardController {
-	@RequestMapping("noticeList")
+	@RequestMapping("*")
 	public ModelAndView noticeList() {
 		ModelAndView mav = new ModelAndView();
 		return mav;

@@ -3,7 +3,8 @@
 <decorators defaultdir="/layout">
 	<decorator name="main" page="layout.jsp">
 		<pattern>/main.dog</pattern>
-		<pattern>/board/*.dog</pattern>
+		<pattern>/board/notice*.dog</pattern>
+		<pattern>/board/qna*.dog</pattern>
 		
 	</decorator>
 	<decorator name="simple" page="simple_layout.jsp">
@@ -14,6 +15,7 @@
 		<pattern>/fundinganditem/*.dog</pattern>
 		<pattern>/adopt/*.dog</pattern>
 		<pattern>/cart/*.dog</pattern>
+		<pattern>/board/review*.dog</pattern>
 	</decorator>
 	<decorator name="membermypage" page="memberMypage_layout.jsp">
 		<pattern>/member/*Mypage.dog</pattern>
