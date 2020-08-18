@@ -33,7 +33,7 @@ public class Adopt {
 	private Date noticeEdt; // 공고 종료일
 	private String popfile; // image
 	private String processState; // 상태
-	private char sexCd; // 성별
+	private String sexCd; // 성별
 	private char neuterYn; // 중성화 여부
 	private String specialMark; // 특징
 	private String careNm; // 보호소 이름
@@ -150,7 +150,7 @@ public class Adopt {
 		return processState;
 	}
 
-	public char getSexCd() {
+	public String getSexCd() {
 		return sexCd;
 	}
 
@@ -299,7 +299,7 @@ public class Adopt {
 		this.processState = processState;
 	}
 
-	public void setSexCd(char sexCd) {
+	public void setSexCd(String sexCd) {
 		this.sexCd = sexCd;
 	}
 

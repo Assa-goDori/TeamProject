@@ -7,11 +7,10 @@
 <title>입양 신청</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <style>
-	input[type=checkbox] {
-		width : 20px;
-		height : 20px;
-		margin-top: 0px;
-	}
+input[type=checkbox] {
+	width: 20px;
+	height: 20px;
+}
 </style>
 </head>
 <body>
@@ -65,6 +64,12 @@
 						<td><h4>위 개인정보 취급방침에 동의합니다.</h4></td>
 					</tr>
 				</table>
+				<div><button type="button" value="다운로드"></button><h5>해당 파일을 다운받아 작성 후 첨부하세요</h5></div>
+				<br> 
+				<form action="">
+				<input type="submit" value="제출" class="s_btn">
+				</form>
+<!--  					onclick="location.href='../member/adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_name}'"> -->
 			</div>
 		</div>
 	</div>

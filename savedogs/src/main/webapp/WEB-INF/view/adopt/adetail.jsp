@@ -66,21 +66,33 @@ th {
 			</tr>
 		</table>
 		<div id="minfo" class="info">
+			<img src="${go.popfile}"> <br>
 			<table>
-				<tr>
-					<th colspan="2"><img src="${go.popfile}"></th>
-				</tr>
 				<tr>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<th>공고 기간</th>
-					<td><fmt:formatDate value="${go.noticeSdt}" pattern="yyyy-MM-dd" /> 부터
-					<fmt:formatDate value="${go.noticeEdt}" pattern="yyyy-MM-dd" /> 까지</td>
+					<td><fmt:formatDate value="${go.noticeSdt}"
+							pattern="yyyy-MM-dd" /> 부터 <fmt:formatDate
+							value="${go.noticeEdt}" pattern="yyyy-MM-dd" /> 까지</td>
 				</tr>
 				<tr>
 					<th>공고 번호</th>
 					<td>${go.noticeNo}</td>
+				</tr>
+				<tr>
+					<th>구조일
+					<td><fmt:formatDate value="${go.happenDt}"
+							pattern="yyyy-MM-dd" /></td>
+				</tr>
+				<tr>
+					<th>구조 장소
+					<td>${go.happenPlace}</td>
+				</tr>
+				<tr>
+					<th>상태</th>
+					<td>${go.processState}</td>
 				</tr>
 				<tr>
 					<th>종류</th>
@@ -106,14 +118,6 @@ th {
 					<th>특징
 					<td>${go.specialMark}</td>
 				</tr>
-				<tr>
-					<th>구조일
-					<td><fmt:formatDate value="${go.happenDt}" pattern="yyyy-MM-dd" /></td>
-				</tr>
-				<tr>
-					<th>구조 장소
-					<td>${go.happenPlace}</td>
-				</tr>
 			</table>
 		</div>
 		<div id="oinfo" class="info">
@@ -123,20 +127,20 @@ th {
 					<td>${go.careAddr}</td>
 				</tr>
 				<tr>
-					<th>담당자</th>
-					<td>${go.chargeNm}</td>
-				</tr>
-				<tr>
-					<th>연락처</th>
-					<td>${go.officetel}</td>
-				</tr>
-				<tr>
 					<th>보호소명</th>
 					<td>${go.careNm}</td>
 				</tr>
 				<tr>
 					<th>보호소 연락처</th>
 					<td>${go.careTel}</td>
+				</tr>
+				<tr>
+					<th>담당자</th>
+					<td>${go.chargeNm}</td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>${go.officetel}</td>
 				</tr>
 			</table>
 		</div>

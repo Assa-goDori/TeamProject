@@ -235,22 +235,24 @@ hr {
 			</script>
 		</form>
 		<hr>
+		<!--  
 		<div class="array">
 			<span id="deadline" onmouseover="this.style.fontWeight='bold'"
 				onmouseout="this.style.fontWeight=''" onclick="">공고
 				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="registration"
 				onmouseover="this.style.fontWeight='bold'"
-				onmouseout="this.style.fontWeight=''" onclick="">최근 등록순</span>
+				onmouseout="this.style.fontWeight=''" onclick="">최신 등록순</span>
 		</div>
-		<br>
+		-->
 		<c:forEach var="item" items="${go}">
 			<div
 				style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
 				<a href="adetail.dog?desertionNo=${item.desertionNo}"
 					class="imghover"><img src="${item.popfile}"
-					style="width: 350px; height: 350px;"></a><br> <span
-					class="tag">${item.processState}</span> &nbsp; <span class="tag">${item.kindCd}</span>
-				<br>
+					style="width: 350px; height: 350px;"></a>
+				<div style="height: 5px"></div>
+				<span class="tag">${item.processState}</span> &nbsp; <span
+					class="tag">${item.kindCd}</span> <br>
 			</div>
 		</c:forEach>
 		<div>
