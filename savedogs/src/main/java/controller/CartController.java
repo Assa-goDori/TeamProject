@@ -83,8 +83,10 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
+		mav.setViewName("redirect:../item/list.dog");
 		return mav;
 	}
+
 	@PostMapping("checkout")
 	public ModelAndView newend(@Valid Buylist buylist, BindingResult bresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView("cart/checkout");
@@ -92,13 +94,13 @@ public class CartController {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
-		Cart cart = (Cart)session.getAttribute("cart");
+		Cart cart = (Cart)session.getAttribute("CART");
 		Member loginmem = (Member)session.getAttribute("loginmem");
 		buylist.setMember(loginmem);
 		buylist.setMember_id(loginmem.getMember_id());
 		try {
 			Buylist buylist2 =service.checkend2(buylist,cart);
-			mav.setViewName("redirect:login.dog");
+			mav.setViewName("redirect:../member/login.dog");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -106,6 +108,7 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
+		mav.setViewName("redirect:../item/list.dog");
 		return mav;
 	}
 //		Member loginmem = (Member)session.getAttribute("loginmem");
