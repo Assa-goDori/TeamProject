@@ -72,7 +72,7 @@ public class MemberLoginAspect {
 	@Around 
 //		chkmi : check id 를 줄여서 표현 해보았습니다. 본인확인 부분입니다.
 //		("execution(* controller.<Item>*.chki*(..))") : <Item> 부분을 바꾸어서 사용하시길 바랍니다.
-//	매개변수의 위치는 상관이 없으나 HttpSession를 꼭 포함해야 합니다.
+//	매개변수의 위치는 상관이 없으나 HttpSession를 꼭 포함해야 합니다. String 형태의 member_id도 포함해야 합니다.
 	("execution(* controller.Item*.chki*(..))")
 	public Object memberCheck(ProceedingJoinPoint joinPoint,String member_id) throws Throwable{
 		Member loginmem = null;
