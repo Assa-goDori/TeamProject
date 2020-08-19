@@ -60,4 +60,9 @@ public class ItemController {
 			throw new ItemException("없는 상품입니다.","list.dog");
 		}
 	}
+	@GetMapping("cartTF") 
+	public ModelAndView cartTF() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
 }
