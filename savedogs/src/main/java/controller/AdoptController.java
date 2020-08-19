@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Adopt;
+import logic.AdoptSign;
 import logic.ApiExplorer;
 
 @Controller
@@ -55,8 +56,14 @@ public class AdoptController {
 		return mav;
 	}
 
+	@GetMapping("adoptSignup")
+	public ModelAndView asignup(String noticeNo) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+
 	@RequestMapping("adoptSignup")
-	public ModelAndView asignup() throws Exception {
+	public ModelAndView asignup2(String noticeNo, AdoptSign a) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}

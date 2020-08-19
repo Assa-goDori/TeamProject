@@ -42,7 +42,10 @@ hr {
 </head>
 <body>
 	<div>
-		<h2 class="array">&nbsp;키워드 검색</h2>
+		<h2 class="array">
+			<img src="adopt_img.png" style="width: 3%; height: 3%;">&nbsp;키워드
+			검색
+		</h2>
 		<br>
 		<div class="nb">
 			&nbsp;상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;품종
@@ -50,8 +53,10 @@ hr {
 		<form class="array" action="amain.dog" method="POST" name="keyword">
 			<select name="state" onchange="this.form.submit()">
 				<option value="">전체</option>
-				<option value="notice">공고중</option>
+				<option value="notice">보호중</option>
+				<!--  
 				<option value="protected">보호중</option>
+				-->
 			</select>
 			<script type="text/javascript">
 				keyword.state.value = "${param.state}";
@@ -258,6 +263,19 @@ hr {
 		<div>
 			<h3>${message}</h3>
 		</div>
+		<c:if test="">
+		<div class="st-pagination">
+			<ul class="pagination">
+				<li><a href="#" aria-label="previous"><span
+						aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#" aria-label="Next"><span aria-hidden="true"><i
+							class="fa fa-angle-right"></i></span></a></li>
+			</ul>
+		</div>
+		</c:if>
 	</div>
 </body>
 </html>

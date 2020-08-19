@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
+import dao.AdoptDao;
 import dao.BuyitemDao;
 import dao.BuylistDao;
 import dao.FundingDao;
@@ -45,7 +46,8 @@ public class DogService {
 	private VworklistDao vworklistDao;
 	@Autowired
 	private FundinglistDao fundlistDao;
-	
+	@Autowired
+	private AdoptDao adoptDao;
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
@@ -316,6 +318,10 @@ public class DogService {
 
 
 //-------------------쇼핑관련 끝--------------------------------------------------
-
-	
+		
+//-------------------입양 관련 시작------------------------------------------------
+		public void adoptInsert(AdoptSign a) {
+			adoptDao.adoptInsert(a);
+		}
+//-------------------입양 관련 끝------------------------------------------------
 }

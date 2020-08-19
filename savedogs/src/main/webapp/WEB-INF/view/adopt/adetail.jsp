@@ -18,17 +18,17 @@ img {
 	$(document).ready(function() {
 		$("#minfo").show();
 		$("#oinfo").hide();
-		$("#tab1").addClass("selection");
+		$("#tab1").addClass("g_font");
 	})
 	function disp_div(id, tab) {
 		$(".info").each(function() {
 			$(this).hide();
 		})
 		$(".tab").each(function() {
-			$(this).removeClass("selection");
+			$(this).removeClass("g_font");
 		})
 		$("#" + id).show();
-		$("#" + tab).addClass("selection");
+		$("#" + tab).addClass("g_font");
 	}
 	function list_disp(id) {
 		$("#" + id).toggle();
@@ -39,30 +39,19 @@ th {
 	width: 150px;
 	text-align: left;
 }
-
-.selection {
-	padding: 3px;
-}
-
-.selection>a {
-	color: #000000;
-	text-decoration: none;
-	font-weight: bold;
-}
 </style>
 </head>
 <body>
+	<input type="hidden" name="noticeNo" value="${go.noticeNo}">
 	<div>
 		<h2>상세 정보</h2>
 		<br>
 		<table>
 			<tr>
-				<td id="tab1" class="tab" style="width: 50%;" align="center"><a
-					href="javascript:disp_div('minfo','tab1')"
-					style="color: gray; width: 50%;">유기견 정보</a></td>
-				<td id="tab2" class="tab" align="center"><a
-					href="javascript:disp_div('oinfo','tab2')"
-					style="color: gray; width: 50%;">보호소 정보</a></td>
+				<td><a id="tab1" class="tab"
+					href="javascript:disp_div('minfo','tab1')">유기견 정보</a></td>
+				<td><a id="tab2" class="tab"
+					href="javascript:disp_div('oinfo','tab2')">보호소 정보</a></td>
 			</tr>
 		</table>
 		<div id="minfo" class="info">
@@ -144,8 +133,12 @@ th {
 				</tr>
 			</table>
 		</div>
-		<br> <input type="submit" value="입양 신청" class="s_btn"
-			onclick="location.href='adoptSignup.dog'">
+		<br>
+		<c:if test="${go.processState == '보호중'}">
+			<!-- 입양 가능(보호중) 상태인 경우만 [입양 신청]버튼 표시 -->
+			<input type="submit" value="입양 신청" class="s_btn"
+				onclick="location.href='adoptSignup.dog'">
+		</c:if>
 	</div>
 </body>
 </html>
