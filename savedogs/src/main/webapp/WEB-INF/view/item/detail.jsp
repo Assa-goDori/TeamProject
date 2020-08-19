@@ -6,7 +6,7 @@
 <html><head><meta charset="UTF-8">
 <title>상품 상세 보기</title>
 <script type="text/javascript">
-	
+	function add(f)
 </script>
 </head>
 <body>
@@ -39,12 +39,12 @@
 						
 						<tr>
 							<td colspan="2">
-								<form action="../cart/cartAdd.dog">
+								<form action="../cart/cartAdd.dog" name="f" >
 									<input type="hidden" name="item_no" value="${item.item_no}">
 									<table style="width: 100%; height: 100%;">
 										<tr>
 											<td width="100%" align="center">
-												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="item_each">
+												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="item_each" id="item_each">
 					 								<c:forEach begin="1" end="10" var="i">
 					 									<option>${i}</option>
 					 								</c:forEach>
@@ -52,8 +52,8 @@
 					 						</td>
 					 					</tr>
 					 					<tr style="height: 15%;">
-				 							<td width="100%" align="center">
-				 								<input style="width: 100%;" type="submit" value="장바구니" >
+				 							<td width="100%" align="center"> 
+				 								<input style="width: 100%;" type="button" value="장바구니" onclick="javascript:add(this)" >
 				 								<!-- onclick="window.open('../cart/cartAdd.dog?item_no=${item_no}&item_each=${item_each}','','width=500, height=250, left=150,top=150')" -->
 				 							</td>
 				 						</tr>
