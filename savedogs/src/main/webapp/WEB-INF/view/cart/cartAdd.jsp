@@ -5,6 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <link rel='stylesheet' href='../css/savedogs_main.css' />
+<script type="text/javascript">
+	function Ilist(){
+		self.close();
+	}
+	function cart(){
+		opener.location.href='cartView.dog'
+		self.close();
+	}
+</script>
 <title>장바구니 이동</title>
 </head>
 <body>
@@ -15,8 +24,8 @@
 	<form>
 		<table>
 			<tr>
-				<td><input type="button" class="yes" value="예" onclick="location.href='../item/list.dog'"></td>
-				<td><input type="button" class="no"  value="아니오" onclick="location.href='cartView.dog'"></td>
+				<td><input type="button" value="예" onclick="Ilist()"></td>
+				<td><input type="button" value="아니오" onclick="cart()"></td>
 			</tr>
 		</table>
 	</form>

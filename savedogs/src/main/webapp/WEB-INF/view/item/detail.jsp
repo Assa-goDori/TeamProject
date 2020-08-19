@@ -6,7 +6,11 @@
 <html><head><meta charset="UTF-8">
 <title>상품 상세 보기</title>
 <script type="text/javascript">
-	function add(f)
+	function add(f){
+		var item_each = f.item_each.value;
+		var item_no = "${item.item_no}";
+		window.open('../cart/cartAdd.dog?item_no='+item_no+'&item_each='+item_each,'',width=500, height=250, left=150,top=150)
+	}
 </script>
 </head>
 <body>
@@ -39,7 +43,7 @@
 						
 						<tr>
 							<td colspan="2">
-								<form action="../cart/cartAdd.dog" name="f" >
+								<form action="list.dog" name="f" onsubmit="return add(this)" >
 									<input type="hidden" name="item_no" value="${item.item_no}">
 									<table style="width: 100%; height: 100%;">
 										<tr>
@@ -53,7 +57,7 @@
 					 					</tr>
 					 					<tr style="height: 15%;">
 				 							<td width="100%" align="center"> 
-				 								<input style="width: 100%;" type="button" value="장바구니" onclick="javascript:add(this)" >
+				 								<input style="width: 100%;" type="submit" value="장바구니" >
 				 								<!-- onclick="window.open('../cart/cartAdd.dog?item_no=${item_no}&item_each=${item_each}','','width=500, height=250, left=150,top=150')" -->
 				 							</td>
 				 						</tr>
