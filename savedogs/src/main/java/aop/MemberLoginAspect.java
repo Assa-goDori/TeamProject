@@ -17,7 +17,7 @@ import logic.Member;;
 public class MemberLoginAspect {
 	@Around // 일반회원의 로그인 여부를 판단합니다.  	
 //			("execution(* controller. <Item>*.chkm*(..)) && args(..,session)")  : <Item> 부분을 아래 Cart와 같이 바꾸어서 사용하시길 바랍니다.
-//			매개변수의 위치는 상관이 없으나 HttpSession를 꼭 포함해야 합니다.
+//			마지막 매개변수가 HttpSession이어야 합니다.
 	("execution(* controller.Item*.chkm*(..)) && args(..,session)")
 	public Object ItemMemberLoginCheck(ProceedingJoinPoint joinPoint,HttpSession session) throws Throwable{
 		Member loginmem = (Member)session.getAttribute("loginmem");
@@ -38,9 +38,9 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
-/*	@Around // 보호소 관리자의 로그인 여부를 판단합니다.  	
+	/*@Around // 보호소 관리자의 로그인 여부를 판단합니다.  	
 //	("execution(* controller.<Item>*.chks*(..)) && args(..,session)")  : <Item> 부분을 바꾸어서 사용하시길 바랍니다.
-//	매개변수의 위치는 상관이 없으나 HttpSession를 꼭 포함해야 합니다.
+//	마지막 매개변수가 HttpSession이어야 합니다.
 	("execution(* controller.Item*.chks*(..)) && args(..,session)")
 	public Object shelterLoginCheck(ProceedingJoinPoint joinPoint,HttpSession session) throws Throwable{
 		Member loginsmem = (Member)session.getAttribute("loginsmem");
@@ -54,7 +54,7 @@ public class MemberLoginAspect {
 	/*@Around 
 //		chkmi : check id 를 줄여서 표현 해보았습니다. 본인확인 부분입니다.
 //		("execution(* controller.<Item>*.chki*(..))") : <Item> 부분을 바꾸어서 사용하시길 바랍니다.
-//	매개변수의 위치는 상관이 없으나 HttpSession를 꼭 포함해야 합니다. String 형태의 member_id도 포함해야 합니다
+//		마지막 매개변수가 HttpSession이어야 하며 String 형태의 member_id도 포함해야 합니다
 	("execution(* controller.Item*.chki*(..)) && args(..,session)")
 	public Object memberCheck(ProceedingJoinPoint joinPoint,String member_id,HttpSession session) throws Throwable{
 		Member loginmem = (Member)session.getAttribute("loginmem");

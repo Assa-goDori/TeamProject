@@ -6,7 +6,11 @@
 <html><head><meta charset="UTF-8">
 <title>상품 상세 보기</title>
 <script type="text/javascript">
-	
+	function add(f){
+		var item_each = f.item_each.value;
+		var item_no = "${item.item_no}";
+		window.open('../cart/cartAdd.dog?item_no='+item_no+'&item_each='+item_each,'',width=100, height=50, left=100,top=100)
+	}
 </script>
 </head>
 <body>
@@ -39,12 +43,12 @@
 						
 						<tr>
 							<td colspan="2">
-								<form action="../cart/cartAdd.dog">
+								<form action="list.dog" name="f" onsubmit="return add(this)" >
 									<input type="hidden" name="item_no" value="${item.item_no}">
 									<table style="width: 100%; height: 100%;">
 										<tr>
 											<td width="100%" align="center">
-												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="item_each">
+												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="item_each" id="item_each">
 					 								<c:forEach begin="1" end="10" var="i">
 					 									<option>${i}</option>
 					 								</c:forEach>
@@ -52,7 +56,7 @@
 					 						</td>
 					 					</tr>
 					 					<tr style="height: 15%;">
-				 							<td width="100%" align="center">
+				 							<td width="100%" align="center"> 
 				 								<input style="width: 100%;" type="submit" value="장바구니" >
 				 								<!-- onclick="window.open('../cart/cartAdd.dog?item_no=${item_no}&item_each=${item_each}','','width=500, height=250, left=150,top=150')" -->
 				 							</td>

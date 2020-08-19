@@ -262,8 +262,9 @@ public class MemberController {
 				  session.setAttribute("loginmem", dbmem);
 			  } else if (type == 1) {
 				  session.setAttribute("loginsmem", dbmem);
-				  System.out.println(service.getShelter(dbmem.getShelter_no()).getShelter_name());
 				  session.setAttribute("smemName", service.getShelter(dbmem.getShelter_no()).getShelter_name());
+			  } else if (type == 2) {
+				  session.setAttribute("loginadmin", dbmem);
 			  }
 			  mav.setViewName("redirect:../main.dog");
 		   } else {
