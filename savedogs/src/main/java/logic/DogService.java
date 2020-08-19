@@ -46,6 +46,7 @@ public class DogService {
 	@Autowired
 	private FundinglistDao fundlistDao;
 	
+	
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
@@ -220,6 +221,7 @@ public class DogService {
 		         funding.setFund_pic(funding.getPicture().getOriginalFilename());
 		      }
 		      int fund_no =fundingDao.maxfundno() ;
+		      System.out.println(funding.getFund_pic());
 		      funding.setFund_no(++fund_no);
 		      fundingDao.fundinsert(funding);
 		   }
@@ -238,9 +240,10 @@ public class DogService {
 		public Funding getfundingdetail(String fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
-			
+	
 
-		
+	
+	
 		
 //-------------------펀딩관련 끝-------------------------------------------------
 //-------------------쇼핑관련 시작-------------------------------------------------
@@ -310,6 +313,14 @@ public class DogService {
 			}
 			return buylist;
 		}
+
+		
+	
+		
+
+	
+
+		
 
 		
 
