@@ -1,7 +1,9 @@
 package controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -11,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.DogService;
@@ -41,7 +45,7 @@ public class FundingController {
 		 */
             System.out.println(funding);
             service.fundCreate(funding,request);
-            mav.setViewName("redirect:../main.dog");
+            mav.setViewName("redirect:/list.dog");
             return mav;      
         
           }
@@ -82,12 +86,18 @@ public class FundingController {
 		 return mav;
 	 }
 	 
+
+	  
+	 
+	 
+	 
+	 
+	 
 	/*
 	 * @GetMapping("detail") public ModelAndView detail(String fund_no) {
 	 * ModelAndView mav = new ModelAndView(); Funding funding =
 	 * service.getfundingdetail(fund_no); //service.readcnt(num);
 	 * mav.addObject("funding",funding); return mav; }
 	 */
-	 
-	 
+	
 }

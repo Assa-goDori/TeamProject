@@ -92,8 +92,8 @@
 	<c:if test="${listcount == 0 }"> <%-- 등록된 게시물 없음 --%>
 		<tr><td colspan="5">등록된 게시물이 없습니다.</td></tr>
 	</c:if>
-	<c:if test="${sessionScope.loginsmem != null }">
-		<tr><td colspan="5" class="btn_td"><input type="button" value="작성" class="s_btn"></td></tr>
+	<c:if test="${sessionScope.loginadmin != null }">
+		<tr><td colspan="5" class="btn_td"><input type="button" value="작성" class="s_btn" onclick="location.href='noticeWrite.dog'"></td></tr>
 	</c:if>
 </table>
 </div>

@@ -64,7 +64,7 @@
 
 			<tr height="40px">
 				<td>배너사진</td>
-				<td><input type="file" name="fund_pic"/></td>
+				<td><input type="file" name="picture"/></td>
 			</tr>
 
 			<tr height="40px" >

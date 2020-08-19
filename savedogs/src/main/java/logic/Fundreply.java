@@ -3,11 +3,12 @@ package logic;
 import java.util.Date;
 
 public class Fundreply {
-   private int fund_replyno ;
-   private int fund_no;
-   private String fundreply_id;
-   private String fund_comment;
-   private Date fund_regdate;
+   private int fund_replyno ; //cno
+   private int fund_no;   //bno
+   private String fundreply_id; //writer
+   private String fund_comment; //content
+   private Date fund_regdate; //reg_date
+   
 public int getFund_replyno() {
 	return fund_replyno;
 }
