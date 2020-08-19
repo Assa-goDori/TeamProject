@@ -27,5 +27,6 @@
 		<pattern>/vwork/vwrite*</pattern>
 		<pattern>/member/changepass*</pattern>
 		<pattern>/funding/fundingapply*</pattern>
+		<pattern>/cart/cartAdd*</pattern>
 	</excludes>
 </decorators>
