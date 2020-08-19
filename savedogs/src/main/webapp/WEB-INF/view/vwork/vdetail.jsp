@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>구해독 : 봉사 상세</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8354affff1aee80d0217dedba05a99ab&libraries=services"></script>
 <style type="text/css">
 th{
 	padding: 15px;
@@ -16,6 +17,7 @@ th{
 	text-align: center;
 }
 </style>
+
 </head>
 <body>
 <div class="main_div">
@@ -24,10 +26,46 @@ th{
 <table>
 	<tr><th>날짜</th><td>${vwork.date }</td></tr>
 	<tr><th>보호소</th><td>${vwork.address }${vwork.name }</td></tr>
-	<tr><th>위치</th><td>지도</td></tr>
+	<tr><th>위치</th><td><div id="map" style="width:500px;height:400px;"></div></td></tr>
 	<tr><th>모집인원</th><td>${vwork.Nmem }/${vwork.Vmem } &nbsp;명</td></tr>
 	<tr><th>설명</th><td>${vwork.vwork_content }</td></tr>
 </table>
+<input type="hidden" value="${vwork.address } ${vwork.name }" id="shelter">
+<script type="text/javascript">
+	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+	var mapContainer = document.getElementById('map'),  
+	    mapOption = {
+	        center: new kakao.maps.LatLng(37.566826, 126.9786567), 
+	        level: 3
+	    };  
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	var ps = new kakao.maps.services.Places(); 
+	var shelter = document.getElementById('shelter').value;
+	ps.keywordSearch(shelter, placesSearchCB); 
+
+	function placesSearchCB (data, status, pagination) {
+	    if (status === kakao.maps.services.Status.OK) {
+	        var bounds = new kakao.maps.LatLngBounds();
+	        for (var i=0; i<data.length; i++) {
+	            displayMarker(data[i]);    
+	            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+	        }       
+	        map.setBounds(bounds);
+	    } 
+	}
+
+	function displayMarker(place) {
+	    var marker = new kakao.maps.Marker({
+	        map: map,
+	        position: new kakao.maps.LatLng(place.y, place.x) 
+	    });
+	    kakao.maps.event.addListener(marker, 'click', function() {
+	        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+	        infowindow.open(map, marker);
+	    });
+	}
+</script>
 <br>
 <div class="btn_div">
 <c:if test="${smem != null }">
