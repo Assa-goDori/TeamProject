@@ -84,27 +84,34 @@
     </div>
       <!-- /.slider -->
     <div class="g_div">
-    	<table style="border: 3px solid black; width: 100%;">
-    	<caption>구현전 임시 공지사항 자리</caption>
-    	<tr><th>번호</th><th>글제목</th></tr>
-    	<tr><td>1</td><td>첫번째글</td></tr>
-    	<tr><td>2</td><td>두번째글</td></tr>
-    	<tr><td>3</td><td>세번째글</td></tr>
-    	<tr><td>4</td><td>네번째글</td></tr>
-    	<tr><td>5</td><td>다섯번째글</td></tr>
-    	</table>
+    <div align="center"><h3>공지사항</h3></div><br>
+    	<c:forEach var="notice" items="${notice}" varStatus="stat">
+	    	<div align="left"><li>${notice.subject}</li></div>
+	    </c:forEach>
     </div>
   </div>
   <br>
   <div class="row">
- 	 <div class="g_div">
- 	 <div align="center"><h3>관련 소식</h3></div>
-    	<table style="border: 3px solid black; width: 95%;">
-    	<c:forEach items="${newslist}" var="news">
-    		<tr><th class="news_th">${news}</th></tr>
-    	</c:forEach>
-    	</table>
-    </div>
+ 	 <div class="g_div" style="background-color: white;">
+ 	 	<div align="center">
+ 	 		<h3>관련 소식</h3>
+ 	 	</div>
+ 	 	<div class="row" style="height: 420px;">
+ 	 		<c:forEach begin="0" end="5" var="m">
+ 	 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 26%; height: 200px; margin-left: 5%; border: 1px solid black; background-color: #f1f3f4;" >
+ 	 				<div class="coach-service-block">
+ 	 					<div style="height: 90px; width: 90px; margin-left: 20px; margin-top: 10px;" > 
+ 	 						${newsimg[m]}
+ 	 					</div>
+ 	 					
+ 	 					<div style="height: 100px;">
+ 	 						<h5>${newstitle[m]}</h5>
+ 	 					</div>
+ 	 				</div>
+ 	 			</div>
+    		</c:forEach>	
+		</div>
+     </div>
     <div class="g_div">
     	<table style="border: 3px solid black; width: 100%;">
     	<caption>구현전 임시 기부 자리</caption>    	

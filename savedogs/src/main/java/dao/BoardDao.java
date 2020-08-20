@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -23,6 +25,10 @@ public class BoardDao {
 	public void insertBoard(Board board) {
 		
 		
+	}
+
+	public List<Board> mainnotice() { 
+		return template.getMapper(BoardMapper.class).mainnotice();
 	}
 	
 	
