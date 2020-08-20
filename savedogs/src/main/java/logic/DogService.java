@@ -150,6 +150,22 @@ public class DogService {
 		return vworkDao.getwritelist(id);
 	}
 	
+	public List<Vworklist> getOnevworklist(String vwork_no) {
+		return vworklistDao.getOnevworklist(vwork_no);
+	}
+	
+	public List<Funding> getwritelist2(String id) {
+		return fundingDao.getwritelist2(id);
+	}
+	
+	public List<Fundinglist> getOnefundlist(String fund_no) {
+		return fundlistDao.getOnefundlist(fund_no);
+	}
+	
+	public List<Member> memberList(String[] idchks) {
+		return memberDao.memberList(idchks);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -364,10 +380,22 @@ public class DogService {
 			adoptDao.adoptInsert(a);
 
 		}
+		
+		public List<Shelter> getHaplist() {
+			return shelterDao.getHaplist();
+		}
 //-------------------입양 관련 끝------------------------------------------------
 
-	
 
+		
+//-------------------메인관련 시작-------------------------------------------------
+		public List<Board> mainnotice() {
+			return boardDao.mainnotice();
+		}
+		public List<Item> bestItem() {
+			return itemDao.bestItem();
+		}
 	
+//-------------------메인관련 끝-------------------------------------------------
 
 }

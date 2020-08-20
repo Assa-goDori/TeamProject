@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>My 봉사</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#minfo").show();
@@ -35,6 +36,9 @@
 		text-decoration : none;
 		font-weight : bold;	
 	}
+	.data {
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -63,12 +67,12 @@
 				</tr>
 				<c:forEach items="${writelist }" var="list">
 					<tr>
-						<td>
+						<td class="data">
 							<fmt:formatDate value="${list.vwork_date }" pattern="yyyy-MM-dd" var="day"/>
-							<a href="#">${day }</a>
+							<a href="sheltervworkDetail.dog?vwork_no=${list.vwork_no }">${day }</a>
 						</td>
-						<td>${list.vwork_member }</td>
-						<td>
+						<td class="data">${list.vwork_member }</td>
+						<td class="data">
 							${list.state>0?"모집중":"완료" }
 						</td>
 					</tr>

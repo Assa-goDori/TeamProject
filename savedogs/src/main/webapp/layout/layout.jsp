@@ -49,14 +49,14 @@
 <decorator:head />
 <body>
     <!-- top-header-section-->
-    <div class="top-header">
+    <div class="top-header" style="background-color: #34b2a4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12" style="text-align: left;">
-                    <p class="welcome-text">구해독 페이지에 오신걸 환영합니다.</p>
+                    <p class="welcome-text" style="color: white;">구해독 페이지에 오신걸 환영합니다.</p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                    <ul>
+                    <ul style="color: white;">
                     <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
                     	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
@@ -145,7 +145,7 @@
     </div>
     <!-- video-section -->
     <!-- footer -->
-    <div class="footer">
+    <div class="footer" style="background-color: #34b2a4">
         <div class="container">
             <div class="row">
                 
@@ -153,7 +153,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                     <div class="tiny-footer">
-                        <p>Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
+                        <p style="color: white;">Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
                     </div>
                 </div>
                 <!-- /. tiny-footer -->

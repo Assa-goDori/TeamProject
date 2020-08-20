@@ -29,6 +29,12 @@ public class FundinglistDao {
 		param.put("id", id);
 		return template.getMapper(FundlistMapper.class).endlist(id);
 	}
+
+	public List<Fundinglist> getOnefundlist(String fund_no) {
+		param.clear();
+		param.put("fund_no", fund_no);
+		return template.getMapper(FundlistMapper.class).getOnefundlist(param);
+	}
 	
 	
 }

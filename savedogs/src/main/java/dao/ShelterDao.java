@@ -32,4 +32,8 @@ public class ShelterDao {
 		return template.getMapper(ShelterMapper.class).selectShelterlist();
 	}
 
+	public List<Shelter> getHaplist() {
+		return template.getMapper(ShelterMapper.class).getHaplist();
+	}
+
 }

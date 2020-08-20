@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,10 @@ public class BoardDao {
 	public void cntup(String board_no) {
 		template.getMapper(BoardMapper.class).cntup(board_no);
 		
+	}
+
+	public List<Board> mainnotice() { 
+		return template.getMapper(BoardMapper.class).mainnotice();
 	}
 	
 	

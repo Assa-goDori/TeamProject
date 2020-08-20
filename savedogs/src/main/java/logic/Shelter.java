@@ -5,7 +5,14 @@ public class Shelter {
 	private String shelter_name;
 	private String shelter_address;
 	private String shelter_tel;
+	private String hap;
 	
+	public String getHap() {
+		return hap;
+	}
+	public void setHap(String hap) {
+		this.hap = hap;
+	}
 	public String getShelter_no() {
 		return shelter_no;
 	}
@@ -34,6 +41,6 @@ public class Shelter {
 	@Override
 	public String toString() {
 		return "Shelter [shelter_no=" + shelter_no + ", shelter_name=" + shelter_name + ", shelter_address="
-				+ shelter_address + ", shelter_tel=" + shelter_tel + "]";
+				+ shelter_address + ", shelter_tel=" + shelter_tel + ", hap=" + hap + "]";
 	}
 }

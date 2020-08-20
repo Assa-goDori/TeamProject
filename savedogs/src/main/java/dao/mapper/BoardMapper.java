@@ -1,11 +1,17 @@
 package dao.mapper;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+
+
+
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import logic.Board;
 
 import logic.Board;
 
@@ -13,6 +19,7 @@ public interface BoardMapper {
 
 	@Select("select ifnull(max(board_no),0) from board")
 	int maxno();
+
 
 	@Insert("insert into board (board_no, member_id, subject, content, type, grp, grplevel, grpstep, regdate, readcnt, file1) values "
 			+ "(${board_no},#{member_id},#{subject},#{content},#{type},#{grp},#{grplevel},#{grpstep},now(),0,#{fileurl})")
@@ -36,5 +43,9 @@ public interface BoardMapper {
 
 	
 													
+
+	@Select("select * from board where type = 1 limit 0,4")
+	List<Board> mainnotice();
+
 
 }

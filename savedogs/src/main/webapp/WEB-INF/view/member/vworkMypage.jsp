@@ -28,7 +28,7 @@
 					<td>${date}</td>
 					<td style="width:300px;">${m.shelter_address} ${m.shelter_name }</td>
 					<td>
-						<a href="../vwork/vdetail.dog?no=${m.vwork_no }">상세보기</a>
+						<a href="../vwork/vdetail.dog?vwork_no=${m.vwork_no }">상세보기</a>
 					</td>
 				</tr>
 			</c:forEach>

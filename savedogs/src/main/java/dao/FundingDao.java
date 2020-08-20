@@ -48,6 +48,12 @@ public class FundingDao {
 		 template.getMapper(FundingMapper.class).funddelete(param);
 			}
 
+	public List<Funding> getwritelist2(String id) {
+		param.clear();
+		param.put("member_id", id);
+		return template.getMapper(FundingMapper.class).select(param); 
+	}
+
 	/*
 	 * public void delete(String userid) { param.clear();
 	 * param.put("userid",userid);

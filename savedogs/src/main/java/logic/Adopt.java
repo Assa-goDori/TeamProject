@@ -343,4 +343,15 @@ public class Adopt {
 //		this.totalCount = totalCount;
 //	}
 
+	@Override
+	public String toString() {
+		return "Adopt [desertionNo=" + desertionNo + ", filename=" + filename + ", happenDt=" + happenDt
+				+ ", happenPlace=" + happenPlace + ", kindCd=" + kindCd + ", colorCd=" + colorCd + ", age=" + age
+				+ ", weight=" + weight + ", noticeNo=" + noticeNo + ", noticeSdt=" + noticeSdt + ", noticeEdt="
+				+ noticeEdt + ", popfile=" + popfile + ", processState=" + processState + ", sexCd=" + sexCd
+				+ ", neuterYn=" + neuterYn + ", specialMark=" + specialMark + ", careNm=" + careNm + ", careTel="
+				+ careTel + ", careAddr=" + careAddr + ", orgNm=" + orgNm + ", chargeNm=" + chargeNm + ", officetel="
+				+ officetel + ", noticeComment=" + noticeComment + "]";
+	}
+
 }
