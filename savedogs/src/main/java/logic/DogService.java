@@ -364,7 +364,9 @@ public class DogService {
 		public List<Board> mainnotice() {
 			return boardDao.mainnotice();
 		}
-
+		public List<Item> bestItem() {
+			return itemDao.bestItem();
+		}
 	
 //-------------------메인관련 끝-------------------------------------------------
 }

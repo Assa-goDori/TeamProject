@@ -153,7 +153,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                     <div class="tiny-footer">
-                        <p>Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
+                        <p style="color: white;">Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
                     </div>
                 </div>
                 <!-- /. tiny-footer -->

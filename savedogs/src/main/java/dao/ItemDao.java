@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,10 @@ public class ItemDao {
 		param.clear();
 		param.put("item_no", item_no);
 		return template.getMapper(ItemMapper.class).select(param).get(0);
+	}
+
+	public List<Item> bestItem() {
+ 		return template.getMapper(ItemMapper.class).bestitem();
 	}
 
 }

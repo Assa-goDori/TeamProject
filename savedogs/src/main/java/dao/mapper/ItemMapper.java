@@ -23,4 +23,7 @@ public interface ItemMapper {
 
 	@Insert("insert into item (item_no,item_name,item_price,item_content,item_picture,item_code,item_state) values(#{item_no}, #{item_name}, #{item_price}, #{item_content}, #{item_picture}, #{item_code},0)")
 	void insert(@Valid Item item);
+
+	@Select("select item_no,sum(item_each) 'sellCnt' FROM buydetail GROUP BY item_no ORDER BY sellCnt desc")
+	List<Item> bestitem();
 }

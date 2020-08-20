@@ -85,11 +85,6 @@ public class MainController {
 			e.printStackTrace();
 		}
 		List<Map<String, String>> infolist = new ArrayList<Map<String,String>>();
-		List<String> picturelist = new ArrayList<String>();
-		List<String> kindlist = new ArrayList<String>();
-		List<String> sexlist = new ArrayList<String>();
-		List<String> agelist = new ArrayList<String>();
-		List<String> orglist = new ArrayList<String>();
 		String imgurl = "http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?upr_cd=6110000&bgnde=20200801&endde=20200810&upkind=417000&pageNo=1&numOfRows=10&ServiceKey=LBFXEs0hIGvsna06ms6DL%2BOAQJeCCzkEcJLsSEjqrgxVvyB6owDk7VJh8QnuXz9qthbzx%2FqHbGbPP1MbJH7agA%3D%3D";
 		URL u = new URL(imgurl); 
 		HttpURLConnection urlcon = (HttpURLConnection)u.openConnection(); //실제  url에 맞도록 url에 접속
@@ -129,6 +124,7 @@ public class MainController {
 		}catch(IOException e){e.printStackTrace();}
 		System.out.println(infolist);
 		List<Board> noticelist = service.mainnotice();
+		List<Item> bestItem= service.bestItem();
 		request.setAttribute("notice", noticelist);
 		request.setAttribute("newstitle", newstitle);
 		request.setAttribute("newsimg", newsimg);
