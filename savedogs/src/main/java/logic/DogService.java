@@ -150,6 +150,10 @@ public class DogService {
 		return vworkDao.getwritelist(id);
 	}
 	
+	public List<Vworklist> getOnevworklist(String vwork_no) {
+		return vworklistDao.getOnevworklist(vwork_no);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -338,4 +342,6 @@ public class DogService {
 
 		}
 //-------------------입양 관련 끝------------------------------------------------
+
+		
 }

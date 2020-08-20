@@ -26,6 +26,7 @@ import logic.Item;
 import logic.Member;
 import logic.Shelter;
 import logic.Vwork;
+import logic.Vworklist;
 import util.MemberValidator;
 import util.ShelterValidator;
 
@@ -300,6 +301,18 @@ public class MemberController {
 		List<Vwork> writelist = service.getwritelist(id);		
 		mav.addObject("writelist", writelist);
 		mav.addObject("type", type);
+		return mav;
+	}
+	
+	@GetMapping("sheltervworkDetail")
+	public ModelAndView sheltervworkDetail(String vwork_no) {
+		ModelAndView mav = new ModelAndView();
+		Vwork showVwork = service.getVwork(vwork_no);
+		int Nowmem = service.getNowmem(Integer.parseInt(vwork_no));
+		List<Vworklist> detaillist = service.getOnevworklist(vwork_no);
+		mav.addObject("showVwork", showVwork);
+		mav.addObject("Nowmem",Nowmem);
+		mav.addObject("detaillist", detaillist);
 		return mav;
 	}
 }
