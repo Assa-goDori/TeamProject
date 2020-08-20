@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,11 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.Adopt;
 import logic.AdoptSign;
 import logic.ApiExplorer;
+import logic.DogService;
+import logic.Shelter;
 
 @Controller
 @RequestMapping("adopt")
 public class AdoptController {
 
+	@Autowired
+	private DogService service;
+	
 	@GetMapping("amain")
 	public ModelAndView main1(Adopt adopt) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -57,14 +63,18 @@ public class AdoptController {
 	}
 
 	@GetMapping("adoptSignup")
-	public ModelAndView asignup(String noticeNo) throws Exception {
+	public ModelAndView asignup(String noticeNo, String careNm, String careAddr) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		List<Shelter> hap = service.getHaplist();
+		System.out.println(hap);
 		return mav;
 	}
 
 	@RequestMapping("adoptSignup")
-	public ModelAndView asignup2(String noticeNo, AdoptSign a) throws Exception {
+	public ModelAndView asignup2(String dog_no, String careAddr, String careNm, AdoptSign a) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		service.adoptInsert(a);
+		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_name}'");
 		return mav;
 	}
 

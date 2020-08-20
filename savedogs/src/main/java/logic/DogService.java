@@ -162,6 +162,10 @@ public class DogService {
 		return fundlistDao.getOnefundlist(fund_no);
 	}
 	
+	public List<Member> memberList(String[] idchks) {
+		return memberDao.memberList(idchks);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -349,6 +353,10 @@ public class DogService {
 			adoptDao.adoptInsert(a);
 
 		}
+		
+		public List<Shelter> getHaplist() {
+			return shelterDao.getHaplist();
+		}
 //-------------------입양 관련 끝------------------------------------------------
 
 		
@@ -356,6 +364,7 @@ public class DogService {
 		public List<Board> mainnotice() {
 			return boardDao.mainnotice();
 		}
+
 	
 //-------------------메인관련 끝-------------------------------------------------
 }

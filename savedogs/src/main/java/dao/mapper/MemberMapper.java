@@ -1,5 +1,6 @@
 package dao.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
@@ -42,5 +43,13 @@ public interface MemberMapper {
 
 	@Update("update member set member_pass=#{pass} where member_id=#{id}")
 	void memPassUpdate(Map<String, Object> param);
+
+	@Select({
+		"<script>",
+		"select * from member where member_id in ",
+		"<foreach collection='memberids' item='id' separator=',' open='(' close=')'> #{id}</foreach>",
+		"</script>"
+	})
+	List<Member> memberList(Map<String, Object> param);
 
 }
