@@ -98,9 +98,9 @@
  	 	</div>
  	 	<div class="row" style="height: 420px;">
  	 		<c:forEach begin="0" end="5" var="m">
- 	 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 26%; height: 200px; margin-left: 5%; border: 1px solid black; background-color: #f1f3f4;" >
+ 	 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 31%; height: 200px; margin-left: 1%; margin-right:1%;  border: 1px solid black; background-color: #f1f3f4;" >
  	 				<div class="coach-service-block">
- 	 					<div style="height: 90px; width: 90px; margin-left: 20px; margin-top: 10px;" > 
+ 	 					<div style="height: 90px; width: 90px; margin-left: 40px; margin-top: 10px;" > 
  	 						${newsimg[m]}
  	 					</div>
  	 					
