@@ -328,8 +328,35 @@ public class DogService {
 		public void boardWrite(Board board, HttpServletRequest request) {
 			int max = boardDao.maxno();
 			board.setBoard_no(++max);
+			board.setGrp(max);
+			board.setGrplevel(0);
+			board.setGrpstep(0);
 			
+			if(board.getType().equals("0")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/review/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			} else if(board.getType().equals("1")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/notice/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			}	
 			boardDao.insertBoard(board);
+		}
+		
+		public Board boardDetail(String board_no) {
+			boardDao.cntup(board_no);
+			return boardDao.getBoard(board_no);
+		}
+		
+		public int noticecnt(String type) {
+			return boardDao.getTypecnt(type);
+		}
+		
+		public List<Board> boardlist(Integer pageNum, int limit, String type) {
+			return boardDao.boardlist(pageNum, limit, type);
 		}
 		
 //-------------------입양 관련 시작------------------------------------------------
@@ -338,4 +365,9 @@ public class DogService {
 
 		}
 //-------------------입양 관련 끝------------------------------------------------
+
+	
+
+	
+
 }
