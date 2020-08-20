@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.vworklistMapper;
 import logic.Vwork;
+import logic.Vworklist;
 
 @Repository
 public class VworklistDao {
@@ -21,5 +22,11 @@ public class VworklistDao {
 		param.clear();
 		param.put("id", id);
 		return template.getMapper(vworklistMapper.class).getMyvworkList(id);
+	}
+
+	public List<Vworklist> getOnevworklist(String vwork_no) {
+		param.clear();
+		param.put("vwork_no", vwork_no);
+		return template.getMapper(vworklistMapper.class).getOnevworklist(param);
 	}
 }
