@@ -66,7 +66,8 @@ input[type=checkbox] {
 				</table>
 				<div><button type="button" value="다운로드"></button><h5>해당 파일을 다운받아 작성 후 첨부하세요</h5></div>
 				<br> 
-				<form action="">
+				<form action="">  
+  				<input type="hidden" value="${noticeNo}">
 				<input type="submit" value="제출" class="s_btn">
 				</form>
 <!--  					onclick="location.href='../member/adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_name}'"> -->
