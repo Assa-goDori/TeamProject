@@ -65,6 +65,8 @@ public class AdoptController {
 	@GetMapping("adoptSignup")
 	public ModelAndView asignup(String noticeNo, String careNm, String careAddr) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		List<Shelter> hap = service.getHaplist();
+		System.out.println(hap);
 		return mav;
 	}
 

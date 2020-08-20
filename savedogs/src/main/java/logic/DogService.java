@@ -353,6 +353,10 @@ public class DogService {
 			adoptDao.adoptInsert(a);
 
 		}
+		
+		public List<Shelter> getHaplist() {
+			return shelterDao.getHaplist();
+		}
 //-------------------입양 관련 끝------------------------------------------------
 
 		
@@ -360,6 +364,7 @@ public class DogService {
 		public List<Board> mainnotice() {
 			return boardDao.mainnotice();
 		}
+
 	
 //-------------------메인관련 끝-------------------------------------------------
 }
