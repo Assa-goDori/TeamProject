@@ -85,8 +85,26 @@
     <div class="g_div">
     <div align="center"><h3>공지사항</h3></div><br>
     	<c:forEach var="notice" items="${notice}" varStatus="stat">
-	    	<div align="left" style="height: 60px;"><li>${notice.subject}</li></div>
+	    	<div align="left"><li>${notice.subject}</li></div>
 	    </c:forEach>
+	    <br>
+	    <div align="center"><h3>베스트 상품</h3></div>
+	    <div class="row">
+	    	<c:forEach begin="0" end="2" var="m">
+ 	 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 31%; height: 260px; margin-left: 1%; margin-right:1%;  border: 1px solid black; background-color: #f1f3f4;" >
+ 	 				<div class="coach-service-block">
+ 	 					<div style="height: 150px; border: 1px solid black;" > 
+ 	 						<h5>상품 이미지</h5>
+ 	 					</div>
+ 	 					
+ 	 					<div style="height: 100px; border: 1px solid black;">
+ 	 						<h5>상품명</h5>
+ 	 						<h5>판매량</h5>
+ 	 					</div>
+ 	 				</div>
+ 	 			</div>
+    		</c:forEach>	
+	    </div>
     </div>
   </div>
   <br>

@@ -22,6 +22,7 @@ public class Item {
 	private MultipartFile picture ; //업로드 된 파일의 내용 저장
 	private String item_code;
 	private int item_state;
+	private int sellCnt;
 	public String getItem_no() {
 		return item_no;
 	}
@@ -70,12 +71,17 @@ public class Item {
 	public void setItem_state(int item_state) {
 		this.item_state = item_state;
 	}
+	public int getSellCnt() {
+		return sellCnt;
+	}
+	public void setSellCnt(int sellCnt) {
+		this.sellCnt = sellCnt;
+	}
 	@Override
 	public String toString() {
 		return "Item [item_no=" + item_no + ", item_name=" + item_name + ", item_price=" + item_price
 				+ ", item_content=" + item_content + ", item_picture=" + item_picture + ", picture=" + picture
-				+ ", item_code=" + item_code + ", item_state=" + item_state + "]";
+				+ ", item_code=" + item_code + ", item_state=" + item_state + ", sellCnt=" + sellCnt + "]";
 	}
-	
 	
 }
