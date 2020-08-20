@@ -52,7 +52,7 @@
 		</table>
 		<hr>
 		<h3>후원신청자 현황</h3>
-		<form method="post" action="mailForm.dog">
+		<form method="post" action="mailForm.dog?fund_no=${param.fund_no }">
 			<input type="hidden" value="${param.fund_no }" name="fund_no">
 			<table>
 				<tr>

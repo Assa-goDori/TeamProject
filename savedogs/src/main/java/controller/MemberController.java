@@ -371,7 +371,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("mail")
-	public ModelAndView mail(Mail mail, HttpSession session) {
+	public ModelAndView mail(Mail mail, HttpSession session, String fund_no) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			System.out.println(mail);
@@ -379,7 +379,7 @@ public class MemberController {
 		} catch (Exception e) {
 			throw new LoginException("메일 전송 실패", "../main.dog");
 		}
-		mav.setViewName("redirect:../main.dog");
+		mav.setViewName("redirect:shelterfundDetail.dog?fund_no="+fund_no);
 		return mav;
 	}
 	

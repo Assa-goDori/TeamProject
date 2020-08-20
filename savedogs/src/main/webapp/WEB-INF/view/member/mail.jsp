@@ -27,6 +27,7 @@
 	<div class="main_div" style="width:100%;">
 	<h2>메일 보내기</h2>
 	<form name="mailform" method="post" action="mail.dog" enctype="multipart/form-data" onsubmit="return idinputchk(this)">
+	<input type="hidden" value="${param.fund_no }" name="fund_no">
 		<table>
 			<tr>
 				<td>본인 네이버 ID : </td>
