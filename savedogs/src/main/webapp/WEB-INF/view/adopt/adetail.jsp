@@ -46,6 +46,8 @@ th {
 </head>
 <body>
 	<input type="hidden" name="noticeNo" value="${go.noticeNo}">
+	<input type="hidden" name="careNm" value="${careNm}">
+	<input type="hidden" name="careAddr" value="${careAddr}">
 	<div>
 		<h2>상세 정보</h2>
 		<br>
