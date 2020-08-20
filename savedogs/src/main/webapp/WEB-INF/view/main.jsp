@@ -39,45 +39,44 @@
                 		<tr>
                 			<td>
                 			<div align="center">
-                				<img src="${picturelist[3*m]}" style="width: 200px; height: 240px;">
+                				<img src="${info[3*m].picture}" style="width: 200px; height: 240px;">
                 			</div>
                 			</td>
                 			
                 			<td>
                 			<div align="center">
-                				<img src="${picturelist[3*m+1]}" style="width: 200px; height: 240px;">
+                				<img src="${info[3*m+1].picture}" style="width: 200px; height: 240px;">
                 			</div>
                 			</td>
                 			
                 			<td>
                 			<div align="center">
-                				<img src="${picturelist[3*m+2]}" style="width: 200px; height: 240px;">
+                				<img src="${info[3*m+2].picture}" style="width: 200px; height: 240px;">
                 			</div>
                 			</td>
                 		</tr>
                 		<tr>
                 			<td>
                 			<div align="center">
-                				<h3>지역 :${orglist[3*m]} <br>
-                				종류 :${kindlist[3*m]} <br>
-                				${sexlist[3*m]}/${agelist[3*m]}</h3>
+                				<h3>지역 :${info[3*m].orgNm} <br>
+                				종류 :${info[3*m].kindCd} <br>
+                				${info[3*m].sexCd}/${info[3*m].age}</h3>
                 			</div>
                 			</td><td>
                 			<div align="center">
-                				<h3>지역 :${orglist[3*m+1]} <br>
-                				종류 :${kindlist[3*m+1]} <br>
-                				${sexlist[3*m+1]}/${agelist[3*m+1]}</h3>
+                				<h3>지역 :${info[3*m+1].orgNm} <br>
+                				종류 :${info[3*m+1].kindCd} <br>
+                				${info[3*m+1].sexCd}/${info[3*m+1].age}</h3>
                 			</div>
                 			</td><td>
                 			<div align="center">
-                				<h3>지역 :${orglist[3*m+2]} <br>
-                				종류 :${kindlist[3*m+2]} <br>
-                				${sexlist[3*m+2]}/${agelist[3*m+2]}</h3>
+                				<h3>지역 :${info[3*m+2].orgNm} <br>
+                				종류 :${info[3*m+2].kindCd} <br>
+                				${info[3*m+2].sexCd}/${info[3*m+2].age}</h3>
                 			</div>
                 			</td>
                 		</tr>
                 	</table>
-                	
 				</div>
             </c:forEach>
         </div>
@@ -86,7 +85,7 @@
     <div class="g_div">
     <div align="center"><h3>공지사항</h3></div><br>
     	<c:forEach var="notice" items="${notice}" varStatus="stat">
-	    	<div align="left"><li>${notice.subject}</li></div>
+	    	<div align="left" style="height: 60px;"><li>${notice.subject}</li></div>
 	    </c:forEach>
     </div>
   </div>

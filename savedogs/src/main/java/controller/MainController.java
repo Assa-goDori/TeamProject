@@ -84,7 +84,7 @@ public class MainController {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		
+		List<Map<String, String>> infolist = new ArrayList<Map<String,String>>();
 		List<String> picturelist = new ArrayList<String>();
 		List<String> kindlist = new ArrayList<String>();
 		List<String> sexlist = new ArrayList<String>();
@@ -115,24 +115,24 @@ public class MainController {
 				Elements age = ele.select("age");
 				Elements orgNm = ele.select("orgNm");
 				if(im<9) {
-					picturelist.add(picture.html());
-					kindlist.add(kindCd.html().substring(3));
-					agelist.add(age.html());
-					sexlist.add((sexCd.html()=="F")?"암컷":"수컷");
-					orglist.add(orgNm.html().substring(5));
+					Map<String, String> map = new HashMap<String, String>();
+					map.put("picture", picture.html());
+					
+					map.put("kindCd",kindCd.html().substring(3));
+					map.put("age",age.html());
+					map.put("sexCd",(sexCd.html()=="F")?"암컷":"수컷");
+					map.put("orgNm",orgNm.html().substring(5));
+					infolist.add(map);
 					im++;
 				}
 			}
 		}catch(IOException e){e.printStackTrace();}
+		System.out.println(infolist);
 		List<Board> noticelist = service.mainnotice();
 		request.setAttribute("notice", noticelist);
 		request.setAttribute("newstitle", newstitle);
 		request.setAttribute("newsimg", newsimg);
-		request.setAttribute("picturelist", picturelist);
-		request.setAttribute("agelist", agelist);
-		request.setAttribute("sexlist", sexlist);
-		request.setAttribute("kindlist", kindlist);
-		request.setAttribute("orglist", orglist);
+		request.setAttribute("info", infolist);
 		return mav; 
 	}
 	@RequestMapping("fundinganditem/list")
