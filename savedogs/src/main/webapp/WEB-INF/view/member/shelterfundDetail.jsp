@@ -12,8 +12,18 @@
 		text-align: center;
 	}
 </style>
+<script type="text/javascript">
+	function allchkbox(allchk) {
+		var chks = document.getElementsByName("idchks");
+		for(var i=0; i<chks.length; i++) {
+			chks[i].checked = allchk.checked;
+		}
+	}
+	
+</script>
 </head>
 <body>
+
 <div class="maiv_div" style="width: 100%;">
 		<h3>나의 후원 리스트 상세보기</h3>
 		<hr>
@@ -42,30 +52,40 @@
 		</table>
 		<hr>
 		<h3>후원신청자 현황</h3>
-		<table>
-			<tr>
-				<th>아이디</th>
-				<th>이메일</th>
-				<th>후원금액</th>
-				<th></th>
-			</tr>
-			<c:forEach items="${detaillist }" var="dlist">
+		<form method="post" action="mailForm.dog">
+			<input type="hidden" value="${param.fund_no }" name="fund_no">
+			<table>
 				<tr>
-					<td class="data">
-						${dlist.fund_id }
-					</td>
-					<td class="data">
-						${dlist.member_email }
-					</td>
-					<td class="data">
-						${dlist.fund_cost }
-					</td>
-					<td>
-					
+					<th>아이디</th>
+					<th>이메일</th>
+					<th>후원금액</th>
+					<th>
+						<input type="checkbox" name="allchk" onchange="allchkbox(this)">
+					</th>
+				</tr>
+				<c:forEach items="${detaillist }" var="dlist">
+					<tr>
+						<td class="data">
+							${dlist.fund_id }
+						</td>
+						<td class="data">
+							${dlist.member_email }
+						</td>
+						<td class="data">
+							${dlist.fund_cost }
+						</td>
+						<td style="text-align: center;">
+							<input type="checkbox" name="idchks" class="idchks" value="${dlist.fund_id }">
+						</td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td class="data" colspan="4">
+						<input class="s_btn" type="submit" value="메일전송">
 					</td>
 				</tr>
-			</c:forEach>
-		</table>
+			</table>
+		</form>
 	</div>
 </body>
 </html>

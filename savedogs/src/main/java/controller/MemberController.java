@@ -1,22 +1,40 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import exception.CartEmptyException;
 import exception.LoginException;
-import exception.VworkException;
 import logic.BuyItem;
 import logic.Buylist;
 import logic.Cart;
@@ -24,6 +42,7 @@ import logic.DogService;
 import logic.Funding;
 import logic.Fundinglist;
 import logic.Item;
+import logic.Mail;
 import logic.Member;
 import logic.Shelter;
 import logic.Vwork;
@@ -71,6 +90,10 @@ public class MemberController {
 		try {
 			service.memberInsert(mem);
 			mav.setViewName("redirect:login.dog");
+		} catch(DataIntegrityViolationException e) {
+			e.printStackTrace();
+			bresult.reject("error.duplicate.user");
+			mav.getModel().putAll(bresult.getModel());
 		} catch(Exception e) {
 			e.printStackTrace();
 			mav.getModel().putAll(bresult.getModel());
@@ -335,4 +358,119 @@ public class MemberController {
 		mav.addObject("detaillist", detaillist);
 		return mav;
 	}
+	
+	@RequestMapping("mailForm")
+	public ModelAndView mailform(String[] idchks, String fund_no) {
+		ModelAndView mav = new ModelAndView("member/mail");
+		if(idchks == null || idchks.length == 0) {
+			throw new LoginException("메일을 보낼 대상자를 선택하세요.", "shelterfundDetail.dog?fund_no="+fund_no);
+		}
+		List<Member> list = service.memberList(idchks);
+		mav.addObject("list", list);
+		return mav;
+	}
+	
+	@RequestMapping("mail")
+	public ModelAndView mail(Mail mail, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			System.out.println(mail);
+			mailSend(mail);
+		} catch (Exception e) {
+			throw new LoginException("메일 전송 실패", "../main.dog");
+		}
+		mav.setViewName("redirect:../main.dog");
+		return mav;
+	}
+	
+	private final class MyAuthenticator extends Authenticator {
+		private String id;
+		private String pw;
+		public MyAuthenticator(String id, String pw) {
+			this.id = id;
+			this.pw = pw;
+		}
+		@Override
+		protected PasswordAuthentication getPasswordAuthentication() {
+			return new PasswordAuthentication(id, pw);
+		}
+	}
+	
+	private void mailSend(Mail mail) {
+		//네이버 메일 전송을 위한 인증 객체
+		MyAuthenticator auth = new MyAuthenticator(mail.getNaverid(), mail.getNaverpw());
+		//메일 전송을 위한 환경 변수 설정
+		Properties prop = new Properties();
+		try {
+			FileInputStream fis = new FileInputStream("C:/Users/GDJ24/Documents/git/TeamProject/savedogs/src/main/resources/mail.properties");
+			prop.load(fis);	//mail.properties의 내용을 Properties(Map 객체)객체로 로드.
+			prop.put("mail.smtp.user", mail.getNaverid());
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		//session : 메일 전송을 위한 객체
+		Session session = Session.getInstance(prop, auth);
+		//mimeMsg : 메일 내용을 저장하기 위한 객체
+		MimeMessage mimeMsg = new MimeMessage(session);
+		try {
+			//보내는이 설정.
+			mimeMsg.setFrom(new InternetAddress(mail.getNaverid()+"@naver.com"));
+			List<InternetAddress> addrs = new ArrayList<InternetAddress>();
+			//홍길동 <hong@aaa.bbb>, 김삿갓 <kim@bbb.ccc> 형태의 수신자를 ,를 기준으로 분리
+			String[] emails = mail.getRecipient().split(",");
+			for(String email : emails) {
+				try {
+					addrs.add(new InternetAddress(new String(email.getBytes("utf-8"), "8859_1")));
+				} catch (UnsupportedEncodingException ue) {
+					ue.printStackTrace();
+				}
+			}
+			InternetAddress[] arr = new InternetAddress[emails.length];
+			for(int i=0; i<addrs.size(); i++) {
+				arr[i] = addrs.get(i);
+			}
+			//보낸일자
+			mimeMsg.setSentDate(new Date());
+			//받는사람들
+			mimeMsg.setRecipients(Message.RecipientType.TO,arr);
+			//제목
+			mimeMsg.setSubject(mail.getTitle());
+			MimeMultipart multipart = new MimeMultipart();
+			MimeBodyPart message = new MimeBodyPart();
+			//내용
+			message.setContent(mail.getContents(), mail.getMtype());
+			multipart.addBodyPart(message);
+			//첨부파일
+			for(MultipartFile mf : mail.getFile1()) {
+				if((mf != null) && (!mf.isEmpty())) {
+					multipart.addBodyPart(bodyPart(mf));
+				}
+			}
+			mimeMsg.setContent(multipart);
+			Transport.send(mimeMsg);	//메일 전송.
+		} catch (MessagingException me) {
+			me.printStackTrace();
+		}
+	}
+	
+	private BodyPart bodyPart(MultipartFile mf) {
+		MimeBodyPart body = new MimeBodyPart();
+		//업로드 파일의 이름
+		String orgFile = mf.getOriginalFilename();
+		//업로드 되는 위치
+		String path = "d:/20200224/spring/mailupload/";
+		File f = new File(path);
+		if(!f.exists()) f.mkdirs();
+		File f1 = new File(path + orgFile);	//업로드된 내용을 저장하는 파일
+		try {
+			mf.transferTo(f1);	//업로드 완성
+			body.attachFile(f1);	//메일 첨부
+			//첨부파일이름 설정
+			body.setFileName(new String(orgFile.getBytes("UTF-8"), "8859_1"));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return body;
+	}
+	
 }

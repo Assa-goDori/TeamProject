@@ -162,6 +162,10 @@ public class DogService {
 		return fundlistDao.getOnefundlist(fund_no);
 	}
 	
+	public List<Member> memberList(String[] idchks) {
+		return memberDao.memberList(idchks);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
