@@ -21,6 +21,7 @@ import logic.BuyItem;
 import logic.Buylist;
 import logic.Cart;
 import logic.DogService;
+import logic.Funding;
 import logic.Fundinglist;
 import logic.Item;
 import logic.Member;
@@ -312,6 +313,25 @@ public class MemberController {
 		List<Vworklist> detaillist = service.getOnevworklist(vwork_no);
 		mav.addObject("showVwork", showVwork);
 		mav.addObject("Nowmem",Nowmem);
+		mav.addObject("detaillist", detaillist);
+		return mav;
+	}
+	
+	@GetMapping("shelterfundMypage")
+	public ModelAndView shelterfundMypageMain(String type, String id) {
+		ModelAndView mav = new ModelAndView();
+		List<Funding> writelist = service.getwritelist2(id);	
+		mav.addObject("writelist", writelist);
+		mav.addObject("type", type);
+		return mav;
+	}
+	
+	@GetMapping("shelterfundDetail")
+	public ModelAndView shelterfundDetail(String fund_no) {
+		ModelAndView mav = new ModelAndView();
+		Funding showFund = service.getfundingdetail(fund_no);
+		List<Fundinglist> detaillist = service.getOnefundlist(fund_no);
+		mav.addObject("showFund", showFund);
 		mav.addObject("detaillist", detaillist);
 		return mav;
 	}

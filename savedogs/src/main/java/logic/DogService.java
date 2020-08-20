@@ -154,6 +154,14 @@ public class DogService {
 		return vworklistDao.getOnevworklist(vwork_no);
 	}
 	
+	public List<Funding> getwritelist2(String id) {
+		return fundingDao.getwritelist2(id);
+	}
+	
+	public List<Fundinglist> getOnefundlist(String fund_no) {
+		return fundlistDao.getOnefundlist(fund_no);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
