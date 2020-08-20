@@ -19,7 +19,7 @@ input[type=file] {
 </head>
 <body>
 	<div>
-		<h2>입양신청</h2>
+		<h2>입양 신청</h2>
 		<br>
 		<div>
 			<div>
@@ -85,11 +85,10 @@ input[type=file] {
 					<br> 
 					<input type="hidden" value="${sessionScope.loginmem.member_id}" name="member_id">
 					<input type="hidden" value="${noticeNo}" name="dog_no">
-					<input type="hidden" value="${careAddr}" name="careAddr">
 					<input type="hidden" value="${careNm}" name="careNm">
+					<input type="hidden" value="${orgNm}" name="orgNm">
 					<input type="submit" value="제출" class="s_btn">
 				</form>
-				<!-- onclick="location.href='../member/adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_name}'"> -->
 			</div>
 		</div>
 	</div>

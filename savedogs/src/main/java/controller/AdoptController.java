@@ -21,7 +21,7 @@ public class AdoptController {
 
 	@Autowired
 	private DogService service;
-	
+
 	@GetMapping("amain")
 	public ModelAndView main1(Adopt adopt) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -63,18 +63,44 @@ public class AdoptController {
 	}
 
 	@GetMapping("adoptSignup")
-	public ModelAndView asignup(String noticeNo, String careNm, String careAddr) throws Exception {
+	public ModelAndView asignup(String noticeNo, String careNm, String orgNm) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		List<Shelter> hap = service.getHaplist();
-		System.out.println(hap);
 		return mav;
 	}
 
 	@RequestMapping("adoptSignup")
-	public ModelAndView asignup2(String dog_no, String careAddr, String careNm, AdoptSign a) throws Exception {
+	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a) throws Exception {
+		System.out.println(a);
+		System.out.println(careNm);
+		System.out.println(orgNm);
+		
+		String co = careNm.concat(orgNm);
+		System.out.println(co);
+		
 		ModelAndView mav = new ModelAndView();
+		List<Shelter> hap = service.getHaplist();
+		System.out.println(hap);
+		
+		Shelter s = new Shelter();
+		for(Shelter ss : hap) {
+			ss.setHap(ss.getHap());
+			ss.setShelter_no(ss.getShelter_no());
+			s=ss;
+			if(s.getHap().equals(co)) {
+				a.setShelter_no(s.getShelter_no());
+			}
+		}
+		
+		
+		/*
+		orgNm : 서울특별시, 구로구
+		String split1 = orgNm.split(" ")[0];
+		String split2 = orgNm.split(" ")[1];
+		System.out.println(split1);
+		System.out.println(split2);
+		*/
 		service.adoptInsert(a);
-		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=${sessionScope.loginmem.member_name}'");
+		mav.setViewName("redirect:../member/adoptMypage.dog?type=4");
 		return mav;
 	}
 
