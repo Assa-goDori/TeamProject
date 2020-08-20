@@ -13,11 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
-<<<<<<< HEAD
 import dao.BoardDao;
-=======
 import dao.AdoptDao;
->>>>>>> ba3df70862d9ddc35bf7739c854e145fbf3db210
 import dao.BuyitemDao;
 import dao.BuylistDao;
 import dao.FundingDao;
@@ -51,12 +48,10 @@ public class DogService {
 	@Autowired
 	private FundinglistDao fundlistDao;
 	@Autowired
-<<<<<<< HEAD
 	private BoardDao boardDao;
-	
-=======
+	@Autowired
 	private AdoptDao adoptDao;
->>>>>>> ba3df70862d9ddc35bf7739c854e145fbf3db210
+
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
