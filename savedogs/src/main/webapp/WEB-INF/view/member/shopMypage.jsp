@@ -38,6 +38,9 @@
 		text-decoration : none;
 		font-weight : bold;	
 	}
+	.data {
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -99,13 +102,13 @@
 			</tr>
 			<c:forEach items="${buylist }" var="buy" varStatus="stat">
 				<tr>
-					<td align="center">
+					<td class="data">
 						<a href="javascript:list_disp('saleLine${stat.index+1 }')">${stat.index+1 }</a>
 					</td>
-					<td align="center">
+					<td class="data">
 						<fmt:formatDate value="${buy.buy_date }" pattern="yyyy-MM-dd" />
 					</td>
-					<td align="right">
+					<td class="data">
 						<fmt:formatNumber value="${buy.total }" pattern="#,###" />원
 					</td>
 				</tr>
@@ -113,6 +116,7 @@
 					<td colspan="3" align="center">
 						<table>
 							<tr>
+								<th width="25%" >번호</th>
 								<th width="25%">상품번호</th>
 								<th width="25%">상품명</th>
 								<th width="25%">수량</th>
@@ -120,12 +124,26 @@
 							</tr>
 							<c:forEach items="${buy.itemList }" var="buyItem">
 								<tr>
-									<td class="title">${buyItem.item.item_no }</td>
-									<td>${buyItem.item.item_name }</td>
-									<td>${buyItem.item_each }개</td>
+									<td class="data">${buyItem.item.item_no }</td>
+									<td class="data">${buyItem.item.item_name }</td>
+									<td class="data">${buyItem.item_each }개</td>
 									<td><fmt:formatNumber value="${buyItem.item_each * buyItem.item.item_price }" pattern="#,###" />원</td>
 								</tr>
 							</c:forEach>
+							<tr>
+								<th colspan="2">배송지정보</th>
+								<th colspan="2">상태</th>
+							</tr>
+							<tr>
+								<td colspan="2" class="data">
+									${buy.buy_postcode }
+									${buy.buy_address }
+									${buy.buy_daddress }
+								</td>
+								<td colspan="2" class="data">
+									${buy.buy_state }
+								</td>
+							</tr>
 						</table>
 					</td>
 				</tr>
