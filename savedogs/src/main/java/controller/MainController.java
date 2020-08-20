@@ -17,16 +17,22 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.Board;
+import logic.DogService;
 import logic.Funding;
 import logic.Item;
 import logic.Member;
 
 @Controller
 public class MainController {
+	@Autowired
+	private DogService service;
+	
 	@RequestMapping("main")
 	public ModelAndView main(HttpServletRequest request) throws IOException {
 		ModelAndView mav = new ModelAndView();
@@ -34,19 +40,24 @@ public class MainController {
 		mav.addObject(mem);
 		
 		String url = "https://search.naver.com/search.naver?where=news&sm=tab_jum&query=%EC%9C%A0%EA%B8%B0%EA%B2%AC";
-		List<String> newslist = new ArrayList<String>();
+		List<String> newstitle = new ArrayList<>();
 		int a = 0;
 		try{
 			Document doc = Jsoup.connect(url).get();
 			Elements body = doc.select(".type01> li");
 			for(Element li : body){
+				Elements thumb = li.select(".thumb > a");
+				for(Element pic : thumb){
+					Elements img = pic.select("img");
+					System.out.println(img.html());
+				}
 				Elements dl = li.select("dl");
 				for(Element dt : dl){
 					Elements atag = dt.select("dt");
 					for(Element val : atag){
 						Elements title = val.select("a");
-						if(a<5) {
-							newslist.add(title.toString());
+						if(a<6) {
+							newstitle.add(title.toString());
 							a++;
 						}
 					}
@@ -55,13 +66,30 @@ public class MainController {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		
+		List<String> newsimg= new ArrayList<>();
+		int b = 0;
+		try{
+			Document doc = Jsoup.connect(url).get();
+			Elements body = doc.select(".type01> li");
+			for(Element li : body){
+				Elements thumb = li.select(".thumb > a");
+				for(Element pic : thumb){
+					Elements img = pic.select("img");
+					if(b<6) {
+						newsimg.add(img.toString());
+						b++;
+					}
+				}
+			}
+		} catch(IOException e){
+			e.printStackTrace();
+		}
+		List<Map<String, String>> infolist = new ArrayList<Map<String,String>>();
 		List<String> picturelist = new ArrayList<String>();
 		List<String> kindlist = new ArrayList<String>();
 		List<String> sexlist = new ArrayList<String>();
 		List<String> agelist = new ArrayList<String>();
 		List<String> orglist = new ArrayList<String>();
-//		List<Map<String, String>> infolist = new ArrayList<Map<String,String>>();
 		String imgurl = "http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?upr_cd=6110000&bgnde=20200801&endde=20200810&upkind=417000&pageNo=1&numOfRows=10&ServiceKey=LBFXEs0hIGvsna06ms6DL%2BOAQJeCCzkEcJLsSEjqrgxVvyB6owDk7VJh8QnuXz9qthbzx%2FqHbGbPP1MbJH7agA%3D%3D";
 		URL u = new URL(imgurl); 
 		HttpURLConnection urlcon = (HttpURLConnection)u.openConnection(); //실제  url에 맞도록 url에 접속
@@ -87,27 +115,24 @@ public class MainController {
 				Elements age = ele.select("age");
 				Elements orgNm = ele.select("orgNm");
 				if(im<9) {
-//					Map<String, String> info = new HashMap<String, String>();
-//					info.put("picture",picture.html());
-//					info.put("kindCd",kindCd.html());
-//					info.put("sexCd",sexCd.html());
-//					info.put("age",age.html());
-//					infolist.add(info);
-					picturelist.add(picture.html());
-					kindlist.add(kindCd.html().substring(3));
-					agelist.add(age.html());
-					sexlist.add((sexCd.html()=="F")?"암컷":"수컷");
-					orglist.add(orgNm.html().substring(5));
+					Map<String, String> map = new HashMap<String, String>();
+					map.put("picture", picture.html());
+					
+					map.put("kindCd",kindCd.html().substring(3));
+					map.put("age",age.html());
+					map.put("sexCd",(sexCd.html()=="F")?"암컷":"수컷");
+					map.put("orgNm",orgNm.html().substring(5));
+					infolist.add(map);
 					im++;
 				}
 			}
 		}catch(IOException e){e.printStackTrace();}
-		request.setAttribute("newslist", newslist);
-		request.setAttribute("picturelist", picturelist);
-		request.setAttribute("agelist", agelist);
-		request.setAttribute("sexlist", sexlist);
-		request.setAttribute("kindlist", kindlist);
-		request.setAttribute("orglist", orglist);
+		System.out.println(infolist);
+		List<Board> noticelist = service.mainnotice();
+		request.setAttribute("notice", noticelist);
+		request.setAttribute("newstitle", newstitle);
+		request.setAttribute("newsimg", newsimg);
+		request.setAttribute("info", infolist);
 		return mav; 
 	}
 	@RequestMapping("fundinganditem/list")

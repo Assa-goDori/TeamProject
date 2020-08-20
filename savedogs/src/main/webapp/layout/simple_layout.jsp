@@ -46,7 +46,7 @@
     <div class="top-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12">
+                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"  style="text-align: left;"> 
                     <p class="welcome-text">구해독 페이지에 오신걸 환영합니다.</p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
