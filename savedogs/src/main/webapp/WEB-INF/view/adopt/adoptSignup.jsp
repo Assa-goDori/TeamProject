@@ -60,13 +60,13 @@ input[type=checkbox] {
 				<br>
 				<table>
 					<tr>
-						<td><input type="checkbox" id="btn1"></td>
 						<td><h4>위 개인정보 취급방침에 동의합니다.</h4></td>
+						<td><input type="checkbox"></td>
 					</tr>
 				</table>
 				<div><button type="button" value="다운로드"></button><h5>해당 파일을 다운받아 작성 후 첨부하세요</h5></div>
 				<br> 
-				<form action="">  
+				<form action="adoptSignup.dog" method="POST">  
   				<input type="hidden" value="${noticeNo}">
 				<input type="submit" value="제출" class="s_btn">
 				</form>
