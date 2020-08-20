@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
+import dao.BoardDao;
 import dao.BuyitemDao;
 import dao.BuylistDao;
 import dao.FundingDao;
@@ -45,6 +46,8 @@ public class DogService {
 	private VworklistDao vworklistDao;
 	@Autowired
 	private FundinglistDao fundlistDao;
+	@Autowired
+	private BoardDao boardDao;
 	
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
@@ -319,8 +322,10 @@ public class DogService {
 //-------------------커뮤니티 관련 시작-------------------------------------------------
 
 		public void boardWrite(Board board, HttpServletRequest request) {
+			int max = boardDao.maxno();
+			board.setBoard_no(++max);
 			
-			
+			boardDao.insertBoard(board);
 		}
 
 //-------------------커뮤니티 관련 시작-------------------------------------------------
