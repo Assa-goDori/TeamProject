@@ -5,7 +5,7 @@ import java.util.Date;
 public class Fundinglist {
 
 	private int fund_no;
-	private String funding_subject;
+	private String fund_subject;
 	private String fund_id;
 	private Date fund_date;
 	private int fund_cost;
@@ -17,11 +17,11 @@ public class Fundinglist {
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
 	}
-	public String getFunding_subject() {
-		return funding_subject;
+	public String getFund_subject() {
+		return fund_subject;
 	}
-	public void setFunding_subject(String funding_subject) {
-		this.funding_subject = funding_subject;
+	public void setFund_subject(String fund_subject) {
+		this.fund_subject = fund_subject;
 	}
 	public int getFund_no() {
 		return fund_no;
@@ -50,7 +50,7 @@ public class Fundinglist {
 
 	@Override
 	public String toString() {
-		return "Fundinglist [fund_no=" + fund_no + ", funding_subject=" + funding_subject + ", fund_id=" + fund_id
+		return "Fundinglist [fund_no=" + fund_no + ", fund_subject=" + fund_subject + ", fund_id=" + fund_id
 				+ ", fund_date=" + fund_date + ", fund_cost=" + fund_cost + "]";
 	}
 }

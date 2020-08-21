@@ -65,4 +65,9 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
+	@GetMapping("soldout") 
+	public ModelAndView soldout() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
 }

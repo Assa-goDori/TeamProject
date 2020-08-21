@@ -45,4 +45,8 @@ public class MemberDao {
 		param.put("memberids", idchks);
 		return template.getMapper(MemberMapper.class).memberList(param);
 	}
+
+	public String getMemberPass(String member_id) {
+		return template.getMapper(MemberMapper.class).getMemberPass(member_id);
+	}
 }
