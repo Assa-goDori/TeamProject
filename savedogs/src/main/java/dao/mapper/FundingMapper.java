@@ -33,7 +33,7 @@ public interface FundingMapper {
 	 * select(Map<String, Object> param);
 	 */
 
-	@Update(" update funding set funding_subject = #{funding_subject},"
+	@Update(" update funding set fund_subject = #{fund_subject},"
 		   + " count=#{count}, start_date=#{start_date},"
 		   + " end_date=#{end_date}, picture=#{fund_pic} where fund_no=#{fund_no}")
 	void fundupdate(Funding funding);

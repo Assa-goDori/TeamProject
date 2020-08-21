@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.VworkException;
 import logic.DogService;
 import logic.Funding;
+import logic.Fundinglist;
+import logic.Member;
+import logic.Shelter;
+import logic.Vwork;
 
 @Controller  // @Component + controller(요청을 받을 수 있는 객체)
 @RequestMapping("funding") // /funding/ 요청시
@@ -77,7 +83,7 @@ public class FundingController {
 	  mav.addObject("fundinglist",fundinglist); 
 	 return mav; 
 	 }
-	 @GetMapping("detail")
+	 @GetMapping({"detail", "fundingapply"})
 	   public ModelAndView detail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
@@ -85,7 +91,17 @@ public class FundingController {
 		 mav.addObject("funding",funding);
 		 return mav;
 	 }
-	 
+	
+
+	 @PostMapping("fundingapply")
+	  public ModelAndView apply(@Valid Fundinglist fundinglist, BindingResult bresult, HttpServletRequest request) {
+          ModelAndView mav = new ModelAndView();
+          System.out.println(fundinglist);
+          service.fundingapply(fundinglist,request);
+          mav.setViewName("redirect:/detail.dog"); //mypage로
+          return mav;      
+      
+        }
 
 	  
 	 
@@ -93,11 +109,5 @@ public class FundingController {
 	 
 	 
 	 
-	/*
-	 * @GetMapping("detail") public ModelAndView detail(String fund_no) {
-	 * ModelAndView mav = new ModelAndView(); Funding funding =
-	 * service.getfundingdetail(fund_no); //service.readcnt(num);
-	 * mav.addObject("funding",funding); return mav; }
-	 */
 	
 }

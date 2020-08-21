@@ -260,8 +260,14 @@ public class DogService {
 		public Funding getfundingdetail(String fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
-			
+		public void fundingapply(Fundinglist fundinglist, HttpServletRequest request) {
+			fundlistDao.applyinsert(fundinglist);
+		}
 
+		
+
+	
+	
 		
 		
 //-------------------펀딩관련 끝-------------------------------------------------
@@ -395,6 +401,8 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
+	
 	
 //-------------------메인관련 끝-------------------------------------------------
 

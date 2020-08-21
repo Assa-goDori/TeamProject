@@ -11,6 +11,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <!-- <link rel='stylesheet' href='../css/savedogs_main.css' /> -->
 <script>
+
+
+function win_open(page) {
+var op = "width=800, height=700, left=500, top=150";
+open(page+".dog?fund_no=${param.fund_no}","",op);
+
+}
+
+
 var bno = '${detail.bno}'; //게시글 번호
  
 $('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
@@ -133,6 +142,7 @@ $(document).ready(function(){
         </table>    
                 </form:form>
         
+        <!-- 댓글 -->
         <hr>
    <div class="container">
         <label for="content">comment</label>
