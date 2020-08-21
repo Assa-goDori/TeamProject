@@ -58,13 +58,14 @@ public class FundingController {
       @GetMapping("fregupdateForm")
       public ModelAndView fregupdateForm2(String fund_no) {
     	  ModelAndView mav = new ModelAndView();
+
     	  Funding funding = service.getfundingdetail(fund_no);
  		 //service.readcnt(num);
  		 mav.addObject("funding",funding);
  		 return mav;
  	 }
  	
-      
+
   	@PostMapping("fregupdateForm")
   	public ModelAndView fregupdateForm(@Valid Funding funding, 
   			BindingResult bresult,HttpServletRequest request) {
