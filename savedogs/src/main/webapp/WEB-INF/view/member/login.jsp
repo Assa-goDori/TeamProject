@@ -8,7 +8,7 @@
 <title>로그인화면</title>
 <script type="text/javascript">
 	function win_open(page){
-		  var op = "width=500, height=350, left=50,top=150";
+		  var op = "width=700, height=450, left=150,top=150";
 		   open(page+".dog","",op);
 	}
 </script>
@@ -58,8 +58,8 @@
 			</tr>
 			<tr height="40px">
 				<td class="btn_td" colspan="3" >
-					<input class="s_btn" type="button" value="아이디 찾기" onclick="win_open('idfind')">
-					<input class="s_btn" type="button" value="비밀번호 찾기" onclick="win_open('pwfind')">
+					<input class="g_btn" type="button" value="아이디 찾기" onclick="win_open('idfind')">
+					<input class="g_btn" type="button" value="비밀번호 찾기" onclick="win_open('pwfind')">
 				</td>
 			</tr>
 		</table>
