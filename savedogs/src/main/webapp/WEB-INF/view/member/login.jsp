@@ -58,8 +58,8 @@
 			</tr>
 			<tr height="40px">
 				<td class="btn_td" colspan="3" >
-					<input class="s_btn" type="button" value="아이디 찾기" onclick="win_open('idfind')">
-					<input class="s_btn" type="button" value="비밀번호 찾기" onclick="win_open('pwfind')">
+					<input class="g_btn" type="button" value="아이디 찾기" onclick="win_open('idfind')">
+					<input class="g_btn" type="button" value="비밀번호 찾기" onclick="win_open('pwfind')">
 				</td>
 			</tr>
 		</table>
