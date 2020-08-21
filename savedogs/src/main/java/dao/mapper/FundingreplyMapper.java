@@ -1,4 +1,4 @@
-/*
+
 package dao.mapper;
 
 import java.util.List;
@@ -36,4 +36,3 @@ public interface FundingreplyMapper {
     @Delete( "delete from fund_comment where fund_replyno = #{fund_replyno}")
       void fundreplydelete(Map<String, Object> param);
 }
-*/

@@ -7,32 +7,23 @@
 <title>구해독 : 공지사항</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <style type="text/css">
-table{
-	margin: 0 auto;
-	border-collapse: collapse;
+.b_th{
+	width: 200px;
 }
 
-tr{
-	border: 1px solid black;
-}
-td{
-	border: 1px solid black;
-	width: 80%;
-	text-align: center;
-}
 </style>
 </head>
 <body>
 <div class="main_div">
 <h2>공지사항 게시판</h2>
 <hr>
-	<table>
-		<tr><th>제목</th><td>${board.subject }</td></tr>
-		<tr><th>작성자</th><td>${board.member_id }</td></tr>
-		<tr><th>작성일</th><td><fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm"/></td></tr>
-		<tr><th>내용</th><td>${board.content }</td></tr>
-		<tr><th>첨부파일</th>
-			<td>
+	<table class="b_table">
+		<tr><th class="b_th">제목</th><td class="b_td">${board.subject }</td></tr>
+		<tr><th class="b_th">작성자</th><td class="b_td">${board.member_id }</td></tr>
+		<tr><th class="b_th">작성일</th><td class="b_td"><fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm"/></td></tr>
+		<tr><th class="b_th">내용</th><td class="b_td"><textarea rows="10" cols="30" class="txta" readonly="readonly">${board.content }</textarea></td></tr>
+		<tr><th class="b_th">첨부파일</th>
+			<td class="b_td">
 				<c:if test="${!empty board.fileurl }">
 					<a href="notice.${board.fileurl }">${board.fileurl }</a>
 				</c:if>

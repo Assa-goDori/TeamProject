@@ -6,7 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>My 후원</title>
-
+<link rel='stylesheet' href='../css/savedogs_main.css' />
+<style>
+	.data {
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 	<h3>신청한 펀딩내역</h3>
@@ -23,12 +28,13 @@
 			</tr>
 			<c:forEach items="${fundlist }" var="list">
 				<tr>
-					<td style="width:250px;">
+					<td style="width:250px;" class="data">
 						<fmt:formatDate value="${list.fund_date }" pattern="yyyy년 MM월 dd일" var="date1"/>
 						${date1 }
 					</td>
-					<td style="width:300px;">${list.funding_subject }</td>
-					<td>${list.fund_cost }</td>
+					<td style="width:300px;" class="data">${list.fund_subject }</td>
+					<fmt:formatNumber pattern="##,###원" value="${list.fund_cost }" var="cost1"/>
+					<td class="data">${cost1 }</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -49,12 +55,13 @@
 			</tr>
 			<c:forEach items="${endfundlist }" var="endlist">
 				<tr>
-					<td style="width:250px;">
+					<td style="width:250px;" class="data">
 						<fmt:formatDate value="${endlist.fund_date }" pattern="yyyy년 MM월 dd일" var="date2"/>
 						${date2 }
 					</td>
-					<td style="width:300px;">${endlist.funding_subject }</td>
-					<td>${endlist.fund_cost }</td>
+					<td style="width:300px;" class="data">${endlist.fund_subject }</td>
+					<fmt:formatNumber pattern="##,###원" value="${endlist.fund_cost }" var="cost2"/>
+					<td class="data">${cost2 }</td>
 				</tr>
 			</c:forEach>
 		</table>

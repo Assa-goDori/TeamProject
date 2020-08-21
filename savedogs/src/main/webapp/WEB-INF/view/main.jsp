@@ -82,30 +82,44 @@
         </div>
     </div>
       <!-- /.slider -->
-    <div class="g_div">
-    <div align="center"><h3>공지사항</h3></div><br>
+    <div class="g_div" style="background-color: white;">
+    <div>
+    	<div align="center">
+    		<h3>공지사항</h3>
+    	</div>
+    	<div align="right">
+    		<a href="board/noticeList.dog?type=1">더보기</a>
+    	</div>
     	<c:forEach var="notice" items="${notice}" varStatus="stat">
-	    	<div align="left"><li>${notice.subject}</li></div>
+	    	<div align="left"><li><a href="board/noticeDetail.dog?no=${notice.board_no}">${notice.subject}</a></li></div>
 	    </c:forEach>
-	    <br>
-	    <div align="center"><h3>베스트 상품</h3></div>
-	    <div class="row">
-	    	<c:forEach begin="0" end="2" var="m">
- 	 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 31%; height: 260px; margin-left: 1%; margin-right:1%;  border: 1px solid black; background-color: #f1f3f4;" >
- 	 				<div class="coach-service-block">
- 	 					<div style="height: 150px; border: 1px solid black;" > 
- 	 						<h5>상품 이미지</h5>
- 	 					</div>
- 	 					
- 	 					<div style="height: 100px; border: 1px solid black;">
- 	 						<h5>상품명</h5>
- 	 						<h5>판매량</h5>
+	</div>
+	<br>
+	<div align="center">
+		<h3>베스트 상품</h3>
+	</div>
+	<div class="row">
+		<c:forEach begin="0" end="2" var="m">
+ 	 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 31%; height: 260px; margin-left: 1%; margin-right:1%; border: 2px solid #f1f3f4;" >
+ 	 			<div class="coach-service-block">
+ 	 				<div style="height: 150px;"  > 
+ 	 					<a href="item/detail.dog?item_no=${bestItem[m].item_no}">
+ 	 						<img src="item/img/${bestItem[m].item_picture}" style="width: 130px; height: 130px; margin-top: 10px;">
+ 	 					</a>
+ 	 				</div>
+					<div style="height: 100px;" >
+ 	 					<div style="margin-top: 20px;">
+ 		 					<a href="item/detail.dog?item_no=${bestItem[m].item_no}">
+ 		 						<h5>${bestItem[m].item_name}</h5>
+ 		 					</a>
+ 		 					<h5>누적 판매량 : ${bestItem[m].sellCnt}개</h5>
  	 					</div>
  	 				</div>
  	 			</div>
-    		</c:forEach>	
-	    </div>
-    </div>
+ 	 		</div>
+    	</c:forEach>	
+	</div>
+	</div>
   </div>
   <br>
   <div class="row">

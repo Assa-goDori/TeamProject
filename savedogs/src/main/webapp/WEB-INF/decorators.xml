@@ -21,6 +21,7 @@
 		<pattern>/member/*Mypage.dog</pattern>
 		<pattern>/member/checkpass.dog</pattern>
 		<pattern>/member/*Member.dog</pattern>
+		<pattern>/admin/*.dog</pattern>
 	</decorator>
 	<excludes>
 		<pattern>/member/shelterlist.*</pattern>
@@ -28,5 +29,6 @@
 		<pattern>/member/changepass*</pattern>
 		<pattern>/funding/fundingapply*</pattern>
 		<pattern>/cart/cartAdd*</pattern>
+		<pattern>/item/soldout*</pattern>
 	</excludes>
 </decorators>

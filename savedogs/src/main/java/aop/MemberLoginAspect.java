@@ -38,6 +38,30 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
+	@Around // adivce중 하나.
+	("execution(* controller.Member*.*chks(..))")
+	public Object adminCheck(ProceedingJoinPoint joinPoint) throws Throwable{
+		Member loginmem = null;
+		Member loginsmem = null;
+		Member loginadmin = null;
+		for(Object o : joinPoint.getArgs()) {
+			if(o instanceof HttpSession) {
+				HttpSession session = (HttpSession)o;
+				loginmem = (Member)session.getAttribute("loginmem");
+				loginsmem = (Member)session.getAttribute("loginsmem");
+				loginadmin = (Member)session.getAttribute("loginadmin");
+			}
+		}
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
+		}
+		if(loginsmem == null && loginadmin == null) {
+			throw new LoginException("보호소 관리자만 가능한 거래입니다.","../main.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
 	/*@Around // 보호소 관리자의 로그인 여부를 판단합니다.  	
 //	("execution(* controller.<Item>*.chks*(..)) && args(..,session)")  : <Item> 부분을 바꾸어서 사용하시길 바랍니다.
 //	마지막 매개변수가 HttpSession이어야 합니다.

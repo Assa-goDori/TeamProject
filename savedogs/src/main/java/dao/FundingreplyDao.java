@@ -1,4 +1,4 @@
-/*
+
 package dao;
 
 import java.util.HashMap;
@@ -35,4 +35,3 @@ public class FundingreplyDao {
 			 template.getMapper(FundingreplyMapper.class).fundreplydelete(param);
 				}
 }
-*/

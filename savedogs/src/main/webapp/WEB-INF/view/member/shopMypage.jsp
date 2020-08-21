@@ -116,7 +116,6 @@
 					<td colspan="3" align="center">
 						<table>
 							<tr>
-								<th width="25%" >번호</th>
 								<th width="25%">상품번호</th>
 								<th width="25%">상품명</th>
 								<th width="25%">수량</th>
