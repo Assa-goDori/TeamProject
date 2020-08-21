@@ -19,11 +19,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.DogService;
+import logic.Member;
 import logic.Shelter;
 
 @Controller
@@ -37,8 +39,24 @@ public class AdminController {
 		return null;
 	}
 	
-	@RequestMapping("adminMypage")
-	public ModelAndView shelterlistad(HttpSession session) throws Exception {
+	@GetMapping("adminMypage")
+	public ModelAndView adminmainad(HttpSession session)  {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+	
+	@GetMapping("adminlistMypage")
+	public ModelAndView adminlistad(HttpSession session)  {
+		ModelAndView mav = new ModelAndView();
+		List<Member> memberlist = service.getMemberList();
+		List<Member> smemberlist = service.getSmemberList();
+		mav.addObject("memberlist", memberlist);
+		mav.addObject("smemberlist", smemberlist);
+		return mav;
+	}
+	
+	@RequestMapping("recent")
+	public ModelAndView shelterlist(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		//영현
 		//String serviceKey = "vqvwqgN6%2Fq8tULP9RBlZ3%2BiHyy2X4cm2M6%2BimTAeJ1y9HiH1ECvwfptH26lZp%2F%2FZzKZ7AUpKNVKHqDchKnZ7wg%3D%3D";

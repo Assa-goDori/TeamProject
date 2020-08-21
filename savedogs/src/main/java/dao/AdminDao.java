@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.mapper.AdminMapper;
+import logic.Member;
 import logic.Shelter;
 
 @Repository
@@ -44,5 +45,13 @@ public class AdminDao {
 		param.clear();
 		param.put("no",shelter_no);
 		return template.getMapper(AdminMapper.class).getOneShelterName(param);
+	}
+
+	public List<Member> getMemberList() {
+		return template.getMapper(AdminMapper.class).getMemberList();
+	}
+
+	public List<Member> getSmemberList() {
+		return template.getMapper(AdminMapper.class).getSmemberList();
 	}
 }

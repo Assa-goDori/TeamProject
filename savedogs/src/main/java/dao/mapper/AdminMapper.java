@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import logic.Member;
 import logic.Shelter;
 
 public interface AdminMapper {
@@ -31,6 +32,12 @@ public interface AdminMapper {
 
 	@Select("select shelter_name from shelter where shelter_no=#{no}")
 	String getOneShelterName(Map<String, Object> param);
+
+	@Select("select * from member where member_id != 'admin' and member_type=0")
+	List<Member> getMemberList();
+
+	@Select("select * from member where member_type=1")
+	List<Member> getSmemberList();
 
 	
 
