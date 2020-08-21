@@ -83,7 +83,6 @@ textarea{
 	background-color : white;
 	outline: 0;
 	padding: 5px 7px;
-	
 }
 
 th{
@@ -132,3 +131,38 @@ font{
 	text-align: center;
 	padding-top: 70px;
 }
+
+/* textarea 선없는 버전 */
+/* rows="10" cols="20 */
+.txta{
+	border: 0px;
+	border-style: none;
+	
+}
+.txta:focus {
+  outline: none;
+}
+
+/* border가 있는 테이블 아래 3개 다 사용해야함 ! */
+.b_table { 	
+   border: 1px solid #444444;
+   border-collapse: collapse;
+}
+.b_th {
+ 	background-color: #B3E7E2;
+  	border: 1px solid #444444;
+    padding: 10px;
+}
+  
+.b_td {
+  	border: 1px solid #444444;
+    padding: 10px;
+  	width: 80%;
+  	text-align: center;
+}
+
+/* 가로선만 있는 테이블 */
+.l_th, .l_td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }

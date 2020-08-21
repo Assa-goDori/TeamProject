@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>구해독 : 공지사항 작성</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
+<script type="text/javascript" src="http://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
 </head>
 <body>
 <div class="main_div">

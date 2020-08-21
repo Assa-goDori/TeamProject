@@ -41,11 +41,11 @@ public interface BoardMapper {
 	@Update("update board set readcnt = readcnt+1 where board_no = #{board_no}")
 	void cntup(String board_no);
 
-	
-													
-
 	@Select("select * from board where type = 1 limit 0,4")
 	List<Board> mainnotice();
+
+	@Update("update board set subject = #{subject}, content = #{content}, file1 = #{fileurl} where board_no = #{board_no}")
+	void updateBoard(Board board);
 
 
 }

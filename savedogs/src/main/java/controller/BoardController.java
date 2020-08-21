@@ -42,7 +42,6 @@ public class BoardController {
 		return mav;
 	}
 	
-	
 	@PostMapping("noticeWrite")
 	public ModelAndView write(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -57,7 +56,7 @@ public class BoardController {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new BoardException("게시글 등록에 실패했습니다","write.shop");
+			throw new BoardException("게시글 등록에 실패했습니다","noticeWrite.dog?no="+board.getBoard_no());
 		}
 		return mav;
 	}
@@ -98,8 +97,25 @@ public class BoardController {
 		return mav;
 	}
 
+	@PostMapping("noticeUpdate")
+	public ModelAndView update(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(bresult.hasErrors()) {
+			mav.getModel().putAll(bresult.getModel());
+			return mav;
+		}
+		try {
+			service.boardUpdate(board, request);
+			if(board.getType().equals("1")) {
+				mav.setViewName("redirect:noticeDetail.dog?no="+board.getBoard_no());
+			} 
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new BoardException("게시글 수정을 실패했습니다","noticeUpdate.dog?no="+board.getBoard_no());
+		}
+		return mav;
+	}
 	
-
 	
 	@RequestMapping("imgupload")
 	public String imgupload(MultipartFile upload, String CKEditorFuncNum, HttpServletRequest request, Model model) {

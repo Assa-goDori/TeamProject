@@ -375,10 +375,17 @@ public class DogService {
 			return boardDao.boardlist(pageNum, limit, type);
 		}
 		
+		public void boardUpdate(Board board, HttpServletRequest request) {
+			if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+				uploadFileCreate(board.getFile1(), request, "board/notice/");
+				board.setFileurl(board.getFile1().getOriginalFilename());
+			}
+			boardDao.updateBoard(board);
+		}
+		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a) {
 			adoptDao.adoptInsert(a);
-
 		}
 		
 		public List<Shelter> getHaplist() {
@@ -395,6 +402,8 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
+		
 	
 //-------------------메인관련 끝-------------------------------------------------
 
