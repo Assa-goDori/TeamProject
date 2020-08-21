@@ -79,7 +79,7 @@ input[type=file] {
 							<td>해당 파일을 다운받아 작성 후 첨부하세요</td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="file" name="adopt_file"></td>
+							<td colspan="2"><input type="file" name="adopt_f"></td>
 						</tr>
 					</table>
 					<br>

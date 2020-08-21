@@ -31,9 +31,6 @@ public class AdoptController {
 		ModelAndView mav = new ModelAndView();
 		String state = "";
 		String kind = null;
-		System.out.println("state :" + state);
-		System.out.println("kind :" + kind);
-
 		List<Adopt> go = ApiExplorer.getDogsJson(state, kind);
 		mav.addObject("go", go);
 
@@ -44,8 +41,6 @@ public class AdoptController {
 	@PostMapping("amain")
 	public ModelAndView main2(Adopt adopt, String state, String kind) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("state :" + state);
-		System.out.println("kind :" + kind);
 		try {
 			List<Adopt> go = ApiExplorer.getDogsJson(state, kind);
 			mav.addObject("go", go);
@@ -75,31 +70,31 @@ public class AdoptController {
 	}
 
 	@RequestMapping("adoptSignup")
-	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, HttpServletRequest request) throws Exception {
-		System.out.println(a);
-		String[] orgNms = orgNm.split(" "); 
+	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, HttpServletRequest request)
+			throws Exception {
+		String[] orgNms = orgNm.split(" ");
 		String split1 = orgNms[0];
 		String split2 = null;
 		if (orgNms.length > 1)
-		     split2 = orgNms[1];
+			split2 = orgNms[1];
 		String co = "";
-		if(split2=="") {
+		if (split2 == "") {
 			co = split1.concat(careNm); // 서울특별시 구디보호소
+		} else if (split2 != "") {
+			co = split2.concat(" " + careNm); // 구로구 구디보호소
 		}
-		else if (split2!="") { 
-			co = split2.concat(careNm); // 구로구 구디보호소
-		}
-		
+		System.out.println(co);
+
 		ModelAndView mav = new ModelAndView();
 		List<Shelter> hap = service.getHaplist();
-		System.out.println(hap);
 		String num = "";
-		for(Shelter ss : hap) {
-			if(ss.getHap().equals(co)) {
+		for (Shelter ss : hap) {
+			if (ss.getHap().equals(co)) {
 				num = ss.getShelter_no();
 			}
 		}
 		a.setShelter_no(num);
+		System.out.println(a);
 		service.adoptInsert(a, request);
 		mav.setViewName("redirect:../member/adoptMypage.dog?type=4");
 		return mav;

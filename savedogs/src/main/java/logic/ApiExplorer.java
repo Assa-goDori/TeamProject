@@ -46,7 +46,6 @@ public class ApiExplorer {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("accept", "application/json");
-		System.out.println("Response code: " + conn.getResponseCode());
 
 		BufferedReader rd;
 		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
@@ -73,20 +72,15 @@ public class ApiExplorer {
 
 		// response
 		JSONObject j_response = (JSONObject) jsonObj.get("response"); // 리턴값 object -> json
-//		System.out.println("response : " + j_response);
 		JSONObject j_body = (JSONObject) j_response.get("body");
-//		System.out.println("body : " + j_body);
 		JSONObject j_items = (JSONObject) j_body.get("items");
-//		System.out.println("items : " + j_items);
 		JSONArray a_item = (JSONArray) j_items.get("item");
 		a_item.remove(0);
-//		System.out.println("item : " + a_item);
 		Gson gson = new Gson();
 
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>() {
 		}.getType());
 		for (Adopt adopt : list) {
-//			System.out.println(adopt);
 			adopt.setKindCd(adopt.getKindCd().substring(4));
 		}
 		return list;
@@ -107,8 +101,6 @@ public class ApiExplorer {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("accept", "application/json");
-		System.out.println(url);
-		System.out.println("Response code: " + conn.getResponseCode());
 
 		BufferedReader rd;
 		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
@@ -132,14 +124,10 @@ public class ApiExplorer {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObj = (JSONObject) parser.parse(result);
 		JSONObject j_response = (JSONObject) jsonObj.get("response");
-//		System.out.println("response : " + j_response);
 		JSONObject j_body = (JSONObject) j_response.get("body");
-//		System.out.println("body : " + j_body);
 		JSONObject j_items = (JSONObject) j_body.get("items");
-//		System.out.println("items : " + j_items);
 		JSONArray a_item = (JSONArray) j_items.get("item");
 		a_item.remove(0);
-//		System.out.println("item : " + a_item);
 		Gson gson = new Gson();
 
 		List<Adopt> list = gson.fromJson(a_item.toString(), new TypeToken<List<Adopt>>() {
