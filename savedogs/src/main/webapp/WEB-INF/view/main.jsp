@@ -94,12 +94,14 @@
  	 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30" style="width: 31%; height: 260px; margin-left: 1%; margin-right:1%;  border: 1px solid black; background-color: #f1f3f4;" >
  	 				<div class="coach-service-block">
  	 					<div style="height: 150px; border: 1px solid black;" > 
- 	 						<h5>상품 이미지</h5>
+ 	 						<img src="item/img/${bestItem[m].item_picture}" style="width: 130px; height: 130px; margin-top: 10px;">
  	 					</div>
  	 					
- 	 					<div style="height: 100px; border: 1px solid black;">
- 	 						<h5>상품명</h5>
- 	 						<h5>판매량</h5>
+ 	 					<div style="height: 100px; border: 1px solid black;" >
+ 	 						<div style="margin-top: 20px;">
+ 		 						<h5>${bestItem[m].item_name}</h5>
+ 		 						<h5>누적 판매량 : ${bestItem[m].sellCnt}개</h5>
+ 	 						</div>
  	 					</div>
  	 				</div>
  	 			</div>
