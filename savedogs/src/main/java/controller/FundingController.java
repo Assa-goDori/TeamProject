@@ -76,7 +76,7 @@ public class FundingController {
   		}
   		//db,파일업로드
   		service.fundUpdate(funding,request);
-  		mav.setViewName("redirect:/funding/fregForm.dog?id="+funding.getFund_no());
+  		mav.setViewName("redirect:/funding/detail.dog?fund_no="+funding.getFund_no());
   		return mav;
   	}
 	@PostMapping("delete")

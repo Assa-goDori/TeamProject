@@ -21,7 +21,6 @@
 	<form:form modelAttribute="fundinglist" method="post" action="fundingapply.dog">
 		<!-- form:hidden path="member_id" value="${sessionScope.loginsmem.member_id }" /> -->
 		<input type="hidden" name="fund_no" value="${param.fund_no}">
-		<input type="hidden" name="fund_date" value="today" >
       <table>
         <tr height="40px">
         <td>기부모집명</td>
