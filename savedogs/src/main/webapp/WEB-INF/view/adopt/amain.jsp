@@ -35,23 +35,30 @@ hr {
 	height: 80%;
 	margin: 5px;
 }
+
+select {
+	font-size: 15px;
+	padding: 5px;
+	width: 250px;
+	margin: 5px;
+}
 </style>
-<script>
-	
-</script>
 </head>
 <body>
 	<div>
-		<h2 class="array">&nbsp;키워드 검색</h2>
+		<h2 class="array">
+			<img src="adopt_img.png" style="width: 3%; height: 3%;">&nbsp;키워드
+			검색
+		</h2>
 		<br>
 		<div class="nb">
-			&nbsp;상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;품종
+			&nbsp;상태&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;품종
 		</div>
 		<form class="array" action="amain.dog" method="POST" name="keyword">
 			<select name="state" onchange="this.form.submit()">
 				<option value="">전체</option>
-				<option value="notice">공고중</option>
-				<option value="protected">보호중</option>
+				<option value="notice">보호중</option>
+				<option value="protected">공고중</option>
 			</select>
 			<script type="text/javascript">
 				keyword.state.value = "${param.state}";
@@ -235,15 +242,6 @@ hr {
 			</script>
 		</form>
 		<hr>
-		<!--  
-		<div class="array">
-			<span id="deadline" onmouseover="this.style.fontWeight='bold'"
-				onmouseout="this.style.fontWeight=''" onclick="">공고
-				마감순&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="registration"
-				onmouseover="this.style.fontWeight='bold'"
-				onmouseout="this.style.fontWeight=''" onclick="">최신 등록순</span>
-		</div>
-		-->
 		<c:forEach var="item" items="${go}">
 			<div
 				style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
@@ -258,6 +256,19 @@ hr {
 		<div>
 			<h3>${message}</h3>
 		</div>
+		<c:if test="${empty message}">
+			<div class="st-pagination">
+				<ul class="pagination">
+					<li><a href="#" aria-label="previous"><span
+							aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#" aria-label="Next"><span aria-hidden="true"><i
+								class="fa fa-angle-right"></i></span></a></li>
+				</ul>
+			</div>
+		</c:if>
 	</div>
 </body>
 </html>

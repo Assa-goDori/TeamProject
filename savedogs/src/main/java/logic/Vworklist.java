@@ -10,7 +10,14 @@ public class Vworklist {
 	private Date vwork_date;
 	@NotNull(message="전화번호를 입력하세요.")
 	private String vwork_tel;
+	private String member_name;
 	
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
 	public String getVwork_no() {
 		return vwork_no;
 	}

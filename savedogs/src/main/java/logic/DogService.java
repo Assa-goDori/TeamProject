@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
+import dao.BoardDao;
+import dao.AdoptDao;
 import dao.BuyitemDao;
 import dao.BuylistDao;
 import dao.FundingDao;
@@ -45,8 +47,11 @@ public class DogService {
 	private VworklistDao vworklistDao;
 	@Autowired
 	private FundinglistDao fundlistDao;
-	
-	
+	@Autowired
+	private BoardDao boardDao;
+	@Autowired
+	private AdoptDao adoptDao;
+
 //-------------------회원관련 시작-------------------------------------------------
 	public void memberInsert(Member mem) {
 		memberDao.memberInsert(mem);
@@ -145,6 +150,22 @@ public class DogService {
 		return vworkDao.getwritelist(id);
 	}
 	
+	public List<Vworklist> getOnevworklist(String vwork_no) {
+		return vworklistDao.getOnevworklist(vwork_no);
+	}
+	
+	public List<Funding> getwritelist2(String id) {
+		return fundingDao.getwritelist2(id);
+	}
+	
+	public List<Fundinglist> getOnefundlist(String fund_no) {
+		return fundlistDao.getOnefundlist(fund_no);
+	}
+	
+	public List<Member> memberList(String[] idchks) {
+		return memberDao.memberList(idchks);
+	}
+	
 //-------------------회원관련 끝-------------------------------------------------
 	
 //-------------------봉사관련 시작------------------------------------------------- 
@@ -221,7 +242,6 @@ public class DogService {
 		         funding.setFund_pic(funding.getPicture().getOriginalFilename());
 		      }
 		      int fund_no =fundingDao.maxfundno() ;
-		      System.out.println(funding.getFund_pic());
 		      funding.setFund_no(++fund_no);
 		      fundingDao.fundinsert(funding);
 		   }
@@ -240,10 +260,9 @@ public class DogService {
 		public Funding getfundingdetail(String fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
-	
+			
 
-	
-	
+		
 		
 //-------------------펀딩관련 끝-------------------------------------------------
 //-------------------쇼핑관련 시작-------------------------------------------------
@@ -315,26 +334,68 @@ public class DogService {
 		}
 
 		
-	
-		
-
-	
-
-		
-
-		
 
 
 
 //-------------------쇼핑관련 끝--------------------------------------------------
+
 //-------------------커뮤니티 관련 시작-------------------------------------------------
 
 		public void boardWrite(Board board, HttpServletRequest request) {
+			int max = boardDao.maxno();
+			board.setBoard_no(++max);
+			board.setGrp(max);
+			board.setGrplevel(0);
+			board.setGrpstep(0);
 			
-			
+			if(board.getType().equals("0")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/review/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			} else if(board.getType().equals("1")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/notice/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			}	
+			boardDao.insertBoard(board);
 		}
+		
+		public Board boardDetail(String board_no) {
+			boardDao.cntup(board_no);
+			return boardDao.getBoard(board_no);
+		}
+		
+		public int noticecnt(String type) {
+			return boardDao.getTypecnt(type);
+		}
+		
+		public List<Board> boardlist(Integer pageNum, int limit, String type) {
+			return boardDao.boardlist(pageNum, limit, type);
+		}
+		
+//-------------------입양 관련 시작------------------------------------------------
+		public void adoptInsert(AdoptSign a) {
+			adoptDao.adoptInsert(a);
 
-//-------------------커뮤니티 관련 시작-------------------------------------------------
+		}
+		
+		public List<Shelter> getHaplist() {
+			return shelterDao.getHaplist();
+		}
+//-------------------입양 관련 끝------------------------------------------------
 
+
+		
+//-------------------메인관련 시작-------------------------------------------------
+		public List<Board> mainnotice() {
+			return boardDao.mainnotice();
+		}
+		public List<Item> bestItem() {
+			return itemDao.bestItem();
+		}
 	
+//-------------------메인관련 끝-------------------------------------------------
+
 }

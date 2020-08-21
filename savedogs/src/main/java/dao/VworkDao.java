@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.mapper.VworkMapper;
+import logic.Board;
 import logic.Vwork;
 import logic.Vworklist;
 
@@ -72,6 +73,7 @@ public class VworkDao {
 		param.put("id", id);
 		return template.getMapper(VworkMapper.class).getwritelist(id);
 	}
+
 
 
 }
