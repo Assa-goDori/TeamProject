@@ -49,4 +49,11 @@ public class MemberDao {
 	public String getMemberPass(String member_id) {
 		return template.getMapper(MemberMapper.class).getMemberPass(member_id);
 	}
+
+	public Member getFindId(String email, String tel) {
+		param.clear();
+		param.put("member_email",email);
+		param.put("member_tel",tel);
+		return template.getMapper(MemberMapper.class).selectmem(param).get(0);
+	}
 }

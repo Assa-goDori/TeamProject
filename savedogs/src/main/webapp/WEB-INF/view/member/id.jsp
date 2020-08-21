@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
+<script type="text/javascript">
+	function winclose(){
+		opener.document.getElementById("member_id").value=${id};
+		self.close()
+	}
+</script>
 <link rel='stylesheet' href='../css/savedogs_exc.css' />
 </head>
 <body>
@@ -13,11 +19,8 @@
 		<h2>아이디 찾기</h2>
 	</div>
 	<hr>
-	<form action="idfind.dog" method="post">
-	<table><tr><th>전화번호</th><td><input name="tel"></td></tr></table>
-	<br>
-	<table><tr><th>이메일</th><td><input name="email"></td></tr></table>
-	<input type="submit" value="제출">
+	<h3>요청하신 아이디는 ${id}입니다.</h3>
+	<input type="button" value="제출" onclick="winclose()">
 	</form>
 </body>
 </html>

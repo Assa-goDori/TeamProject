@@ -495,8 +495,9 @@ public class MemberController {
 	@PostMapping("idfind")
 	private ModelAndView idfind(String email,String tel,HttpServletRequest request) {
 		ModelAndView mav =  new ModelAndView();
-		Member id = service.getFindID(email,tel).getMember_id();
-		request.setAttribute("id", id);
+		Member mem = service.getFindID(email,tel);
+		System.out.println(mem);
+		mav.addObject(mem);
 		mav.setViewName("id");
 		return mav;
 	}

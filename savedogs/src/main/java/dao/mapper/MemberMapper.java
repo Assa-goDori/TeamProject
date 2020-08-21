@@ -55,4 +55,11 @@ public interface MemberMapper {
 	@Select("select member_pass from member where member_id=#{member_id}")
 	String getMemberPass(String member_id);
 
+	@Select({
+			"<script>",
+			"SELECT * FROM member WHERE member_email =#{member_email} AND member_tel = #{member_tel}",
+			"<if test='member_id != null'> and member_id = ${member_id},</if>",
+			"</script>"})
+	Map<String, Object> selectmem(Map<String, Object> param);
+
 }

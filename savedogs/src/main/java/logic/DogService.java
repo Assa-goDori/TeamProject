@@ -178,6 +178,11 @@ public class DogService {
 	public String getMemberPass(String member_id) {
 		return memberDao.getMemberPass(member_id);
 	}
+	
+	public Member getFindID(String email, String tel) {
+		return memberDao.getFindId(email,tel);
+	}
+
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -435,8 +440,6 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
-
-
 	
 //-------------------메인관련 끝-------------------------------------------------
 
