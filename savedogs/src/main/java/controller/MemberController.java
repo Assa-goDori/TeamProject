@@ -35,13 +35,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.LoginException;
-import logic.AdoptSign;
 import logic.BuyItem;
 import logic.Buylist;
 import logic.Cart;
 import logic.DogService;
 import logic.Funding;
 import logic.Fundinglist;
+import logic.Idpw;
 import logic.Item;
 import logic.Mail;
 import logic.Member;
@@ -182,14 +182,6 @@ public class MemberController {
 		List<Fundinglist> endfundlist = service.getMyendfundlist(id);
 		mav.addObject("fundlist", fundlist);
 		mav.addObject("endfundlist", endfundlist);
-		return mav;
-	}
-	
-	@GetMapping("adoptMypage")
-	public ModelAndView adoptMypage(String type, String id, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		List<AdoptSign> myadoptlist = service.getMyadoptlist(id);
-		mav.addObject("myadoptlist", myadoptlist);
 		return mav;
 	}
 	
@@ -504,8 +496,9 @@ public class MemberController {
 	@PostMapping("idfind")
 	private ModelAndView idfind(String email,String tel,HttpServletRequest request) {
 		ModelAndView mav =  new ModelAndView();
-		Member id = service.getFindID(email,tel).getMember_id();
-		request.setAttribute("id", id);
+		List<Idpw> list = service.getFindID(tel,email);
+		System.out.println(list);
+		mav.addObject(list);
 		mav.setViewName("id");
 		return mav;
 	}
