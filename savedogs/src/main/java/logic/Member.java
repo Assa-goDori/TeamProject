@@ -37,10 +37,18 @@ public class Member {
 	private MultipartFile f1;
 	private MultipartFile f2;
 	private int member_type;
+	private int member_auth;
 	
 	//getter,setter
+	
 	public String getMember_id() {
 		return member_id;
+	}
+	public int getMember_auth() {
+		return member_auth;
+	}
+	public void setMember_auth(int member_auth) {
+		this.member_auth = member_auth;
 	}
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;

@@ -42,4 +42,15 @@ public class ItemDao {
  		return template.getMapper(ItemMapper.class).bestitem();
 	}
 
+	public List<Item> getShopall() {
+		return template.getMapper(ItemMapper.class).getShopall();
+	}
+
+	public void updateState(String item_no, String item_state) {
+		param.clear();
+		param.put("item_no", item_no);
+		param.put("item_state", item_state);
+		template.getMapper(ItemMapper.class).updateState(param);
+	}
+
 }

@@ -6,6 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 회원목록 보기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	function changeauth(id, auth) {
+		$.ajax({
+			url : "../ajax/changeauth.dog",
+			type : "POST",
+			data : "member_id="+ id + "&member_auth="+auth,
+			success : function(data) {
+				alert("설정 변경 완료")
+				document.location.reload();
+			},
+			error : function(e) {
+				alert("ajax 오류");
+			}
+		})
+	}
+</script>
 <style>
 	.data {
 		text-align:center;
@@ -84,7 +101,8 @@
 						<a href="../member/img/${slist.file1 }">${slist.file1 }</a>
 					</td>
 					<td class="data">
-						승인 거부
+						<a href="javascript:changeauth('${slist.member_id }', 0)">승인</a>
+						<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
 					</td>
 					<td class="data">
 						<a href="../member/updateMember.dog?type=1&id=${slist.member_id }&update=2&member_type=1">수정</a>
