@@ -54,6 +54,6 @@ public class MemberDao {
 		param.clear();
 		param.put("member_email",email);
 		param.put("member_tel",tel);
-		return template.getMapper(MemberMapper.class).selectmem(param).get(0);
+		return (Member) template.getMapper(MemberMapper.class).selectmem(param).get(0);
 	}
 }
