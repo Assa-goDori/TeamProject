@@ -8,7 +8,7 @@
 <title>로그인화면</title>
 <script type="text/javascript">
 	function win_open(page){
-		  var op = "width=500, height=350, left=50,top=150";
+		  var op = "width=700, height=450, left=150,top=150";
 		   open(page+".dog","",op);
 	}
 </script>

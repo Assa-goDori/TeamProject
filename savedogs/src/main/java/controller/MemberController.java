@@ -492,4 +492,12 @@ public class MemberController {
 		return body;
 	}
 	
+	@PostMapping("idfind")
+	private ModelAndView idfind(String email,String tel,HttpServletRequest request) {
+		ModelAndView mav =  new ModelAndView();
+		Member id = service.getFindID(email,tel).getMember_id();
+		request.setAttribute("id", id);
+		mav.setViewName("id");
+		return mav;
+	}
 }

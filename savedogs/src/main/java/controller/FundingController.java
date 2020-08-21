@@ -34,8 +34,8 @@ public class FundingController {
       @Autowired
       private DogService service;
       
-      @RequestMapping("*")
-      public ModelAndView fregForm() {
+      @GetMapping("fregForm")
+      public ModelAndView fregFormchks(HttpSession session) {
           ModelAndView mav = new ModelAndView();
           Funding f = new Funding();
           mav.addObject("f",f);
