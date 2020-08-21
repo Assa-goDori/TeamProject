@@ -35,7 +35,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping("noticeWrite") 
+	@GetMapping(value= {"noticeWrite","reviewWrite"}) 
 	public ModelAndView writeform(Model model, HttpServletRequest request) {
 		ModelAndView mav= new ModelAndView();
 		model.addAttribute(new Board());
@@ -116,6 +116,30 @@ public class BoardController {
 		return mav;
 	}
 	
+	@GetMapping("noticeDelete")
+	public ModelAndView deleteform(String no) {
+		ModelAndView mav = new ModelAndView();
+		String type = service.getBoardType(no);
+		mav.addObject("board_no", no);
+		return mav;
+	}
+	
+	@PostMapping("noticeDelete")
+	public ModelAndView delete(String no) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			
+			String type = service.getBoardType(no);
+			service.boardDelete(no);
+			if(type.equals("1")) {
+				mav.setViewName("redirect:noticeList.dog?type=1");
+			} 
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new BoardException("게시글 삭제를 실패했습니다","noticeDetail.dog?no="+no);
+		}
+		return mav;
+	} 
 	
 	@RequestMapping("imgupload")
 	public String imgupload(MultipartFile upload, String CKEditorFuncNum, HttpServletRequest request, Model model) {

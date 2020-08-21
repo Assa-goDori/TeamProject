@@ -48,7 +48,7 @@
 						${list.member_email }
 					</td>
 					<td class="data">
-						<a href="../member/updateMember.dog?type=1&id=${list.member_id }">수정</a>
+						<a href="../member/updateMember.dog?type=1&id=${list.member_id }&update=1&member_type=0">수정</a>
 						<a href="#">탈퇴</a>
 					</td>
 				</tr>
@@ -87,7 +87,7 @@
 						승인 거부
 					</td>
 					<td class="data">
-						<a href="../member/updateMember.dog?type=1&id=${list.member_id }">수정</a>
+						<a href="../member/updateMember.dog?type=1&id=${slist.member_id }&update=2&member_type=1">수정</a>
 						<a href="#">탈퇴</a>
 					</td>
 				</tr>

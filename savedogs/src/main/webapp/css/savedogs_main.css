@@ -137,7 +137,7 @@ font{
 .txta{
 	border: 0px;
 	border-style: none;
-	
+	resize: none;
 }
 .txta:focus {
   outline: none;

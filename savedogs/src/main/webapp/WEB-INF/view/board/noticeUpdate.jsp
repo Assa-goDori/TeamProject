@@ -7,12 +7,18 @@
 <title>구해독 : 공지사항 수정</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<style type="text/css">
+#subject {
+	width : 800px;
+}
+</style>
 </head>
 <body>
 <div class="main_div">
 <h2>공지사항 수정</h2>
 <hr>
-<form:form modelAttribute="board" action="noticeUpdate.dog" enctype="multipart/form-data" name="f">	
+<form:form modelAttribute="board" action="noticeUpdate.dog" enctype="multipart/form-data" name="f">
+	<form:hidden path="board_no" value="${param.no }"/>	
 	<form:hidden path="type" value="1"/>
 	<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
 	<table>

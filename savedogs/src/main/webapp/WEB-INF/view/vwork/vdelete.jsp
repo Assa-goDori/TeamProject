@@ -33,7 +33,7 @@
 		<tr><th colspan="2" class="btn_td">
 							<input type="button" class="g_btn" value="취소"  onclick="history.back(-1);">
 							<input type="submit" class="s_btn" value="삭제"></th></tr>
-</table>
+	</table>
 </form:form>
 </div>
 </div>

@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<%-- 슬라이드없는 심플 레이아웃 버전 --%>
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	var path = "${path}";
+	console.log(path);
+	
 </script>
 <head>
     <meta charset="utf-8">
@@ -39,18 +41,22 @@
 <script type="text/javascript">
  	var path = '${path}';
 
+	
+	function directpage(dir,view){
+		location.href="${path}/"+dir+"/"+view+".dog";
+	}
 </script>
 <decorator:head />
 <body>
     <!-- top-header-section-->
-    <div class="top-header">
+    <div class="top-header" style="background-color: #34b2a4">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"  style="text-align: left;"> 
-                    <p class="welcome-text">구해독 페이지에 오신걸 환영합니다.</p>
+                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12" style="text-align: left;">
+                    <p class="welcome-text" style="color: white;">구해독 페이지에 오신걸 환영합니다.</p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                    <ul>
+                    <ul style="color: white;">
                     <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem and empty sessionScope.loginadmin}">
                     	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
@@ -98,7 +104,7 @@
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
                                         <li><a href="${path }/board/qnaList.dog">Q&A</a></li>
-                                        <li><a href="${path }/board/noticeList.dog">공지사항</a></li>
+                                        <li><a href="${path }/board/noticeList.dog?type=1">공지사항</a></li>
                                         <li><a href="${path }/board/reviewList.dog">입양 후기 </a></li>
                                     </ul>
                                 </li>
@@ -112,14 +118,14 @@
         </div>
     </div>
     <!-- /. header-section-->
-
-    <!-- coachservice-section -->
+   
+    <!-- coachservice-section --> 
     <div class="space-medium">
         <decorator:body />
     </div>
     <!-- video-section -->
     <!-- footer -->
-    <div class="footer">
+    <div class="footer" style="background-color: #34b2a4">
         <div class="container">
             <div class="row">
                 
@@ -127,7 +133,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                     <div class="tiny-footer">
-                        <p>Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
+                        <p style="color: white;">Copyright © All Rights Reserved 2020, 빅데이터 플랫폼 1조 : 구해독  </p>
                     </div>
                 </div>
                 <!-- /. tiny-footer -->
@@ -143,14 +149,14 @@
   
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="${path }/js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="${path }/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="${path }/js/menumaker.js" type="text/javascript"></script>
-    <script type="text/javascript" src="${path }/js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="${path }/js/sticky-header.js"></script>
-    <script type="text/javascript" src="${path }/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="${path }/js/multiple-carousel.js"></script>
+    <script src="${path}/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="${path}/js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${path}/js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="${path}/js/sticky-header.js"></script>
+    <script type="text/javascript" src="${path}/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="${path}/js/multiple-carousel.js"></script>
    
     <script type="text/javascript">
     $("#dots").click(function() {
@@ -171,11 +177,11 @@
         });
     });
     </script>
-    <script type="text/javascript" src="${path }/js/video-play.js">
+    <script type="text/javascript" src="${path}/js/video-play.js">
     </script>
 
 
-<script type="text/javascript" src="${path }/js/return-to-top.js">     
+<script type="text/javascript" src="${path}/js/return-to-top.js">     
 </script>
 
 </body>

@@ -57,7 +57,8 @@
 			</font>
 		</spring:hasBindErrors>
 		<br>
-		<c:if test="${!empty sessionScope.loginmem }">
+		<c:if test="${!empty sessionScope.loginmem or param.update==1}">
+		<input type="hidden" value="0" name="member_type" />
 		<table style="border-collapse:collapse; ">
 			<tr height="40px">
 				<th>아이디</th>
@@ -140,7 +141,8 @@
 			</tr>
 		</table>
 		</c:if>
-		<c:if test="${!empty sessionScope.loginsmem }">
+		<c:if test="${!empty sessionScope.loginsmem or param.update==2}">
+		<input type="hidden" value="1" name="member_type" />
 		<table style="border-collapse:collapse; ">
 			<tr height="40px">
 				<th>아이디</th>

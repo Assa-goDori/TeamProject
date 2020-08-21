@@ -174,6 +174,10 @@ public class DogService {
 	public List<Member> getSmemberList() {
 		return adminDao.getSmemberList();
 	}
+	
+	public String getMemberPass(String member_id) {
+		return memberDao.getMemberPass(member_id);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -398,8 +402,22 @@ public class DogService {
 			boardDao.updateBoard(board);
 		}
 		
+		public void boardDelete(String board_no) {
+			boardDao.deleteBoard(board_no);
+		}
+
+		public String getBoardType(String board_no) {
+			return boardDao.getBoardType(board_no);
+		}
+		
+		
 //-------------------입양 관련 시작------------------------------------------------
-		public void adoptInsert(AdoptSign a) {
+		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
+			a.setFile("");
+			if(a.getF() != null && !a.getF().isEmpty()) {
+				uploadFileCreate(a.getF(),request,"adopt/img/");
+				a.setFile(a.getF().getOriginalFilename());
+			}
 			adoptDao.adoptInsert(a);
 		}
 		
@@ -418,7 +436,7 @@ public class DogService {
 			return itemDao.bestItem();
 		}
 
-	
+
 	
 //-------------------메인관련 끝-------------------------------------------------
 

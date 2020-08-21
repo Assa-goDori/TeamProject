@@ -56,6 +56,14 @@ public class BoardDao {
 		template.getMapper(BoardMapper.class).updateBoard(board);
 		
 	}
+
+	public void deleteBoard(String board_no) {
+		template.getMapper(BoardMapper.class).deleteBoard(board_no);
+	}
+
+	public String getBoardType(String board_no) {
+		return template.getMapper(BoardMapper.class).getBoardType(board_no);
+	}
 	
 	
 }
