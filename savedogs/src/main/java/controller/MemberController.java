@@ -35,6 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.LoginException;
+import logic.AdoptSign;
 import logic.BuyItem;
 import logic.Buylist;
 import logic.Cart;
@@ -181,6 +182,14 @@ public class MemberController {
 		List<Fundinglist> endfundlist = service.getMyendfundlist(id);
 		mav.addObject("fundlist", fundlist);
 		mav.addObject("endfundlist", endfundlist);
+		return mav;
+	}
+	
+	@GetMapping("adoptMypage")
+	public ModelAndView adoptMypage(String type, String id, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<AdoptSign> myadoptlist = service.getMyadoptlist(id);
+		mav.addObject("myadoptlist", myadoptlist);
 		return mav;
 	}
 	

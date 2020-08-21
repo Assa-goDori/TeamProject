@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,7 +18,12 @@ public class AdoptDao {
 	Map<String, Object> param = new HashMap<>();
 	
 	public void adoptInsert(AdoptSign a) {
+		System.out.println(a);
 		template.getMapper(AdoptMapper.class).adoptInsert(a);
+	}
+
+	public List<AdoptSign> getMyadoptlist(String id) {
+		return template.getMapper(AdoptMapper.class).getMyadoptlist(id);
 	}
 
 }

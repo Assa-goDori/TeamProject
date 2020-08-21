@@ -49,4 +49,11 @@ public class MemberDao {
 	public String getMemberPass(String member_id) {
 		return template.getMapper(MemberMapper.class).getMemberPass(member_id);
 	}
+
+	public void updateAuth(String member_id, String member_auth) {
+		param.clear();
+		param.put("member_id", member_id);
+		param.put("member_auth", member_auth);
+		template.getMapper(MemberMapper.class).updateAuth(param);
+	}
 }

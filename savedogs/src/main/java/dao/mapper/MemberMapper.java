@@ -55,4 +55,7 @@ public interface MemberMapper {
 	@Select("select member_pass from member where member_id=#{member_id}")
 	String getMemberPass(String member_id);
 
+	@Update("update member set member_auth=${member_auth} where member_id=#{member_id}")
+	void updateAuth(Map<String, Object> param);
+
 }

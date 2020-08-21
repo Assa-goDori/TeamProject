@@ -178,6 +178,18 @@ public class DogService {
 	public String getMemberPass(String member_id) {
 		return memberDao.getMemberPass(member_id);
 	}
+	
+	public List<Item> getShopall() {
+		return itemDao.getShopall();
+	}
+	
+	public void updateAuth(String member_id, String member_auth) {
+		memberDao.updateAuth(member_id, member_auth);
+	}
+	
+	public List<AdoptSign> getMyadoptlist(String id) {
+		return adoptDao.getMyadoptlist(id);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -352,9 +364,9 @@ public class DogService {
 			return buylist;
 		}
 
-		
-
-
+		public void updateState(String item_no, String item_state) {
+			itemDao.updateState(item_no, item_state);
+		}
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 
@@ -413,7 +425,6 @@ public class DogService {
 		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
-			a.setFile("");
 			if(a.getF() != null && !a.getF().isEmpty()) {
 				uploadFileCreate(a.getF(),request,"adopt/img/");
 				a.setFile(a.getF().getOriginalFilename());
@@ -436,8 +447,6 @@ public class DogService {
 			return itemDao.bestItem();
 		}
 
-
-	
 //-------------------메인관련 끝-------------------------------------------------
 
 }

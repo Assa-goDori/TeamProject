@@ -69,7 +69,7 @@ public class AdoptController {
 		return mav;
 	}
 
-	@RequestMapping("adoptSignup")
+	@PostMapping("adoptSignup")
 	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, HttpServletRequest request)
 			throws Exception {
 		String[] orgNms = orgNm.split(" ");
