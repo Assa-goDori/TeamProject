@@ -44,8 +44,6 @@ public interface FundingMapper {
     		"select * ,datediff(end_date,now()) restdate from funding",
     		"<if test='fund_no != null'> where fund_no=${fund_no} </if>",
     		"<if test='member_id != null'> where member_id=#{member_id} </if>",
-    		"delete * from funding",
-    		"<if test='restdate < 1'> where fund_no=${fund_no} </if>",
     		"</script>"})
 	List<Funding> select(Map<String, Object> param);
 
