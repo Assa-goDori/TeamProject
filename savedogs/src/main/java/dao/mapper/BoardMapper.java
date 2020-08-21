@@ -4,6 +4,7 @@ import java.util.List;
 
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 
 
@@ -46,6 +47,12 @@ public interface BoardMapper {
 
 	@Update("update board set subject = #{subject}, content = #{content}, file1 = #{fileurl} where board_no = #{board_no}")
 	void updateBoard(Board board);
+
+	@Delete("delete from board where board_no=#{board_no}")
+	void deleteBoard(String board_no);
+
+	@Select("select type from board where board_no = #{board_no}")
+	String getBoardType(String board_no);
 
 
 }

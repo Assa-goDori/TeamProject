@@ -383,6 +383,15 @@ public class DogService {
 			boardDao.updateBoard(board);
 		}
 		
+		public void boardDelete(String board_no) {
+			boardDao.deleteBoard(board_no);
+		}
+
+		public String getBoardType(String board_no) {
+			return boardDao.getBoardType(board_no);
+		}
+		
+		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a) {
 			adoptDao.adoptInsert(a);
@@ -402,6 +411,8 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
+	
 
 		
 	
