@@ -41,6 +41,7 @@ import logic.Cart;
 import logic.DogService;
 import logic.Funding;
 import logic.Fundinglist;
+import logic.Idpw;
 import logic.Item;
 import logic.Mail;
 import logic.Member;
@@ -495,9 +496,9 @@ public class MemberController {
 	@PostMapping("idfind")
 	private ModelAndView idfind(String email,String tel,HttpServletRequest request) {
 		ModelAndView mav =  new ModelAndView();
-		Member mem = service.getFindID(email,tel);
-		System.out.println(mem);
-		mav.addObject(mem);
+		List<Idpw> list = service.getFindID(tel,email);
+		System.out.println(list);
+		mav.addObject(list);
 		mav.setViewName("id");
 		return mav;
 	}

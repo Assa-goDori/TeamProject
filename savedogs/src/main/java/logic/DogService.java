@@ -179,8 +179,8 @@ public class DogService {
 		return memberDao.getMemberPass(member_id);
 	}
 	
-	public Member getFindID(String email, String tel) {
-		return memberDao.getFindId(email,tel);
+	public List<Idpw> getFindID(String tel, String email) {
+		return memberDao.getFindId(tel,email);
 	}
 
 

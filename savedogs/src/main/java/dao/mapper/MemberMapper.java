@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import logic.Idpw;
 import logic.Member;
 
 public interface MemberMapper {
@@ -57,9 +58,9 @@ public interface MemberMapper {
 
 	@Select({
 			"<script>",
-			"SELECT * FROM member WHERE member_email =#{member_email} AND member_tel = #{member_tel}",
-			"<if test='member_id != null'> and member_id = ${member_id},</if>",
+			"SELECT * FROM member WHERE member_tel = #{member_tel} and member_email = #{member_email}",
+			"<if test='member_id != null'> and member_id = #{member_id},</if>",
 			"</script>"})
-	Map<String, Object> selectmem(Map<String, Object> param);
+	List<Idpw> selectmem(Map<String, Object> param);
 
 }
