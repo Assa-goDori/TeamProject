@@ -13,10 +13,11 @@
 		<h2>아이디 찾기</h2>
 	</div>
 	<hr>
-	<form action="idfind.dog" method="post">
+	<form action="findid.dog">
 	<table><tr><th>전화번호</th><td><input name="tel"></td></tr></table>
 	<br>
 	<table><tr><th>이메일</th><td><input name="email"></td></tr></table>
+	
 	<input type="submit" value="제출">
 	</form>
 </body>

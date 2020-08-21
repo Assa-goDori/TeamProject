@@ -25,7 +25,7 @@
 	</decorator>
 	<excludes>
 		<pattern>/member/shelterlist.*</pattern>
-		<pattern>/member/id*</pattern>
+		<pattern>/member/idfind.*</pattern>
 		<pattern>/vwork/vwrite*</pattern>
 		<pattern>/member/changepass*</pattern>
 		<pattern>/funding/fundingapply*</pattern>

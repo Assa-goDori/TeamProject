@@ -36,17 +36,9 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	@Around 
-	("execution(* controller.Cart*.chkm*(..))")
-	public Object CartMemberLoginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
-		Member loginmem = null;
-		Member loginadmin = null;
-		for(Object o : joinPoint.getArgs()) {
-			if(o instanceof HttpSession) {
-				HttpSession session = (HttpSession)o;
-				loginadmin = (Member)session.getAttribute("loginadmin");
-				loginmem = (Member)session.getAttribute("loginmem");
-			}
-		}
+	("execution(* controller.Cart*.chkm*(..)) && args(..,session)")
+	public Object CartMemberLoginCheck(ProceedingJoinPoint joinPoint,HttpSession session) throws Throwable{
+		Member loginmem = (Member)session.getAttribute("loginmem");
 		if(loginmem == null) {
 			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
 		}
