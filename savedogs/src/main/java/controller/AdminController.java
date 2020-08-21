@@ -55,6 +55,13 @@ public class AdminController {
 		return mav;
 	}
 	
+	@GetMapping("adminshopMypage")
+	public ModelAndView adminshopad(HttpSession session)  {
+		ModelAndView mav = new ModelAndView();
+
+		return mav;
+	}
+	
 	@RequestMapping("recent")
 	public ModelAndView shelterlist(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
