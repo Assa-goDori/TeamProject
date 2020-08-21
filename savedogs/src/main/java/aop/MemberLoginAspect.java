@@ -21,7 +21,8 @@ public class MemberLoginAspect {
 	("execution(* controller.Item*.chkm*(..)) && args(..,session)")
 	public Object ItemMemberLoginCheck(ProceedingJoinPoint joinPoint,HttpSession session) throws Throwable{
 		Member loginmem = (Member)session.getAttribute("loginmem");
-		if(loginmem == null) {
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginmem == null && loginadmin == null) {
 			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
 		}
 		Object ret = joinPoint.proceed();
