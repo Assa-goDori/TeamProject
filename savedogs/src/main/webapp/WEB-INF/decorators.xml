@@ -29,5 +29,6 @@
 		<pattern>/member/changepass*</pattern>
 		<pattern>/funding/fundingapply*</pattern>
 		<pattern>/cart/cartAdd*</pattern>
+		<pattern>/item/soldout*</pattern>
 	</excludes>
 </decorators>

@@ -12,6 +12,10 @@
 		var op = "width=780,height=430,left=150,top=150";
 		open('../cart/cartAdd.dog?item_no='+item_no+'&item_each='+item_each,"",op)
 	}
+	function soldout(f){
+		var op = "width=780,height=430,left=150,top=150";
+		open('soldout.dog',"",op)
+	}
 </script>
 </head>
 <body>
@@ -31,7 +35,7 @@
 					<table>
 						<tr>
 							<td align="center" width="30%"><h3>상품명</h3> </td>
-							<td><h4>&nbsp;${item.item_name}</h4></td>
+							<td><h4>&nbsp;${item.item_name}&nbsp;<c:if test="${item.item_state==1}"><span style="color: #f8591b">품절</span></c:if></h4></td>
 						</tr>
 						<tr>
 							<td align="center" width="30%"><h3>가격</h3></td>
@@ -44,6 +48,7 @@
 						
 						<tr>
 							<td colspan="2">
+							<c:if test="${item.item_state != 1}">
 								<form action="list.dog" name="f" onsubmit="return add(this)" >
 									<input type="hidden" name="item_no" value="${item.item_no}">
 									<table style="width: 100%; height: 100%;">
@@ -70,6 +75,18 @@
 				 						</tr>
 									</table>
 								</form>
+								</c:if>
+								<c:if test="${item.item_state==1}">
+									<form action="list.dog" name="f" onsubmit="return soldout(this)" >
+										<table style="width: 100%; height: 100%;">
+											<tr style="height: 15%;">
+				 								<td width="100%" align="center"> 
+				 									<input style="width: 100%;" type="submit" value="품절" >
+				 								</td>
+				 							</tr>
+										</table>
+									</form>
+								</c:if>
 							</td>
 						</tr>
 					</table>
