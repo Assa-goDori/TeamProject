@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/view/jspHeader.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +25,11 @@ input[type=file] {
 		<div>
 			<div>
 				<h3>개인정보 취급방침</h3>
-				<form action="adoptSignup.dog" method="POST">
+				<form:form modelAttribute="adoptSign" method="POST" action="adoptSignup.dog" enctype="multipart/form-data">
 					<table>
 						<tr>
-							<td colspan="2">
-							<textarea style="width: 500px; height: 150px;">
+							<td colspan="2"><textarea
+									style="width: 500px; height: 150px;">
 구해독은 입양신청자의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
 개인정보취급방침을 통하여 입양신청자께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
 
@@ -64,8 +65,7 @@ input[type=file] {
 
 - 보존 항목 : 이름, 휴대전화번호, 이메일, 은행계좌 정보, 후원회비, 자동이체날짜, 봉사희망분야, 단체주소, 자기소개, 자기정보공개여부
 - 보존 근거 : 전자상거래등에서의 소비자보호에 관한 법률
-- 보존 기간 : 5년</textarea>
-							</td>
+- 보존 기간 : 5년</textarea></td>
 						<tr>
 							<td colspan="2" style="text-align: right;">위 개인정보 취급방침에
 								동의합니다.&emsp;<input type="checkbox">
@@ -79,16 +79,17 @@ input[type=file] {
 							<td>해당 파일을 다운받아 작성 후 첨부하세요</td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="file" name="adopt_file"></td>
+							<td colspan="2"><input type="file" name="adopt_f"></td>
 						</tr>
 					</table>
-					<br> 
-					<input type="hidden" value="${sessionScope.loginmem.member_id}" name="member_id">
-					<input type="hidden" value="${noticeNo}" name="dog_no">
-					<input type="hidden" value="${careNm}" name="careNm">
-					<input type="hidden" value="${orgNm}" name="orgNm">
+					<br>
+					<form:hidden path="member_id"
+						value="${sessionScope.loginmem.member_id}" />
+					<form:hidden path="dog_no" value="${param.noticeNo}" />
+					<input type="hidden" name="careNm" value="${param.careNm}">
+					<input type="hidden" name="orgNm" value="${param.orgNm}">
 					<input type="submit" value="제출" class="s_btn">
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>

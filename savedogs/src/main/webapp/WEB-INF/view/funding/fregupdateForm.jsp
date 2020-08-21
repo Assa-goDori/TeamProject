@@ -13,7 +13,7 @@
 <form:form modelAttribute="funding" method="post" action="fregupdateForm.dog" enctype="multipart/form-data">
 <%-- globalErrors error.reject(코드값) --%>
 <input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id }">
-<input type="hidden" name="fund_no" value="${sessionScope.loginmem.member_id }">
+<input type="hidden" name="fund_no" value="${param.fund_no }">
 <spring:hasBindErrors name="funding">
 <font color="red">
 <c:forEach items="${errors.globalErrors}" var="error">
@@ -28,13 +28,13 @@
 <font color="red"><form:errors path="sheltername" /></font></td></tr>
 
 <tr height="40px"><td>후원 제목</td>
-<td><input type="text" name="funding_subject" readonly="readonly" value="${funding.funding_subject}" />
+<td><input type="text" name="fund_subject" readonly="readonly" value="${funding.fund_subject}" />
 <font color="red">
-<form:errors path="funding_subject" /></font></td></tr>
+<form:errors path="fund_subject" /></font></td></tr>
 
 <tr height="40px"><td>목표 금액</td>
-<td><form:input path="count" />
-<font color="red"><form:errors path="count" /></font></td></tr>
+<td><form:input path="fund_count" />
+<font color="red"><form:errors path="fund_count" /></font></td></tr>
 
 <tr height="40px"><td>시작 날짜</td>
 <td><input type="date" name="start_date" />
@@ -45,8 +45,13 @@
 <font color="red"><form:errors path="end_date" /></font></td></tr>
 
 <tr height="40px"><td>배너사진</td>
-<td><input type="file" name="fund_pic" />
-<font color="red"><form:errors path="fund_pic" /></font></td></tr>
+<td>
+<c:if test="${!empty funding.fund_pic }">
+					<div id="file_desc">
+						<a href="img/${funding.fund_pic }">${funding.fund_pic }</a>
+						<a href="javascript:file_delete()">[파일첨부삭제]</a>
+					</div></c:if>
+<input type="file" name="picture" /></td></tr>
 
 <tr height="40px">
 <td colspan="2" align="center">

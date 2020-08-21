@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.mapper.MemberMapper;
+import logic.Idpw;
 import logic.Member;
 
 @Repository
@@ -48,5 +49,12 @@ public class MemberDao {
 
 	public String getMemberPass(String member_id) {
 		return template.getMapper(MemberMapper.class).getMemberPass(member_id);
+	}
+
+	public List<Idpw> getFindId(String tel, String email) {
+		param.clear();
+		param.put("member_tel",tel);
+		param.put("member_email",email);
+		return template.getMapper(MemberMapper.class).selectmem(param);
 	}
 }

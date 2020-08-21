@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.DogService;
+import logic.Item;
 import logic.Member;
 import logic.Shelter;
 
@@ -52,6 +53,14 @@ public class AdminController {
 		List<Member> smemberlist = service.getSmemberList();
 		mav.addObject("memberlist", memberlist);
 		mav.addObject("smemberlist", smemberlist);
+		return mav;
+	}
+	
+	@GetMapping("adminshopMypage")
+	public ModelAndView adminshopad(HttpSession session)  {
+		ModelAndView mav = new ModelAndView();
+		List<Item> shopalllist = service.getShopall();
+		mav.addObject("shopalllist", shopalllist);
 		return mav;
 	}
 	

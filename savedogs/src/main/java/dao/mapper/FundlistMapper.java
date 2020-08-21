@@ -3,8 +3,10 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import logic.Funding;
 import logic.Fundinglist;
 
 public interface FundlistMapper {
@@ -17,4 +19,9 @@ public interface FundlistMapper {
 
 	@Select("SELECT f.fund_id, m.member_email, f.fund_cost FROM member m, fundinglist f WHERE m.member_id=f.fund_id and fund_no=${fund_no}")
 	List<Fundinglist> getOnefundlist(Map<String, Object> param);
+	
+	@Insert(" insert into fundinglist (fund_no, fund_id, fund_date, fund_cost)"
+			   + " values (#{fund_no}, #{fund_id}, now(), #{fund_cost} )")
+	  void applyinsert(Fundinglist fundinglist);
+	
 }

@@ -178,6 +178,22 @@ public class DogService {
 	public String getMemberPass(String member_id) {
 		return memberDao.getMemberPass(member_id);
 	}
+	
+	public List<Idpw> getFindID(String tel, String email) {
+		return memberDao.getFindId(tel,email);
+	}
+
+	public List<Item> getShopall() {
+		return itemDao.getShopall();
+	}
+	
+	public void updateAuth(String member_id, String member_auth) {
+		memberDao.updateAuth(member_id, member_auth);
+	}
+	
+	public List<AdoptSign> getMyadoptlist(String id) {
+		return adoptDao.getMyadoptlist(id);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -273,8 +289,14 @@ public class DogService {
 		public Funding getfundingdetail(String fund_no) {
 	           return fundingDao.selectOne(fund_no);
 			}
-			
+		public void fundingapply(Fundinglist fundinglist, HttpServletRequest request) {
+			fundlistDao.applyinsert(fundinglist);
+		}
 
+		
+
+	
+	
 		
 		
 //-------------------펀딩관련 끝-------------------------------------------------
@@ -346,9 +368,9 @@ public class DogService {
 			return buylist;
 		}
 
-		
-
-
+		public void updateState(String item_no, String item_state) {
+			itemDao.updateState(item_no, item_state);
+		}
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 
@@ -417,7 +439,11 @@ public class DogService {
 		
 		
 //-------------------입양 관련 시작------------------------------------------------
-		public void adoptInsert(AdoptSign a) {
+		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
+			if(a.getF() != null && !a.getF().isEmpty()) {
+				uploadFileCreate(a.getF(),request,"adopt/img/");
+				a.setFile(a.getF().getOriginalFilename());
+			}
 			adoptDao.adoptInsert(a);
 		}
 		
@@ -437,13 +463,7 @@ public class DogService {
 		}
 
 
-	
 
-	
-
-		
-
-	
 //-------------------메인관련 끝-------------------------------------------------
 
 }

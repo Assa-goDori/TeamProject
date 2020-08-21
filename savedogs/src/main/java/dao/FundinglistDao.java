@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import dao.mapper.FundingMapper;
 import dao.mapper.FundlistMapper;
+import logic.Funding;
 import logic.Fundinglist;
 
 @Repository
@@ -35,6 +37,10 @@ public class FundinglistDao {
 		param.put("fund_no", fund_no);
 		return template.getMapper(FundlistMapper.class).getOnefundlist(param);
 	}
+
+	public void applyinsert(Fundinglist fundinglist) {
+		template.getMapper(FundlistMapper.class).applyinsert(fundinglist);
+	}
+
+	}
 	
-	
-}

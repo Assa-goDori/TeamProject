@@ -38,6 +38,9 @@
 		text-decoration : none;
 		font-weight : bold;	
 	}
+	.data {
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -73,6 +76,15 @@
 				<th>보호소</th>
 				<th>진행단계</th>
 			</tr>
+			<c:forEach items="${myadoptlist }" var="list">
+				<tr>
+					<fmt:formatDate value="${list.adopt_date }" pattern="yyyy-MM-dd" var="day" />
+					<td class="data">${day }</td>
+					<td class="data" style="width:200px;">${list.dog_no }</td>
+					<td class="data">${list.shelter_no }</td>
+					<td class="data">${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</c:if>
 	</div>

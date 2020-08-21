@@ -12,7 +12,7 @@
  <table class="w3-table" style="width:1000px">
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
         <tr><td rowspan="4"><img src="" style="width:150%;" align="center" alt="후원 배너 사진"></td>
-          <td colspan='2'>"${funding_subject}"</td></tr>
+          <td colspan='2'>"${fund_subject}"</td></tr>
             <tr><td>"${sheltername}"</td></tr>
             <tr><td>달력 아이콘 : 1일 남음</td></tr>
             <td>게이지바</td>
