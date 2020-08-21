@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul style="color: white;">
-                    <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
+                    <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem and empty sessionScope.loginadmin}">
                     	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
@@ -65,6 +65,9 @@
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
                     	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id}" style="color: white;">마이페이지</a>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.loginadmin}">
+                    	관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/admin/adminMypage.dog?type=1&id=${sessionScope.loginadmin.member_id}" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>

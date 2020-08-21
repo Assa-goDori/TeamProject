@@ -311,7 +311,7 @@ public class MemberController {
 	//보호소관리자
 	
 	@GetMapping("shelterMypage")
-	public ModelAndView shelterMypageMain(String type, String id) {
+	public ModelAndView shelterMypageMainchks(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
 		mav.addObject("type", type);

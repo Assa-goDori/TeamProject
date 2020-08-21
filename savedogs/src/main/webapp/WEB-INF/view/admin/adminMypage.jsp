@@ -48,10 +48,7 @@
 </style>
 </head>
 <body>
-	<div style="margin-left: 30%; width:40%;">
-	<h3>My Page</h3>
-	<hr>
-	<div style=" width:100%;">
+	<div class="main_div" style="width:100%;">
 		<table>
 			<tr>
 				<td id="tab1" class="tab">
@@ -77,7 +74,6 @@
 		<div id="minfo" class="info" style="display: none; width:100%;">
 			<h3>내 정보 탭입니다.</h3>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

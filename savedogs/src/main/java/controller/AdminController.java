@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -35,8 +37,8 @@ public class AdminController {
 		return null;
 	}
 	
-	@PostMapping("adminMypage")
-	public ModelAndView shelterlist() throws Exception {
+	@RequestMapping("adminMypage")
+	public ModelAndView shelterlistad(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		//영현
 		//String serviceKey = "vqvwqgN6%2Fq8tULP9RBlZ3%2BiHyy2X4cm2M6%2BimTAeJ1y9HiH1ECvwfptH26lZp%2F%2FZzKZ7AUpKNVKHqDchKnZ7wg%3D%3D";
