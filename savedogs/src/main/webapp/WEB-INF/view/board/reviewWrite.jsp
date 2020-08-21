@@ -24,7 +24,7 @@ th{
 <hr>
 <form:form modelAttribute="board" action="reviewWrite.dog" enctype="multipart/form-data" name="f">	
 	<form:hidden path="type" value="0"/>
-	<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
+	<form:hidden path="member_id" value="${sessionScope.loginmem.member_id }"/>
 	<table>
 		<tr><th>제목</th><td><form:input path="subject" size="20"/><font color="red"><form:errors path="subject"/></font></td></tr>
 		<tr><th>내용</th><td><form:textarea path="content" rows="30" cols="120"/>

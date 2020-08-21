@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import logic.Board;
-
+import logic.Reply;
 import logic.Board;
 
 public interface BoardMapper {
@@ -53,6 +53,12 @@ public interface BoardMapper {
 
 	@Select("select type from board where board_no = #{board_no}")
 	String getBoardType(String board_no);
+
+	@Select("select * from reply where board_no = #{board_no}")
+	List<Reply> getReplyList(String board_no);
+
+	@Insert("insert into reply (board_replyno, board_no, member_id, board_comment, board_regdate) values (#{board_replyno}, #{board_no}, #{member_id}, #{board_comment}, now())")
+	String insertReply(Reply reply);
 
 
 }

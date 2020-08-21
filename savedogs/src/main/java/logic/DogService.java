@@ -404,6 +404,17 @@ public class DogService {
 			return boardDao.getBoardType(board_no);
 		}
 		
+	
+//-------------------댓글------------------------------------------------	
+		public List<Reply> replyList(String board_no) {
+			return boardDao.getReplyList(board_no);
+		}
+
+		public String insertReply(Reply reply) {
+			return boardDao.insertReply(reply);
+		}
+
+		
 		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a) {
@@ -425,6 +436,8 @@ public class DogService {
 			return itemDao.bestItem();
 		}
 
+
+	
 
 	
 

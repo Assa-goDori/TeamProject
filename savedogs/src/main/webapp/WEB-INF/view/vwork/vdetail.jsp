@@ -17,7 +17,18 @@ th{
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+var protocol = location.protocol;
+var hostName = location.hostname;
+var port = location.port;
+ 
+console.log(protocol); // http:
+console.log(hostName); // includestdio.tistory.com
+console.log(port);
 
+
+
+</script>
 </head>
 <body>
 <div class="main_div">

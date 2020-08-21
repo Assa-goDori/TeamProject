@@ -101,7 +101,7 @@ public class VworkController {
 		for(String h : hashSet) {
 			json.append("{\"start\":\""+h +"\",");
 			json.append("\"title\":\"봉사신청\",");
-			json.append("\"color\":\"#AAD292\"},");
+			json.append("\"color\":\"#9EE2DA\"},");
 			i++;
 		}
 		if(i<hashSet.size()) json.append(",");	

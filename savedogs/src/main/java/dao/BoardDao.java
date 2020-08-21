@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.BoardMapper;
 import logic.Board;
+import logic.Reply;
 
 @Repository
 public class BoardDao {
@@ -63,6 +64,14 @@ public class BoardDao {
 
 	public String getBoardType(String board_no) {
 		return template.getMapper(BoardMapper.class).getBoardType(board_no);
+	}
+
+	public List<Reply> getReplyList(String board_no) {
+		return template.getMapper(BoardMapper.class).getReplyList(board_no);
+	}
+
+	public String insertReply(Reply reply) {
+		return template.getMapper(BoardMapper.class).insertReply(reply);
 	}
 	
 	

@@ -3,7 +3,9 @@ package controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import exception.BoardException;
 import logic.Board;
 import logic.DogService;
+import logic.Reply;
 
 @Controller
 @RequestMapping("board")
@@ -39,30 +42,48 @@ public class BoardController {
 	public ModelAndView writeform(Model model, HttpServletRequest request) {
 		ModelAndView mav= new ModelAndView();
 		model.addAttribute(new Board());
+		model.addAttribute(new Reply());
 		return mav;
 	}
 	
-	@PostMapping("noticeWrite")
+	@PostMapping(value= {"noticeWrite","reviewWrite"})
 	public ModelAndView write(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
+		System.out.println("아이디"+board.getMember_id());
 		try {
 			service.boardWrite(board, request);
-			if(board.getType().equals("1")) {
+			if(board.getType().equals("0")) {
+				mav.setViewName("redirect:reviewDetail.dog?no="+board.getBoard_no());
+			}else if(board.getType().equals("1")) {
 				mav.setViewName("redirect:noticeDetail.dog?no="+board.getBoard_no());
 			}
+			
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new BoardException("게시글 등록에 실패했습니다","noticeWrite.dog?no="+board.getBoard_no());
+			if(board.getType().equals("0")) {
+				throw new BoardException("게시글 등록에 실패했습니다","reviewWrite.dog?no="+board.getBoard_no());
+			}else if(board.getType().equals("1")) {
+				throw new BoardException("게시글 등록에 실패했습니다","noticeWrite.dog?no="+board.getBoard_no());
+			}
+			
 		}
 		return mav;
 	}
 	
 	@GetMapping(value= {"noticeDetail","noticeUpdate"})
 	public ModelAndView noticeDetail(String no) {
+		ModelAndView mav = new ModelAndView();
+		Board board = service.boardDetail(no);
+		mav.addObject("board",board);
+		return mav;
+	}
+	
+	@GetMapping("reviewDetail")
+	public ModelAndView reviewDetail(String no) {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.boardDetail(no);
 		mav.addObject("board",board);
@@ -140,6 +161,44 @@ public class BoardController {
 		}
 		return mav;
 	} 
+	
+//===========댓글===============
+	
+	@PostMapping(value="replyList", produces="text/plain; charset=UTF-8")
+	public String replyList(String board_no, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+		List<Reply> list = service.replyList(board_no);
+		
+		StringBuilder html = new StringBuilder();
+		html.append("<table>");
+		if(list.size()>0 ) {
+			for(Reply r : list) {
+				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getBoard_regdate());
+				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2'>"+"<td></tr>");
+				html.append("<tr><td>"+date+"</td></tr>");
+			}
+		} else {
+			html.append("<tr><th>해당 게시글의 댓글이 없습니다.</th></tr>");
+		}
+		
+		html.append("</table>");
+		return html.toString();
+	}
+	
+	@PostMapping(value="replyInsert", produces="text/plain; charset=UTF-8")
+	public String replyInsert(Reply reply, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+		String s = service.insertReply(reply);
+		return s;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("imgupload")
 	public String imgupload(MultipartFile upload, String CKEditorFuncNum, HttpServletRequest request, Model model) {

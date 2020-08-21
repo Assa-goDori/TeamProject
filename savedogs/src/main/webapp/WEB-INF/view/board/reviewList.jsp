@@ -87,8 +87,9 @@
 	<c:if test="${listcount == 0 }"> 
 		<tr><td colspan="5">등록된 게시물이 없습니다.</td></tr>
 	</c:if>
-	
+	<c:if test="${sessionScope.loginmem != null }">
 	<tr><td colspan="5" class="btn_td"><input type="button" value="작성" class="s_btn" onclick="location.href='reviewWrite.dog'"></td></tr>
+	</c:if>
 </table>
 </div>
 </body>
