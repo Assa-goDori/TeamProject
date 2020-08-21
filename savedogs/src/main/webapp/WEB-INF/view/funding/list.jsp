@@ -23,11 +23,13 @@
         <hr>
         <table class="w3-table" style="width:600px">
         <c:forEach var="f" items="${fundinglist}">
+        <c:if test="${f.restdate > 0}"> 
         <tr><td rowspan="4"><img src="img/${f.fund_pic}" style="width:250px;" align="center" alt="후원 배너 사진"></td>
           <td><a href="detail.dog?fund_no=${f.fund_no}">"${f.fund_subject}"</a></td></tr>
             <tr><td>"${f.sheltername}"</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.restdate}일 남음</td></tr>
             <td>게이지바</td>
+            </c:if>
           </c:forEach>
         </table>
         <div align="right">
