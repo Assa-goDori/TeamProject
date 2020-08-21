@@ -125,17 +125,17 @@ $(document).ready(function(){
         <tr><td rowspan="5"><img src="img/${funding.fund_pic}" style="width:300px;" alt="후원 배너 사진"></td>
           <td colspan='2'>"${funding.fund_subject}"</td></tr>
             <tr><td>"${funding.sheltername}"</td></tr>
-            <tr><td>후원 기간 <fmt:formatDate value="${funding.start_date}" pattern="yyyy-MM-dd" var="startdate" />
-             <fmt:formatDate value="${funding.end_date}" pattern="yyyy-MM-dd" var="enddate" />
-            ${startdate}-${enddate}</td></tr>
-            <tr><td>달력 아이콘 : ${funding.restdate}일 남음</td></tr>
+            <tr><td>후원 기간 <fmt:formatDate value="${funding.start_date}" pattern="yyyy.MM.dd" var="startdate" />
+             <fmt:formatDate value="${funding.end_date}" pattern="yyyy.MM.dd" var="enddate" />
+            ${startdate}&nbsp;-&nbsp;${enddate}</td></tr>
+            <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${funding.restdate}일 남음</td></tr>
             <td>게이지바</td>
             <tr><td>&nbsp;</tr><td>
              <c:if test="${!empty sessionScope.loginmem}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>
              <tr><td align="center"><h5><input type="button" value="후원하기" onclick="win_open('fundingapply')"></h5></td></tr>
              </c:if>
              <c:if test="${!empty sessionScope.loginsmem }"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
-             <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href='fregupdateForm.dog?id=${param.fund_no}'"></h5></td>
+             <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href='fregupdateForm.dog?fund_no=${param.fund_no}'"></h5></td>
              <td><h5><input type="submit" value="삭제하기"></h5></td></tr>
              </c:if>
 

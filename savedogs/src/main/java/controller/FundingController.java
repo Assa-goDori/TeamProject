@@ -51,10 +51,18 @@ public class FundingController {
 		 */
             System.out.println(funding);
             service.fundCreate(funding,request);
-            mav.setViewName("redirect:/list.dog");
+            mav.setViewName("redirect:/funding/list.dog");
             return mav;      
         
           }
+      @GetMapping("fregupdateForm")
+      public ModelAndView fregupdateForm2(String fund_no) {
+    	  ModelAndView mav = new ModelAndView();
+    	  
+    	  
+      }
+      
+      
   	@PostMapping("fregupdateForm")
   	public ModelAndView fregupdateForm(@Valid Funding funding, 
   			BindingResult bresult,HttpServletRequest request) {

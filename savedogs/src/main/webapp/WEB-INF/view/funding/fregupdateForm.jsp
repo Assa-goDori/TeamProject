@@ -33,8 +33,8 @@
 <form:errors path="fund_subject" /></font></td></tr>
 
 <tr height="40px"><td>목표 금액</td>
-<td><form:input path="count" />
-<font color="red"><form:errors path="count" /></font></td></tr>
+<td><form:input path="fund_count" />
+<font color="red"><form:errors path="fund_count" /></font></td></tr>
 
 <tr height="40px"><td>시작 날짜</td>
 <td><input type="date" name="start_date" />
@@ -45,8 +45,8 @@
 <font color="red"><form:errors path="end_date" /></font></td></tr>
 
 <tr height="40px"><td>배너사진</td>
-<td><input type="file" name="fund_pic" />
-<font color="red"><form:errors path="fund_pic" /></font></td></tr>
+<td><input type="file" name="picture" />
+
 
 <tr height="40px">
 <td colspan="2" align="center">
