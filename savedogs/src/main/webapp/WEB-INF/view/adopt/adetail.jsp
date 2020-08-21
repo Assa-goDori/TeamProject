@@ -35,7 +35,7 @@ img {
 	}
 </script>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6974d76d2b944976e16cea5c01dee412&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c39f4555ea6d603b34e2414423cc41bf&libraries=services"></script>
 
 <style type="text/css">
 th {

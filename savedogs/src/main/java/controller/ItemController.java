@@ -27,7 +27,7 @@ public class ItemController {
 	private DogService service;
 	
 	@RequestMapping("list")
-	public ModelAndView chkmlist(HttpSession session) {
+	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		List<Item> itemlist = service.getItemList();
 		mav.addObject("itemlist",itemlist);
