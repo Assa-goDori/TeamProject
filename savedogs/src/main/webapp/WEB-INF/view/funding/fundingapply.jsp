@@ -24,11 +24,13 @@
       <table>
         <tr height="40px">
         <td>기부모집명</td>
-        <td>${funding.fund_subject}</td>
+        <td><input type="text" name="fund_subject" readonly="readonly" value="${funding.fund_subject}" />
+        </td>
         <tr><td>기부자</td>
-        <td>${sessionScope.loginmem.member_id}</td></tr>
+        <td><input type="text" name="fund_id" readonly="readonly" value="${sessionScope.loginmem.member_id}" />
+        </td></tr>
         <tr><td>기부금액</td>
-        <td><input type="text" path=fund_cost></td></tr>
+        <td><input type="text" name="fund_cost"></td></tr>
         <tr><td style="color:red;">주의사항</td>
         <tr><td>1.기부 신청 후 회원탈퇴는 하실 수 없습니다.</td>
         <tr><td>2.기부 취소는 불가합니다.이 점 유의하시길 바랍니다.</td>

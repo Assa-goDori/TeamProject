@@ -58,12 +58,14 @@ public class FundingController {
       @GetMapping("fregupdateForm")
       public ModelAndView fregupdateForm2(String fund_no) {
     	  ModelAndView mav = new ModelAndView();
-		return mav;
-    	  
-    	  
-      }
-      
-      
+
+    	  Funding funding = service.getfundingdetail(fund_no);
+ 		 //service.readcnt(num);
+ 		 mav.addObject("funding",funding);
+ 		 return mav;
+ 	 }
+ 	
+
   	@PostMapping("fregupdateForm")
   	public ModelAndView fregupdateForm(@Valid Funding funding, 
   			BindingResult bresult,HttpServletRequest request) {
@@ -74,7 +76,7 @@ public class FundingController {
   		}
   		//db,파일업로드
   		service.fundUpdate(funding,request);
-  		mav.setViewName("redirect:/funding/fregForm.dog?id="+funding.getFund_no());
+  		mav.setViewName("redirect:/funding/detail.dog?fund_no="+funding.getFund_no());
   		return mav;
   	}
 	@PostMapping("delete")
@@ -107,16 +109,8 @@ public class FundingController {
           ModelAndView mav = new ModelAndView();
           System.out.println(fundinglist);
           service.fundingapply(fundinglist,request);
-          mav.setViewName("redirect:/detail.dog"); //mypage로
+          mav.setViewName("redirect:/funding/list.dog"); //mypage로~?
           return mav;      
       
         }
-
-	  
-	 
-	 
-	 
-	 
-	 
-	
 }

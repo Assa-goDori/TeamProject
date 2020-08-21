@@ -34,8 +34,8 @@ public interface FundingMapper {
 	 */
 
 	@Update(" update funding set fund_subject = #{fund_subject},"
-		   + " count=#{count}, start_date=#{start_date},"
-		   + " end_date=#{end_date}, picture=#{fund_pic} where fund_no=#{fund_no}")
+		   + " fund_subject=#{fund_subject}, start_date=#{start_date},"
+		   + " end_date=#{end_date}, fund_count=#{fund_count}, fund_pic=#{fund_pic} where fund_no=#{fund_no}")
 	void fundupdate(Funding funding);
 
 	int maxfund_no();

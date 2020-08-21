@@ -20,8 +20,8 @@ public interface FundlistMapper {
 	@Select("SELECT f.fund_id, m.member_email, f.fund_cost FROM member m, fundinglist f WHERE m.member_id=f.fund_id and fund_no=${fund_no}")
 	List<Fundinglist> getOnefundlist(Map<String, Object> param);
 	
-	@Insert(" insert into fundinglist (fund_no, funding_subject,fund_id, fund_date, fund_cost,member_email)"
-			   + " values (#{fund_no}, #{funding_subject}, #{fund_id}, now(), #{fund_cost}, #{member_email})")
+	@Insert(" insert into fundinglist (fund_no, fund_id, fund_date, fund_cost)"
+			   + " values (#{fund_no}, #{fund_id}, now(), #{fund_cost} )")
 	  void applyinsert(Fundinglist fundinglist);
 	
 }
