@@ -273,13 +273,19 @@ public class MemberController {
 	public ModelAndView changepass(String inputpass, String newpass, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
+		Member loginmem = (Member)session.getAttribute("loginmem");
 		if(inputpass.equals(mem.getMember_pass())) {
 			service.memPassUpdate(newpass, id);
 		} else {
 			throw new LoginException("현재 비밀번호가 틀립니다.", "../member/changepass.dog?id="+id);
 		}
 		mav.addObject("msg", "비밀번호 변경 완료");
-		mav.addObject("url", "memberMypage.dog?type=1&id="+id);
+		if(loginmem != null) {
+			mav.addObject("url", "memberMypage.dog?type=1&id="+id);
+		} else {
+			mav.addObject("url", "shelterMypage.dog?type=1&id="+id);
+		}
+		
 		mav.setViewName("redirect:alerturl.dog");
 		return mav;
 	}
