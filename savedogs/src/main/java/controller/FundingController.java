@@ -58,10 +58,12 @@ public class FundingController {
       @GetMapping("fregupdateForm")
       public ModelAndView fregupdateForm2(String fund_no) {
     	  ModelAndView mav = new ModelAndView();
-    	  
-    	  
-      }
-      
+    	  Funding funding = service.getfundingdetail(fund_no);
+ 		 //service.readcnt(num);
+ 		 mav.addObject("funding",funding);
+ 		 return mav;
+ 	 }
+ 	
       
   	@PostMapping("fregupdateForm")
   	public ModelAndView fregupdateForm(@Valid Funding funding, 
@@ -106,16 +108,8 @@ public class FundingController {
           ModelAndView mav = new ModelAndView();
           System.out.println(fundinglist);
           service.fundingapply(fundinglist,request);
-          mav.setViewName("redirect:/detail.dog"); //mypage로
+          mav.setViewName("redirect:/funding/list.dog"); //mypage로~?
           return mav;      
       
         }
-
-	  
-	 
-	 
-	 
-	 
-	 
-	
 }

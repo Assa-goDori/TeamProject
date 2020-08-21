@@ -47,7 +47,6 @@
 <tr height="40px"><td>배너사진</td>
 <td><input type="file" name="picture" />
 
-
 <tr height="40px">
 <td colspan="2" align="center">
 <input type="submit" class="s_btn" value="수정하기">
