@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <ul>
-                    <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem}">
+                    <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem and empty sessionScope.loginadmin}">
                     	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
                     <c:if test="${!empty sessionScope.loginmem}">
@@ -100,6 +100,9 @@
                     </c:if>
                     <c:if test="${!empty sessionScope.loginsmem}">
                     	${sessionScope.smemName}관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/member/shelterMypage.dog?type=1&id=${sessionScope.loginsmem.member_id}" style="color: white;">마이페이지</a>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.loginadmin}">
+                    	관리자님 반갑습니다.&nbsp;|&nbsp; <a style="color: white;" href="${path}/member/logout.dog">로그아웃</a>&nbsp;|&nbsp;<a href="${path}/admin/adminMypage.dog?type=1&id=${sessionScope.loginadmin.member_id}" style="color: white;">마이페이지</a>
                     </c:if>
                     </ul>
                 </div>
@@ -156,7 +159,7 @@
     <!-- <div style="margin-left: 30%; width: 40%;"> -->
 		<h3>My Page</h3>
 		<hr>
-		<c:if test="${!empty sessionScope.loginmem }">
+		<c:if test="${!empty sessionScope.loginmem}">
 		<div align="center" style="width: 100%;">
 			<table>
 				<tr>
@@ -192,6 +195,22 @@
 					</td>
 					<td id="mytab4" align="center" class="mytab"><a
 						href="shelteradoptMypage.dog?type=4&id=${sessionScope.loginsmem.member_id }" class="tab_a">보호소</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</c:if>
+		<c:if test="${!empty sessionScope.loginadmin }">
+		<div align="center" style="width: 100%; ">
+			<table>
+				<tr>
+					<td id="mytab1" align="center" class="mytab"><a
+						href="adminMypage.dog?type=1&id=${sessionScope.loginadmin.member_id }" class="tab_a">내정보</a></td>
+					<td id="mytab2" align="center" class="mytab"><a
+						href="adminlistMypage.dog?type=2&id=${sessionScope.loginadmin.member_id }" class="tab_a">회원</a>
+					</td>
+					<td id="mytab3" align="center" class="mytab"><a
+						href="adminshopMypage.dog?type=3&id=${sessionScope.loginadmin.member_id }" class="tab_a">후원</a>
 					</td>
 				</tr>
 			</table>

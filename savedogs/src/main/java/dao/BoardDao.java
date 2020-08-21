@@ -51,6 +51,11 @@ public class BoardDao {
 	public List<Board> mainnotice() { 
 		return template.getMapper(BoardMapper.class).mainnotice();
 	}
+
+	public void updateBoard(Board board) {
+		template.getMapper(BoardMapper.class).updateBoard(board);
+		
+	}
 	
 	
 }

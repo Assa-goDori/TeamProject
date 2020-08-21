@@ -122,10 +122,9 @@ public class MainController {
 				}
 			}
 		}catch(IOException e){e.printStackTrace();}
-		System.out.println(infolist);
 		List<Board> noticelist = service.mainnotice();
 		List<Item> bestItem= service.bestItem();
-		System.out.println(bestItem);
+		request.setAttribute("bestItem", bestItem);
 		request.setAttribute("notice", noticelist);
 		request.setAttribute("newstitle", newstitle);
 		request.setAttribute("newsimg", newsimg);

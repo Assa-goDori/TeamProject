@@ -21,8 +21,8 @@ th{
 td{
 	text-align: center;
 }
-.s_th{
-	width: 50%;
+.l_table {
+	width: 75%;
 }
 </style>
 <script type="text/javascript">
@@ -40,25 +40,24 @@ td{
 	<input type="hidden" name="pageNum" value="1">
 	<input type="hidden" name="type" value="1">
 </form>
-<table>
+<table class="l_table">
 	<c:if test="${noticecnt > 0 }">  
-		<tr><td colspan="6" style="text-align: right;">글 개수 : ${noticecnt }</td></tr>
-		<tr><th>번호</th><th style="width: 3%;">&nbsp;</th><th class="s_th">제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
+		<caption style="text-align: right;">글 개수 : ${noticecnt }</caption>
+		<tr style="background-color: #B3E7E2;"><th class="l_th">번호</th><th class="l_th" style="width: 3%;">&nbsp;</th><th class="l_th" style="width: 50%;">제목</th><th class="l_th">작성자</th><th class="l_th">작성일</th><th class="l_th">조회수</th></tr>
 		<c:forEach var="board" items="${boardlist }">
-			<tr><td>${boardno}</td><c:set var="boardno" value="${boardno-1 }"/>
-				<td>
+			<tr><td class="l_td">${boardno}</td><c:set var="boardno" value="${boardno-1 }"/>
+				<td class="l_td">
 					<c:if test="${!empty board.fileurl }"> 
 						<a href="file/${board.fileurl }">@</a>
 					</c:if>
 					<c:if test="${empty board.fileurl }">&nbsp;&nbsp;&nbsp;</c:if>
 					
 				</td>
-				<td style="text-align: left; ">
+				<td class="l_td" style="text-align: left; ">
 					<a href="noticeDetail.dog?no=${board.board_no }">${board.subject }</a>
 				</td>
-				<td>${board.member_id }</td>
-				
-				<td>
+				<td class="l_td">${board.member_id }</td>
+				<td class="l_td">
 				<fmt:formatDate var="rdate" value="${board.regdate }" pattern="yyyyMMdd"/>
 				<c:if test="${rdate == today }">
 					<fmt:formatDate value="${board.regdate }" pattern="HH:mm:ss"/>
@@ -67,11 +66,11 @@ td{
 					<fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm"/>
 				</c:if>
 				</td>
-				<td>${board.readcnt }</td>
+				<td class="l_td">${board.readcnt }</td>
 			</tr>
 		</c:forEach>
 		<%-- 페이징 --%>
-		<tr><td colspan="6" class="btn_td"> 
+		<tr><td colspan="6" class="btn_td" > 
 			<c:if test="${pageNum > 1 }"><a href="javascript:listpage('${pageNum-1 }')">[이전]</a></c:if>
 			<c:if test="${pageNum <= 1 }">[이전]</c:if>
 			<c:forEach var="a" begin="${startpage }" end="${endpage}">
