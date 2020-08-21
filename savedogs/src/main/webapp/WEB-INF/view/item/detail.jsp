@@ -9,7 +9,8 @@
 	function add(f){
 		var item_each = f.item_each.value;
 		var item_no = "${item.item_no}";
-		window.open('../cart/cartAdd.dog?item_no='+item_no+'&item_each='+item_each,'',width=100, height=50, left=100,top=100)
+		var op = "width=780,height=430,left=150,top=150";
+		open('../cart/cartAdd.dog?item_no='+item_no+'&item_each='+item_each,"",op)
 	}
 </script>
 </head>
