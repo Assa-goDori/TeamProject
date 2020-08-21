@@ -376,7 +376,12 @@ public class DogService {
 		}
 		
 //-------------------입양 관련 시작------------------------------------------------
-		public void adoptInsert(AdoptSign a) {
+		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
+			a.setFile("");
+			if(a.getF() != null && !a.getF().isEmpty()) {
+				uploadFileCreate(a.getF(),request,"adopt/img/");
+				a.setFile(a.getF().getOriginalFilename());
+			}
 			adoptDao.adoptInsert(a);
 
 		}

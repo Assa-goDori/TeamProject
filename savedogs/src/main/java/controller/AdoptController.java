@@ -2,8 +2,12 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,43 +67,40 @@ public class AdoptController {
 	}
 
 	@GetMapping("adoptSignup")
-	public ModelAndView asignup(String noticeNo, String careNm, String orgNm) throws Exception {
+	public ModelAndView asignup(Model model, String noticeNo, String careNm, String orgNm, HttpSession session)
+			throws Exception {
 		ModelAndView mav = new ModelAndView();
+		model.addAttribute(new AdoptSign());
 		return mav;
 	}
 
 	@RequestMapping("adoptSignup")
-	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a) throws Exception {
+	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, HttpServletRequest request) throws Exception {
 		System.out.println(a);
-		System.out.println(careNm);
-		System.out.println(orgNm);
-		
-		String co = careNm.concat(orgNm);
-		System.out.println(co);
+		String[] orgNms = orgNm.split(" "); 
+		String split1 = orgNms[0];
+		String split2 = null;
+		if (orgNms.length > 1)
+		     split2 = orgNms[1];
+		String co = "";
+		if(split2=="") {
+			co = split1.concat(careNm); // 서울특별시 구디보호소
+		}
+		else if (split2!="") { 
+			co = split2.concat(careNm); // 구로구 구디보호소
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		List<Shelter> hap = service.getHaplist();
 		System.out.println(hap);
-		
-		Shelter s = new Shelter();
+		String num = "";
 		for(Shelter ss : hap) {
-			ss.setHap(ss.getHap());
-			ss.setShelter_no(ss.getShelter_no());
-			s=ss;
-			if(s.getHap().equals(co)) {
-				a.setShelter_no(s.getShelter_no());
+			if(ss.getHap().equals(co)) {
+				num = ss.getShelter_no();
 			}
 		}
-		
-		
-		/*
-		orgNm : 서울특별시, 구로구
-		String split1 = orgNm.split(" ")[0];
-		String split2 = orgNm.split(" ")[1];
-		System.out.println(split1);
-		System.out.println(split2);
-		*/
-		service.adoptInsert(a);
+		a.setShelter_no(num);
+		service.adoptInsert(a, request);
 		mav.setViewName("redirect:../member/adoptMypage.dog?type=4");
 		return mav;
 	}
