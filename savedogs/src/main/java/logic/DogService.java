@@ -174,6 +174,10 @@ public class DogService {
 	public List<Member> getSmemberList() {
 		return adminDao.getSmemberList();
 	}
+	
+	public String getMemberPass(String member_id) {
+		return memberDao.getMemberPass(member_id);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -411,6 +415,7 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
 	
 //-------------------메인관련 끝-------------------------------------------------
 

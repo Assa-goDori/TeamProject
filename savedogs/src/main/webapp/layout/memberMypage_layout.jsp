@@ -159,7 +159,7 @@
     <!-- <div style="margin-left: 30%; width: 40%;"> -->
 		<h3>My Page</h3>
 		<hr>
-		<c:if test="${!empty sessionScope.loginmem}">
+		<c:if test="${!empty sessionScope.loginmem or param.update == 1}">
 		<div align="center" style="width: 100%;">
 			<table>
 				<tr>
@@ -181,7 +181,7 @@
 			</table>
 		</div>
 		</c:if>
-		<c:if test="${!empty sessionScope.loginsmem }">
+		<c:if test="${!empty sessionScope.loginsmem or param.update == 2}">
 		<div align="center" style="width: 100%; ">
 			<table>
 				<tr>
@@ -200,7 +200,7 @@
 			</table>
 		</div>
 		</c:if>
-		<c:if test="${!empty sessionScope.loginadmin }">
+		<c:if test="${!empty sessionScope.loginadmin and param.update == null}">
 		<div align="center" style="width: 100%; ">
 			<table>
 				<tr>

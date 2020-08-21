@@ -52,4 +52,7 @@ public interface MemberMapper {
 	})
 	List<Member> memberList(Map<String, Object> param);
 
+	@Select("select member_pass from member where member_id=#{member_id}")
+	String getMemberPass(String member_id);
+
 }

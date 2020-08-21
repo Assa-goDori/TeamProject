@@ -217,17 +217,25 @@ public class MemberController {
 	}
 	
 	@PostMapping("updateMember")
-	public ModelAndView memberupdate(Member mem, BindingResult bresult, HttpSession session, HttpServletRequest request) {
+	public ModelAndView memberupdate(Member mem, String id, BindingResult bresult, HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		Member login = null;
 		int type = 0;
 		if(session.getAttribute("loginmem") != null) {
 			memvalidator.validate(mem, bresult);
 			login = (Member)session.getAttribute("loginmem");
-		} else {
+		} else if(session.getAttribute("loginsmem") != null){
 			shelvalidator.validate(mem, bresult);
 			login = (Member)session.getAttribute("loginsmem");
 			type = 1;
+		} else {
+			login = (Member)session.getAttribute("loginadmin");
+			if(mem.getMember_type()==0) {
+				memvalidator.validate(mem, bresult);
+			} else {
+				shelvalidator.validate(mem, bresult);
+				type = 1;
+			}
 		}
 		if (bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
@@ -235,8 +243,13 @@ public class MemberController {
 			return mav;
 		}
 		try {
-			mem.setMember_pass(login.getMember_pass());
-			service.memUpdate(mem, request);
+			if(login.getMember_id() == "admin") {
+				mem.setMember_pass(service.getMemberPass(mem.getMember_id()));
+				service.memUpdate(mem, request);
+			} else {
+				mem.setMember_pass(login.getMember_pass());
+				service.memUpdate(mem, request);
+			}
 			if(type == 0) {
 				mav.setViewName("redirect:memberMypage.dog?type=1&id="+mem.getMember_id());
 				if(login.getMember_id().equals(mem.getMember_id())) {
