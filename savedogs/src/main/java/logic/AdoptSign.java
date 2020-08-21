@@ -70,4 +70,11 @@ public class AdoptSign {
 		this.adopt_f = adopt_f;
 	}
 
+	@Override
+	public String toString() {
+		return "AdoptSign [member_id=" + member_id + ", dog_no=" + dog_no + ", shelter_no=" + shelter_no
+				+ ", adopt_date=" + adopt_date + ", adopt_etc=" + adopt_etc + ", adopt_file=" + adopt_file
+				+ ", adopt_f=" + adopt_f + "]";
+	}
+
 }

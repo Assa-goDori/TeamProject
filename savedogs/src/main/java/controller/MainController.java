@@ -125,6 +125,7 @@ public class MainController {
 		System.out.println(infolist);
 		List<Board> noticelist = service.mainnotice();
 		List<Item> bestItem= service.bestItem();
+		System.out.println(bestItem);
 		request.setAttribute("notice", noticelist);
 		request.setAttribute("newstitle", newstitle);
 		request.setAttribute("newsimg", newsimg);

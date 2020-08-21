@@ -344,20 +344,55 @@ public class DogService {
 		public void boardWrite(Board board, HttpServletRequest request) {
 			int max = boardDao.maxno();
 			board.setBoard_no(++max);
+			board.setGrp(max);
+			board.setGrplevel(0);
+			board.setGrpstep(0);
 			
+			if(board.getType().equals("0")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/review/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			} else if(board.getType().equals("1")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/notice/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			}	
 			boardDao.insertBoard(board);
+		}
+		
+		public Board boardDetail(String board_no) {
+			boardDao.cntup(board_no);
+			return boardDao.getBoard(board_no);
+		}
+		
+		public int noticecnt(String type) {
+			return boardDao.getTypecnt(type);
+		}
+		
+		public List<Board> boardlist(Integer pageNum, int limit, String type) {
+			return boardDao.boardlist(pageNum, limit, type);
+		}
+		
+		public void boardUpdate(Board board, HttpServletRequest request) {
+			if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+				uploadFileCreate(board.getFile1(), request, "board/notice/");
+				board.setFileurl(board.getFile1().getOriginalFilename());
+			}
+			boardDao.updateBoard(board);
 		}
 		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a) {
 			adoptDao.adoptInsert(a);
-
 		}
 		
 		public List<Shelter> getHaplist() {
 			return shelterDao.getHaplist();
 		}
 //-------------------입양 관련 끝------------------------------------------------
+
 
 		
 //-------------------메인관련 시작-------------------------------------------------
@@ -367,6 +402,9 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
+		
 	
 //-------------------메인관련 끝-------------------------------------------------
+
 }
