@@ -3,15 +3,15 @@ package logic;
 import java.util.Date;
 
 public class Reply {
-	private String board_replyno;
+	private int board_replyno;
 	private String board_no;
 	private String member_id;
 	private String board_comment;
 	private Date board_regdate;
-	public String getBoard_replyno() {
+	public int getBoard_replyno() {
 		return board_replyno;
 	}
-	public void setBoard_replyno(String board_replyno) {
+	public void setBoard_replyno(int board_replyno) {
 		this.board_replyno = board_replyno;
 	}
 	public String getBoard_no() {

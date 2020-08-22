@@ -60,5 +60,8 @@ public interface BoardMapper {
 	@Insert("insert into reply (board_replyno, board_no, member_id, board_comment, board_regdate) values (#{board_replyno}, #{board_no}, #{member_id}, #{board_comment}, now())")
 	String insertReply(Reply reply);
 
+	@Select("select ifnull(max(board_replyno),0) from reply")
+	int getRmax();
+
 
 }

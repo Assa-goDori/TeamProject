@@ -73,6 +73,12 @@ public class BoardDao {
 	public String insertReply(Reply reply) {
 		return template.getMapper(BoardMapper.class).insertReply(reply);
 	}
+
+	public int getRmax() {
+		return template.getMapper(BoardMapper.class).getRmax();
+	}
+
+
 	
 	
 }

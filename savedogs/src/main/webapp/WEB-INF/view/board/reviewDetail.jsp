@@ -100,8 +100,6 @@ function replyDelete(rno){
 	</form>			
 	</div>
 </div>
-		
-		
 
 <div class="btn_div">
 	<input type="button" value="목록" class="s_btn" onclick="location.href='noticeList.dog?type=${board.type}'">

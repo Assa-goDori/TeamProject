@@ -38,15 +38,15 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping(value= {"noticeWrite","reviewWrite"}) 
+	@GetMapping(value= {"noticeWrite","reviewWrite","qnaWrite"}) 
 	public ModelAndView writeform(Model model, HttpServletRequest request) {
 		ModelAndView mav= new ModelAndView();
 		model.addAttribute(new Board());
-		model.addAttribute(new Reply());
+		model.addAttribute(new Reply()); //review만 사용 
 		return mav;
 	}
 	
-	@PostMapping(value= {"noticeWrite","reviewWrite"})
+	@PostMapping(value= {"noticeWrite","reviewWrite","qnaWrite"})
 	public ModelAndView write(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
@@ -167,7 +167,6 @@ public class BoardController {
 	@PostMapping(value="replyList", produces="text/plain; charset=UTF-8")
 	public String replyList(String board_no, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		List<Reply> list = service.replyList(board_no);
-		
 		StringBuilder html = new StringBuilder();
 		html.append("<table>");
 		if(list.size()>0 ) {
@@ -179,13 +178,14 @@ public class BoardController {
 		} else {
 			html.append("<tr><th>해당 게시글의 댓글이 없습니다.</th></tr>");
 		}
-		
 		html.append("</table>");
 		return html.toString();
 	}
 	
 	@PostMapping(value="replyInsert", produces="text/plain; charset=UTF-8")
 	public String replyInsert(Reply reply, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+		int rmax = service.getRmax();
+		reply.setBoard_replyno(++rmax);
 		String s = service.insertReply(reply);
 		return s;
 	}

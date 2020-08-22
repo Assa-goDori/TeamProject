@@ -438,7 +438,9 @@ public class DogService {
 			return boardDao.insertReply(reply);
 		}
 
-		
+		public int getRmax() {
+			return boardDao.getRmax();
+		}		
 		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
@@ -463,6 +465,9 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
+		
+
 
 //-------------------메인관련 끝-------------------------------------------------
 
