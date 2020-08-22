@@ -218,7 +218,7 @@ public class MemberController {
 	}
 	
 	@GetMapping({"updateMember", "updateShelter"})
-	public ModelAndView updateformchkm(String id, HttpSession session) {
+	public ModelAndView updateformupck(String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
 		mav.addObject("member", mem);

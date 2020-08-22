@@ -46,6 +46,25 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
+	@Around // 회원정보수정 aop
+	("execution(* controller.Member*.*upck(..)) && args(id, session)")
+	public Object UpdateCheck(ProceedingJoinPoint joinPoint, String id, HttpSession session) throws Throwable {
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
+		}
+		if(loginadmin == null && loginsmem == null && !id.equals(loginmem.getMember_id())) {
+			throw new LoginException("본인 정보만 조회 가능.","../main.dog");
+		}
+		if(loginadmin == null && loginmem == null && !id.equals(loginsmem.getMember_id())) {
+			throw new LoginException("본인 정보만 조회 가능.","../main.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
 	@Around // 보호소관리자 aop
 	("execution(* controller.Member*.*chks(..)) && args(type, id, session)")
 	public Object ShelterMemberCheck(ProceedingJoinPoint joinPoint, String type, String id, HttpSession session) throws Throwable {
@@ -83,6 +102,7 @@ public class MemberLoginAspect {
 		Object ret = joinPoint.proceed();
 		return ret;
 	}
+	
 	
 	@Around // adivce중 하나.
 	("execution(* controller.Funding*.*chks(..))")
