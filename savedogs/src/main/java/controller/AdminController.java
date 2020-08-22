@@ -41,8 +41,10 @@ public class AdminController {
 	}
 	
 	@GetMapping("adminMypage")
-	public ModelAndView adminmainad(HttpSession session)  {
+	public ModelAndView adminmainad(String id, HttpSession session)  {
 		ModelAndView mav = new ModelAndView();
+		Member mem = service.getMember(id);
+		mav.addObject("mem", mem);
 		return mav;
 	}
 	
@@ -64,7 +66,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	@RequestMapping("recent")
+	@PostMapping("recent")
 	public ModelAndView shelterlist(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		//영현
@@ -145,8 +147,9 @@ public class AdminController {
 				}
 			}
 //			service.deleteAllList();
-			service.insertInit();
+//			service.insertInit();
 			service.insertSlist(data);
+			mav.setViewName("redirect:adminMypage.dog");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

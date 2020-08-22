@@ -57,4 +57,11 @@ public class MemberDao {
 		param.put("member_email",email);
 		return template.getMapper(MemberMapper.class).selectmem(param);
 	}
+
+	public void updateAuth(String member_id, String member_auth) {
+		param.clear();
+		param.put("member_id", member_id);
+		param.put("member_auth", member_auth);
+		template.getMapper(MemberMapper.class).updateAuth(param);
+	}
 }
