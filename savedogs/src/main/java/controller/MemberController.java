@@ -141,7 +141,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberMypage")
-	public ModelAndView memberMypageMain(String type, String id, HttpSession session) {
+	public ModelAndView memberMypageMainchkm(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
 		mav.addObject("type", type);
@@ -150,7 +150,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("vworkMypage")
-	public ModelAndView vworkMypageMain(String type, String id, HttpSession session) {
+	public ModelAndView vworkMypageMainchkm(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Vwork> list = service.getMyvworkList(id);
 		mav.addObject("type", type);
@@ -159,7 +159,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("shopMypage")
-	public ModelAndView shopMypageMain(String type, String id, HttpSession session) {
+	public ModelAndView shopMypageMainchkm(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Buylist> buylist = service.getbuylist(id);
 		for(Buylist bl : buylist) {
@@ -177,7 +177,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("fundMypage")
-	public ModelAndView fundMypageMain(String type, String id, HttpSession session) {
+	public ModelAndView fundMypageMainchkm(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Fundinglist> fundlist = service.getMyfundlist(id);
 		List<Fundinglist> endfundlist = service.getMyendfundlist(id);
@@ -187,7 +187,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("adoptMypage")
-	public ModelAndView adoptMypage(String type, String id, HttpSession session) {
+	public ModelAndView adoptMypagechkm(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<AdoptSign> myadoptlist = service.getMyadoptlist(id);
 		mav.addObject("myadoptlist", myadoptlist);
@@ -218,7 +218,7 @@ public class MemberController {
 	}
 	
 	@GetMapping({"updateMember", "updateShelter"})
-	public ModelAndView updateform(String id) {
+	public ModelAndView updateformchkm(String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member mem = service.getMember(id);
 		mav.addObject("member", mem);
@@ -358,7 +358,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("sheltervworkMypage")
-	public ModelAndView sheltervworkMypageMain(String type, String id) {
+	public ModelAndView sheltervworkMypageMainchks(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Vwork> writelist = service.getwritelist(id);		
 		mav.addObject("writelist", writelist);
@@ -367,7 +367,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("sheltervworkDetail")
-	public ModelAndView sheltervworkDetail(String vwork_no) {
+	public ModelAndView sheltervworkDetailchks(String vwork_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Vwork showVwork = service.getVwork(vwork_no);
 		int Nowmem = service.getNowmem(Integer.parseInt(vwork_no));
@@ -379,7 +379,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("shelterfundMypage")
-	public ModelAndView shelterfundMypageMain(String type, String id) {
+	public ModelAndView shelterfundMypageMainchks(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Funding> writelist = service.getwritelist2(id);	
 		mav.addObject("writelist", writelist);
@@ -388,7 +388,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("shelterfundDetail")
-	public ModelAndView shelterfundDetail(String fund_no) {
+	public ModelAndView shelterfundDetailchks(String fund_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Funding showFund = service.getfundingdetail(fund_no);
 		List<Fundinglist> detaillist = service.getOnefundlist(fund_no);
@@ -398,7 +398,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("mailForm")
-	public ModelAndView mailform(String[] idchks, String fund_no) {
+	public ModelAndView mailformchks(String[] idchks, String fund_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView("member/mail");
 		if(idchks == null || idchks.length == 0) {
 			throw new LoginException("메일을 보낼 대상자를 선택하세요.", "shelterfundDetail.dog?fund_no="+fund_no);
