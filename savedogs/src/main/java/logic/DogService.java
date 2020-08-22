@@ -311,6 +311,7 @@ public class DogService {
 				uploadFileCreate(item.getPicture(),request,"item/img/");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
+			System.out.println(item);
 			itemDao.insert(item);
 		}
 
@@ -369,8 +370,11 @@ public class DogService {
 				uploadFileCreate(item.getPicture(),request,"item/img/");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
-			System.out.println(item.getItem_picture());
+			System.out.println(item);
 			itemDao.updateitem(item);
+		}
+		public void itemdelete(int item_no) {
+			itemDao.deleteitem(item_no);
 		}
 
 
@@ -465,8 +469,6 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
-
-		
 
 
 //-------------------메인관련 끝-------------------------------------------------

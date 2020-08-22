@@ -31,5 +31,6 @@
 		<pattern>/funding/fundingapply*</pattern>
 		<pattern>/cart/cartAdd*</pattern>
 		<pattern>/item/soldout*</pattern>
+		<pattern>/item/delete*</pattern>
 	</excludes>
 </decorators>

@@ -16,6 +16,11 @@
 		var op = "width=780,height=430,left=150,top=150";
 		open('soldout.dog',"",op)
 	}
+	function deleteform(){
+		var no = "${item.item_no}";
+		var op = "width=780,height=430,left=150,top=150";
+		open('deleteform.dog?item_no='+no,"",op)
+	}
 </script>
 </head>
 <body>
@@ -109,7 +114,7 @@
 			<table>
 				<tr>
 					<td><input type="button" value="수정" onclick="location.href='update.dog?item_no=${item.item_no}'">&nbsp;</td>
-					<td><input type="button" value="삭제" onclick="location.href='delete.dog'"></td>
+					<td><input type="button" value="삭제" onclick="deleteform()"></td>
 				</tr>
 			</table>
 			</c:if>

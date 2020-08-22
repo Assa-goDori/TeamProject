@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -34,6 +35,9 @@ public interface ItemMapper {
 	@Update("update item set item_state=${item_state} where item_no=${item_no}")
 	void updateState(Map<String, Object> param);
 
-	@Update("update item set item_name=#{item_name}, item_price=#{item_price}, item_content=#{item_content}, item_picture=${item_picture}, item_code=#{item_code} where item_no=#{item_no}")
-	void UpdateItem(@Valid Map<String, Object> param);
+	@Update("update item set item_name =#{item_name},item_price =#{item_price} ,item_content =#{item_content} ,item_picture =#{item_picture}, item_code=#{item_code} WHERE item_no=${item_no}")
+	void UpdateItem(@Valid Item item);
+
+	@Delete("delete from item where item_no=${item_no}")
+	void DeleteItem(Map<String, Object> param);
 }
