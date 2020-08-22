@@ -57,4 +57,10 @@ public class ItemDao {
 		template.getMapper(ItemMapper.class).UpdateItem(item);		
 	}
 
+	public void deleteitem(int item_no) {
+		param.clear();
+		param.put("item_no", item_no);
+		template.getMapper(ItemMapper.class).DeleteItem(param);
+	}
+
 }

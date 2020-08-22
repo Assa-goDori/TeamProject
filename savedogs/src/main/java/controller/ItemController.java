@@ -68,7 +68,7 @@ public class ItemController {
 		mav.addObject(new Item());
 		return mav;
 	}	
-	@GetMapping("update") 
+	@GetMapping({"update","deleteform"}) 
 	public ModelAndView updateform(int item_no) {
 		ModelAndView mav = new ModelAndView();
 		Item item = service.itemselect(item_no);
@@ -91,5 +91,12 @@ public class ItemController {
 		mav.setViewName("redirect:/item/detail.dog?item_no="+item.getItem_no());
 		mav.addObject("item",item);
 		return mav;
-	}	
+	}
+	@GetMapping("delete")
+	public ModelAndView delete(int item_no) {
+		ModelAndView mav = new ModelAndView();
+		service.itemdelete(item_no);
+		mav.setViewName("/item/list");
+		return mav;
+	}
 }

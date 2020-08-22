@@ -373,6 +373,9 @@ public class DogService {
 			System.out.println(item);
 			itemDao.updateitem(item);
 		}
+		public void itemdelete(int item_no) {
+			itemDao.deleteitem(item_no);
+		}
 
 
 //-------------------쇼핑관련 끝--------------------------------------------------
@@ -464,6 +467,7 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
 
 //-------------------메인관련 끝-------------------------------------------------
 
