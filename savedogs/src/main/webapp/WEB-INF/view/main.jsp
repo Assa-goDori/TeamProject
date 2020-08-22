@@ -144,14 +144,16 @@
 		</div>
      </div>
     <div class="g_div">
-    	<table style="border: 3px solid black; width: 100%;">
-    	<caption>구현전 임시 기부 자리</caption>    	
-    	<tr><td>1</td><td>첫번째글</td></tr>
-    	<tr><td>2</td><td>두번째글</td></tr>
-    	<tr><td>3</td><td>세번째글</td></tr>
-    	<tr><td>4</td><td>네번째글</td></tr>
-    	<tr><td>5</td><td>다섯번째글</td></tr>
-    	</table>
+    	<div align="center">
+ 	 		<h3>마감 임박 기부 목록</h3>
+ 	 	</div>
+ 	 	<div align="right">
+    		<a href="funding/list.dog">더보기</a>
+    	</div>
+    	<c:forEach var="duefunding" items="${duefunding}" varStatus="stat">
+	    	<div align="left"><a href="funding/detail.dog?fund_no=${duefunding.fund_no}">${duefunding.fund_subject}</a></div>
+	    </c:forEach>
+ 	 	
     </div>
   </div>
  </div>	

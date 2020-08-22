@@ -124,6 +124,8 @@ public class MainController {
 		}catch(IOException e){e.printStackTrace();}
 		List<Board> noticelist = service.mainnotice();
 		List<Item> bestItem= service.bestItem();
+		List<Funding> duefunding = service.duefunding();
+		request.setAttribute("duefunding", duefunding);
 		request.setAttribute("bestItem", bestItem);
 		request.setAttribute("notice", noticelist);
 		request.setAttribute("newstitle", newstitle);

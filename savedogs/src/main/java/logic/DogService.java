@@ -472,6 +472,10 @@ public class DogService {
 			return itemDao.bestItem();
 		}
 
+		public List<Funding> duefunding() {
+			return fundingDao.duefunding();
+		}
+
 		
 
 
