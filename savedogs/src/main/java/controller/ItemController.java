@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,20 +55,41 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();
 		try{
 			Item item = service.itemselect(item_no);
+			System.out.println(item);
 			mav.addObject("item",item);
 			return mav;
 		}catch (Exception e) {
 			throw new ItemException("없는 상품입니다.","list.dog");
 		}
 	}
-	@GetMapping("cartTF") 
+	@GetMapping("*") 
 	public ModelAndView cartTF() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject(new Item());
 		return mav;
-	}
-	@GetMapping("soldout") 
-	public ModelAndView soldout() {
+	}	
+	@GetMapping("update") 
+	public ModelAndView updateform(int item_no) {
 		ModelAndView mav = new ModelAndView();
+		Item item = service.itemselect(item_no);
+		mav.addObject("item",item);
 		return mav;
 	}
+	@PostMapping("update") 
+	public ModelAndView update(@Valid Item item,BindingResult bresult,HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("item/update");
+		if(bresult.hasErrors()) {
+			mav.getModel().putAll(bresult.getModel());
+			return mav;
+		}
+		if(item.getPicture() == null) {
+			service.ItemUpdate(item);
+		}
+		else {
+			service.ItemUpdatepicture(item,request);
+		}
+		mav.setViewName("item/detail.dog?item_no="+item.getItem_no());
+		mav.addObject("item",item);
+		return mav;
+	}	
 }

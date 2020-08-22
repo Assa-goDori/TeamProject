@@ -188,7 +188,7 @@ public class DogService {
 	}
 	
 	public void updateAuth(String member_id, String member_auth) {
-		memberDao.updateAuth(member_id, member_auth);
+		//memberDao.updateAuth(member_id, member_auth);
 	}
 	
 	public List<AdoptSign> getMyadoptlist(String id) {
@@ -305,18 +305,6 @@ public class DogService {
 			return itemDao.list();
 		}
 		
-		private void uploadItemImg(MultipartFile itemimg, HttpServletRequest request, String path) {
-			String orgFile = itemimg.getOriginalFilename();
-			String uploadPath = request.getServletContext().getContextPath()+ "/" + path;
-			System.out.println(uploadPath);	
-			File fpath = new File(uploadPath);
-			if(!fpath.exists()) fpath.mkdirs();
-			try {
-				itemimg.transferTo(new File(uploadPath + orgFile));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 
 		public void itemCreate(@Valid Item item, HttpServletRequest request) {
 			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
@@ -371,6 +359,20 @@ public class DogService {
 		public void updateState(String item_no, String item_state) {
 			itemDao.updateState(item_no, item_state);
 		}
+		
+		public void ItemUpdate(@Valid Item item) {
+			itemDao.updateitem(item);
+		}
+		
+		public void ItemUpdatepicture(@Valid Item item,HttpServletRequest request) {
+			if(item.getPicture() != null && !item.getPicture().isEmpty()) {
+				uploadFileCreate(item.getPicture(),request,"item/img/");
+				item.setItem_picture(item.getPicture().getOriginalFilename());
+			}
+			System.out.println(item.getItem_picture());
+			itemDao.updateitem(item);
+		}
+
 
 //-------------------쇼핑관련 끝--------------------------------------------------
 
@@ -461,8 +463,6 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
-
-
 
 //-------------------메인관련 끝-------------------------------------------------
 

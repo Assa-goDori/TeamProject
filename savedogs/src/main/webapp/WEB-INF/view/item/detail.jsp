@@ -87,6 +87,7 @@
 										</table>
 									</form>
 								</c:if>
+								
 							</td>
 						</tr>
 					</table>
@@ -104,10 +105,10 @@
 		<hr>
 		
 		<div align="center">
-			<c:if test="${sessionScope.loginmem.member_id eq 'admin'}"> 
+			<c:if test="${!empty sessionScope.loginadmin}"> 
 			<table>
 				<tr>
-					<td><input type="button" value="수정" onclick="location.href='update.dog'">&nbsp;</td>
+					<td><input type="button" value="수정" onclick="location.href='update.dog?item_no=${item.item_no}'">&nbsp;</td>
 					<td><input type="button" value="삭제" onclick="location.href='delete.dog'"></td>
 				</tr>
 			</table>

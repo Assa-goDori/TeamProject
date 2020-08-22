@@ -33,4 +33,7 @@ public interface ItemMapper {
 
 	@Update("update item set item_state=${item_state} where item_no=${item_no}")
 	void updateState(Map<String, Object> param);
+
+	@Update("update item set item_name=#{item_name}, item_price=#{item_price}, item_content=#{item_content}, item_picture=${item_picture}, item_code=#{item_code} where item_no=#{item_no}")
+	void UpdateItem(@Valid Map<String, Object> param);
 }
