@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="main_div">
-<h2>공지사항 수정</h2>
+<h2>Q&amp;A 수정</h2>
 <hr>
 <form:form modelAttribute="board" action="noticeUpdate.dog" enctype="multipart/form-data" name="f">
 	<form:hidden path="board_no" value="${param.no }"/>	

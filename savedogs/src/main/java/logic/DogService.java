@@ -432,7 +432,17 @@ public class DogService {
 			return boardDao.getBoardType(board_no);
 		}
 		
+		public int qnacnt(String searchtype, String searchcontent, String type) {
+			return boardDao.qnacnt(searchtype,searchcontent,type);
+		}
+		
+		public List<Board> qnalist(Integer pageNum, int limit, String searchtype, String searchcontent, String type) {
+			return boardDao.qnalist(pageNum, limit, searchtype, searchcontent, type);
+		}
+		
 	
+		
+		
 //-------------------댓글------------------------------------------------	
 		public List<Reply> replyList(String board_no) {
 			return boardDao.getReplyList(board_no);
@@ -469,6 +479,10 @@ public class DogService {
 		public List<Item> bestItem() {
 			return itemDao.bestItem();
 		}
+
+		
+
+		
 
 
 //-------------------메인관련 끝-------------------------------------------------

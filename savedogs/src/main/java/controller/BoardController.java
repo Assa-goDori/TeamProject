@@ -53,13 +53,14 @@ public class BoardController {
 			mav.getModel().putAll(bresult.getModel());
 			return mav;
 		}
-		System.out.println("아이디"+board.getMember_id());
 		try {
 			service.boardWrite(board, request);
 			if(board.getType().equals("0")) {
 				mav.setViewName("redirect:reviewDetail.dog?no="+board.getBoard_no());
 			}else if(board.getType().equals("1")) {
 				mav.setViewName("redirect:noticeDetail.dog?no="+board.getBoard_no());
+			}else if(board.getType().equals("2")) {
+				mav.setViewName("redirect:qnaDetail.dog?no="+board.getBoard_no());
 			}
 			
 		} catch(Exception e) {
@@ -68,22 +69,16 @@ public class BoardController {
 				throw new BoardException("게시글 등록에 실패했습니다","reviewWrite.dog?no="+board.getBoard_no());
 			}else if(board.getType().equals("1")) {
 				throw new BoardException("게시글 등록에 실패했습니다","noticeWrite.dog?no="+board.getBoard_no());
+			}else if(board.getType().equals("2")) {
+				throw new BoardException("게시글 등록에 실패했습니다","qnaWrite.dog?no="+board.getBoard_no());
 			}
 			
 		}
 		return mav;
 	}
 	
-	@GetMapping(value= {"noticeDetail","noticeUpdate"})
+	@GetMapping(value= {"noticeDetail","noticeUpdate","reviewDetail","qnaDetail"})
 	public ModelAndView noticeDetail(String no) {
-		ModelAndView mav = new ModelAndView();
-		Board board = service.boardDetail(no);
-		mav.addObject("board",board);
-		return mav;
-	}
-	
-	@GetMapping("reviewDetail")
-	public ModelAndView reviewDetail(String no) {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.boardDetail(no);
 		mav.addObject("board",board);
@@ -118,6 +113,42 @@ public class BoardController {
 		return mav;
 	}
 
+	@RequestMapping("qnaList")
+	public ModelAndView list(Integer pageNum,String searchtype, String searchcontent,String type) {
+		ModelAndView mav = new ModelAndView();
+		if(pageNum == null || pageNum.toString().equals("")) {
+			pageNum = 1;
+		}
+		int limit = 10; 
+		
+		//검색 부분
+		if(searchtype == null || searchtype.trim().equals("")||searchcontent == null || searchcontent.trim().equals("")) {
+			searchtype = null;
+			searchcontent = null;
+		}
+		//검색 정보까지 집어넣기
+		int listcount = service.qnacnt(searchtype,searchcontent,type);  
+		List<Board> boardlist = service.qnalist(pageNum, limit,searchtype,searchcontent,type);
+		
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = ((int)(pageNum/10.0 + 0.9)-1) * 10 + 1; 
+		int endpage = startpage+9; 
+		if(endpage>maxpage) endpage = maxpage; 
+		int boardno = listcount - (pageNum-1) *limit;
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		String today = sf.format(new Date());
+		mav.addObject("today",today);
+		mav.addObject("pageNum",pageNum);
+		mav.addObject("maxpage",maxpage);
+		mav.addObject("startpage",startpage);
+		mav.addObject("endpage",endpage);
+		mav.addObject("listcount",listcount);
+		mav.addObject("boardlist",boardlist);
+		mav.addObject("boardno",boardno);
+		return mav;
+	}
+	
+	
 	@PostMapping("noticeUpdate")
 	public ModelAndView update(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();

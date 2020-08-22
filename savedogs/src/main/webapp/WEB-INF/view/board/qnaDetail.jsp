@@ -32,10 +32,10 @@
 		</tr>
 	</table>
 <div class="btn_div">
-	<input type="button" value="목록" class="s_btn" onclick="location.href='noticeList.dog?type=${board.type}'">
-	<c:if test="${sessionScope.loginadmin != null }">
-		<input type="button" value="수정" class="g_btn" onclick="location.href='noticeUpdate.dog?no=${board.board_no}'">
-		<input type="button" value="삭제" class="g_btn" onclick="location.href='noticeDelete.dog?no=${board.board_no}'">
+	<input type="button" value="목록" class="s_btn" onclick="location.href='qnaList.dog?type=${board.type}'">
+	<c:if test="${sessionScope.loginmem == board.member_id }">
+		<input type="button" value="수정" class="g_btn" onclick="location.href='qnaUpdate.dog?no=${board.board_no}'">
+		<input type="button" value="삭제" class="g_btn" onclick="location.href='qnaDelete.dog?no=${board.board_no}'">
 	</c:if>
 </div>
 </div>

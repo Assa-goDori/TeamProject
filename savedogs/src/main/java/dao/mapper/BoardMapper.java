@@ -18,6 +18,8 @@ import logic.Board;
 
 public interface BoardMapper {
 
+	
+
 	@Select("select ifnull(max(board_no),0) from board")
 	int maxno();
 
@@ -62,6 +64,21 @@ public interface BoardMapper {
 
 	@Select("select ifnull(max(board_replyno),0) from reply")
 	int getRmax();
+
+	@Select({"<script>",
+		"select num,name,pass,subject,content,file1 fileurl,regdate,readcnt, grp, grplevel, grpstep from board ",
+		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} </if>",
+		"<if test='num != null'> where num = #{num} </if>",
+		"<if test='startrow != null and limit != null'>order by grp desc, grpstep limit #{startrow}, #{limit} </if>",
+		"</script>"})
+	List<Board> qnalist(Map<String, Object> param);
+
+
+	@Select({"<script>",
+		"select count(*) from board ",
+		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} </if>",
+		"</script>"})
+	int qnacnt(Map<String, Object> param);
 
 
 }

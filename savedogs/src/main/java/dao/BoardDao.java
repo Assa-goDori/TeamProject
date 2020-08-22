@@ -78,6 +78,27 @@ public class BoardDao {
 		return template.getMapper(BoardMapper.class).getRmax();
 	}
 
+	public int qnacnt(String searchtype, String searchcontent, String type) {
+		param.clear();
+		if(searchtype != null && searchcontent != null) {
+			param.put("searchtype",searchtype);
+			param.put("searchcontent","%"+searchcontent+"%");
+		}
+		param.put("type",type);
+		return template.getMapper(BoardMapper.class).qnacnt(param);
+	}
+
+	public List<Board> qnalist(Integer pageNum, int limit, String searchtype, String searchcontent, String type) {
+		param.clear();
+		if(searchtype != null && searchcontent != null) {
+			param.put("searchtype",searchtype);
+			param.put("searchcontent","%"+searchcontent+"%");
+		}
+		param.put("startrow",(pageNum-1) * limit);
+		param.put("limit",limit);
+		return template.getMapper(BoardMapper.class).qnalist(param);
+	}
+
 
 	
 	
