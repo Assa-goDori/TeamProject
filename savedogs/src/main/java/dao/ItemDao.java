@@ -54,8 +54,7 @@ public class ItemDao {
 	}
 
 	public void updateitem(@Valid Item item) {
-		param.put("item", item);
-		template.getMapper(ItemMapper.class).UpdateItem(param);		
+		template.getMapper(ItemMapper.class).UpdateItem(item);		
 	}
 
 }

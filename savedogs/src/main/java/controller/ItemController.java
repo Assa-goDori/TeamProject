@@ -88,7 +88,7 @@ public class ItemController {
 		else {
 			service.ItemUpdatepicture(item,request);
 		}
-		mav.setViewName("item/detail.dog?item_no="+item.getItem_no());
+		mav.setViewName("redirect:/item/detail.dog?item_no="+item.getItem_no());
 		mav.addObject("item",item);
 		return mav;
 	}	

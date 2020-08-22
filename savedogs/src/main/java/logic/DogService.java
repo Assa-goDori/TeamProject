@@ -311,6 +311,7 @@ public class DogService {
 				uploadFileCreate(item.getPicture(),request,"item/img/");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
+			System.out.println(item);
 			itemDao.insert(item);
 		}
 
@@ -369,7 +370,7 @@ public class DogService {
 				uploadFileCreate(item.getPicture(),request,"item/img/");
 				item.setItem_picture(item.getPicture().getOriginalFilename());
 			}
-			System.out.println(item.getItem_picture());
+			System.out.println(item);
 			itemDao.updateitem(item);
 		}
 
