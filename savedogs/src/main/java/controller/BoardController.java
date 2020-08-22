@@ -77,7 +77,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping(value= {"noticeDetail","noticeUpdate","reviewDetail","qnaDetail"})
+	@GetMapping(value= {"noticeDetail","noticeUpdate","reviewDetail","qnaDetail","qnaUpdate"})
 	public ModelAndView noticeDetail(String no) {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.boardDetail(no);
@@ -149,7 +149,7 @@ public class BoardController {
 	}
 	
 	
-	@PostMapping("noticeUpdate")
+	@PostMapping(value= {"noticeUpdate","qnaUpdate"})
 	public ModelAndView update(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
@@ -158,34 +158,43 @@ public class BoardController {
 		}
 		try {
 			service.boardUpdate(board, request);
-			if(board.getType().equals("1")) {
-				mav.setViewName("redirect:noticeDetail.dog?no="+board.getBoard_no());
-			} 
+			
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new BoardException("게시글 수정을 실패했습니다","noticeUpdate.dog?no="+board.getBoard_no());
+			if(board.getType().equals("0")) {
+				throw new BoardException("게시글 등록에 실패했습니다","reviewDetail.dog?no="+board.getBoard_no());
+			}else if(board.getType().equals("1")) {
+				throw new BoardException("게시글 등록에 실패했습니다","noticeDetail.dog?no="+board.getBoard_no());
+			}else if(board.getType().equals("2")) {
+				throw new BoardException("게시글 등록에 실패했습니다","qnaDetail.dog?no="+board.getBoard_no());
+			}
 		}
 		return mav;
 	}
 	
-	@GetMapping("noticeDelete")
+	@GetMapping(value= {"noticeDelete","qnaDelete"})
 	public ModelAndView deleteform(String no) {
 		ModelAndView mav = new ModelAndView();
-		String type = service.getBoardType(no);
 		mav.addObject("board_no", no);
 		return mav;
 	}
 	
-	@PostMapping("noticeDelete")
+	@PostMapping(value= {"noticeDelete","qnaDelete"})
 	public ModelAndView delete(String no) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			
 			String type = service.getBoardType(no);
 			service.boardDelete(no);
-			if(type.equals("1")) {
+			
+			if(type.equals("0")) {
+				mav.setViewName("redirect:reviewList.dog?type=0");
+			}else if(type.equals("1")) {
 				mav.setViewName("redirect:noticeList.dog?type=1");
-			} 
+			}else if(type.equals("2")) {
+				mav.setViewName("redirect:qnaList.dog?type=2");
+			}
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 			throw new BoardException("게시글 삭제를 실패했습니다","noticeDetail.dog?no="+no);

@@ -66,13 +66,12 @@ public interface BoardMapper {
 	int getRmax();
 
 	@Select({"<script>",
-		"select num,name,pass,subject,content,file1 fileurl,regdate,readcnt, grp, grplevel, grpstep from board ",
-		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} </if>",
-		"<if test='num != null'> where num = #{num} </if>",
+		"select board_no,member_id,subject,content,file1 fileurl,regdate,readcnt,grp,grplevel,grpstep,type from board ",
+		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
+		"<if test='type != null'> where type = #{type} </if>",
 		"<if test='startrow != null and limit != null'>order by grp desc, grpstep limit #{startrow}, #{limit} </if>",
 		"</script>"})
 	List<Board> qnalist(Map<String, Object> param);
-
 
 	@Select({"<script>",
 		"select count(*) from board ",

@@ -96,6 +96,7 @@ public class BoardDao {
 		}
 		param.put("startrow",(pageNum-1) * limit);
 		param.put("limit",limit);
+		param.put("type",type);
 		return template.getMapper(BoardMapper.class).qnalist(param);
 	}
 
