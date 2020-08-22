@@ -101,7 +101,7 @@
 						<a href="../member/img/${slist.file1 }">${slist.file1 }</a>
 					</td>
 					<td class="data">
-						<c:if test="${slist.member_auth == null }">
+						<c:if test="${slist.member_auth == 1 }">
 							<a href="javascript:changeauth('${slist.member_id }', 0)">승인</a>
 							<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
 						</c:if>

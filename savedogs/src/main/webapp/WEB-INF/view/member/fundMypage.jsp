@@ -32,7 +32,9 @@
 						<fmt:formatDate value="${list.fund_date }" pattern="yyyy년 MM월 dd일" var="date1"/>
 						${date1 }
 					</td>
-					<td style="width:300px;" class="data">${list.fund_subject }</td>
+					<td style="width:300px;" class="data">
+						<a href="../funding/detail.dog?fund_no=${list.fund_no}">${list.fund_subject }</a>
+					</td>
 					<fmt:formatNumber pattern="##,###원" value="${list.fund_cost }" var="cost1"/>
 					<td class="data">${cost1 }</td>
 				</tr>
@@ -59,7 +61,9 @@
 						<fmt:formatDate value="${endlist.fund_date }" pattern="yyyy년 MM월 dd일" var="date2"/>
 						${date2 }
 					</td>
-					<td style="width:300px;" class="data">${endlist.fund_subject }</td>
+					<td style="width:300px;" class="data">
+						<a href="../funding/detail.dog?fund_no=${endlist.fund_no}">${endlist.fund_subject }</a>
+					</td>
 					<fmt:formatNumber pattern="##,###원" value="${endlist.fund_cost }" var="cost2"/>
 					<td class="data">${cost2 }</td>
 				</tr>
