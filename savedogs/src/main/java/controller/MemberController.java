@@ -512,12 +512,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("idfind")
-	private ModelAndView idfind(String email,String tel,HttpServletRequest request) {
+	private ModelAndView idfind(String email,String tel) {
 		ModelAndView mav =  new ModelAndView();
-		List<Idpw> list = service.getFindID(tel,email);
-		System.out.println(list);
-		mav.addObject(list);
-		mav.setViewName("id");
+		Idpw member = service.getFindID(tel,email);
+		System.out.println(member.getMember_id());
+//		mav.addObject(list);
+//		mav.setViewName("id");
 		return mav;
 	}
 }
