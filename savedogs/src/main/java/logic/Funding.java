@@ -35,6 +35,7 @@ public class Funding {
 	private int restdate; //마감날짜-오늘날짜
 	private String fund_pic; //사진 파일 명
 	private MultipartFile picture; //사진
+	private int complete; 
 	public int getFund_no() {
 		return fund_no;
 	}
@@ -96,13 +97,17 @@ public class Funding {
 	public void setFund_count(int fund_count) {
 		this.fund_count = fund_count;
 	}
+	public int getComplete() {
+		return complete;
+	}
+	public void setComplete(int complete) {
+		this.complete = complete;
+	}
 	@Override
 	public String toString() {
 		return "Funding [fund_no=" + fund_no + ", member_id=" + member_id + ", sheltername=" + sheltername
 				+ ", fund_subject=" + fund_subject + ", fund_count=" + fund_count + ", start_date=" + start_date
 				+ ", end_date=" + end_date + ", restdate=" + restdate + ", fund_pic=" + fund_pic + ", picture="
-				+ picture + "]";
+				+ picture + ", complete=" + complete + "]";
 	}
-	
-
 }
