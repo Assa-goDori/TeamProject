@@ -51,11 +51,11 @@ public class MemberDao {
 		return template.getMapper(MemberMapper.class).getMemberPass(member_id);
 	}
 
-	public List<Idpw> getFindId(String tel, String email) {
+	public Idpw getFindId(String tel, String email) {
 		param.clear();
 		param.put("member_tel",tel);
 		param.put("member_email",email);
-		return template.getMapper(MemberMapper.class).selectmem(param);
+		return template.getMapper(MemberMapper.class).selectmem(param).get(0);
 	}
 
 	public void updateAuth(String member_id, String member_auth) {

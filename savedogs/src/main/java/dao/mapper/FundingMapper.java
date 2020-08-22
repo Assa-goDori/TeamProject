@@ -50,6 +50,9 @@ public interface FundingMapper {
     
     @Delete( "delete from funding where fund_no = ${fund_no}") 
 	void funddelete(Map<String, Object> param);
+
+    @Select("select * from funding WHERE end_date > NOW() order BY end_date asc")
+	List<Funding> duefunding();
 	
  
 	/*  //shelter_name 가져오기 shelter_no 겹침

@@ -54,6 +54,10 @@ public class FundingDao {
 		return template.getMapper(FundingMapper.class).select(param); 
 	}
 
+	public List<Funding> duefunding() {
+		return template.getMapper(FundingMapper.class).duefunding();
+	}
+
 	/*
 	 * public void delete(String userid) { param.clear();
 	 * param.put("userid",userid);
