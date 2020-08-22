@@ -101,8 +101,15 @@
 						<a href="../member/img/${slist.file1 }">${slist.file1 }</a>
 					</td>
 					<td class="data">
-						<a href="javascript:changeauth('${slist.member_id }', 0)">승인</a>
-						<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
+						<c:if test="${slist.member_auth == null }">
+							<a href="javascript:changeauth('${slist.member_id }', 0)">승인</a>
+							<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
+						</c:if>
+						<c:if test="${slist.member_auth == 0 }">
+							승인완료
+							<!-- <a href="javascript:changeauth('${slist.member_id }', 0)">승인</a>  -->
+							<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
+						</c:if>
 					</td>
 					<td class="data">
 						<a href="../member/updateMember.dog?type=1&id=${slist.member_id }&update=2&member_type=1">수정</a>

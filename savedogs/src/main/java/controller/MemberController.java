@@ -213,8 +213,7 @@ public class MemberController {
 			} else {
 				throw new LoginException("비밀번호 오류","../member/shelterMypage.dog?type=1&id=" + mem.getMember_id());
 			}
-		}
-		
+		}		
 		return mav;
 	}
 	
@@ -231,6 +230,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		Member login = null;
 		int type = 0;
+		int admin = 0;
 		if(session.getAttribute("loginmem") != null) {
 			memvalidator.validate(mem, bresult);
 			login = (Member)session.getAttribute("loginmem");
@@ -240,6 +240,7 @@ public class MemberController {
 			type = 1;
 		} else {
 			login = (Member)session.getAttribute("loginadmin");
+			admin = 1;
 			if(mem.getMember_type()==0) {
 				memvalidator.validate(mem, bresult);
 			} else {
@@ -261,12 +262,20 @@ public class MemberController {
 				service.memUpdate(mem, request);
 			}
 			if(type == 0) {
-				mav.setViewName("redirect:memberMypage.dog?type=1&id="+mem.getMember_id());
+				if(admin==1) {
+					mav.setViewName("redirect:../admin/adminlistMypage.dog?type=2&id=admin");
+				} else {
+					mav.setViewName("redirect:memberMypage.dog?type=1&id="+mem.getMember_id());
+				}
 				if(login.getMember_id().equals(mem.getMember_id())) {
 					session.setAttribute("loginmem", mem);
 				}
 			} else {
-				mav.setViewName("redirect:shelterMypage.dog?type=1&id="+mem.getMember_id());
+				if(admin==1) {
+					mav.setViewName("redirect:../admin/adminlistMypage.dog?type=2&id=admin");
+				} else {
+					mav.setViewName("redirect:shelterMypage.dog?type=1&id="+mem.getMember_id());
+				}
 				if(login.getMember_id().equals(mem.getMember_id())) {
 					session.setAttribute("loginsmem", mem);
 				}

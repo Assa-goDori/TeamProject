@@ -63,4 +63,7 @@ public interface MemberMapper {
 			"</script>"})
 	List<Idpw> selectmem(Map<String, Object> param);
 
+	@Update("update member set member_auth=${member_auth} where member_id=#{member_id}")
+	void updateAuth(Map<String, Object> param);
+
 }

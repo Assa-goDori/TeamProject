@@ -174,8 +174,7 @@
 			<tr height="40px">
 				<td>보호소 번호</td>
 				<td>
-					<input type="text" id="shelter_no" name="shelter_no" value="${member.shelter_no }">
-					<input type="button" value="보호소 찾기" onclick="window.open('shelterlist.dog','','width=500, height=250, left=150,top=150')">
+					<input type="text" id="shelter_no" name="shelter_no" value="${member.shelter_no }" readonly="readonly">
 				</td>
 				<td>
 					<font color="red">
