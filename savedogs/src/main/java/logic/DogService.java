@@ -434,7 +434,14 @@ public class DogService {
 			return boardDao.getBoardType(board_no);
 		}
 		
-	
+		public List<Board> qnalist(Integer pageNum, int limit, String searchtype, String searchcontent, String type) {
+			return boardDao.qnalist(pageNum, limit,searchtype,searchcontent,type);
+		}
+		
+		public int qnacnt(String searchtype, String searchcontent, String type) {
+			return boardDao.qnacnt(searchtype,searchcontent,type);
+		}
+		
 //-------------------댓글------------------------------------------------	
 		public List<Reply> replyList(String board_no) {
 			return boardDao.getReplyList(board_no);
@@ -447,6 +454,7 @@ public class DogService {
 		public int getRmax() {
 			return boardDao.getRmax();
 		}		
+		
 		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
@@ -475,6 +483,12 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+		
+
+		
+
+		
 
 		
 

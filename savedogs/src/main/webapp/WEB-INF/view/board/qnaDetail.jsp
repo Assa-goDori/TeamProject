@@ -23,7 +23,7 @@
 		<tr><th class="b_th">작성일</th><td class="b_td"><fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm"/></td></tr>
 		<tr><th class="b_th">내용</th><td class="b_td"><textarea rows="10" cols="30" class="txta" readonly="readonly">${board.content }</textarea></td></tr>
 	</table>
-<div class="btn_div">
+<div class="btn_div">  
 	<input type="button" value="목록" class="s_btn" onclick="location.href='qnaList.dog?type=2'">
 	<c:if test="${sessionScope.loginmem.member_id == board.member_id }">
 		<input type="button" value="수정" class="g_btn" onclick="location.href='qnaUpdate.dog?no=${board.board_no}'">
