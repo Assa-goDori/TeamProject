@@ -103,9 +103,9 @@
                               	<li class="active"><a href="index.html">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
-                                        <li><a href="${path }/board/qnaList.dog">Q&A</a></li>
+                                        <li><a href="${path }/board/qnaList.dog?type=2">Q&A</a></li>
                                         <li><a href="${path }/board/noticeList.dog?type=1">공지사항</a></li>
-                                        <li><a href="${path }/board/reviewList.dog">입양 후기 </a></li>
+                                        <li><a href="${path }/board/reviewList.dog?type=0">입양 후기 </a></li>
                                     </ul>
                                 </li>
                                

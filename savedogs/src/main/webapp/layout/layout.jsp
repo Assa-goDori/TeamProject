@@ -8,8 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	var path = "${path}";
-	console.log(path);
-	
 </script>
 <head>
     <meta charset="utf-8">
@@ -103,9 +101,9 @@
                               	<li class="active"><a href="index.html">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
-                                        <li><a href="${path }/board/qnaList.dog">Q&A</a></li>
+                                        <li><a href="${path }/board/qnaList.dog?type=2">Q&A</a></li>
                                         <li><a href="${path }/board/noticeList.dog?type=1">공지사항</a></li>
-                                        <li><a href="${path }/board/reviewList.dog">입양 후기 </a></li>
+                                        <li><a href="${path }/board/reviewList.dog?type=0">입양 후기 </a></li>
                                     </ul>
                                 </li>
                                
@@ -122,18 +120,18 @@
     <div class="slider" style="width: 100%; height: 20%;">
         <div class="owl-carousel owl-one owl-theme">
             <div class="item">
-                <div class="slider-img" onclick="directpage('adopt','amain')"> <img src="${path }/images/dogadopt.jpg" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
+                <div class="slider-img" onclick="directpage('adopt','amain')"> <img src="${path }/images/ss1.PNG" style="width: 80%; height: 20%; margin-left : 10%;" ></div>
                 <div class="container">
                  
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/dogitem.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
+                <div class="slider-img"> <img src="${path }/images/ss3.PNG" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img" onclick="directpage('vwork','vmain')"> <img src="${path }/images/dogvwork.jpg" style="width: 80%; height: 20%; margin-left : 10%;"></div>
+                <div class="slider-img" onclick="directpage('vwork','vmain')"> <img src="${path }/images/ss2.PNG" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
                     
                 </div>

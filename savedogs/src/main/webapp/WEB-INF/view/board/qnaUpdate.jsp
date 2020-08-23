@@ -17,9 +17,9 @@
 <div class="main_div">
 <h2>Q&amp;A 수정</h2>
 <hr>
-<form:form modelAttribute="board" action="noticeUpdate.dog" enctype="multipart/form-data" name="f">
+<form:form modelAttribute="board" action="qnaUpdate.dog" enctype="multipart/form-data" name="f">
 	<form:hidden path="board_no" value="${param.no }"/>	
-	<form:hidden path="type" value="1"/>
+	<form:hidden path="type" value="2"/>
 	<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
 	<table>
 		<tr><td>제목</td><td><form:input path="subject"/><font color="red"><form:errors path="subject"/></font></td></tr>
@@ -28,7 +28,7 @@
 			filebrowserImageUploadUrl : "imgupload.dog"
 		});</script>
 		<font color="red"><form:errors path="content"/></font></td></tr>
-		<tr><td>첨부파일</td><td><input type="file" name="file1"/></td></tr>
+		
 		<tr><td colspan="2" class="btn_td">
 				<input type="submit" value="등록" class="s_btn">
 			</td>

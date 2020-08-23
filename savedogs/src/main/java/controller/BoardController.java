@@ -168,6 +168,13 @@ public class BoardController {
 			}else if(board.getType().equals("2")) {
 				throw new BoardException("게시글 등록에 실패했습니다","qnaDetail.dog?no="+board.getBoard_no());
 			}
+		}		
+		if(board.getType().equals("0")) {
+			mav.setViewName("redirect:reviewDetail.dog?no="+board.getBoard_no());
+		}else if(board.getType().equals("1")) {
+			mav.setViewName("redirect:noticeDetail.dog?no="+board.getBoard_no());
+		}else if(board.getType().equals("2")) {
+			mav.setViewName("redirect:qnaDetail.dog?no="+board.getBoard_no());
 		}
 		return mav;
 	}
@@ -182,9 +189,8 @@ public class BoardController {
 	@PostMapping(value= {"noticeDelete","qnaDelete"})
 	public ModelAndView delete(String no) {
 		ModelAndView mav = new ModelAndView();
+		String type = service.getBoardType(no);
 		try {
-			
-			String type = service.getBoardType(no);
 			service.boardDelete(no);
 			
 			if(type.equals("0")) {
@@ -197,7 +203,13 @@ public class BoardController {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new BoardException("게시글 삭제를 실패했습니다","noticeDetail.dog?no="+no);
+			if(type.equals("0")) {
+				throw new BoardException("게시글 삭세에 실패했습니다","reviewWrite.dog?no="+no);
+			}else if(type.equals("1")) {
+				throw new BoardException("게시글 삭제에 실패했습니다","noticeWrite.dog?no="+no);
+			}else if(type.equals("2")) {
+				throw new BoardException("게시글 삭제에 실패했습니다","qnaWrite.dog?no="+no);
+			}
 		}
 		return mav;
 	} 

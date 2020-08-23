@@ -12,6 +12,11 @@
 		   open(page+".dog","",op);
 	}
 </script>
+<style type="text/css">
+.find_a{
+	color: #34b2a4;
+}
+</style>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
@@ -54,12 +59,9 @@
 				<td class="btn_td" colspan="3" >
 					<input class="s_btn" type="submit" value="로그인">
 					<input class="g_btn" type="button" value="회원가입" onclick="location.href='selectSignup.dog'">
-				</td>
-			</tr>
-			<tr height="40px">
-				<td class="btn_td" colspan="3" >
-					<input class="g_btn" type="button" value="아이디 찾기" onclick="win_open('idfind')">
-					<input class="g_btn" type="button" value="비밀번호 찾기" onclick="win_open('pwfind')">
+					<br>
+					<a href="#" onclick="win_open('idfind')" class="find_a">아이디 찾기</a>&nbsp;|&nbsp;
+					<a href="#" onclick="win_open('pwfind')" class="find_a">비밀번호 찾기</a>
 				</td>
 			</tr>
 		</table>
