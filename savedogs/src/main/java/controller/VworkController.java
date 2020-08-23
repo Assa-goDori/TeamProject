@@ -111,6 +111,9 @@ public class VworkController {
 		mav.addObject("list",list);
 		mav.addObject("shelter_no",shelter_no);
 		
+		
+		
+		
 		return mav;
 	}	
 	
@@ -147,12 +150,10 @@ public class VworkController {
 	}
 	
 	@PostMapping("shelterNames")
-	public ModelAndView shelterNames(String goo) {
-		ModelAndView mav = new ModelAndView();
+	public List<Shelter> shelterNames(String goo) {
 		List<Shelter> shelters = service.getShelters(goo);
-		mav.addObject("shelters",shelters);
-		mav.setViewName("redirect:vmain.dog");
-		return mav;
+		System.out.println(shelters);
+		return shelters;
 	}
 	
 	@RequestMapping("vlist")

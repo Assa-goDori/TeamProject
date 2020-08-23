@@ -82,6 +82,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.updateForm(no);
 		mav.addObject("board",board);
+		System.out.println(board.getContent());
 		System.out.println(board.getFileurl());
 		System.out.println(board.getFile1());
 		return mav;
