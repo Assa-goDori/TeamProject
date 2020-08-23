@@ -102,10 +102,10 @@ function replyDelete(rno){
 </div>
 
 <div class="btn_div">
-	<input type="button" value="목록" class="s_btn" onclick="location.href='noticeList.dog?type=${board.type}'">
+	<input type="button" value="목록" class="s_btn" onclick="location.href='reviewList.dog?type=${board.type}'">
 	<c:if test="${sessionScope.loginmem.member_id == board.member_id }">
-		<input type="button" value="수정" class="g_btn" onclick="location.href='noticeUpdate.dog?no=${board.board_no}'">
-		<input type="button" value="삭제" class="g_btn" onclick="location.href='noticeDelete.dog?no=${board.board_no}'">
+		<input type="button" value="수정" class="g_btn" onclick="location.href='reviewUpdate.dog?no=${board.board_no}'">
+		<input type="button" value="삭제" class="g_btn" onclick="location.href='reviewDelete.dog?no=${board.board_no}'">
 	</c:if>
 </div>
 

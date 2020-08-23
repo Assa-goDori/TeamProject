@@ -77,7 +77,17 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping(value= {"noticeDetail","noticeUpdate","reviewDetail","qnaDetail","qnaUpdate"})
+	@GetMapping(value= {"noticeUpdate","reviewUpdate","qnaUpdate"})
+	public ModelAndView updateForm(String no) {
+		ModelAndView mav = new ModelAndView();
+		Board board = service.updateForm(no);
+		mav.addObject("board",board);
+		System.out.println(board.getFileurl());
+		System.out.println(board.getFile1());
+		return mav;
+	}
+	
+	@GetMapping(value= {"noticeDetail","reviewDetail","qnaDetail"})
 	public ModelAndView noticeDetail(String no) {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.boardDetail(no);
@@ -114,7 +124,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("qnaList")
-	public ModelAndView list(Integer pageNum,String searchtype, String searchcontent,String type) {
+	public ModelAndView qnalist(Integer pageNum,String searchtype, String searchcontent,String type) {
 		ModelAndView mav = new ModelAndView();
 		if(pageNum == null || pageNum.toString().equals("")) {
 			pageNum = 1;
@@ -148,8 +158,39 @@ public class BoardController {
 		return mav;
 	}
 	
+	@RequestMapping("reviewList")
+	public ModelAndView reviewlist(Integer pageNum,String searchtype, String searchcontent,String type) {
+		ModelAndView mav = new ModelAndView();
+		if(pageNum == null || pageNum.toString().equals("")) {
+			pageNum = 1;
+		}
+		int limit = 6; 
+		if(searchtype == null || searchtype.trim().equals("")||searchcontent == null || searchcontent.trim().equals("")) {
+			searchtype = null;
+			searchcontent = null;
+		}
+		int listcount = service.reviewcnt(searchtype,searchcontent,type);  
+		List<Board> boardlist = service.reviewlist(pageNum, limit,searchtype,searchcontent,type);
+		
+		int maxpage = (int)((double)listcount/limit + 0.95);
+		int startpage = ((int)(pageNum/10.0 + 0.9)-1) * 10 + 1; 
+		int endpage = startpage+9; 
+		if(endpage>maxpage) endpage = maxpage; 
+		int boardno = listcount - (pageNum-1) *limit;
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		String today = sf.format(new Date());
+		mav.addObject("today",today);
+		mav.addObject("pageNum",pageNum);
+		mav.addObject("maxpage",maxpage);
+		mav.addObject("startpage",startpage);
+		mav.addObject("endpage",endpage);
+		mav.addObject("listcount",listcount);
+		mav.addObject("boardlist",boardlist);
+		mav.addObject("boardno",boardno);
+		return mav;
+	}
 	
-	@PostMapping(value= {"noticeUpdate","qnaUpdate"})
+	@PostMapping(value= {"noticeUpdate","qnaUpdate","reviewUpdate"})
 	public ModelAndView update(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
@@ -179,14 +220,14 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping(value= {"noticeDelete","qnaDelete"})
+	@GetMapping(value= {"noticeDelete","qnaDelete","reviewDelete"})
 	public ModelAndView deleteform(String no) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("board_no", no);
 		return mav;
 	}
 	
-	@PostMapping(value= {"noticeDelete","qnaDelete"})
+	@PostMapping(value= {"noticeDelete","qnaDelete","reviewDelete"})
 	public ModelAndView delete(String no) {
 		ModelAndView mav = new ModelAndView();
 		String type = service.getBoardType(no);

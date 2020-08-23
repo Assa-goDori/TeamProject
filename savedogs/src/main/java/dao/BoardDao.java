@@ -100,6 +100,28 @@ public class BoardDao {
 		return template.getMapper(BoardMapper.class).qnalist(param);
 	}
 
+	public int reviewcnt(String searchtype, String searchcontent, String type) {
+		param.clear();
+		if(searchtype != null && searchcontent != null) {
+			param.put("searchtype",searchtype);
+			param.put("searchcontent","%"+searchcontent+"%");
+		}
+		param.put("type",type);
+		return template.getMapper(BoardMapper.class).reviewcnt(param);
+	}
+
+	public List<Board> reviewlist(Integer pageNum, int limit, String searchtype, String searchcontent, String type) {
+		param.clear();
+		if(searchtype != null && searchcontent != null) {
+			param.put("searchtype",searchtype);
+			param.put("searchcontent","%"+searchcontent+"%");
+		}
+		param.put("startrow",(pageNum-1) * limit);
+		param.put("limit",limit);
+		param.put("type",type);
+		return template.getMapper(BoardMapper.class).reviewlist(param);
+	}
+
 
 
 

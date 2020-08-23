@@ -401,7 +401,12 @@ public class DogService {
 					uploadFileCreate(board.getFile1(), request, "board/notice/");
 					board.setFileurl(board.getFile1().getOriginalFilename());
 				}
-			}	
+			} else if(board.getType().equals("2")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/qna/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			}		
 			boardDao.insertBoard(board);
 		}
 		
@@ -419,10 +424,22 @@ public class DogService {
 		}
 		
 		public void boardUpdate(Board board, HttpServletRequest request) {
-			if(board.getFile1() != null && !board.getFile1().isEmpty()) {
-				uploadFileCreate(board.getFile1(), request, "board/notice/");
-				board.setFileurl(board.getFile1().getOriginalFilename());
-			}
+			if(board.getType().equals("0")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/review/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			} else if(board.getType().equals("1")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/notice/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			} else if(board.getType().equals("2")) {
+				if(board.getFile1() != null && !board.getFile1().isEmpty()) {
+					uploadFileCreate(board.getFile1(), request, "board/qna/");
+					board.setFileurl(board.getFile1().getOriginalFilename());
+				}
+			}		
 			boardDao.updateBoard(board);
 		}
 		
@@ -440,6 +457,18 @@ public class DogService {
 		
 		public int qnacnt(String searchtype, String searchcontent, String type) {
 			return boardDao.qnacnt(searchtype,searchcontent,type);
+		}
+		
+		public int reviewcnt(String searchtype, String searchcontent, String type) {
+			return boardDao.reviewcnt(searchtype,searchcontent,type);
+		}
+
+		public List<Board> reviewlist(Integer pageNum, int limit, String searchtype, String searchcontent, String type) {
+			return boardDao.reviewlist(pageNum, limit,searchtype,searchcontent,type);
+		}
+		
+		public Board updateForm(String board_no) {
+			return boardDao.getBoard(board_no);
 		}
 		
 //-------------------댓글------------------------------------------------	
@@ -483,6 +512,10 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+		
+
+		
 
 		
 
