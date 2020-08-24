@@ -11,7 +11,14 @@ public class Vworklist {
 	@NotNull(message="전화번호를 입력하세요.")
 	private String vwork_tel;
 	private String member_name;
+	private String year;
 	
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
 	public String getMember_name() {
 		return member_name;
 	}

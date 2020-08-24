@@ -1,6 +1,7 @@
 package logic;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -179,7 +180,17 @@ public class DogService {
 		return memberDao.getMemberPass(member_id);
 	}
 	
+	public List<Vworklist> getYearlist(String id) {
+		return vworklistDao.getYearlist(id);
+	}
 	
+	public Map<String, Object> vworkgraph(String year, String member_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : vworklistDao.vworkgraph(year, member_id)) {
+			map.put((String)m.get("m"), m.get("cnt"));
+		}
+		return map;
+	}
 
 	public List<Item> getShopall() {
 		return itemDao.getShopall();
@@ -196,6 +207,8 @@ public class DogService {
 	public Idpw getFindID(String tel, String email) {
 		return memberDao.getFindId(tel, email);
 	}
+	
+	
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -523,7 +536,6 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
-		
 
 		
 

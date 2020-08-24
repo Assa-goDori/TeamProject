@@ -153,8 +153,10 @@ public class MemberController {
 	public ModelAndView vworkMypageMainchkm(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Vwork> list = service.getMyvworkList(id);
+		List<Vworklist> yearlist = service.getYearlist(id);
 		mav.addObject("type", type);
 		mav.addObject("list", list);
+		mav.addObject("yearlist", yearlist);
 		return mav;
 	}
 	

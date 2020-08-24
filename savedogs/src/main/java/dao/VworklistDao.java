@@ -29,4 +29,15 @@ public class VworklistDao {
 		param.put("vwork_no", vwork_no);
 		return template.getMapper(vworklistMapper.class).getOnevworklist(param);
 	}
+
+	public List<Map<String,Object>> vworkgraph(String year, String member_id) {
+		param.clear();
+		param.put("year", year);
+		param.put("member_id", member_id);
+		return template.getMapper(vworklistMapper.class).vworkgraph(param);
+	}
+
+	public List<Vworklist> getYearlist(String id) {
+		return template.getMapper(vworklistMapper.class).getYearlist(id);
+	}
 }
