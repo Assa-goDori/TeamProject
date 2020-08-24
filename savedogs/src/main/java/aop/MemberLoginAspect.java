@@ -128,6 +128,55 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
+	
+	@Around //봉사 회원로그인 확인
+	("execution(* controller.Vwork*.chklogin*(..)) && args(..,session)")
+	public Object VworkMemLoginCheck(ProceedingJoinPoint joinPoint,HttpSession session) throws Throwable{
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
+	@Around //봉사 회원 확인
+	("execution(* controller.Vwork*.chkm*(..)) && args(.., session)")
+	public Object VworkMemCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("회원만 가능한 거래입니다.","../vwork/vmain.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	@Around //봉사 관리자 확인
+	("execution(* controller.Vwork*.chkadminsmem*(..)) && args(.., session)")
+	public Object VworkSmemCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {		
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginsmem == null && loginadmin == null) {
+			throw new LoginException("관리자만 가능합니다.","../vwork/vmain.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
+	@Around //봉사 보호소관리자 확인
+	("execution(* controller.Vwork*.chksm*(..)) && args(.., session)")
+	public Object VworkSmemwriteCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {		
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		if(loginsmem == null) {
+			throw new LoginException("보호소 관리자만 가능합니다.","../vwork/gotoMain.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
 	/*@Around // 보호소 관리자의 로그인 여부를 판단합니다.  	
 //	("execution(* controller.<Item>*.chks*(..)) && args(..,session)")  : <Item> 부분을 바꾸어서 사용하시길 바랍니다.
 //	마지막 매개변수가 HttpSession이어야 합니다.

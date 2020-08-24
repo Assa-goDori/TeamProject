@@ -49,7 +49,7 @@ public class VworkController {
 	}
 	
 	@GetMapping("vmain")
-	public ModelAndView vmain(HttpSession session) {
+	public ModelAndView chkloginvmain(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		if(smem != null) {
@@ -81,7 +81,7 @@ public class VworkController {
 	}
 	
 	@PostMapping("vmain")
-	public ModelAndView vmain2(String shelter_no,HttpSession session) {
+	public ModelAndView chkloginvmain2(String shelter_no,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		if(smem != null) {
@@ -111,14 +111,11 @@ public class VworkController {
 		mav.addObject("list",list);
 		mav.addObject("shelter_no",shelter_no);
 		
-		
-		
-		
 		return mav;
 	}	
 	
 	@GetMapping("vwrite")
-	public ModelAndView vwriteform(Model model, HttpSession session) {
+	public ModelAndView chksmvwriteform(Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		model.addAttribute(new Vwork());
 		Member smem = (Member)session.getAttribute("loginsmem");
@@ -129,7 +126,7 @@ public class VworkController {
 	}
 	
 	@PostMapping("vwrite")
-	public ModelAndView vwrite(@Valid Vwork vwork, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+	public ModelAndView chksmvwrite(@Valid Vwork vwork, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		String shelter_no = smem.getShelter_no();
@@ -157,7 +154,7 @@ public class VworkController {
 	}
 	
 	@RequestMapping("vlist")
-	public ModelAndView vlist(String date, HttpSession session) {
+	public ModelAndView chkmvlist(String date, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		if(smem != null) {
@@ -170,7 +167,6 @@ public class VworkController {
 		List<Vwork> vworklist = service.getVlist(date); //해당 날짜의 봉사들
 		//ArrayList<String> list = new ArrayList(); //지역구, 보호소. 현재인원, 총 인원
 		ArrayList<Map<String,String>> list = new ArrayList();
-		
 		for (Vwork v : vworklist) {
 			Shelter shelter = service.getShelter(v.getShelter_no());
 			Map<String,String> map = new HashMap();
@@ -194,7 +190,7 @@ public class VworkController {
 	}
 	
 	@GetMapping("vdetail")
-	public ModelAndView vdetail(String vwork_no, HttpSession session) {
+	public ModelAndView chkmvdetail(String vwork_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		if(smem != null) {
@@ -219,19 +215,16 @@ public class VworkController {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
 		String date = format.format(dbvwork.getVwork_date());
 		map.put("date",date);
-		
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
 		String vwork_date = format2.format(dbvwork.getVwork_date());
-		map.put("vwork_date",vwork_date);
-		
+		map.put("vwork_date",vwork_date);		
 		map.put("member_id",dbvwork.getMember_id());
-		
 		mav.addObject("vwork",map);
 		return mav;
 	}
 	
 	@GetMapping("vjoin") 
-	public ModelAndView vjoinform(Model model, String vwork_no, HttpSession session) {
+	public ModelAndView chkmvjoinform(Model model, String vwork_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		if(smem != null) {
@@ -257,15 +250,12 @@ public class VworkController {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
 		String date = format.format(dbvwork.getVwork_date());
 		map.put("date",date);
-		
-		
-		
 		mav.addObject("vwork",map);
 		return mav;
 	}
 		
 	@PostMapping("vjoin")
-	public ModelAndView vjoin(@Valid Vworklist vworklist, Model model,BindingResult bresult, String vwork_no, HttpSession session,HttpServletRequest request) {
+	public ModelAndView chkmvjoin(@Valid Vworklist vworklist, Model model,BindingResult bresult, String vwork_no, HttpSession session,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();	
 		Member smem = (Member)session.getAttribute("loginsmem");
 		Member mem = (Member)session.getAttribute("loginmem");
@@ -283,7 +273,6 @@ public class VworkController {
 		Date date = dbvwork.getVwork_date();		
 		vworklist.setVwork_date(date);
 		vworklist.setVwork_no(vwork_no);
-
 		try {
 			service.vJoin(vworklist, request);
 		} catch(Exception e) {
@@ -294,7 +283,7 @@ public class VworkController {
 	}
 	
 	@GetMapping("vupdate")
-	public ModelAndView vupdateform(String vwork_no, HttpSession session) {
+	public ModelAndView chkadminsmemvupdateform(String vwork_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Vwork dbvwork = service.getVwork(vwork_no);
 		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
@@ -304,7 +293,7 @@ public class VworkController {
 	}
 	
 	@PostMapping("vupdate")
-	public ModelAndView vupdate(@Valid Vwork vwork, String vwork_no, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+	public ModelAndView chkadminsmemvupdate(@Valid Vwork vwork, String vwork_no, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		
@@ -327,7 +316,7 @@ public class VworkController {
 	}
 	
 	@GetMapping("vdelete")
-	public ModelAndView vdeleteform(String vwork_no, HttpSession session) {
+	public ModelAndView chkadminsmemvdeleteform(String vwork_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Vwork dbvwork = service.getVwork(vwork_no);
 		Shelter shelter = service.getShelter(dbvwork.getShelter_no());
@@ -342,7 +331,7 @@ public class VworkController {
 	}
 	
 	@PostMapping("vdelete")
-	public ModelAndView vdelete(String vwork_no, HttpServletRequest request, HttpSession session) {
+	public ModelAndView chkadminsmemvdelete(String vwork_no, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			service.vdelete(vwork_no);
