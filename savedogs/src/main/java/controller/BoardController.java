@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -291,15 +292,18 @@ public class BoardController {
 //===========댓글===============
 	
 	@PostMapping(value="replyList", produces="text/plain; charset=UTF-8")
-	public String replyList(String board_no, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+	@ResponseBody
+	public String replyList(String board_no, HttpServletRequest request, HttpSession session) {
 		List<Reply> list = service.replyList(board_no);
 		StringBuilder html = new StringBuilder();
-		html.append("<table>");
+		html.append("<table clas>");
 		if(list.size()>0 ) {
 			for(Reply r : list) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getBoard_regdate());
-				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2'>"+"<td></tr>");
-				html.append("<tr><td>"+date+"</td></tr>");
+				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getBoard_comment()+
+						"<td><td rowspan='2'><c:if test=\"${sessionScope.loginmem.member_id == "+r.getMember_id()+
+						"}\"><input type='button' value='삭제' onclick='replyDelete("+r.getBoard_replyno()+");'></c:if></td></tr>");
+				html.append("<tr><td class='l_td' style='text-align:center;'>"+date+"</td></tr>");
 			}
 		} else {
 			html.append("<tr><th>해당 게시글의 댓글이 없습니다.</th></tr>");
@@ -309,19 +313,14 @@ public class BoardController {
 	}
 	
 	@PostMapping(value="replyInsert", produces="text/plain; charset=UTF-8")
-	public String replyInsert(Reply reply, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+	@ResponseBody
+	public String replyInsert(Reply reply, HttpServletRequest request, HttpSession session) {
 		int rmax = service.getRmax();
 		reply.setBoard_replyno(++rmax);
 		String s = service.insertReply(reply);
 		return s;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	
 	@RequestMapping("imgupload")
 	public String imgupload(MultipartFile upload, String CKEditorFuncNum, HttpServletRequest request, Model model) {

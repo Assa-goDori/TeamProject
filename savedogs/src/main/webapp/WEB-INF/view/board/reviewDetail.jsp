@@ -11,6 +11,9 @@
 	width: 200px;
 }
 
+.replywrite{
+	padding-bottom: 50px;
+}
 </style>
 <script>
 var board_no = '${board.board_no}'; 
@@ -28,6 +31,7 @@ function replyList(){
       data : {'board_no':board_no},
       success : function(data){
       	$("#replys").html(data);
+      	
       },
 		error : function(e) {
 			alert("서버오류: " + e.status);
@@ -37,9 +41,12 @@ function replyList(){
 
 //댓글 등록
 $(function() {
-  $("[name=replyinsert_btn]").on("click", function() {
+  $("#replyinsert_btn").on("click", function() {
+	  
+	
   	var insertData = $('[name=replyf]').serialize(); 
       replyInsert(insertData); 
+      console.log(insertData);
   })
 });
   
@@ -50,8 +57,8 @@ function replyInsert(insertData){
       type : 'POST',
       data : insertData,
       success : function(data){
-    	  replyList(); //댓글 작성 후 댓글 목록 reload
-    	  $('[name=content]').val('');
+    	  replyList(); 
+    	  $('[name=board_content]').val('');
       }
   });
 }
@@ -81,24 +88,26 @@ function replyDelete(rno){
 		<tr><th class="b_th">제목</th><td class="b_td">${board.subject }</td></tr>
 		<tr><th class="b_th">작성자</th><td class="b_td">${board.member_id }</td></tr>
 		<tr><th class="b_th">작성일</th><td class="b_td"><fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm"/></td></tr>
-		<tr><th class="b_th">내용</th><td class="b_td"><textarea rows="10" cols="30" class="txta" readonly="readonly">${board.content }</textarea></td></tr>
+		<tr><th class="b_th">내용</th><td class="b_td"><div class="ctxt_div">${board.content }</div></td></tr>
 	</table>
 
 <div class="reply_div" >
 	<hr>
 	<h4>댓글</h4>
-	
-	<div class="replys" id="replys"></div>
+	<hr>
 	<div class="replywrite" >
-		
 		<!-- action="replyInsert.dog"  -->
-	<form name="replyf" onsubmit="replyInsert($('[name=replyf]').serialize()); return false;">
+	<form:form modelAttribute="reply" name="replyf" >
 			<input type="hidden" name="board_no" value="${board.board_no }">
 			<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id}">
-			<input type="text" name="content" class="content_txt">
-			<input type="button" value="등록" name="replyinsert_btn" class="s_btn">			
-	</form>			
+			<input type="text" name="board_content" class="content_txt" style="width: 600px;">
+			
+			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">			
+	</form:form>
+				
 	</div>
+	<div class="replys" id="replys"></div>
+	
 </div>
 
 <div class="btn_div">
