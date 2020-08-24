@@ -17,6 +17,13 @@ input[type=file] {
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+	function check(href) {
+		if (!$("input:checkbox").is(":checked")) {
+			alert("개인정보 취급방침에 동의하세요.")
+		}
+	}
+</script>
 </head>
 <body>
 	<div>
@@ -25,7 +32,8 @@ input[type=file] {
 		<div>
 			<div>
 				<h3>개인정보 취급방침</h3>
-				<form:form modelAttribute="adoptSign" method="POST" action="adoptSignup.dog" enctype="multipart/form-data">
+				<form:form modelAttribute="adoptSign" method="POST"
+					action="adoptSignup.dog" enctype="multipart/form-data">
 					<table>
 						<tr>
 							<td colspan="2"><textarea
