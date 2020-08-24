@@ -62,7 +62,7 @@ public class AdoptController {
 	}
 
 	@GetMapping("adoptSignup")
-	public ModelAndView asignup(Model model, String noticeNo, String careNm, String orgNm, HttpSession session)
+	public ModelAndView chkmasignup(Model model, String noticeNo, String careNm, String orgNm, HttpSession session)
 			throws Exception {
 		ModelAndView mav = new ModelAndView();
 		model.addAttribute(new AdoptSign());
