@@ -21,7 +21,7 @@
 		<tr><th class="b_th">제목</th><td class="b_td">${board.subject }</td></tr>
 		<tr><th class="b_th">작성자</th><td class="b_td">${board.member_id }</td></tr>
 		<tr><th class="b_th">작성일</th><td class="b_td"><fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd HH:mm"/></td></tr>
-		<tr><th class="b_th">내용</th><td class="b_td"><textarea rows="10" cols="30" class="txta" readonly="readonly">${board.content }</textarea></td></tr>
+		<tr><th class="b_th">내용</th><td class="b_td"><div class="ctxt_div">${board.content }</div></td></tr>
 	</table>
 <div class="btn_div">  
 	<input type="button" value="목록" class="s_btn" onclick="location.href='qnaList.dog?type=2'">

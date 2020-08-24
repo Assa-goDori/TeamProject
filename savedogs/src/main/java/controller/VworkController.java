@@ -149,7 +149,7 @@ public class VworkController {
 	@PostMapping("shelterNames")
 	public List<Shelter> shelterNames(String goo) {
 		List<Shelter> shelters = service.getShelters(goo);
-		System.out.println(shelters);
+		
 		return shelters;
 	}
 	
