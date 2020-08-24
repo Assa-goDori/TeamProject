@@ -80,11 +80,8 @@ public class BoardController {
 	@GetMapping(value= {"noticeUpdate","reviewUpdate","qnaUpdate"})
 	public ModelAndView updateForm(String no) {
 		ModelAndView mav = new ModelAndView();
-		Board board = service.updateForm(no);
+		Board board = service.getBoard(no);
 		mav.addObject("board",board);
-		System.out.println(board.getContent());
-		System.out.println(board.getFileurl());
-		System.out.println(board.getFile1());
 		return mav;
 	}
 	
@@ -256,6 +253,41 @@ public class BoardController {
 		return mav;
 	} 
 	
+	@GetMapping("qnaReply")
+	public ModelAndView replyform(Model model, String no,HttpSession session) {
+		ModelAndView mav= new ModelAndView();
+		Board board = service.getBoard(no);
+		model.addAttribute(new Board());
+		mav.addObject("board",board);
+		return mav;
+	}
+	
+	@PostMapping("qnaReply")
+	public ModelAndView reply(@Valid Board board, BindingResult bresult, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(bresult.hasErrors()) {
+			String no =  String.valueOf(board.getBoard_no());
+			Board dbBoard = service.getBoard(no);
+			Map<String, Object> map = bresult.getModel();
+			Board b = (Board)map.get("board");
+			b.setSubject(dbBoard.getSubject());
+			return mav;
+		}
+		try {
+			//board : 화면에서 전달받은 파라미터 정보 저장
+			/*
+			 * num, grp, grplevel, grpstep : 원글 정보
+			 * name, pass, subject, content : 답글 정보
+			 */
+			service.boardReply(board);
+			mav.setViewName("redirect:qnaList.dog?type=2");
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new BoardException("답변글 등록에 실패했습니다","qnaReply.dog?no="+board.getBoard_no());
+		}
+		return mav;
+	}
+	
 //===========댓글===============
 	
 	@PostMapping(value="replyList", produces="text/plain; charset=UTF-8")
@@ -283,9 +315,6 @@ public class BoardController {
 		String s = service.insertReply(reply);
 		return s;
 	}
-	
-	
-	
 	
 	
 	

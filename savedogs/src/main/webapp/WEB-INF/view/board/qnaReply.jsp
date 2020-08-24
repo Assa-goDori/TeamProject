@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구해독 : Q&amp;A 작성</title>
+<title>구해독 : Q&amp;A 답변</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
 <style type="text/css">
@@ -15,15 +15,16 @@
 </head>
 <body>
 <div class="main_div">
-<h2>Q&amp;A 작성</h2>
+<h2>Q&amp;A 답변</h2>
 <hr>
-<form:form modelAttribute="board" action="qnaWrite.dog" enctype="multipart/form-data" name="f">	
+<form:form modelAttribute="board" action="qnaReply.dog" enctype="multipart/form-data" name="f">	
 	<form:hidden path="type" value="2"/>
+	<form:hidden path="board_no"/>
+	<form:hidden path="grp"/>
+	<form:hidden path="grplevel"/>
+	<form:hidden path="grpstep"/>	
 	<c:if test="${sessionScope.loginadmin != null}">
 		<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
-	</c:if>
-	<c:if test="${sessionScope.loginmem != null}">
-		<form:hidden path="member_id" value="${sessionScope.loginmem.member_id }"/>
 	</c:if>
 	<c:if test="${sessionScope.loginsmem != null}">
 		<form:hidden path="member_id" value="${sessionScope.loginsmem.member_id }"/>

@@ -122,6 +122,14 @@ public class BoardDao {
 		return template.getMapper(BoardMapper.class).reviewlist(param);
 	}
 
+	public void updateGrpStep(Board board) {
+		param.clear();
+		param.put("grp",board.getGrp());
+		param.put("grpstep",board.getGrpstep());
+		template.getMapper(BoardMapper.class).updateGrpStep(param);
+		
+	}
+
 
 
 

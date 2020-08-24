@@ -24,9 +24,9 @@
 		<tr><th class="b_th">내용</th><td class="b_td"><textarea rows="10" cols="30" class="txta" readonly="readonly">${board.content }</textarea></td></tr>
 		<tr><th class="b_th">첨부파일</th>
 			<td class="b_td">
-				<c:if test="${!empty board.fileurl }">
-					<a href="notice.${board.fileurl }">${board.fileurl }</a>
-				</c:if>
+				
+					<a href="notice/${board.fileurl }">${board.fileurl }</a>
+				
 				<c:if test="${empty board.fileurl }">&nbsp;</c:if>
 			</td>
 		</tr>

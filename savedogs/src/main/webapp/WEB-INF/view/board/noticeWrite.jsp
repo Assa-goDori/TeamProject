@@ -22,7 +22,7 @@
 	<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
 	<table>
 		<tr><td>제목</td><td><form:input path="subject" size="20"/><font color="red"><form:errors path="subject"/></font></td></tr>
-		<tr><td>내용</td><td><form:textarea path="content" rows="30" cols="120"/>
+		<tr><td>내용</td><td><form:textarea path="content" rows="30" cols="120" />
 		<script>CKEDITOR.replace("content",{
 			filebrowserImageUploadUrl : "imgupload.dog"
 		});</script>

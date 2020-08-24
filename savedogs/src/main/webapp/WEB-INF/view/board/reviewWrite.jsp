@@ -17,6 +17,9 @@ th{
 }
 
 </style>
+<script type="text/javascript">
+var Text = oriText.replace(/(<([^>]+)>)/ig,"");
+</script>
 </head>
 <body>
 <div class="main_div">
@@ -30,7 +33,9 @@ th{
 		<tr><th>내용</th><td><form:textarea path="content" rows="30" cols="120"/>
 		<script>CKEDITOR.replace("content",{
 			filebrowserImageUploadUrl : "imgupload.dog"
-		});</script>
+		});
+		
+		</script>
 		<font color="red"><form:errors path="content"/></font></td></tr>
 		
 		<tr><th>대표이미지</th><td><input type="file" name="file1"/></td></tr>

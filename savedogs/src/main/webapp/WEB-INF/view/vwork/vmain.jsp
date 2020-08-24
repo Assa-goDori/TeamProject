@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				f.shelter_no.value = "${shelter_no}";
 			</script>
 			<input class="s_btn" type="submit" value="검색" >
+			
 		</form>
 		
 	</div>

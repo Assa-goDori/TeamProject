@@ -177,6 +177,9 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
+	
+	
+	
 	/*@Around // 보호소 관리자의 로그인 여부를 판단합니다.  	
 //	("execution(* controller.<Item>*.chks*(..)) && args(..,session)")  : <Item> 부분을 바꾸어서 사용하시길 바랍니다.
 //	마지막 매개변수가 HttpSession이어야 합니다.

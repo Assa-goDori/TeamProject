@@ -467,10 +467,20 @@ public class DogService {
 			return boardDao.reviewlist(pageNum, limit,searchtype,searchcontent,type);
 		}
 		
-		public Board updateForm(String board_no) {
+		public Board getBoard(String board_no) {
 			return boardDao.getBoard(board_no);
 		}
 		
+		public void boardReply(Board board) {
+			boardDao.updateGrpStep(board); //가존 답글의 grpstep 증가
+			int max = boardDao.maxno();
+			//답글 정보 수정
+			board.setBoard_no(++max);
+			board.setGrplevel(board.getGrplevel()+1);
+			board.setGrpstep(board.getGrpstep()+1);
+			boardDao.insertBoard(board);
+			
+		}
 //-------------------댓글------------------------------------------------	
 		public List<Reply> replyList(String board_no) {
 			return boardDao.getReplyList(board_no);
@@ -512,6 +522,10 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+		
+
+		
 
 		
 

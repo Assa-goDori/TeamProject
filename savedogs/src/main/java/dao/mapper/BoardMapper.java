@@ -95,5 +95,8 @@ public interface BoardMapper {
 		"</script>"})
 	List<Board> reviewlist(Map<String, Object> param);
 
+	@Update("update board set grpstep=grpstep+1 where grp = #{grp} and grpstep > #{grpste}")
+	void updateGrpStep(Map<String, Object> param);
+
 
 }

@@ -29,6 +29,9 @@
 		<input type="button" value="수정" class="g_btn" onclick="location.href='qnaUpdate.dog?no=${board.board_no}'">
 		<input type="button" value="삭제" class="g_btn" onclick="location.href='qnaDelete.dog?no=${board.board_no}'">
 	</c:if>
+	<c:if test="${sessionScope.loginsmem != null || sessionScope.loginadmin != null }">
+		<input type="button" value="답변" class="s_btn" onclick="location.href='qnaReply.dog?no=${board.board_no}'">
+	</c:if>
 </div>
 </div>
 </body>
