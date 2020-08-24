@@ -25,24 +25,38 @@ public class AdoptController {
 
 	@Autowired
 	private DogService service;
-
-	@GetMapping("amain")
-	public ModelAndView main1(Adopt adopt) throws Exception {
+	/*
+	 * pageNo    : 현재 페이지 번호
+	 * maxpage   : 최대 페이지
+	 * startpage : 보여지는 시작 페이지 번호
+	 * endpage   : 보여지는 끝 페이지 번호
+	 * listcount : 전체 등록된 게시글 건수
+	 * 
+	 * boardlist : 화면에 보여질 게시물 객체들
+	 * boardno   : 화면에 보여지는 게시물 번호 
+	 */
+	@RequestMapping("amain")
+	public ModelAndView main2(Adopt adopt, String state, String kind, Integer pageNo) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String state = "";
-		String kind = null;
-		List<Adopt> go = ApiExplorer.getDogsJson(state, kind);
-		mav.addObject("go", go);
-
-		mav.setViewName("/adopt/amain");
-		return mav;
-	}
-
-	@PostMapping("amain")
-	public ModelAndView main2(Adopt adopt, String state, String kind) throws Exception {
-		ModelAndView mav = new ModelAndView();
+		if(pageNo == null || pageNo.toString().equals(""))
+			pageNo = 1;
+		if(state == null || state.trim().equals(""))
+			state = null;
+		if(kind == null || kind.trim().equals(""))
+			kind = null;
+		int limit = 16; // 한 페이지에 보여질 게시물 건수
+		int listcount = 300; // 등록 게시물 건수
+		int maxpage = (int)((double) listcount / limit + 0.95);
+		int startpage = (int)((pageNo / 10.0 + 0.9) - 1) * 10 + 1;
+		int endpage = startpage + 9;
+		if (endpage > maxpage)
+			endpage = maxpage;
+		mav.addObject("pageNo", pageNo);
+		mav.addObject("maxpage", maxpage);
+		mav.addObject("startpage", startpage);
+		mav.addObject("endpage", endpage);
 		try {
-			List<Adopt> go = ApiExplorer.getDogsJson(state, kind);
+			List<Adopt> go = ApiExplorer.getDogsJson(state, kind, pageNo);
 			mav.addObject("go", go);
 			mav.setViewName("/adopt/amain");
 		} catch (Exception e) {

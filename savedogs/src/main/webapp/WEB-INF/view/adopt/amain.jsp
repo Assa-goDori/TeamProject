@@ -15,12 +15,7 @@ hr {
 .nb {
 	text-align: left;
 	font-size: 25px;
-	padding-left: 100px;
-}
-
-.array {
-	text-align: left;
-	padding-left: 100px;
+	padding-left: 700px;
 }
 
 .tag {
@@ -37,6 +32,8 @@ hr {
 }
 
 select {
+	text-align: left;
+	padding-left: 100px;
 	font-size: 15px;
 	padding: 5px;
 	width: 250px;
@@ -46,7 +43,7 @@ select {
 </head>
 <body>
 	<div>
-		<h2 class="array">
+		<h2>
 			<img src="adopt_img.png" style="width: 3%; height: 3%;">&nbsp;키워드
 			검색
 		</h2>
@@ -54,8 +51,9 @@ select {
 		<div class="nb">
 			&nbsp;상태&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;품종
 		</div>
-		<form class="array" action="amain.dog" method="POST" name="keyword">
-			<select name="state" onchange="this.form.submit()">
+		<form action="amain.dog" method="POST" name="keyword">
+			<input type="hidden" name="pageNo" value="1"> <select
+				name="state" onchange="this.form.submit()">
 				<option value="">전체</option>
 				<option value="notice">보호중</option>
 				<option value="protected">공고중</option>
@@ -240,35 +238,65 @@ select {
 			<script type="text/javascript">
 				keyword.kind.value = "${param.kind}";
 			</script>
+			<hr>
+			<c:forEach var="item" items="${go}">
+				<div
+					style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
+					<a href="adetail.dog?desertionNo=${item.desertionNo}"
+						class="imghover"><img src="${item.popfile}"
+						style="width: 350px; height: 350px;"></a>
+					<div style="height: 5px"></div>
+					<span class="tag">${item.processState}</span> &nbsp; <span
+						class="tag">${item.kindCd}</span> <br>
+				</div>
+			</c:forEach>
+			<br>
+			<c:if test="${empty message}">
+				<div class="st-pagination">
+					<ul class="pagination">
+						<li><c:if test="${pageNo > 1}">
+								<a href="javascript:listpage('${pageNo - 1}')"
+									aria-label="previous"><span aria-hidden="true"><i
+										class="fa fa-angle-left"></i></span></a>
+							</c:if> <c:if test="${pageNo <= 1}">
+								<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+							</c:if></li>
+						<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:if test="${a == pageNo}">
+								<li><a>${a}</a></li>
+							</c:if>
+							<c:if test="${a != pageNo}">
+								<li><a href="javascript:listpage('${a}')">${a}</a></li>
+							</c:if>
+						</c:forEach>
+						<c:if test="${pageNo < maxpage}">
+							<li><a href="javascript:listpage('${pageNo + 1}')"
+								aria-label="Next"><span aria-hidden="true"><i
+										class="fa fa-angle-right"></i></span></a></li>
+						</c:if>
+					</ul>
+				</div>
+			</c:if>
 		</form>
-		<hr>
-		<c:forEach var="item" items="${go}">
-			<div
-				style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-				<a href="adetail.dog?desertionNo=${item.desertionNo}"
-					class="imghover"><img src="${item.popfile}"
-					style="width: 350px; height: 350px;"></a>
-				<div style="height: 5px"></div>
-				<span class="tag">${item.processState}</span> &nbsp; <span
-					class="tag">${item.kindCd}</span> <br>
-			</div>
-		</c:forEach>
 		<div>
 			<h3>${message}</h3>
 		</div>
-		<c:if test="${empty message}">
-			<div class="st-pagination">
-				<ul class="pagination">
-					<li><a href="#" aria-label="previous"><span
-							aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#" aria-label="Next"><span aria-hidden="true"><i
-								class="fa fa-angle-right"></i></span></a></li>
-				</ul>
-			</div>
-		</c:if>
 	</div>
+	<script type="text/javascript">
+	$(".pagination > li").removeClass;
+	if(${param.pageNo % 10} == 0) { // 0, 10
+		if(${param.pageNo / 10} == 1) // pageNo(10) : 0(이전) 
+			$(".pagination > li").eq(10).addClass("active"); // 10
+		else // pageNo(0) : 0
+			$(".pagination > li").eq(1).addClass("active"); // 1
+	}
+	else 
+		$(".pagination > li").eq(${param.pageNo % 10}).addClass("active");
+
+	function listpage(page) {
+		document.keyword.pageNo.value = page;
+		document.keyword.submit();
+	}
+</script>
 </body>
 </html>
