@@ -203,6 +203,14 @@ public class DogService {
 		}
 		return map;
 	}
+	
+	public Map<String, Object> shopgraph(String name) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : itemDao.shopgraph(name)) {
+			map.put((String)m.get("m"), m.get("cnt"));
+		}
+		return map;
+	}
 
 	public List<Item> getShopall() {
 		return itemDao.getShopall();
@@ -548,7 +556,6 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
-		
 
 		
 

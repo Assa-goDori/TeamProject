@@ -7,7 +7,109 @@
 <meta charset="UTF-8">
 <title>관리자 쇼핑몰 물품 관리</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
 <script>
+	function drawgraph() {
+		var name = document.getElementById("shoplist").value;
+		$.ajax({
+			url : "../ajax/shopgraph.dog",
+			type : "POST",
+			data : "name="+ name,
+			success : function(data) {
+				shopgraph(data);
+			},
+			error : function(e) {
+				alert("ajax 오류");
+			}
+		})
+	}
+	
+	function drawgraph2() {
+		$.ajax("../ajax/shopallgraph.dog",
+			success : function(data) {
+				shopgraph(data);
+			},
+			error : function(e) {
+				alert("ajax 오류");
+			}
+		)
+	}
+	
+	var randomColorFactor = function() {
+		return Math.round(Math.random()*255);
+	}
+	var randomColor = function(opacity) {	//opacity : 투명도
+		return "rgba(" + randomColorFactor() + ","
+				+ randomColorFactor() + ","
+				+ randomColorFactor() + ","
+				+ (opacity || '.3') + ")";
+	};
+	
+	function shopgraph(data) {
+		console.log(data)
+		var rows = JSON.parse(data)
+		var dates = []
+		var datas = []
+		var colors = []
+		$.each(rows, function(index, item) {
+			/* names[index] = item.name; */
+			dates[index] = item.m;
+			datas[index] = item.cnt;
+			colors[index] = randomColor(0.7);
+		})
+
+		var chartData = {
+			labels : dates,
+			datasets : [
+				{
+					type:'line',
+					borderWidth : 2,
+					borderColor:colors,
+					label : '건수',
+					fill : false,
+					data : datas
+				},
+				{
+					type:'bar',
+					label : '건수',
+					backgroundColor:colors,
+					data : datas,
+				}
+			]
+		};
+		
+		var ctx = document.getElementById("canvas").getContext("2d");
+		new Chart(ctx, {
+			type : 'bar',
+			data : chartData,
+			options : {
+				responsive : true,
+				title : {
+					display : true,
+					text : '월별 판매금액 분석'
+				},
+				legend : {display : false},
+				scales : {
+					xAxes : [{
+						display : true,
+						scaleLabel : {
+							display : true,
+							labelString : '월'
+						}
+					}],
+					yAxes : [{
+						display : true,
+						scaleLabel : {
+							display : true,
+							labelString : '판매량'
+						},
+						stacked : true	//(0부터 시작)
+					}]
+				}
+			}
+		});
+	}
+	
 	function changestate(no, state) {
 		var state = state;
 		$.ajax({
@@ -64,6 +166,18 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<hr>
+		<h3>판매량 분석</h3>
+		<select id="shoplist">
+			<c:forEach items="${shopalllist }" var="shop">
+				<option>${shop.item_name }</option>
+			</c:forEach>
+		</select>
+		<input type="button" value="출력" onclick="drawgraph()">
+		<input type="button" value="전체 월별 판매금액량 보기" onclick="drawgraph2()">
+		<div id="shopgraph" style="margin:30%; width:40%;">
+			<canvas id="canvas" style="width:50%"></canvas>
+		</div>
 	</div>
 </body>
 </html>
