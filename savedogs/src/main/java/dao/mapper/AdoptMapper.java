@@ -1,9 +1,11 @@
 package dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import logic.AdoptSign;
 
@@ -17,4 +19,13 @@ public interface AdoptMapper {
 	@Select("select * from adopt where member_id=#{id}")
 	List<AdoptSign> getMyadoptlist(String id);
 
+	@Select("select * from adopt" +
+			" where shelter_no = (" +
+			" select shelter_no from member where member_id=#{id})")
+	List<AdoptSign> getShelteradoptlist(String id);
+
+	@Update("update adopt set adopt_etc=${adopt_etc} where dog_no=#{dog_no}")
+	void updateEtc(Map<String, Object> param);
+
+	
 }
