@@ -15,6 +15,10 @@
 </head>
 <body>
 	<div class="main_div" style="width: 100%">
+		<c:if test="${empty writelist }">
+			<h3>작성한 기부가 없습니다.</h3>
+		</c:if>
+		<c:if test="${!empty writelist }">
 		<h3>나의 기부 리스트</h3>
 		<hr>
 		<table>
@@ -39,6 +43,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		</c:if>
 	</div>
 </body>
 </html>

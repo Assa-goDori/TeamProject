@@ -31,9 +31,13 @@
 </head>
 <body>
 	<div class="main_div" style="width: 100%">
+		<c:if test="${empty shelteradoptlist }">
+			<h3>입양 신청 내역이 없습니다.</h3>
+		</c:if>
+		<c:if test="${!empty shelteradoptlist }">
 		<table>
 			<tr>
-				<th>번호</th>
+				<th>신청자아이디</th>
 				<th>공고번호</th>
 				<th>신청날짜</th>
 				<th>진행단계</th>
@@ -69,6 +73,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		</c:if>
 	</div>
 </body>
 </html>
