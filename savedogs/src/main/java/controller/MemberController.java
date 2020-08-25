@@ -522,4 +522,12 @@ public class MemberController {
 		mav.addObject("id", member.getMember_id());
 		return mav;
 	}
+	
+	@PostMapping("pwfind")
+	public ModelAndView pwfind(String id,String email, String tel) {
+		ModelAndView mav =  new ModelAndView("member/pw");
+		Idpw member = service.getFindPW(id,tel,email);
+		mav.addObject("pw", member.getMember_pass());
+		return mav;
+	}
 }

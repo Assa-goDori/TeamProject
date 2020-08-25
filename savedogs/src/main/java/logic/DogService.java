@@ -220,7 +220,9 @@ public class DogService {
 		return memberDao.getFindId(tel, email);
 	}
 	
-	
+	public Idpw getFindPW(String id, String tel, String email) {
+		return memberDao.getFindPW(id,tel, email);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -547,23 +549,6 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
-
-		
-
-		
-
-		
-
-		
-
-		
-
-		
-
-		
-
-		
-
 
 //-------------------메인관련 끝-------------------------------------------------
 
