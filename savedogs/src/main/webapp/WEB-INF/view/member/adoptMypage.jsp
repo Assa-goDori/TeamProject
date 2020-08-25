@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>My 입양</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#minfo").show();
