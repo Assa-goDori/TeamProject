@@ -232,6 +232,14 @@ public class DogService {
 		return adoptDao.getMyadoptlist(id);
 	}
 	
+	public List<AdoptSign> getShelteradoptlist(String id) {
+		return adoptDao.getShelteradoptlist(id);
+	}
+	
+	public void updateEtc(String dog_no, String state) {
+		adoptDao.updateEtc(dog_no, state);
+	}
+	
 	public Idpw getFindID(String tel, String email) {
 		return memberDao.getFindId(tel, email);
 	}
@@ -555,7 +563,7 @@ public class DogService {
 		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
 			if(a.getF() != null && !a.getF().isEmpty()) {
 				uploadFileCreate(a.getF(),request,"adopt/img/");
-				a.setFile(a.getF().getOriginalFilename());
+				a.setAdopt_file(a.getF().getOriginalFilename());
 			}
 			adoptDao.adoptInsert(a);
 		}
@@ -579,6 +587,7 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
+		
 		
 
 

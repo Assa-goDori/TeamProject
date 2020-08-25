@@ -1,12 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/view/jspHeader.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My 보호소</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
+<style>
+	.data {
+		text-align: center;
+	}
+</style>
+<script>
+	function changeEtc(dog_no, state) {
+		$.ajax({
+			url : "../ajax/changeEtc.dog",
+			type : "POST",
+			data : "dog_no="+ dog_no + "&state="+state,
+			success : function(data) {
+				alert("설정 변경 완료")
+				document.location.reload();
+			},
+			error : function(e) {
+				alert("ajax 오류");
+			}
+		})
+	}
+</script>
 </head>
 <body>
-
+	<div class="main_div" style="width: 100%">
+		<table>
+			<tr>
+				<th>번호</th>
+				<th>공고번호</th>
+				<th>신청날짜</th>
+				<th>진행단계</th>
+				<th>신청서</th>
+				<th>처리</th>
+			</tr>
+			<c:forEach items="${shelteradoptlist }" var="list" varStatus="stat">
+				<tr>
+					<td class="data" style="width:360px">
+						${list.member_id}
+					</td>
+					<td class="data" style="width:200px;"><a href="../adopt/adetail.dog?noticeNo=${list.dog_no }">${list.dog_no }</a></td>
+					<td class="data">
+						<fmt:formatDate value="${list.adopt_date }" pattern="yyyy-MM-dd" var="day"/>
+						${day }
+					</td>
+					<td class="data">${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }</td>
+					<td>
+						<a href="../adopt/img/${list.adopt_file }">신청서 보기</a>
+					</td>
+					<td class="data">
+						<c:if test="${list.adopt_etc==0 }">
+							<input class="g_btn" type="button" value="승인" onclick="changeEtc('${list.dog_no}', 2)">
+							<input class="g_btn" type="button" value="거부" onclick="changeEtc('${list.dog_no}', 1)">
+						</c:if>
+						<c:if test="${list.adopt_etc==2 }">
+							<input class="g_btn" type="button" value="완료" onclick="changeEtc('${list.dog_no}', 3)">
+						</c:if>
+						<c:if test="${list.adopt_etc==3 }">
+							
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

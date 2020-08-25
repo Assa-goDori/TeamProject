@@ -26,4 +26,15 @@ public class AdoptDao {
 		return template.getMapper(AdoptMapper.class).getMyadoptlist(id);
 	}
 
+	public List<AdoptSign> getShelteradoptlist(String id) {
+		return template.getMapper(AdoptMapper.class).getShelteradoptlist(id);
+	}
+
+	public void updateEtc(String dog_no, String state) {
+		param.clear();
+		param.put("dog_no",dog_no);
+		param.put("adopt_etc", state);
+		template.getMapper(AdoptMapper.class).updateEtc(param);
+	}
+
 }

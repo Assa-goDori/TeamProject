@@ -361,6 +361,15 @@ public class MemberController {
 		return mav;
 	}
 	
+	@GetMapping("shelteradoptMypage")
+	public ModelAndView shelteradoptMypageMainchks(String type, String id, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<AdoptSign> shelteradoptlist = service.getShelteradoptlist(id);
+		mav.addObject("type", type);
+		mav.addObject("shelteradoptlist",shelteradoptlist);
+		return mav;
+	}
+	
 	@GetMapping("sheltervworkMypage")
 	public ModelAndView sheltervworkMypageMainchks(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
