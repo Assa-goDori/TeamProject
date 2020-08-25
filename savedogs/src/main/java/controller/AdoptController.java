@@ -68,9 +68,9 @@ public class AdoptController {
 	}
 
 	@RequestMapping("adetail")
-	public ModelAndView detail(String desertionNo) throws Exception {
+	public ModelAndView detail(String noticeNo) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		Adopt go = ApiExplorer.getDogJson(desertionNo);
+		Adopt go = ApiExplorer.getDogJson(noticeNo);
 		mav.addObject("go", go);
 		return mav;
 	}

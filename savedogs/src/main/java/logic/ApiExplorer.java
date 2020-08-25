@@ -121,7 +121,7 @@ public class ApiExplorer {
 		return sb.toString();
 	}
 
-	public static Adopt getDogJson(String desertionNo) throws Exception {
+	public static Adopt getDogJson(String noticeNo) throws Exception {
 		String result = getDogData();
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObj = (JSONObject) parser.parse(result);
@@ -138,7 +138,7 @@ public class ApiExplorer {
 		for (Adopt a : list) {
 			a.setKindCd(a.getKindCd().substring(4));
 			a.setSexCd(a.getSexCd() == "F" ? "암컷" : "수컷");
-			if (a.getDesertionNo().equals(desertionNo)) {
+			if (a.getNoticeNo().equals(noticeNo)) {
 				aa = a;
 			}
 		}
