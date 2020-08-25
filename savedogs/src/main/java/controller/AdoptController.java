@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.ShelterDao;
+import exception.AdoptException;
+import exception.BoardException;
 import logic.Adopt;
 import logic.AdoptSign;
 import logic.ApiExplorer;
 import logic.DogService;
+import logic.Member;
 import logic.Shelter;
 
 @Controller
@@ -106,7 +110,15 @@ public class AdoptController {
 				num = ss.getShelter_no();
 			}
 		}
-		a.setShelter_no(num);
+		
+		List<Member> sm = service.getMemberList();
+		for(Member m : sm) {
+			if(m.getShelter_no() == num) {
+				a.setShelter_no(num);
+			} else 
+				detail(a.getDog_no());
+				throw new AdoptException("보호소 관리자가 존재하지 않습니다. 해당 보호소로 문의 바랍니다.", "adetail.dog?noticeNo="+a.getDog_no());
+		}
 		a.setF(adopt_f);
 		service.adoptInsert(a, request);
 		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id="+a.getMember_id());

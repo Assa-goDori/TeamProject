@@ -34,7 +34,7 @@
           <td><a href="detail.dog?fund_no=${f.fund_no}">"${f.fund_subject}"</a></td></tr>
             <tr><td>"${f.sheltername}"</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.restdate}일 남음</td></tr>
-            <td>게이지바</td>
+            <td>게이지바 ${f.complete}</td>
         </table>
 		</c:forEach>
        <br>
