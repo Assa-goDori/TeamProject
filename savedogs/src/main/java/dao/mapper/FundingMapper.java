@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import logic.Board;
 import logic.Funding;
 
 public interface FundingMapper {
@@ -40,38 +41,26 @@ public interface FundingMapper {
 
 	int maxfund_no();
 
-    
     @Select({"<script>" ,
 		"select * ,datediff(end_date,now()) restdate from funding",
 		"<if test='fund_no != null'> where fund_no=${fund_no} </if>",
 		"<if test='member_id != null'> where member_id=#{member_id} </if>",
+		"<if test='startrow != null and limit != null'> where datediff(end_date,now()) > 0 order by datediff(end_date,now()) limit ${startrow},${limit} </if>",
+		
     "</script>"})
-List<Funding> select(Map<String, Object> param);
+     List<Funding> select(Map<String, Object> param);
 	
-	
-    @Select({"<script>" ,
-    		"select * ,datediff(end_date,now()) restdate from funding",
-    		"<if test='searchtype != null and searchcontent !=null' > where ${searchtype} like '%${searchcontent}%' </if>" ,
-            "<if test='num != null' > where num = #{num} </if>",
-          //"<if test='startrow != null and limit != null' > order by limit #{startrow}, #{limit} </if>",             
-    		"</script>"})
-	List<Funding> selectlist(Map<String, Object> param); //검색부분
-
-
-    
-    
-    @Select({"<script>",
-		   " select count(*) from funding" ,
-		   "<if test='searchtype != null and searchcontent !=null' > where ${searchtype} like '%${searchcontent}%' </if>" ,
-	    "</script>"})
-	int count(Map<String, Object> param);
-    
     @Delete( "delete from funding where fund_no = ${fund_no}") 
 	void funddelete(Map<String, Object> param);
 
     @Select("select * from funding WHERE end_date > NOW() order BY end_date asc")
 	List<Funding> duefunding();
+
+
+    @Select(" SELECT COUNT(*) FROM funding where datediff(end_date,now()) > 0")
+	int listcount();
 	
+    
  
 	/*  //shelter_name 가져오기 shelter_no 겹침
 	 * @Select({"<script>" "select shelter_name, "<if test='shelter_no != null'> }

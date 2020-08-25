@@ -297,10 +297,6 @@ public class DogService {
 //-------------------펀딩관련 시작-------------------------------------------------
 		   
 	
-			  public List<Funding> getFundingList() { 
-				  return fundingDao.list();
-			  }
-			 
 
 		   public void fundCreate(Funding funding, HttpServletRequest request) { 
 		      if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
@@ -330,14 +326,13 @@ public class DogService {
 			fundlistDao.applyinsert(fundinglist);
 		}
 
-		public int boardcount(String searchtype, String searchcontent) {
-			return fundingDao.count(searchtype,searchcontent);
-		}
-		public List<Funding> boardList(Integer pageNum, int limit,String searchtype, String searchcontent) {
-			return fundingDao.list(pageNum, limit, searchtype, searchcontent);
+		public List<Funding> boardList(Integer pageNum, int limit) {
+			return fundingDao.list(pageNum, limit);
 		}
 
-	
+		public int boardcount() {
+			return fundingDao.listcount();
+		}
 	
 		
 		
@@ -565,6 +560,8 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+	
 
 
 		

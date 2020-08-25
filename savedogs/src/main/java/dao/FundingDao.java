@@ -17,9 +17,6 @@ public class FundingDao {
 	  private SqlSessionTemplate template;
 	  private Map<String,Object> param = new HashMap<>();
 	  
-	  public List<Funding> list() { //list() -> foreach items
-		  return template.getMapper(FundingMapper.class).select(null); 
-	  }
 	  
 	// fund_no 증가
 	  public int maxfundno() { return
@@ -58,24 +55,17 @@ public class FundingDao {
 		return template.getMapper(FundingMapper.class).duefunding();
 	}
 	
-	public int count(String searchtype, String searchcontent) {
-		param.clear();
-		param.put("searchtype", searchtype);
-		param.put("searchcontent", searchcontent);
-	return template.getMapper(FundingMapper.class).count(param);
-}
-public List<Funding> list(Integer pageNum, int limit, String searchtype, String searchcontent) {
+public List<Funding> list(Integer pageNum, int limit) {
 	param.clear();
 	param.put("startrow", (pageNum-1) * limit);
     param.put("limit",limit);
-	param.put("searchtype", searchtype);
-	param.put("searchcontent", searchcontent);
 	return template.getMapper(FundingMapper.class).select(param);
 }
-	
-	
-	
-	
+
+
+public int listcount() {
+	return template.getMapper(FundingMapper.class).listcount();
+}
 	
 
 	/*
