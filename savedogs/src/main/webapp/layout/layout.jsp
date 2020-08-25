@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="item">
-                <div class="slider-img"> <img src="${path }/images/ss3.PNG" style="width: 80%; height: 20%; margin-left : 10%;"></div>
+                <div class="slider-img" onclick="directpage('item','list')"> <img src="${path }/images/ss3.PNG" style="width: 80%; height: 20%; margin-left : 10%;"></div>
                 <div class="container">
                 </div>
             </div>
