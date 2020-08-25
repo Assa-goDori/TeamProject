@@ -134,7 +134,7 @@
 			</c:forEach>
 		</select>
 		<input type="button" value="출력" onclick="showgraph()">
-		<div id="canvas">
+		<div id="vworkgraph">
 			<canvas id="canvas" style="width:100%;"></canvas>
 		</div>
 	</div>
