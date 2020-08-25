@@ -68,8 +68,7 @@
 					 					</tr>
 					 					<tr style="height: 15%;">
 				 							<td width="100%" align="center"> 
-				 								<input style="width: 100%;" type="submit" value="장바구니" >
-				 								<!-- onclick="window.open('../cart/cartAdd.dog?item_no=${item_no}&item_each=${item_each}','','width=500, height=250, left=150,top=150')" -->
+				 								<input style="width: 100%;" type="submit" class="s_btn" value="장바구니" >
 				 							</td>
 				 						</tr>
 				 						

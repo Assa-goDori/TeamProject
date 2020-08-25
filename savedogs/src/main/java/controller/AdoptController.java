@@ -45,7 +45,8 @@ public class AdoptController {
 		if(kind == null || kind.trim().equals(""))
 			kind = null;
 		int limit = 16; // 한 페이지에 보여질 게시물 건수
-		int listcount = 300; // 등록 게시물 건수
+		long totalcount = (long) ApiExplorer.getTotalCount(state, kind, pageNo);
+		long listcount = totalcount; // 등록 게시물 건수
 		int maxpage = (int)((double) listcount / limit + 0.95);
 		int startpage = (int)((pageNo / 10.0 + 0.9) - 1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -60,7 +61,7 @@ public class AdoptController {
 			mav.addObject("go", go);
 			mav.setViewName("/adopt/amain");
 		} catch (Exception e) {
-			e.printStackTrace();
+		//	e.printStackTrace();
 			String message = "검색결과가 없습니다.";
 			mav.addObject("message", message);
 		}
@@ -97,7 +98,6 @@ public class AdoptController {
 		} else if (split2 != "") {
 			co = split2.concat(" " + careNm); // 구로구 구디보호소
 		}
-		System.out.println(co);
 
 		ModelAndView mav = new ModelAndView();
 		List<Shelter> hap = service.getHaplist();
@@ -108,7 +108,6 @@ public class AdoptController {
 			}
 		}
 		a.setShelter_no(num);
-		System.out.println(a);
 		service.adoptInsert(a, request);
 		mav.setViewName("redirect:../member/adoptMypage.dog?type=4");
 		return mav;

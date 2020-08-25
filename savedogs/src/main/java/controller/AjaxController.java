@@ -40,4 +40,19 @@ public class AjaxController {
 		json.append("]");
 		return json.toString();
 	}
+	
+	@RequestMapping(value="fundgraph", produces="text/plain; charset=UTF8")
+	public String fundgraph(String year, String member_id) {
+		Map<String, Object> map = service.fundgraph(year, member_id);
+		StringBuilder json = new StringBuilder("[");
+		int i = 0;
+		for(Map.Entry<String,Object> me : map.entrySet()) {
+			json.append("{\"m\":\""+me.getKey() + "\"," + "\"cnt\":\""+me.getValue()+"\"}");
+			i++;
+			if(i<map.size())
+				json.append(",");
+		}
+		json.append("]");
+		return json.toString();
+	}
 }

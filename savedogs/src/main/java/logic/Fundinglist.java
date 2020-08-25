@@ -10,7 +10,14 @@ public class Fundinglist {
 	private Date fund_date;
 	private int fund_cost;
 	private String member_email;
-	
+	private String year;
+		
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
 	public String getMember_email() {
 		return member_email;
 	}

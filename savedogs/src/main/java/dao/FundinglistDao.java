@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.FundingMapper;
 import dao.mapper.FundlistMapper;
+import dao.mapper.vworklistMapper;
 import logic.Funding;
 import logic.Fundinglist;
 
@@ -42,5 +43,14 @@ public class FundinglistDao {
 		template.getMapper(FundlistMapper.class).applyinsert(fundinglist);
 	}
 
+	public List<Fundinglist> getfundYearlist(String id) {
+		return template.getMapper(FundlistMapper.class).getfundYearlist(id);
 	}
-	
+
+	public List<Map<String,Object>> fundgraph(String year, String member_id) {
+		param.clear();
+		param.put("year", year);
+		param.put("member_id", member_id);
+		return template.getMapper(FundlistMapper.class).fundgraph(param);
+	}
+}

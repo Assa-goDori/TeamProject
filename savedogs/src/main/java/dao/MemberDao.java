@@ -64,4 +64,12 @@ public class MemberDao {
 		param.put("member_auth", member_auth);
 		template.getMapper(MemberMapper.class).updateAuth(param);
 	}
+
+	public Idpw getFindPW(String id, String tel, String email) {
+		param.clear();
+		param.put("member_tel",tel);
+		param.put("member_email",email);
+		param.put("member_id",id);
+		return template.getMapper(MemberMapper.class).selectmem(param).get(0);
+	}
 }
