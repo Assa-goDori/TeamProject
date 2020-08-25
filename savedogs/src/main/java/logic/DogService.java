@@ -211,13 +211,21 @@ public class DogService {
 		}
 		return map;
 	}
+	
+	public Map<String, Object> shopallgraph(String year) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : itemDao.shopallgraph(year)) {
+			map.put((String)m.get("m"), m.get("cnt"));
+		}
+		return map;
+	}
 
 	public List<Item> getShopall() {
 		return itemDao.getShopall();
 	}
 	
 	public void updateAuth(String member_id, String member_auth) {
-		//memberDao.updateAuth(member_id, member_auth);
+		memberDao.updateAuth(member_id, member_auth);
 	}
 	
 	public List<AdoptSign> getMyadoptlist(String id) {

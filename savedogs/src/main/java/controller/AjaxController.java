@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Calendar;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,6 @@ public class AjaxController {
 	@RequestMapping(value="shopgraph", produces="text/plain; charset=UTF8")
 	public String shopgraph(String name) {
 		Map<String, Object> map = service.shopgraph(name);
-		System.out.println(map);
 		StringBuilder json = new StringBuilder("[");
 		int i = 0;
 		for(Map.Entry<String,Object> me : map.entrySet()) {
@@ -73,9 +73,10 @@ public class AjaxController {
 	}
 	
 	@RequestMapping(value="shopallgraph", produces="text/plain; charset=UTF8")
-	public String shopallgraph(String name) {
-		Map<String, Object> map = service.shopgraph(name);
-		System.out.println(map);
+	public String shopallgraph() {
+		Calendar c = Calendar.getInstance();
+		int year = c.get(Calendar.YEAR);
+		Map<String, Object> map = service.shopallgraph(year+"");
 		StringBuilder json = new StringBuilder("[");
 		int i = 0;
 		for(Map.Entry<String,Object> me : map.entrySet()) {
