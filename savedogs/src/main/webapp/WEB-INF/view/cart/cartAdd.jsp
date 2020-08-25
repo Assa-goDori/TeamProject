@@ -27,7 +27,7 @@
 		<table style="width: 100%;">
 			<tr>
 				<td style="width: 50%;"><input style="margin-left: 33%;" class="s_btn" type="button" value="예" onclick="Ilist()"></td>
-				<td style="width: 50%;"><input style="margin-left: 33%;" class="s_btn" type="button" value="아니오" onclick="cart()"></td>
+				<td style="width: 50%;"><input style="margin-left: 33%;" class="g_btn" type="button" value="아니오" onclick="cart()"></td>
 			</tr>
 		</table>
 	</form>

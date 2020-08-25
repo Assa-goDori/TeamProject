@@ -278,7 +278,7 @@ public class VworkController {
 		} catch(Exception e) {
 			throw new VworkException("이미 해당 봉사를 신청했습니다.","vdetail.dog?vwork_no="+vwork_no);
 		}		
-		mav.setViewName("redirect:vmain.dog"); //해당 멤버의 마이페이지(봉사신청)
+		mav.setViewName("redirect:../member/vworkMypage.dog?type=2&id="+mem.getMember_id()); //해당 멤버의 마이페이지(봉사신청)
 		return mav;
 	}
 	

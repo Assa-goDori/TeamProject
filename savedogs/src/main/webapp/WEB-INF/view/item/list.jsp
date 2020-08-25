@@ -29,7 +29,7 @@
 	<br>
 	<div align="right">
 		<form action="../cart/cartView.dog">
-			<input type="submit" value="장바구니">
+			<input type="submit" class="s_btn" value="장바구니">
 		</form>
 	</div>
 	<br>
