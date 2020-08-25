@@ -23,5 +23,11 @@ public interface FundlistMapper {
 	@Insert(" insert into fundinglist (fund_no, fund_id, fund_date, fund_cost)"
 			   + " values (#{fund_no}, #{fund_id}, now(), #{fund_cost} )")
 	  void applyinsert(Fundinglist fundinglist);
+
+	@Select("select year(fund_date) year from fundinglist where fund_id=#{id} group by year")
+	List<Fundinglist> getfundYearlist(String id);
+
+	@Select("select concat(month(fund_date),'월') m, count(*) cnt from fundinglist where fund_id=#{member_id} and year(fund_date)=${year}")
+	List<Map<String, Object>> fundgraph(Map<String, Object> param);
 	
 }

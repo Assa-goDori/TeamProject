@@ -184,9 +184,21 @@ public class DogService {
 		return vworklistDao.getYearlist(id);
 	}
 	
+	public List<Fundinglist> getfundYearlist(String id) {
+		return fundlistDao.getfundYearlist(id);
+	}
+	
 	public Map<String, Object> vworkgraph(String year, String member_id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		for(Map<String, Object> m : vworklistDao.vworkgraph(year, member_id)) {
+			map.put((String)m.get("m"), m.get("cnt"));
+		}
+		return map;
+	}
+	
+	public Map<String, Object> fundgraph(String year, String member_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : fundlistDao.fundgraph(year, member_id)) {
 			map.put((String)m.get("m"), m.get("cnt"));
 		}
 		return map;
@@ -536,6 +548,7 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
+		
 
 		
 
