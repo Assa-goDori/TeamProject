@@ -48,7 +48,7 @@
 	<form>
 		<table>
 			<tr>
-				<td><input type="button" onclick="location.href='checkout.dog'" value="구매하러가기"></td>
+				<td><input type="button" class="s_btn" style="width: 200px;" onclick="location.href='checkout.dog'" value="구매하러가기"></td>
 			</tr>
 		</table>
 	</form>
