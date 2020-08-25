@@ -287,6 +287,8 @@ select {
 	if(${param.pageNo % 10} == 0) { // 0, 10
 		if(${param.pageNo / 10} == 1) // pageNo(10) : 0(이전) 
 			$(".pagination > li").eq(10).addClass("active"); // 10
+		else if(${param.pageNo / 10} == 2)
+			$(".pagination > li").eq(20).addClass("active");
 		else // pageNo(0) : 0
 			$(".pagination > li").eq(1).addClass("active"); // 1
 	}
