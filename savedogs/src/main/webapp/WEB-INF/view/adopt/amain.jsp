@@ -244,7 +244,7 @@ select {
 					<c:forEach var="item" items="${go}">
 						<div
 							style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-							<a href="adetail.dog?desertionNo=${item.desertionNo}"
+							<a href="adetail.dog?noticeNo=${item.noticeNo}"
 								class="imghover"><img src="${item.popfile}"
 								style="width: 350px; height: 350px;"></a>
 							<div style="height: 5px"></div>

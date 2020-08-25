@@ -211,13 +211,21 @@ public class DogService {
 		}
 		return map;
 	}
+	
+	public Map<String, Object> shopallgraph(String year) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : itemDao.shopallgraph(year)) {
+			map.put((String)m.get("m"), m.get("cnt"));
+		}
+		return map;
+	}
 
 	public List<Item> getShopall() {
 		return itemDao.getShopall();
 	}
 	
 	public void updateAuth(String member_id, String member_auth) {
-		//memberDao.updateAuth(member_id, member_auth);
+		memberDao.updateAuth(member_id, member_auth);
 	}
 	
 	public List<AdoptSign> getMyadoptlist(String id) {
@@ -297,10 +305,6 @@ public class DogService {
 //-------------------펀딩관련 시작-------------------------------------------------
 		   
 	
-			  public List<Funding> getFundingList() { 
-				  return fundingDao.list();
-			  }
-			 
 
 		   public void fundCreate(Funding funding, HttpServletRequest request) { 
 		      if(funding.getPicture() != null && !funding.getPicture().isEmpty()) {
@@ -330,14 +334,13 @@ public class DogService {
 			fundlistDao.applyinsert(fundinglist);
 		}
 
-		public int boardcount(String searchtype, String searchcontent) {
-			return fundingDao.count(searchtype,searchcontent);
-		}
-		public List<Funding> boardList(Integer pageNum, int limit,String searchtype, String searchcontent) {
-			return fundingDao.list(pageNum, limit, searchtype, searchcontent);
+		public List<Funding> boardList(Integer pageNum, int limit) {
+			return fundingDao.list(pageNum, limit);
 		}
 
-	
+		public int boardcount() {
+			return fundingDao.listcount();
+		}
 	
 		
 		
@@ -571,7 +574,6 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
-		
 
 
 		

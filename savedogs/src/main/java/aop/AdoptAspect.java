@@ -22,7 +22,7 @@ public class AdoptAspect {
 		Member loginadmin = (Member) session.getAttribute("loginadmin");
 		if (loginmem == null) {
 			if (loginsmem != null || loginadmin != null) {
-				throw new LoginException("일반 회원만 이용 가능합니다", "../main.dog");
+				throw new LoginException("일반 회원만 이용 가능합니다", "../adopt/amain.dog");
 			}
 			else
 				throw new LoginException("로그인 후 이용 가능합니다", "../member/login.dog");

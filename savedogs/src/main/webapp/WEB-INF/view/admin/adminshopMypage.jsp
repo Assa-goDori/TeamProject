@@ -25,7 +25,7 @@
 	}
 	
 	function drawgraph2() {
-		$.ajax("../ajax/shopgraph2.shop", {	//최근 7일간 게시물 등록 건수
+		$.ajax("../ajax/shopallgraph.dog", {
 			success : function(data) {
 				shopgraph(data);
 			},
@@ -174,7 +174,7 @@
 			</c:forEach>
 		</select>
 		<input type="button" value="출력" onclick="drawgraph()">
-		<input type="button" value="전체 월별 판매금액량 보기" onclick="">
+		<input type="button" value="전체 월별 판매금액량 보기" onclick="drawgraph2()">
 		<div id="shopgraph" style="margin:30%; width:40%;">
 			<canvas id="canvas" style="width:50%"></canvas>
 		</div>
