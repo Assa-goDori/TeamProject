@@ -60,11 +60,14 @@ public interface BoardMapper {
 	List<Reply> getReplyList(String board_no);
 
 	@Insert("insert into reply (board_replyno, board_no, member_id, board_comment, board_regdate) values (#{board_replyno}, #{board_no}, #{member_id}, #{board_comment}, now())")
-	String insertReply(Reply reply);
+	void insertReply(Reply reply);
 
 	@Select("select ifnull(max(board_replyno),0) from reply")
 	int getRmax();
 
+	@Delete("delete from reply where board_replyno=#{rno}")
+	void deleteReply(String rno);
+	
 	@Select({"<script>",
 		"select board_no,member_id,subject,content,file1 fileurl,regdate,readcnt,grp,grplevel,grpstep,type from board ",
 		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
@@ -97,6 +100,8 @@ public interface BoardMapper {
 
 	@Update("update board set grpstep=grpstep+1 where grp = #{grp} and grpstep > #{grpste}")
 	void updateGrpStep(Map<String, Object> param);
+
+	
 
 
 }

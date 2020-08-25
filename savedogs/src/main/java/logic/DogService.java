@@ -499,14 +499,17 @@ public class DogService {
 			return boardDao.getReplyList(board_no);
 		}
 
-		public String insertReply(Reply reply) {
-			return boardDao.insertReply(reply);
+		public void insertReply(Reply reply) {
+			boardDao.insertReply(reply);
 		}
 
 		public int getRmax() {
 			return boardDao.getRmax();
 		}		
 		
+		public void deleteReply(String rno) {
+			boardDao.deleteReply(rno);
+		}
 		
 //-------------------입양 관련 시작------------------------------------------------
 		public void adoptInsert(AdoptSign a, HttpServletRequest request) {
@@ -535,6 +538,8 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+		
 
 
 		
