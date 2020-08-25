@@ -24,6 +24,16 @@
 		})
 	}
 	
+	function drawgraph2() {
+		$.ajax("../ajax/shopgraph2.shop", {	//최근 7일간 게시물 등록 건수
+			success : function(data) {
+				shopgraph(data);
+			},
+			error : function(e) {
+				alert("서버 오류 : " + e.status);
+			}
+		})
+	}
 
 	var randomColorFactor = function() {
 		return Math.round(Math.random()*255);
