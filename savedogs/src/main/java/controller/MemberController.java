@@ -183,6 +183,8 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		List<Fundinglist> fundlist = service.getMyfundlist(id);
 		List<Fundinglist> endfundlist = service.getMyendfundlist(id);
+		List<Fundinglist> yearlist = service.getfundYearlist(id);
+		mav.addObject("yearlist", yearlist);
 		mav.addObject("fundlist", fundlist);
 		mav.addObject("endfundlist", endfundlist);
 		return mav;
