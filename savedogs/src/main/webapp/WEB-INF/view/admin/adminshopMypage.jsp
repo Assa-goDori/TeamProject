@@ -24,17 +24,7 @@
 		})
 	}
 	
-	function drawgraph2() {
-		$.ajax("../ajax/shopallgraph.dog",
-			success : function(data) {
-				shopgraph(data);
-			},
-			error : function(e) {
-				alert("ajax 오류");
-			}
-		)
-	}
-	
+
 	var randomColorFactor = function() {
 		return Math.round(Math.random()*255);
 	}
@@ -174,7 +164,7 @@
 			</c:forEach>
 		</select>
 		<input type="button" value="출력" onclick="drawgraph()">
-		<input type="button" value="전체 월별 판매금액량 보기" onclick="drawgraph2()">
+		<input type="button" value="전체 월별 판매금액량 보기" onclick="">
 		<div id="shopgraph" style="margin:30%; width:40%;">
 			<canvas id="canvas" style="width:50%"></canvas>
 		</div>
