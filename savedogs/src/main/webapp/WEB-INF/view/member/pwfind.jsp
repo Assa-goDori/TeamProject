@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 <link rel='stylesheet' href='../css/savedogs_exc.css' />
 </head>
 <body>
 	<div align="center">
-		<h2>아이디 찾기</h2>
+		<h2>비밀번호 찾기</h2>
 	</div>
 	<hr>
 	<form action="pwfind.dog" method="post">

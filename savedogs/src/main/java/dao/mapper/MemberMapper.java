@@ -59,7 +59,7 @@ public interface MemberMapper {
 	@Select({
 			"<script>",
 			"SELECT member_id, member_pass FROM member WHERE member_tel = #{member_tel} and member_email = #{member_email}",
-			"<if test='member_id != null'> and member_id = #{member_id},</if>",
+			"<if test='member_id != null'> and member_id = #{member_id} </if>",
 			"</script>"})
 	List<Idpw> selectmem(Map<String, Object> param);
 
