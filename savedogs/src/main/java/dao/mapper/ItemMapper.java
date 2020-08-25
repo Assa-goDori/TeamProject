@@ -40,4 +40,14 @@ public interface ItemMapper {
 
 	@Delete("delete from item where item_no=${item_no}")
 	void DeleteItem(Map<String, Object> param);
+
+	@Select("SELECT concat(MONTH(buy_date), '월') m, sum(item_each) cnt" +
+			" FROM buylist bl JOIN buydetail bd" +
+			" ON bl.buy_no = bd.buy_no" +
+			" WHERE item_no = (" +
+			" SELECT item_no" +
+			" FROM item" +
+			" WHERE item_name=#{name})"
+			)
+	List<Map<String, Object>> shopgraph(String name);
 }
