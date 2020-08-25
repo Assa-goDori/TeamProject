@@ -482,6 +482,11 @@ public class DogService {
 			return boardDao.qnalist(pageNum, limit,searchtype,searchcontent,type);
 		}
 		
+		public List<Board> postqnalist(Integer pageNum, int limit, String searchtype, String searchcontent, String type) {
+			
+			return boardDao.postqnalist(pageNum, limit,searchtype,searchcontent,type);
+		}
+		
 		public int qnacnt(String searchtype, String searchcontent, String type) {
 			return boardDao.qnacnt(searchtype,searchcontent,type);
 		}
@@ -552,6 +557,8 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+		
 
 
 //-------------------메인관련 끝-------------------------------------------------

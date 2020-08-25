@@ -122,6 +122,8 @@ public class BoardController {
 		return mav;
 	}
 
+	
+	
 	@RequestMapping("qnaList")
 	public ModelAndView qnalist(Integer pageNum,String searchtype, String searchcontent,String type) {
 		ModelAndView mav = new ModelAndView();
@@ -137,6 +139,7 @@ public class BoardController {
 		}
 		//검색 정보까지 집어넣기
 		int listcount = service.qnacnt(searchtype,searchcontent,type);  
+		System.out.println(searchtype);
 		List<Board> boardlist = service.qnalist(pageNum, limit,searchtype,searchcontent,type);
 		
 		int maxpage = (int)((double)listcount/limit + 0.95);
@@ -154,8 +157,11 @@ public class BoardController {
 		mav.addObject("listcount",listcount);
 		mav.addObject("boardlist",boardlist);
 		mav.addObject("boardno",boardno);
+		
 		return mav;
 	}
+	
+
 	
 	@RequestMapping("reviewList")
 	public ModelAndView reviewlist(Integer pageNum,String searchtype, String searchcontent,String type) {

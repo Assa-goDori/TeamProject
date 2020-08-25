@@ -101,6 +101,14 @@ public interface BoardMapper {
 	@Update("update board set grpstep=grpstep+1 where grp = #{grp} and grpstep > #{grpste}")
 	void updateGrpStep(Map<String, Object> param);
 
+	@Select({"<script>",
+		"select board_no,member_id,subject,content,file1 fileurl,regdate,readcnt,grp,grplevel,grpstep,type from board ",
+		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
+		
+		"<if test='startrow != null and limit != null'>order by grp desc, grpstep limit #{startrow}, #{limit} </if>",
+		"</script>"})
+	List<Board> postqnalist(Map<String, Object> param);
+
 	
 
 
