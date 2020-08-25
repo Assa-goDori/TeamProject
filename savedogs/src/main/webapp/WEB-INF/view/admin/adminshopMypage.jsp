@@ -131,6 +131,7 @@
 		text-align:center;
 	}
 </style>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 	<div class="main_div" style="width: 100%;">
@@ -175,8 +176,8 @@
 		</select>
 		<input type="button" value="출력" onclick="drawgraph()">
 		<input type="button" value="전체 월별 판매금액량 보기" onclick="drawgraph2()">
-		<div id="shopgraph" style="margin:30%; width:40%;">
-			<canvas id="canvas" style="width:50%"></canvas>
+		<div id="main_div" align="center" style="width:50%; margin-left:25%">
+			<canvas id="canvas" style="width:50%; height:100%;"></canvas>
 		</div>
 	</div>
 </body>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 	<div style="width: 100%;">

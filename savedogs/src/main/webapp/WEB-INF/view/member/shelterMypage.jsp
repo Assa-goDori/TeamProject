@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>보호소관리자 마이페이지</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 		<div class="main_div" style="width: 100%;">

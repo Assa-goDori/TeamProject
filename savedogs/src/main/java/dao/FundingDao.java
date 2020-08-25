@@ -48,7 +48,7 @@ public class FundingDao {
 	public List<Funding> getwritelist2(String id) {
 		param.clear();
 		param.put("member_id", id);
-		return template.getMapper(FundingMapper.class).select(param); 
+		return template.getMapper(FundingMapper.class).getwritelist2(param); 
 	}
 
 	public List<Funding> duefunding() {
