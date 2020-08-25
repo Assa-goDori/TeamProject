@@ -70,12 +70,16 @@ public class BoardDao {
 		return template.getMapper(BoardMapper.class).getReplyList(board_no);
 	}
 
-	public String insertReply(Reply reply) {
-		return template.getMapper(BoardMapper.class).insertReply(reply);
+	public void insertReply(Reply reply) {
+		template.getMapper(BoardMapper.class).insertReply(reply);
 	}
 
 	public int getRmax() {
 		return template.getMapper(BoardMapper.class).getRmax();
+	}
+	
+	public void deleteReply(String rno) {
+		template.getMapper(BoardMapper.class).deleteReply(rno);
 	}
 
 	public int qnacnt(String searchtype, String searchcontent, String type) {
@@ -129,6 +133,8 @@ public class BoardDao {
 		template.getMapper(BoardMapper.class).updateGrpStep(param);
 		
 	}
+
+	
 
 
 
