@@ -308,7 +308,12 @@ public class DogService {
 			fundlistDao.applyinsert(fundinglist);
 		}
 
-		
+		public int boardcount(String searchtype, String searchcontent) {
+			return fundingDao.count(searchtype,searchcontent);
+		}
+		public List<Funding> boardList(Integer pageNum, int limit,String searchtype, String searchcontent) {
+			return fundingDao.list(pageNum, limit, searchtype, searchcontent);
+		}
 
 	
 	

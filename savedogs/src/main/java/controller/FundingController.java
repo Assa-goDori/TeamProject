@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,13 +89,51 @@ public class FundingController {
 		mav.setViewName("redirect:/funding/list.dog");
 		return mav;		
 	}	
-	 @RequestMapping("list") // /item/list.shop
-	  public ModelAndView list() {
-	  ModelAndView mav = new ModelAndView(); 
-	  List<Funding> fundinglist = service.getFundingList(); 
-	  mav.addObject("fundinglist",fundinglist); 
-	 return mav; 
+	
+	/*
+	 * @GetMapping("list") // /item/list.shop public ModelAndView list() {
+	 * ModelAndView mav = new ModelAndView(); List<Funding> fundinglist =
+	 * service.getFundingList(); mav.addObject("fundinglist",fundinglist); return
+	 * mav; }
+	 */
+	 
+	 
+	 @RequestMapping("list")
+	 public ModelAndView list(Integer pageNum, String searchtype, String searchcontent) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
+      ModelAndView mav = new ModelAndView();	
+      
+       if(pageNum == null || pageNum.toString().equals("")) {
+	   pageNum =1;
+      }
+       if(searchtype == null || searchcontent == null ||
+    	  searchtype.trim().equals("") ||
+    	  searchcontent.trim().equals("")) {
+    	  searchtype = null;
+    	  searchcontent = null;
+       }
+       
+        int limit = 10; //한 페이지에 보여질 게시물의 건수
+        int listcount = service.boardcount(searchtype,searchcontent); //등록 게시물 건수
+        List<Funding> boardlist = service.boardList(pageNum,limit,searchtype,searchcontent);
+        int maxpage = (int)((double)listcount/limit + 0.95);
+        int startpage = (int)((pageNum/10.0 + 0.9) - 1) * 10 + 1;
+        int endpage = startpage + 9;
+        if(endpage > maxpage) endpage = maxpage;
+        int boardno = listcount - (pageNum -1) * limit;
+        mav.addObject("pageNum", pageNum);
+        mav.addObject("maxpage", maxpage);
+        mav.addObject("startpage", startpage);
+        mav.addObject("endpage", endpage);
+        mav.addObject("listcount", listcount);
+        mav.addObject("boardlist", boardlist);
+        mav.addObject("boardno", boardno);
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        String today = sf.format(new Date());
+        mav.addObject("today", today);
+        return mav;
 	 }
+	 
+	 
 	 @GetMapping({"detail", "fundingapply"})
 	   public ModelAndView detail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
