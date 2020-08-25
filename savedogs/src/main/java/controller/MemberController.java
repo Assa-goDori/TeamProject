@@ -500,7 +500,7 @@ public class MemberController {
 		//업로드 파일의 이름
 		String orgFile = mf.getOriginalFilename();
 		//업로드 되는 위치
-		String path = "d:/20200224/spring/mailupload/";
+		String path = "d:/mailupload/";
 		File f = new File(path);
 		if(!f.exists()) f.mkdirs();
 		File f1 = new File(path + orgFile);	//업로드된 내용을 저장하는 파일
