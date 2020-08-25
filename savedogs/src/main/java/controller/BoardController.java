@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import exception.BoardException;
 import logic.Board;
 import logic.DogService;
+import logic.Member;
 import logic.Reply;
 
 @Controller
@@ -83,6 +84,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.getBoard(no);
 		mav.addObject("board",board);
+		System.out.println(board.getFile1());
+		System.out.println(board.getFileurl());
 		return mav;
 	}
 	
@@ -306,9 +309,14 @@ public class BoardController {
 		if(list.size()>0 ) {
 			for(Reply r : list) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getBoard_regdate());
-				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getBoard_comment()+
-						"<td><td rowspan='2'><c:if test='${sessionScope.loginmem.member_id == "+r.getMember_id()+
-						"}'><input type='button' value='삭제' onclick='replyDelete("+r.getBoard_replyno()+");'></c:if></td></tr>");
+				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getBoard_comment()+"</td><td rowspan='2'>");
+				//<c:if test='${sessionScope.loginmem.member_id == "+r.getMember_id()+"}'><input type='button' value='삭제' onclick='replyDelete("+r.getBoard_replyno()+");'></c:if>");
+				Member login = (Member)session.getAttribute("loginmem");
+				String login_id = login.getMember_id();
+				if(r.getMember_id().equals(login_id)) {
+					html.append("<input type='button' value='삭제' class='small_btn' onclick='replyDelete("+r.getBoard_replyno()+");'>");
+				}
+				html.append("</td></tr>");
 				html.append("<tr><td class='l_td' style='text-align:center;'>"+date+"</td></tr>");
 			}
 		} else {

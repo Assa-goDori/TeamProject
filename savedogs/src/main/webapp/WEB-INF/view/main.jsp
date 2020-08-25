@@ -151,7 +151,17 @@
     		<a href="funding/list.dog">더보기</a>
     	</div>
     	<c:forEach var="duefunding" items="${duefunding}" varStatus="stat">
-	    	<div align="left"><a href="funding/detail.dog?fund_no=${duefunding.fund_no}">${duefunding.fund_subject}</a></div>
+	    	<div align="left">
+
+<table style="width: 80%;">
+
+<tr><td colspan="2" width="100%"><a href="funding/detail.dog?fund_no=${duefunding.fund_no}">${duefunding.fund_subject}</a></td></tr>
+
+<tr><td width="80%"><input type="button" readonly="readonly" style="width: ${duefunding.complete}%"></td><td width="20%">${duefunding.complete}%</td></tr>
+
+</table>
+
+</div>
 	    </c:forEach>
  	 	
     </div>

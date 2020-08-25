@@ -28,7 +28,7 @@ public interface BoardMapper {
 			+ "(${board_no},#{member_id},#{subject},#{content},#{type},#{grp},#{grplevel},#{grpstep},now(),0,#{fileurl})")
 	void insertBoard(Board board);
 
-	@Select("select * from board where board_no = #{board_no}")
+	@Select("select board_no, member_id, subject, content, type, grp, grplevel, grpstep, regdate, readcnt, file1 fileurl from board where board_no = #{board_no}")
 	Board getBoard(String board_no);
 
 	@Select("select count(*) from board where type = #{type}")
