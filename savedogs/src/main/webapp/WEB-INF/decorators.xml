@@ -33,5 +33,6 @@
 		<pattern>/cart/cartAdd*</pattern>
 		<pattern>/item/soldout*</pattern>
 		<pattern>/item/delete*</pattern>
+		<pattern>/board/imgupload*</pattern>
 	</excludes>
 </decorators>

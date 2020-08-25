@@ -53,12 +53,14 @@ public interface FundingMapper {
     @Delete( "delete from funding where fund_no = ${fund_no}") 
 	void funddelete(Map<String, Object> param);
 
-    @Select("select * from funding WHERE end_date > NOW() order BY end_date asc")
-	List<Funding> duefunding();
 
 
     @Select(" SELECT COUNT(*) FROM funding where datediff(end_date,now()) > 0")
 	int listcount();
+
+    @Select("SELECT l.fund_no,f.end_date,f.fund_subject,if(ROUND(sum(l.fund_cost)*100/(f.fund_count))>100,100,ROUND(sum(l.fund_cost)*100/(f.fund_count))) 'complete' FROM funding f JOIN fundinglist l ON f.fund_no=l.fund_no WHERE f.end_date > NOW() GROUP BY l.fund_no order BY f.end_date ASC limit 0,4")
+    List<Funding> duefunding();
+
 	
     
  

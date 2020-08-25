@@ -68,4 +68,8 @@ public class ItemDao {
 		return template.getMapper(ItemMapper.class).shopgraph(name);
 	}
 
+	public List<Map<String,Object>> shopallgraph(String year) {
+		return template.getMapper(ItemMapper.class).shopallgraph(year);
+	}
+
 }

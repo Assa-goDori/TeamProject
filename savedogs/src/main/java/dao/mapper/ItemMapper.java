@@ -50,4 +50,13 @@ public interface ItemMapper {
 			" WHERE item_name=#{name})"
 			)
 	List<Map<String, Object>> shopgraph(String name);
+
+	@Select("SELECT concat(MONTH(buy_date), '월') m, sum(item_each)*i.item_price cnt" +
+			" FROM buylist bl JOIN buydetail bd" +
+			" ON bl.buy_no = bd.buy_no" +
+			" JOIN item i" +
+			" ON bd.item_no=i.item_no" +
+			" WHERE YEAR(buy_date)=#{year}"
+			)	
+	List<Map<String, Object>> shopallgraph(String year);
 }
