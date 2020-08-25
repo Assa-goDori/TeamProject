@@ -42,16 +42,15 @@ public interface FundingMapper {
 	int maxfund_no();
 
     @Select({"<script>" ,
-		"select f.fund_no, f.member_id, f.fund_subject, f.fund_count, f.sheltername, f.start_date, f.end_date , datediff(f.end_date,now()) restdate, if(ROUND(sum(l.fund_cost)*100/(f.fund_count))>100,100,ROUND(sum(l.fund_cost)*100/(f.fund_count))) 'complete' from funding f LEFT OUTER JOIN fundinglist l ON f.fund_no = l.fund_no",
+		"select f.fund_no, f.member_id, f.fund_subject, f.fund_count, f.sheltername, f.start_date, f.end_date, f.fund_pic, datediff(f.end_date,now()) restdate, ifnull(if(ROUND(sum(l.fund_cost)*100/(f.fund_count))>100,100,ROUND(sum(l.fund_cost)*100/(f.fund_count))),0) 'complete' from funding f left join fundinglist l ON f.fund_no = l.fund_no",
 		"<if test='fund_no != null'> where f.fund_no=${fund_no} </if>",
 		"<if test='member_id != null'> where f.member_id=#{member_id} </if>",
-		"<if test='startrow != null and limit != null'> where datediff(f.end_date,now()) > 0 order by datediff(f.end_date,now()) limit ${startrow},${limit} </if>",
+		"<if test='startrow != null and limit != null'> where datediff(f.end_date,now()) > 0 GROUP BY f.fund_no order by datediff(f.end_date,now()) limit ${startrow},${limit} </if>",
     "</script>"})
      List<Funding> select(Map<String, Object> param);
 	
-    @Delete( "delete from funding where fund_no = ${fund_no}") 
+    @Delete( "delete from funding where fund_no = ${fund_no}")
 	void funddelete(Map<String, Object> param);
-
 
 
     @Select(" SELECT COUNT(*) FROM funding where datediff(end_date,now()) > 0")

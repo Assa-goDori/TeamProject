@@ -102,7 +102,6 @@ function replyDelete(rno){
 			<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id}">
 			${sessionScope.loginmem.member_id} &nbsp;&nbsp;
 			<input type="text" name="board_comment" class="content_txt" style="width: 500px;">
-			
 			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">			
 	</form:form>
 				

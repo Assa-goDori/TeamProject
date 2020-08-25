@@ -11,13 +11,12 @@
 	document.searchform.pageNum.value=page; 
 	document.searchform.submit();
 	}
-</script>
-<!-- <link rel='stylesheet' href='../css/savedogs_main.css' /> -->
+</script><link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
-<div style="margin-left: 30%; width:40%;">
-	<div align="center">
-		<table style="width: 80%;">
+<div style="width: 40%; margin-left: 30%;" >
+	<div align="center" class="hw_div">
+		<table>
 			<tr>
 			    <td align="center">기부</td>
 				<td style="width: 50%;" align="center">
@@ -25,16 +24,22 @@
 			</tr>
 		</table>
 	</div>
+	</div>
+	<div style="width: 60%; margin-left: 20%;" >
 	 <hr>
+	 </div>
 <br>
+<div style="width: 40%; margin-left: 30%;" >
    <c:if test="${listcount > 0}">
    <c:forEach var="f" items="${boardlist}">
         <table>
-        <tr><td rowspan="4"><img src="img/${f.fund_pic}" onclick="location.href='detail.dog?fund_no=${f.fund_no}' style="width:250px;" align="center" alt="후원 배너 사진"></td>
+        <tr><td rowspan="4"><a href="detail.dog?fund_no=${f.fund_no}"><img src="img/${f.fund_pic}"  style="width:300px; height=:320px" align="center" alt="후원 배너 사진"></a></td>
           <td><a href="detail.dog?fund_no=${f.fund_no}">"${f.fund_subject}"</a></td></tr>
             <tr><td>"${f.sheltername}"</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.restdate}일 남음</td></tr>
-            <td>게이지바 ${f.complete}</td>
+            <td width="60%">
+            <input type="button" readonly="readonly" style="width: ${f.complete}%" ></td>
+            <td width="10%">${f.complete}%</td>
         </table>
 		</c:forEach>
        <br>
