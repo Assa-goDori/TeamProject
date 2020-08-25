@@ -7,6 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>My 봉사</title>
+<style type="text/css">
+	h3 {
+		text-align: center;
+	}
+	body {
+	width: 100%;
+	margin: 0 auto;
+	width: 100%;
+	min-width: 100%;
+	text-align: center;
+	}
+</style>
 <!-- calendar 관련 -->
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -77,12 +89,22 @@
 	.data {
 		text-align: center;
 	}
+	.main_div{
+	padding-top: 50px;
+	display: inline-block;	
+	width:80%;
+	}
+	td{
+	text-align: left;
+	padding: 7px;
+	}
 </style>
 </head>
 <body>
-	<div class="maiv_div" style="width: 100%;">
-		<div align="center" style="width: 100%; margin-left: 45%;">
-			<table style="width: 100%;">
+	<div class="main_div" align="center">
+		
+		<div align="center">
+			<table>
 				<tr>
 					<td id="tab1" class="tab" style="width: 50%;" align="center">
 						<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">봉사 캘린더</a>
@@ -91,25 +113,28 @@
 				</tr>
 			</table>
 		</div>
-		<div id="minfo" class="info" style="width:100%;">
-			<div class="cal_div" >
+		
+		<div id="minfo" class="info">
+			<div class="cal_div">
     			<div id="calendar" style="width: 800px; hegiht: 1000px;"></div>
    			</div>
 		</div>
-		<div id="oinfo" class="info" style="display:none; width:100%;">
+		
+		<div id="oinfo" class="info" style="display:none;">
 			<c:if test="${empty writelist }">
 				<h3>작성한 봉사가 없습니다.</h3>
 			</c:if>
+			
 			<c:if test="${!empty writelist }">
-			<h3>작성한 봉사리스트</h3>
-			<hr>
-			<table>
-				<tr>
-					<th>봉사날짜</th>
-					<th>모집인원</th>
-					<th>상태</th>
-				</tr>
-				<c:forEach items="${writelist }" var="list">
+				<h3>작성한 봉사리스트</h3>
+				<hr>
+				<table>
+					<tr>
+						<th>봉사날짜</th>
+						<th>모집인원</th>
+						<th>상태</th>
+					</tr>
+					<c:forEach items="${writelist }" var="list">
 					<tr>
 						<td class="data">
 							<fmt:formatDate value="${list.vwork_date }" pattern="yyyy-MM-dd" var="day"/>
@@ -120,10 +145,11 @@
 							${list.state>0?"모집중":"완료" }
 						</td>
 					</tr>
-				</c:forEach>
-			</table>
+					</c:forEach>
+				</table>
 			</c:if>
 		</div>
+		
 	</div>
 </body>
 </html>
