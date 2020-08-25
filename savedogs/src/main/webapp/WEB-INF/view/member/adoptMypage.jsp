@@ -82,7 +82,12 @@
 					<td class="data">${day }</td>
 					<td class="data" style="width:200px;"><a href="../adopt/adetail.dog?noticeNo=${list.dog_no }">${list.dog_no }</a></td>
 					<td class="data">${list.shelter_no }</td>
-					<td class="data">${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }</td>
+					<td class="data">
+						${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }
+						<c:if test="${list.adopt_etc==3 }">
+							<a href="../board/reviewList.dog?type=0">입양후기 작성</a>
+						</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 
@@ -94,10 +95,11 @@ public class MemberController {
 			mav.setViewName("redirect:login.dog");
 		} catch(DataIntegrityViolationException e) {
 			e.printStackTrace();
-			bresult.reject("error.duplicate.user");
+			bresult.rejectValue("member_id", "error.duplicate.user");
 			mav.getModel().putAll(bresult.getModel());
 		} catch(Exception e) {
 			e.printStackTrace();
+			bresult.reject("error.input.member");
 			mav.getModel().putAll(bresult.getModel());
 		}
 		return mav;
@@ -133,8 +135,13 @@ public class MemberController {
 		try {
 			service.smemberInsert(mem, request);
 			mav.setViewName("redirect:login.dog");
+		} catch(DataIntegrityViolationException e) {
+			e.printStackTrace();
+			bresult.rejectValue("member_id","error.duplicate.user");
+			mav.getModel().putAll(bresult.getModel());
 		} catch(Exception e) {
 			e.printStackTrace();
+			bresult.reject("error.input.member");
 			mav.getModel().putAll(bresult.getModel());
 		}
 		return mav;
@@ -376,6 +383,24 @@ public class MemberController {
 		List<Vwork> writelist = service.getwritelist(id);		
 		mav.addObject("writelist", writelist);
 		mav.addObject("type", type);
+		
+		//calendar 관련 정보 불러오기
+		HashSet<String> hashSet = new HashSet<>(); 
+		Member mem = (Member)session.getAttribute("loginsmem");
+		hashSet = service.sheltervwork(mem.getShelter_no());
+		StringBuilder json = new StringBuilder("[");
+		int i = 0;
+		for(String h : hashSet) {
+			json.append("{\"start\":\""+h +"\",");
+			json.append("\"title\":\"봉사신청\",");
+			json.append("\"color\":\"#9EE2DA\"},");
+			i++;
+		}
+		if(i<hashSet.size()) json.append(",");	
+		json.append("]");
+		System.out.println(json.toString());
+		mav.addObject("json", json.toString().trim());
+		
 		return mav;
 	}
 	
