@@ -149,7 +149,7 @@ public class AdminController {
 //			service.deleteAllList();
 //			service.insertInit();
 			service.insertSlist(data);
-			mav.setViewName("redirect:adminMypage.dog");
+			mav.setViewName("redirect:adminMypage.dog?type=1&id=admin");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

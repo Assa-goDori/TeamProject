@@ -419,7 +419,7 @@ public class MemberController {
 	@GetMapping("shelterfundMypage")
 	public ModelAndView shelterfundMypageMainchks(String type, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		List<Funding> writelist = service.getwritelist2(id);	
+		List<Funding> writelist = service.getwritelist2(id);
 		mav.addObject("writelist", writelist);
 		mav.addObject("type", type);
 		return mav;

@@ -131,6 +131,7 @@
 		text-align:center;
 	}
 </style>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 	<div class="main_div" style="width: 100%;">
