@@ -183,6 +183,8 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		List<Fundinglist> fundlist = service.getMyfundlist(id);
 		List<Fundinglist> endfundlist = service.getMyendfundlist(id);
+		List<Fundinglist> yearlist = service.getfundYearlist(id);
+		mav.addObject("yearlist", yearlist);
 		mav.addObject("fundlist", fundlist);
 		mav.addObject("endfundlist", endfundlist);
 		return mav;
@@ -498,7 +500,7 @@ public class MemberController {
 		//업로드 파일의 이름
 		String orgFile = mf.getOriginalFilename();
 		//업로드 되는 위치
-		String path = "d:/20200224/spring/mailupload/";
+		String path = "d:/mailupload/";
 		File f = new File(path);
 		if(!f.exists()) f.mkdirs();
 		File f1 = new File(path + orgFile);	//업로드된 내용을 저장하는 파일
@@ -514,12 +516,18 @@ public class MemberController {
 	}
 	
 	@PostMapping("idfind")
-	private ModelAndView idfind(String email,String tel) {
-		ModelAndView mav =  new ModelAndView();
+	public ModelAndView idfind(String email, String tel) {
+		ModelAndView mav =  new ModelAndView("member/id");
 		Idpw member = service.getFindID(tel,email);
-		System.out.println(member.getMember_id());
-//		mav.addObject(list);
-//		mav.setViewName("id");
+		mav.addObject("id", member.getMember_id());
+		return mav;
+	}
+	
+	@PostMapping("pwfind")
+	public ModelAndView pwfind(String id,String email, String tel) {
+		ModelAndView mav =  new ModelAndView("member/pw");
+		Idpw member = service.getFindPW(id,tel,email);
+		mav.addObject("pw", member.getMember_pass());
 		return mav;
 	}
 }

@@ -55,7 +55,6 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();
 		try{
 			Item item = service.itemselect(item_no);
-			System.out.println(item);
 			mav.addObject("item",item);
 			return mav;
 		}catch (Exception e) {

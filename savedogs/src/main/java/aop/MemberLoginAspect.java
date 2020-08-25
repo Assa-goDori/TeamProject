@@ -177,6 +177,31 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
+	@Around //커뮤니티 회원 확인
+	("execution(* controller.Board*.chkm*(..)) && args(.., session)")
+	public Object BoardMemCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("회원만 가능한 거래입니다.","../main.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	@Around //커뮤니티 관리자 확인
+	("execution(* controller.Board*.chkadminsmem*(..)) && args(.., session)")
+	public Object BoardSmemCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {		
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+		if(loginsmem == null && loginadmin == null) {
+			throw new LoginException("관리자만 가능합니다.","../main.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
+	
 	
 	
 	

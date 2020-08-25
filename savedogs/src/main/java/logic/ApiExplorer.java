@@ -75,7 +75,6 @@ public class ApiExplorer {
 		// response
 		JSONObject j_response = (JSONObject) jsonObj.get("response"); // 리턴값 object -> json
 		JSONObject j_body = (JSONObject) j_response.get("body");
-//		j_body.get("totalCount");
 		JSONObject j_items = (JSONObject) j_body.get("items");
 		JSONArray a_item = (JSONArray) j_items.get("item");
 		a_item.remove(0);
@@ -97,7 +96,7 @@ public class ApiExplorer {
 		urlBuilder.append("&" + URLEncoder.encode("upkind", "UTF-8") + "=" + URLEncoder.encode("417000", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("upr_cd", "UTF-8") + "=" + URLEncoder.encode("6110000", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "=" + URLEncoder.encode("null", "UTF-8"));
-//		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("300", "UTF-8")); // totalCount
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("400", "UTF-8")); // totalCount
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
 		URL url = new URL(urlBuilder.toString());
 
@@ -144,6 +143,15 @@ public class ApiExplorer {
 			}
 		}
 		return aa;
+	}
+
+	public static Object getTotalCount(String state, String kind, Integer pageNo) throws Exception {
+		String result = getDogData(state, kind, pageNo);
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObj = (JSONObject) parser.parse(result);
+		JSONObject j_response = (JSONObject) jsonObj.get("response");
+		JSONObject j_body = (JSONObject) j_response.get("body");
+		return j_body.get("totalCount");
 	}
 
 }

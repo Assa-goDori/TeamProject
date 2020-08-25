@@ -58,7 +58,7 @@ function replyInsert(insertData){
       data : insertData,
       success : function(data){
     	  replyList(); 
-    	  $('[name=board_content]').val('');
+    	  $('[name=board_comment]').val('');
       }
   });
 }
@@ -93,14 +93,15 @@ function replyDelete(rno){
 
 <div class="reply_div" >
 	<hr>
-	<h4>댓글</h4>
+	<h3>댓글</h3>
 	<hr>
 	<div class="replywrite" >
 		<!-- action="replyInsert.dog"  -->
 	<form:form modelAttribute="reply" name="replyf" >
 			<input type="hidden" name="board_no" value="${board.board_no }">
 			<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id}">
-			<input type="text" name="board_content" class="content_txt" style="width: 600px;">
+			${sessionScope.loginmem.member_id} &nbsp;&nbsp;
+			<input type="text" name="board_comment" class="content_txt" style="width: 500px;">
 			
 			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">			
 	</form:form>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.Adopt;
@@ -25,16 +26,7 @@ public class AdoptController {
 
 	@Autowired
 	private DogService service;
-	/*
-	 * pageNo    : 현재 페이지 번호
-	 * maxpage   : 최대 페이지
-	 * startpage : 보여지는 시작 페이지 번호
-	 * endpage   : 보여지는 끝 페이지 번호
-	 * listcount : 전체 등록된 게시글 건수
-	 * 
-	 * boardlist : 화면에 보여질 게시물 객체들
-	 * boardno   : 화면에 보여지는 게시물 번호 
-	 */
+	
 	@RequestMapping("amain")
 	public ModelAndView main2(Adopt adopt, String state, String kind, Integer pageNo) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -44,8 +36,16 @@ public class AdoptController {
 			state = null;
 		if(kind == null || kind.trim().equals(""))
 			kind = null;
+		/*
+		 * pageNo    : 현재 페이지 번호
+		 * maxpage   : 최대 페이지
+		 * startpage : 보여지는 시작 페이지 번호
+		 * endpage   : 보여지는 끝 페이지 번호
+		 * listcount : 전체 등록된 게시글 건수
+		 */
 		int limit = 16; // 한 페이지에 보여질 게시물 건수
-		int listcount = 300; // 등록 게시물 건수
+		long totalcount = (long) ApiExplorer.getTotalCount(state, kind, pageNo);
+		long listcount = totalcount; // 등록 게시물 건수
 		int maxpage = (int)((double) listcount / limit + 0.95);
 		int startpage = (int)((pageNo / 10.0 + 0.9) - 1) * 10 + 1;
 		int endpage = startpage + 9;
@@ -60,7 +60,7 @@ public class AdoptController {
 			mav.addObject("go", go);
 			mav.setViewName("/adopt/amain");
 		} catch (Exception e) {
-			e.printStackTrace();
+		//	e.printStackTrace();
 			String message = "검색결과가 없습니다.";
 			mav.addObject("message", message);
 		}
@@ -84,7 +84,7 @@ public class AdoptController {
 	}
 
 	@PostMapping("adoptSignup")
-	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, HttpServletRequest request)
+	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, MultipartFile adopt_f, HttpServletRequest request)
 			throws Exception {
 		String[] orgNms = orgNm.split(" ");
 		String split1 = orgNms[0];
@@ -97,7 +97,6 @@ public class AdoptController {
 		} else if (split2 != "") {
 			co = split2.concat(" " + careNm); // 구로구 구디보호소
 		}
-		System.out.println(co);
 
 		ModelAndView mav = new ModelAndView();
 		List<Shelter> hap = service.getHaplist();
@@ -108,9 +107,9 @@ public class AdoptController {
 			}
 		}
 		a.setShelter_no(num);
-		System.out.println(a);
+		a.setF(adopt_f);
 		service.adoptInsert(a, request);
-		mav.setViewName("redirect:../member/adoptMypage.dog?type=4");
+		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id="+a.getMember_id());
 		return mav;
 	}
 

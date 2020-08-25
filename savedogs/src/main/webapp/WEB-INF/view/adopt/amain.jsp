@@ -239,17 +239,21 @@ select {
 				keyword.kind.value = "${param.kind}";
 			</script>
 			<hr>
-			<c:forEach var="item" items="${go}">
-				<div
-					style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-					<a href="adetail.dog?desertionNo=${item.desertionNo}"
-						class="imghover"><img src="${item.popfile}"
-						style="width: 350px; height: 350px;"></a>
-					<div style="height: 5px"></div>
-					<span class="tag">${item.processState}</span> &nbsp; <span
-						class="tag">${item.kindCd}</span> <br>
+			<div>
+				<div>
+					<c:forEach var="item" items="${go}">
+						<div
+							style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
+							<a href="adetail.dog?desertionNo=${item.desertionNo}"
+								class="imghover"><img src="${item.popfile}"
+								style="width: 350px; height: 350px;"></a>
+							<div style="height: 5px"></div>
+							<span class="tag">${item.processState}</span> &nbsp; <span
+								class="tag">${item.kindCd}</span> <br>
+						</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
+			</div>
 			<br>
 			<c:if test="${empty message}">
 				<div class="st-pagination">
@@ -287,6 +291,8 @@ select {
 	if(${param.pageNo % 10} == 0) { // 0, 10
 		if(${param.pageNo / 10} == 1) // pageNo(10) : 0(이전) 
 			$(".pagination > li").eq(10).addClass("active"); // 10
+		else if(${param.pageNo / 10} == 2)
+			$(".pagination > li").eq(20).addClass("active");
 		else // pageNo(0) : 0
 			$(".pagination > li").eq(1).addClass("active"); // 1
 	}

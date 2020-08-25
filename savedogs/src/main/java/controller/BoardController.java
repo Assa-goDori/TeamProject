@@ -40,7 +40,7 @@ public class BoardController {
 	}
 	
 	@GetMapping(value= {"noticeWrite","reviewWrite","qnaWrite"}) 
-	public ModelAndView writeform(Model model, HttpServletRequest request) {
+	public ModelAndView chkmwriteform(Model model, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav= new ModelAndView();
 		model.addAttribute(new Board());
 		model.addAttribute(new Reply()); //review만 사용 
@@ -48,7 +48,7 @@ public class BoardController {
 	}
 	
 	@PostMapping(value= {"noticeWrite","reviewWrite","qnaWrite"})
-	public ModelAndView write(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+	public ModelAndView chkmwrite(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
@@ -79,7 +79,7 @@ public class BoardController {
 	}
 	
 	@GetMapping(value= {"noticeUpdate","reviewUpdate","qnaUpdate"})
-	public ModelAndView updateForm(String no) {
+	public ModelAndView chkmupdateForm(String no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.getBoard(no);
 		mav.addObject("board",board);
@@ -87,7 +87,7 @@ public class BoardController {
 	}
 	
 	@GetMapping(value= {"noticeDetail","reviewDetail","qnaDetail"})
-	public ModelAndView noticeDetail(String no) {
+	public ModelAndView chkmnoticeDetail(String no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.boardDetail(no);
 		mav.addObject("board",board);
@@ -190,7 +190,7 @@ public class BoardController {
 	}
 	
 	@PostMapping(value= {"noticeUpdate","qnaUpdate","reviewUpdate"})
-	public ModelAndView update(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
+	public ModelAndView chkmupdate(@Valid Board board, BindingResult bresult, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
 			mav.getModel().putAll(bresult.getModel());
@@ -220,14 +220,14 @@ public class BoardController {
 	}
 	
 	@GetMapping(value= {"noticeDelete","qnaDelete","reviewDelete"})
-	public ModelAndView deleteform(String no) {
+	public ModelAndView chkmdeleteform(String no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("board_no", no);
 		return mav;
 	}
 	
 	@PostMapping(value= {"noticeDelete","qnaDelete","reviewDelete"})
-	public ModelAndView delete(String no) {
+	public ModelAndView chkmdelete(String no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String type = service.getBoardType(no);
 		try {
@@ -255,7 +255,7 @@ public class BoardController {
 	} 
 	
 	@GetMapping("qnaReply")
-	public ModelAndView replyform(Model model, String no,HttpSession session) {
+	public ModelAndView chkadminsmemreplyform(Model model, String no,HttpSession session) {
 		ModelAndView mav= new ModelAndView();
 		Board board = service.getBoard(no);
 		model.addAttribute(new Board());
@@ -264,7 +264,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("qnaReply")
-	public ModelAndView reply(@Valid Board board, BindingResult bresult, HttpSession session) {
+	public ModelAndView chkadminsmemreply(@Valid Board board, BindingResult bresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		if(bresult.hasErrors()) {
 			String no =  String.valueOf(board.getBoard_no());
@@ -301,12 +301,12 @@ public class BoardController {
 			for(Reply r : list) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getBoard_regdate());
 				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getBoard_comment()+
-						"<td><td rowspan='2'><c:if test=\"${sessionScope.loginmem.member_id == "+r.getMember_id()+
-						"}\"><input type='button' value='삭제' onclick='replyDelete("+r.getBoard_replyno()+");'></c:if></td></tr>");
+						"<td><td rowspan='2'><c:if test='${sessionScope.loginmem.member_id == "+r.getMember_id()+
+						"}'><input type='button' value='삭제' onclick='replyDelete("+r.getBoard_replyno()+");'></c:if></td></tr>");
 				html.append("<tr><td class='l_td' style='text-align:center;'>"+date+"</td></tr>");
 			}
 		} else {
-			html.append("<tr><th>해당 게시글의 댓글이 없습니다.</th></tr>");
+			html.append("<tr><td colspan='2'>해당 게시글의 댓글이 없습니다.</td></tr>");
 		}
 		html.append("</table>");
 		return html.toString();
@@ -314,13 +314,17 @@ public class BoardController {
 	
 	@PostMapping(value="replyInsert", produces="text/plain; charset=UTF-8")
 	@ResponseBody
-	public String replyInsert(Reply reply, HttpServletRequest request, HttpSession session) {
+	public void replyInsert(Reply reply, HttpServletRequest request, HttpSession session) {
 		int rmax = service.getRmax();
 		reply.setBoard_replyno(++rmax);
-		String s = service.insertReply(reply);
-		return s;
+		service.insertReply(reply);
 	}
 
+	@PostMapping(value="replyDelete", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public void replyDelete(String rno, HttpServletRequest request, HttpSession session) {
+		service.deleteReply(rno);
+	}
 	
 	@RequestMapping("imgupload")
 	public String imgupload(MultipartFile upload, String CKEditorFuncNum, HttpServletRequest request, Model model) {
