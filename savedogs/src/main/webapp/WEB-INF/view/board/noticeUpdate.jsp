@@ -21,6 +21,8 @@
 	<form:hidden path="board_no" value="${param.no }"/>	
 	<form:hidden path="type" value="1"/>
 	<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
+	<input type="hidden" name="fileurl" value="${board.fileurl }">
+	
 	<table>
 		<tr><td>제목</td><td><form:input path="subject"/><font color="red"><form:errors path="subject"/></font></td></tr>
 		<tr><td>내용</td><td><form:textarea path="content" rows="15" cols="80"/>
@@ -28,9 +30,9 @@
 			filebrowserImageUploadUrl : "imgupload.dog"
 		});</script>
 		<font color="red"><form:errors path="content"/></font></td></tr>
-		<tr><td>첨부파일</td><td><input type="file" name="file1"/></td></tr>
+		<tr><td>첨부파일</td><td><input type="file" name="file1" value="${board.file1 }"/></td></tr>
 		<tr><td colspan="2" class="btn_td">
-				<input type="submit" value="등록" class="s_btn">
+				<input type="submit" value="수정" class="s_btn">
 			</td>
 		</tr>
 	</table>

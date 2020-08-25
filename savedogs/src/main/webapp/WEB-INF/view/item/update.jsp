@@ -24,7 +24,7 @@
 		<td style="width: 40%;" rowspan="3">
 			<input type="file" name="picture">
 		</td>
-		
+
 		<td style="width: 10%;">상품명</td>
 		<td style="width: 30%;"><input name="item_name" value="${item.item_name}" /></td>
 		<td style="width: 20%;"><font color="#e65407"><form:errors path="item_name"/></font></td>
