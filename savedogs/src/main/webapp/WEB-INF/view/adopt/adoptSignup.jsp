@@ -18,10 +18,11 @@ input[type=file] {
 }
 </style>
 <script type="text/javascript">
-	function check(href) {
+	function check() {
 		if (!$("input:checkbox").is(":checked")) {
 			alert("개인정보 취급방침에 동의하세요.")
-		}
+		} else
+			adoptform.submit()
 	}
 </script>
 </head>
@@ -33,7 +34,7 @@ input[type=file] {
 			<div>
 				<h3>개인정보 취급방침</h3>
 				<form:form modelAttribute="adoptSign" method="POST"
-					action="adoptSignup.dog" enctype="multipart/form-data">
+					action="adoptSignup.dog" id="adoptform" enctype="multipart/form-data">
 					<table>
 						<tr>
 							<td colspan="2"><textarea
@@ -96,7 +97,7 @@ input[type=file] {
 					<form:hidden path="dog_no" value="${param.noticeNo}" />
 					<input type="hidden" name="careNm" value="${param.careNm}">
 					<input type="hidden" name="orgNm" value="${param.orgNm}">
-					<input type="submit" value="제출" class="s_btn">
+					<input type="button" value="제출" class="s_btn" onclick="check()">
 				</form:form>
 			</div>
 		</div>
