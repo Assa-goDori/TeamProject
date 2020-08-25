@@ -203,6 +203,14 @@ public class DogService {
 		}
 		return map;
 	}
+	
+	public Map<String, Object> shopgraph(String name) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : itemDao.shopgraph(name)) {
+			map.put((String)m.get("m"), m.get("cnt"));
+		}
+		return map;
+	}
 
 	public List<Item> getShopall() {
 		return itemDao.getShopall();
@@ -322,7 +330,12 @@ public class DogService {
 			fundlistDao.applyinsert(fundinglist);
 		}
 
-		
+		public int boardcount(String searchtype, String searchcontent) {
+			return fundingDao.count(searchtype,searchcontent);
+		}
+		public List<Funding> boardList(Integer pageNum, int limit,String searchtype, String searchcontent) {
+			return fundingDao.list(pageNum, limit, searchtype, searchcontent);
+		}
 
 	
 	
@@ -557,6 +570,15 @@ public class DogService {
 		public List<Funding> duefunding() {
 			return fundingDao.duefunding();
 		}
+
+		
+
+
+		
+
+		
+
+		
 
 		
 

@@ -28,7 +28,7 @@
 <font color="red"><form:errors path="sheltername" /></font></td></tr>
 
 <tr height="40px"><td>후원 제목</td>
-<td><input type="text" name="fund_subject" readonly="readonly" value="${funding.fund_subject}" />
+<td><input type="text" name="fund_subject" value="${funding.fund_subject}" />
 <font color="red">
 <form:errors path="fund_subject" /></font></td></tr>
 

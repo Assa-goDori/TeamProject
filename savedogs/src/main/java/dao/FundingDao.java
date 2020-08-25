@@ -57,6 +57,26 @@ public class FundingDao {
 	public List<Funding> duefunding() {
 		return template.getMapper(FundingMapper.class).duefunding();
 	}
+	
+	public int count(String searchtype, String searchcontent) {
+		param.clear();
+		param.put("searchtype", searchtype);
+		param.put("searchcontent", searchcontent);
+	return template.getMapper(FundingMapper.class).count(param);
+}
+public List<Funding> list(Integer pageNum, int limit, String searchtype, String searchcontent) {
+	param.clear();
+	param.put("startrow", (pageNum-1) * limit);
+    param.put("limit",limit);
+	param.put("searchtype", searchtype);
+	param.put("searchcontent", searchcontent);
+	return template.getMapper(FundingMapper.class).select(param);
+}
+	
+	
+	
+	
+	
 
 	/*
 	 * public void delete(String userid) { param.clear();

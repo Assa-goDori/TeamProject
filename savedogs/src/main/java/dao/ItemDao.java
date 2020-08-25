@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import dao.mapper.FundlistMapper;
 import dao.mapper.ItemMapper;
 import logic.Item;
 
@@ -61,6 +62,10 @@ public class ItemDao {
 		param.clear();
 		param.put("item_no", item_no);
 		template.getMapper(ItemMapper.class).DeleteItem(param);
+	}
+
+	public List<Map<String,Object>> shopgraph(String name) {
+		return template.getMapper(ItemMapper.class).shopgraph(name);
 	}
 
 }
