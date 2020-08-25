@@ -54,12 +54,12 @@ public class AdoptSign {
 		this.adopt_etc = adopt_etc;
 	}
 
-	public String getFile() {
+	public String getAdopt_file() {
 		return adopt_file;
 	}
 
-	public void setFile(String file) {
-		this.adopt_file = file;
+	public void setAdopt_file(String adopt_file) {
+		this.adopt_file = adopt_file;
 	}
 
 	public MultipartFile getF() {

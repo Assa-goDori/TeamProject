@@ -27,6 +27,13 @@ public class AjaxController {
 		return null;
 	}
 	
+	@RequestMapping("changeEtc")
+	public String changeEtc(String dog_no, String state) {
+		System.out.println("dog_no : " + dog_no + "state : " + state);
+		service.updateEtc(dog_no, state);
+		return null;
+	}
+	
 	@RequestMapping(value="vworkgraph", produces="text/plain; charset=UTF8")
 	public String vworkgraph(String year, String member_id) {
 		Map<String, Object> map = service.vworkgraph(year, member_id);
