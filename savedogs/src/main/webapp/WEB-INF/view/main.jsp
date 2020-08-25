@@ -30,7 +30,7 @@
 <body>
 <div class="main_div">
  <div class="row" >
-	<div class="g_div">
+	<div class="g_div" style="background-color: white;">
 	<div align="center"><h3>실시간 유기견들</h3></div>
         <div class="owl-carousel owl-one owl-theme" style="height: 15%;">
             <c:forEach begin="0" end="2" var="m">
@@ -143,7 +143,7 @@
     		</c:forEach>	
 		</div>
      </div>
-    <div class="g_div">
+    <div class="g_div" style="background-color: white;">
     	<div align="center">
  	 		<h3>마감 임박 기부 목록</h3>
  	 	</div>
@@ -152,18 +152,17 @@
     	</div>
     	<c:forEach var="duefunding" items="${duefunding}" varStatus="stat">
 	    	<div align="left">
-
-<table style="width: 80%;">
-
-<tr><td colspan="2" width="100%"><a href="funding/detail.dog?fund_no=${duefunding.fund_no}">${duefunding.fund_subject}</a></td></tr>
-
-<tr><td width="80%"><input type="button" readonly="readonly" style="width: ${duefunding.complete}%"></td><td width="20%">${duefunding.complete}%</td></tr>
-
-</table>
-
-</div>
+				<table style="width: 100%;">
+					<tr style="width: 100%;">
+						<td colspan="2" width="100%"><a href="funding/detail.dog?fund_no=${duefunding.fund_no}">${duefunding.fund_subject}</a></td>
+					</tr>
+					<tr style="width: 100%;">
+						<td width="500px"><input type="button" style="width: ${duefunding.complete}%; background-color:#34b2a4;" onclick="location.href='funding/detail.dog?fund_no=${duefunding.fund_no}'"></td>
+						<td width="200px"><div align="right"><a href='funding/detail.dog?fund_no=${duefunding.fund_no}'>${duefunding.complete}%</a></div></td>
+					</tr>
+				</table>
+			</div>
 	    </c:forEach>
- 	 	
     </div>
   </div>
  </div>	
