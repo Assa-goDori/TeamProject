@@ -239,17 +239,21 @@ select {
 				keyword.kind.value = "${param.kind}";
 			</script>
 			<hr>
-			<c:forEach var="item" items="${go}">
-				<div
-					style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
-					<a href="adetail.dog?desertionNo=${item.desertionNo}"
-						class="imghover"><img src="${item.popfile}"
-						style="width: 350px; height: 350px;"></a>
-					<div style="height: 5px"></div>
-					<span class="tag">${item.processState}</span> &nbsp; <span
-						class="tag">${item.kindCd}</span> <br>
+			<div>
+				<div>
+					<c:forEach var="item" items="${go}">
+						<div
+							style="width: 350px; height: 350px; margin: 20px; display: inline-block;">
+							<a href="adetail.dog?desertionNo=${item.desertionNo}"
+								class="imghover"><img src="${item.popfile}"
+								style="width: 350px; height: 350px;"></a>
+							<div style="height: 5px"></div>
+							<span class="tag">${item.processState}</span> &nbsp; <span
+								class="tag">${item.kindCd}</span> <br>
+						</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
+			</div>
 			<br>
 			<c:if test="${empty message}">
 				<div class="st-pagination">

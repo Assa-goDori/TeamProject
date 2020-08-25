@@ -74,13 +74,9 @@ public class ApiExplorer {
 
 		// response
 		JSONObject j_response = (JSONObject) jsonObj.get("response"); // 리턴값 object -> json
-		System.out.println(j_response);
 		JSONObject j_body = (JSONObject) j_response.get("body");
-		System.out.println(j_body);
 		JSONObject j_items = (JSONObject) j_body.get("items");
-		System.out.println(j_items);
 		JSONArray a_item = (JSONArray) j_items.get("item");
-		System.out.println(a_item);
 		a_item.remove(0);
 		Gson gson = new Gson();
 
@@ -100,7 +96,7 @@ public class ApiExplorer {
 		urlBuilder.append("&" + URLEncoder.encode("upkind", "UTF-8") + "=" + URLEncoder.encode("417000", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("upr_cd", "UTF-8") + "=" + URLEncoder.encode("6110000", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("state", "UTF-8") + "=" + URLEncoder.encode("null", "UTF-8"));
-//		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("300", "UTF-8")); // totalCount
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("400", "UTF-8")); // totalCount
 		urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
 		URL url = new URL(urlBuilder.toString());
 
