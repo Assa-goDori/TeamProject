@@ -120,32 +120,30 @@ $(document).ready(function(){
 <div style="margin-left: 25%; width:80%;">
  <form:form modelAttribute="funding" method="post" action="delete.dog">
 <input type="hidden" value="${param.fund_no}" name="fund_no">
- <table class="w3-table" style="width:1000px">
+ <table class="w3-table" style="width:1000px; margin-right:130px;">
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
-        <tr><td rowspan="7"><img src="img/${funding.fund_pic}" style="width:250px; height=:320px" alt="후원 배너 사진"></td>
-          <td colspan='2'>"${funding.fund_subject}"</td></tr>
-            <tr><td>"${funding.sheltername}"</td></tr>
-            <tr><td>후원 기간 <fmt:formatDate value="${funding.start_date}" pattern="yyyy.MM.dd" var="startdate" />
+        <tr><td rowspan="7"><img src="img/${funding.fund_pic}" style="width:250px; height=:320px" alt="기부 배너 사진"></td></tr>
+          <td colspan='1'><h3><${funding.fund_subject}></h3></td>
+            <tr><td><i class="fa fa-building fa-fw w3-margin-right w3-large w3-text-teal"></i>"${funding.sheltername}"</td></tr>
+            <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>기부 기간<fmt:formatDate value="${funding.start_date}" pattern="yyyy.MM.dd" var="startdate" />
              <fmt:formatDate value="${funding.end_date}" pattern="yyyy.MM.dd" var="enddate" />
             ${startdate}&nbsp;-&nbsp;${enddate}</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${funding.restdate}일 남음</td></tr>
-            <tr><td>목표금액 : ${funding.fund_count}원</td></tr>
-            <td width="60%">
-            <input type="button" readonly="readonly" style="width: ${funding.complete}%;" ></td>
-            <tr>
-            <td width="5%" align="center">${funding.complete}%</td></tr>
+            <tr><td><i class="fa fa-money fa-fw w3-margin-right w3-large w3-text-teal"></i>목표금액 : ${funding.fund_count}원</td></tr>
+            <td width="50%">
+            <input type="button" readonly="readonly" style="width: ${funding.complete}%;  background-color: lightgreen; border-radius: 20px; border: none;" " ></td>
+            <td width="8%" align="center">${funding.complete}%</td>
             <tr><td>&nbsp;</tr><td>
+             </table> 
              <c:if test="${!empty sessionScope.loginmem}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>
-             <tr><td align="center"><h5><input type="button" value="후원하기" onclick="win_open('fundingapply')"></h5></td></tr>
+             <tr><td><h5 style="text-align: center; margin-right:250px"><input type="button" class="s_btn" value="기부하기" onclick="win_open('fundingapply')"></h5></td></tr>
              </c:if>
              <c:if test="${!empty sessionScope.loginsmem && sessionScope.loginsmem.member_id.equals(funding.member_id)}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
-             <tr><td align="right"><h5><input type="button" value="수정하기" onclick="location.href='fregupdateForm.dog?fund_no=${param.fund_no}'"></h5></td>
+             <tr><td align="right"><h5><input type="button" class="s_btn" value="수정하기" onclick="location.href='fregupdateForm.dog?fund_no=${param.fund_no}'"></h5></td>
              <!-- <td><h5><input type="submit" value="삭제하기"></h5></td></tr>-->
              </c:if>
-
-        </table>    
+          
                 </form:form>
-        
         <!-- 댓글 -->
         <hr>
    <div class="container">

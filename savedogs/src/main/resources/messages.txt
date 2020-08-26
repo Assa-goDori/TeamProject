@@ -20,4 +20,3 @@ typeMismatch.birthday=생년월일은 YYYY-MM-DD 형식으로 입력해 주세�
 error.duplicate.user=중복된 아이디입니다
 error.board.password=비밀번호가 틀립니다
 
-

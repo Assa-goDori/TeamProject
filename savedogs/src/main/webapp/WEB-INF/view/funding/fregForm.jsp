@@ -15,7 +15,7 @@
 <body> 
 <!-- submit일때 hidden값  -->
  <div style="margin-left: 30%; width:40%;">
-	<h2>후원 모집 등록</h2>
+	<h2>기부 모집 등록</h2>
 	<form:form modelAttribute="funding" method="post" action="fregForm.dog" enctype="multipart/form-data">
 		<%-- globalErrors error.reject(코드값) --%>
 		<input type="hidden" name="member_id" value="${sessionScope.loginsmem.member_id }">
@@ -35,7 +35,7 @@
 				 <form:errors path="sheltername" /></font></td>
 			</tr>
 			<tr height="40px">
-				<td>후원 제목</td>
+				<td>기부 제목</td>
 				<td><input type="text" name="fund_subject" /> 
 				<font color="red">
 				<form:errors path="fund_subject" /></font></td>

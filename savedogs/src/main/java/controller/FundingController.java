@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.FundingException;
 import exception.VworkException;
 import logic.DogService;
 import logic.Funding;
@@ -47,16 +48,15 @@ public class FundingController {
       @PostMapping("fregForm") 
         public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult, HttpServletRequest request) {
             ModelAndView mav = new ModelAndView();
-		/*
-		 * if(bresult.hasErrors()) { mav.getModel().putAll(bresult.getModel()); return
-		 * mav; }
-		 */
-            System.out.println(funding);
+		  if(bresult.hasErrors())  { 
+			  mav.getModel().putAll(bresult.getModel());
+			  return mav; 
+			  }
             service.fundCreate(funding,request);
             mav.setViewName("redirect:/funding/list.dog");
             return mav;      
-        
           }
+      
       @GetMapping("fregupdateForm")
       public ModelAndView fregupdateForm2(String fund_no) {
     	  ModelAndView mav = new ModelAndView();
@@ -141,10 +141,17 @@ public class FundingController {
 	
 
 	 @PostMapping("fundingapply")
-	  public ModelAndView apply(@Valid Fundinglist fundinglist, BindingResult bresult, HttpServletRequest request) {
+	  public ModelAndView apply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
           ModelAndView mav = new ModelAndView();
-          System.out.println(fundinglist);
-          service.fundingapply(fundinglist,request);
+          Member mem = (Member)session.getAttribute("loginmem");
+          if(bresult.hasErrors()) {
+  			mav.getModel().putAll(bresult.getModel());
+  			return mav; 
+  		}	try {
+  			service.fundingapply(fundinglist,request);
+  		}   catch(Exception e) {
+  			throw new FundingException("이미 후원 하셨습니다.", "/member/fundMypage.dog?member_id="+mem.getMember_id());
+  		}
           mav.setViewName("redirect:/funding/list.dog"); //mypage로~?
           return mav;      
       

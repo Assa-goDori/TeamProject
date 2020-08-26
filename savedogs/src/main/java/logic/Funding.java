@@ -24,11 +24,11 @@ public class Funding {
 	private String fund_subject;
 	@NotNull(message="목표금액을 입력하세요")
 	private int fund_count;
-	//@NotEmpty(message="날짜를 선택하세요")
-	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
+	@NotNull(message="날짜를 선택하세요")
+    //@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
-	//@NotEmpty(message="날짜를 선택하세요")
+	@NotNull(message="날짜를 선택하세요")
 	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;

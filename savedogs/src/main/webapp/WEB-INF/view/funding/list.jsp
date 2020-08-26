@@ -12,6 +12,7 @@
 	document.searchform.submit();
 	}
 </script><link rel='stylesheet' href='../css/savedogs_main.css' />
+
 </head>
 <body>
 <div style="width: 40%; margin-left: 30%;" >
@@ -34,11 +35,11 @@
    <c:forEach var="f" items="${boardlist}">
         <table>
         <tr><td rowspan="4"><a href="detail.dog?fund_no=${f.fund_no}"><img src="img/${f.fund_pic}"  style="width:300px; height=:320px" align="center" alt="후원 배너 사진"></a></td>
-          <td><a href="detail.dog?fund_no=${f.fund_no}">"${f.fund_subject}"</a></td></tr>
-            <tr><td>"${f.sheltername}"</td></tr>
+          <td><a href="detail.dog?fund_no=${f.fund_no}"> <h3><${f.fund_subject}></h3> </a></td></tr>
+            <tr><td><i class="fa fa-building fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.sheltername}</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.restdate}일 남음</td></tr>
             <td width="60%">
-            <input type="button" readonly="readonly" style="width: ${f.complete}%" ></td>
+            <input type="button" readonly="readonly" style="width: ${f.complete}%; background-color: lightgreen; border-radius: 20px; border: none;" ></td>
             <td width="10%">${f.complete}%</td>
         </table>
 		</c:forEach>

@@ -8,6 +8,11 @@
 <title>후원 모집 수정</title>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+function file_delete() {
+	file_desc.style.display = "none";
+}
+</script>
 </head><body>
 <h2>후원 모집 수정</h2>
 <form:form modelAttribute="funding" method="post" action="fregupdateForm.dog" enctype="multipart/form-data">
@@ -27,7 +32,7 @@
 <td><input type="text" name="sheltername" readonly="readonly" value="${sessionScope.smemName}" /><!-- ${sessionScope.loginUser.sheltername},readonly--> 
 <font color="red"><form:errors path="sheltername" /></font></td></tr>
 
-<tr height="40px"><td>후원 제목</td>
+<tr height="40px"><td>기부 제목</td>
 <td><input type="text" name="fund_subject" value="${funding.fund_subject}" />
 <font color="red">
 <form:errors path="fund_subject" /></font></td></tr>
