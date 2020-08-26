@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotEmpty;
+//import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,11 +25,11 @@ public class Funding {
 	@NotNull(message="목표금액을 입력하세요")
 	private int fund_count;
 	@NotNull(message="날짜를 선택하세요")
-    //@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
+    @Future(message="미래 날짜만 입력 가능합니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
 	@NotNull(message="날짜를 선택하세요")
-	//@FutureOrPresent(message="과거날짜는 입력할 수 없습니다.")
+	@Future(message="미래 날짜만 입력 가능합니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
 	private int restdate; //마감날짜-오늘날짜

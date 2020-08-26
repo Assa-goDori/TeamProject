@@ -139,7 +139,7 @@ $(document).ready(function(){
              <tr><td><h5 style="text-align: center; margin-right:250px"><input type="button" class="s_btn" value="기부하기" onclick="win_open('fundingapply')"></h5></td></tr>
              </c:if>
              <c:if test="${!empty sessionScope.loginsmem && sessionScope.loginsmem.member_id.equals(funding.member_id)}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
-             <tr><td align="right"><h5><input type="button" class="s_btn" value="수정하기" onclick="location.href='fregupdateForm.dog?fund_no=${param.fund_no}'"></h5></td>
+             <tr><td><h5 style="text-align: center; margin-right:100px"><input type="button" class="s_btn" value="수정하기" onclick="location.href='fregupdateForm.dog?fund_no=${param.fund_no}'"></h5></td>
              <!-- <td><h5><input type="submit" value="삭제하기"></h5></td></tr>-->
              </c:if>
           
