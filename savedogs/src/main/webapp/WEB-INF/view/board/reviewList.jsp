@@ -96,11 +96,13 @@ td{
 		</table>
 	</c:if>
 	<br>
+	<!-- 
 	<c:if test="${sessionScope.loginmem != null }">
 		<table>
 			<tr><td colspan="5" class="btn_td"><input type="button" value="작성" class="s_btn" onclick="location.href='reviewWrite.dog'"></td></tr>
 		</table>
 	</c:if>
+	 -->
 </div>
 </body>
 </html>

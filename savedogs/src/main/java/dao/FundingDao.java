@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import logic.Funding;
+import logic.Fundreply;
 import dao.mapper.FundingMapper;
 
 @Repository
@@ -65,6 +66,26 @@ public List<Funding> list(Integer pageNum, int limit) {
 
 public int listcount() {
 	return template.getMapper(FundingMapper.class).listcount();
+}
+
+
+public List<Fundreply> freplyList(String fund_no) {
+	return template.getMapper(FundingMapper.class).freplyList(fund_no);
+}
+
+
+public int getFRmax() {
+	return template.getMapper(FundingMapper.class).getFRmax();
+}
+
+
+public void insertReply(Fundreply reply) {
+	template.getMapper(FundingMapper.class).insertReply(reply);	
+}
+
+
+public void deleteFreply(String rno) {
+	template.getMapper(FundingMapper.class).deleteFreply(rno);	
 }
 	
 

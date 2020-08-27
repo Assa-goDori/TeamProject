@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.FundingException;
@@ -26,7 +27,9 @@ import exception.VworkException;
 import logic.DogService;
 import logic.Funding;
 import logic.Fundinglist;
+import logic.Fundreply;
 import logic.Member;
+import logic.Reply;
 import logic.Shelter;
 import logic.Vwork;
 
@@ -158,4 +161,46 @@ public class FundingController {
           return mav;      
       
         }
+	 
+	 
+//===========댓글===============		
+	@PostMapping(value="replyList", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public String replyList(String pno, HttpServletRequest request, HttpSession session) {
+		List<Fundreply> list = service.freplyList(pno);
+		StringBuilder html = new StringBuilder();
+		html.append("<table>");
+		if(list.size()>0 ) {
+			for(Fundreply r : list) {
+				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getFund_regdate());
+				html.append("<tr><th>"+r.getFundreply_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getFund_comment()+"</td><td rowspan='2'>");
+				Member login = (Member)session.getAttribute("loginmem");
+				String login_id = login.getMember_id();
+				if(r.getFundreply_id().equals(login_id)) {
+					html.append("<input type='button' value='삭제' class='small_btn' onclick='replyDelete("+r.getFund_replyno()+");'>");
+				}
+				html.append("</td></tr>");
+				html.append("<tr><td class='l_td' style='text-align:center;'>"+date+"</td></tr>");
+			}
+		} else {
+			html.append("<tr><td colspan='2'>해당 게시글의 댓글이 없습니다.</td></tr>");
+		}
+		html.append("</table>");
+		return html.toString();
+	}
+		
+	@PostMapping(value="replyInsert", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public void replyInsert(Fundreply reply, HttpServletRequest request, HttpSession session) {
+		int rmax = service.getFRmax();
+		
+		reply.setFund_replyno(++rmax);
+		service.insertReply(reply);
+	}
+
+	@PostMapping(value="replyDelete", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public void replyDelete(String rno, HttpServletRequest request, HttpSession session) {
+		service.deleteFreply(rno);
+	}
 }

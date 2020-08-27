@@ -350,8 +350,22 @@ public class DogService {
 			return fundingDao.listcount();
 		}
 	
+		//펀딩 댓글
+		public List<Fundreply> freplyList(String fund_no) {
+			return fundingDao.freplyList(fund_no);
+		}
 		
+		public int getFRmax() {
+			return fundingDao.getFRmax();
+		}
 		
+		public void insertReply(Fundreply reply) {
+			fundingDao.insertReply(reply);
+		}
+
+		public void deleteFreply(String rno) {
+			fundingDao.deleteFreply(rno);			
+		}
 //-------------------펀딩관련 끝-------------------------------------------------
 //-------------------쇼핑관련 시작-------------------------------------------------
 		public List<Item> getItemList() {
@@ -582,6 +596,11 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
+	
+
+		
+
+		
 
 		
 
