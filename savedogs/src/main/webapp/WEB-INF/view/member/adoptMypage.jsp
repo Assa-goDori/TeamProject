@@ -16,19 +16,6 @@
 		})
 		$("#tab1").addClass("selection");
 	})
-	function disp_div(id,tab){
-		$(".info").each(function(){
-			$(this).hide();
-		})
-		$(".tab").each(function(){
-			$(this).removeClass("selection");
-		})
-		$("#"+id).show();
-		$("#"+ tab).addClass("selection");
-	}
-	function list_disp(id){
-		$("#"+id).toggle();
-	}
 </script>
 <style type="text/css">
 	.selection{
@@ -46,19 +33,6 @@
 </head>
 <body>
 	<div class="maiv_div" style="width: 100%;"> 
-	<div align="center" style="width: 100%;">
-	<table>
-		<tr>
-			<td id="tab1" class ="tab" style="width: 50%;" align="center">
-				<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">입양신청 조회</a>
-			</td>
-			<td id="tab2" class="tab" align="center">
-				<a href="javascript:disp_div('oinfo','tab2')" style="color: gray; width: 50%;">관심 가는 아이</a>
-			</td>
-		</tr>
-	</table>
-	</div>
-	<div id="minfo" class="info" style="display:none; width:100%;">
 		<c:if test="${empty myadoptlist }" >
 			<h3>유기견을 찾아보세요.</h3>
 			<input class="s_btn" type="button" value="검색" onclick="location.href='../adopt/amain.dog'">
@@ -93,9 +67,6 @@
 			</c:forEach>
 		</table>
 	</c:if>
-	</div>
-	<div id="oinfo" class="info" style="width:100%;">
-		<h3>관심 가는 아이</h3>
 	</div>
 	</div>
 </body>

@@ -100,6 +100,11 @@
 	}
 </script>
 <link rel='stylesheet' href='../css/savedogs_main.css' />
+<style>
+	.data {
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 	<div class="maiv_div" style="width: 100%;">
@@ -111,17 +116,17 @@
 		<c:if test="${!empty list }">
 			<table>
 				<tr>
-					<th>봉사날짜</th>
+					<th>봉사 신청 날짜</th>
 					<th style="width:300px;">장소</th>
 					<th>비고</th>
 				</tr>
 			<c:forEach items="${list }" var="m">
 				<tr>
-					<fmt:formatDate value="${m.vwork_date }" pattern="yyyy-MM-dd" var="date"/>
-					<td>${date}</td>
-					<td style="width:300px;">${m.shelter_address} ${m.shelter_name }</td>
-					<td>
-						<a href="../vwork/vdetail.dog?vwork_no=${m.vwork_no }">상세보기</a>
+					<fmt:formatDate value="${m.vwork_date }" pattern="yyyy년 MM월 dd일" var="date"/>
+					<td class="data" style="width:200px;">${date}</td>
+					<td class="data" style="width:300px;">${m.shelter_address} ${m.shelter_name }</td>
+					<td class="data">
+						<a href="../vwork/vdetail.dog?vwork_no=${m.vwork_no }"><font color="blue">상세보기</font></a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -134,7 +139,7 @@
 				<option>${list.year }</option>
 			</c:forEach>
 		</select>
-		<input type="button" value="출력" onclick="showgraph()">
+		<input class="s_btn" type="button" value="조회" onclick="showgraph()">
 		<div id="main_div" align="center" style="width:50%; margin-left:25%">
 			<canvas id="canvas" style="width:50%; height:100%;"></canvas>
 		</div>

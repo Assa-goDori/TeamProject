@@ -41,6 +41,7 @@
 	};
 	
 	function fundgraph(data) {
+		var selectyear = document.getElementById("selectyear").value;
 		console.log(data)
 		var rows = JSON.parse(data)
 		var dates = []
@@ -81,7 +82,7 @@
 				responsive : true,
 				title : {
 					display : true,
-					text : '월별 기부 횟수'
+					text : selectyear + '년 월별 후원 횟수'
 				},
 				legend : {display : false},
 				scales : {
@@ -107,26 +108,29 @@
 </script>
 </head>
 <body>
-	<h3>신청한 펀딩내역</h3>
+	<h3>신청한 후원내역</h3>
 	<hr>
 	<c:if test="${empty fundlist }">
-		<h3>신청한 펀딩이 없습니다.</h3>
+		<h3>신청한 후원이 없습니다.</h3>
 	</c:if>
 	<c:if test="${!empty fundlist }">
 		<table>
 			<tr>
-				<th style="width:250px;">펀딩 날짜</th>
+				<th style="width:250px;" colspan="4">후원 기간</th>
 				<th style="width:300px;">후원명</th>
 				<th>후원금액</th>
 			</tr>
 			<c:forEach items="${fundlist }" var="list">
 				<tr>
-					<td style="width:250px;" class="data">
-						<fmt:formatDate value="${list.fund_date }" pattern="yyyy년 MM월 dd일" var="date1"/>
-						${date1 }
+					<td style="width:250px;" class="data" colspan="4">
+						<fmt:formatDate value="${list.start_date }" pattern="yyyy.MM.dd" var="start"/>
+						<fmt:formatDate value="${list.end_date }" pattern="yyyy.MM.dd" var="end"/>
+						${start } ~ ${end }
 					</td>
 					<td style="width:300px;" class="data">
-						<a href="../funding/detail.dog?fund_no=${list.fund_no}">${list.fund_subject }</a>
+						<a href="../funding/detail.dog?fund_no=${list.fund_no}">
+							<font color="blue">${list.fund_subject }</font>
+						</a>
 					</td>
 					<fmt:formatNumber pattern="##,###원" value="${list.fund_cost }" var="cost1"/>
 					<td class="data">${cost1 }</td>
@@ -137,14 +141,14 @@
 	<br>
 	<hr>
 	<br>
-	<h3>나의 펀딩 현황</h3>
+	<h3>지난 후원 현황</h3>
 	<c:if test="${empty endfundlist }">
-		<h3>완료한 펀딩이 없습니다.</h3>
+		<h3>완료한 후원이 없습니다.</h3>
 	</c:if>
 	<c:if test="${!empty endfundlist }">
 		<table>
 			<tr>
-				<th style="width:250px;">펀딩 날짜</th>
+				<th style="width:250px;">후원 신청 날짜</th>
 				<th style="width:300px;">후원명</th>
 				<th>후원금액</th>
 			</tr>
@@ -155,7 +159,9 @@
 						${date2 }
 					</td>
 					<td style="width:300px;" class="data">
-						<a href="../funding/detail.dog?fund_no=${endlist.fund_no}">${endlist.fund_subject }</a>
+						<a href="../funding/detail.dog?fund_no=${endlist.fund_no}">
+							<font color="blue">${endlist.fund_subject }</font>
+						</a>
 					</td>
 					<fmt:formatNumber pattern="##,###원" value="${endlist.fund_cost }" var="cost2"/>
 					<td class="data">${cost2 }</td>
@@ -168,7 +174,7 @@
 					<option>${list.year }</option>
 				</c:forEach>
 			</select>
-			<input type="button" value="출력" onclick="showgraph()">
+			<input class="s_btn" type="button" value="조회" onclick="showgraph()">
 			<div id="main_div" align="center" style="width:50%; margin-left:25%">
 				<canvas id="canvas" style="width:50%; height:100%;"></canvas>
 			</div>
