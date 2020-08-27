@@ -1,6 +1,8 @@
 package logic;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
@@ -68,6 +71,14 @@ public class DogService {
 	
 	private void uploadFileCreate(MultipartFile picture, HttpServletRequest request, String path) {
 		String orgFile = picture.getOriginalFilename();
+
+/*		String orgFile ="";
+		try {
+			orgFile = new String(picture.getOriginalFilename().getBytes("8859_1"), StandardCharsets.UTF_8);
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+*/	
 		String uploadPath = request.getServletContext().getRealPath("/") + path;
 		File fpath = new File(uploadPath);
 		if(!fpath.exists()) fpath.mkdirs();
@@ -585,7 +596,7 @@ public class DogService {
 			return shelterDao.getHaplist();
 		}
 		
-		public List<Adopt> getAdoptlist() {
+		public List<AdoptSign> getAdoptlist() {
 			return adoptDao.getAdoptlist();
 		}
 //-------------------입양 관련 끝------------------------------------------------

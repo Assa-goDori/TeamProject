@@ -65,8 +65,8 @@ public class FundingController {
       @GetMapping("fregupdateForm")
       public ModelAndView fregupdateForm2(String fund_no) {
     	  ModelAndView mav = new ModelAndView();
-
     	  Funding funding = service.getfundingdetail(fund_no);
+    	  
  		 //service.readcnt(num);
  		 mav.addObject("funding",funding);
  		 return mav;
@@ -104,7 +104,7 @@ public class FundingController {
 	 
 	 
 	 @RequestMapping("list")
-	 public ModelAndView chkslistchkauth(Integer pageNum,HttpSession session) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
+	 public ModelAndView chkmlistchkauth(Integer pageNum,HttpSession session) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
       ModelAndView mav = new ModelAndView();	
       
        if(pageNum == null || pageNum.toString().equals("")) {
@@ -136,7 +136,7 @@ public class FundingController {
 	 
 	 
 	 @GetMapping({"detail", "fundingapply"})
-	   public ModelAndView chksdetail(String fund_no) {
+	   public ModelAndView chkmdetail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
 		 //service.readcnt(num);
@@ -146,7 +146,7 @@ public class FundingController {
 	
 
 	 @PostMapping("fundingapply")
-	  public ModelAndView chksapply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
+	  public ModelAndView chkmapply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
           ModelAndView mav = new ModelAndView();
           Member mem = (Member)session.getAttribute("loginmem");
           if(bresult.hasErrors()) {

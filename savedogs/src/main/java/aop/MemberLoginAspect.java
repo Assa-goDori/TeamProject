@@ -140,7 +140,26 @@ public class MemberLoginAspect {
 		Object ret = joinPoint.proceed();
 		return ret;
 	}
-	
+	@Around // adivce중 하나.
+	("execution(* controller.Funding*.chkm*(..))")
+	public Object FundingloginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
+		Member loginmem = null;
+		Member loginsmem = null;
+		Member loginadmin = null;
+		for(Object o : joinPoint.getArgs()) {
+			if(o instanceof HttpSession) {
+				HttpSession session = (HttpSession)o;
+				loginmem = (Member)session.getAttribute("loginmem");
+				loginsmem = (Member)session.getAttribute("loginsmem");
+				loginadmin = (Member)session.getAttribute("loginadmin");
+			}
+		}
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
 	
 	@Around //봉사 회원로그인 확인
 	("execution(* controller.Vwork*.chklogin*(..)) && args(..,session)")
