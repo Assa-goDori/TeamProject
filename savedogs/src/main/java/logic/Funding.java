@@ -23,7 +23,6 @@ public class Funding {
 	private String fund_subject;
 	@NotNull(message="목표금액을 입력하세요")
 	private int fund_count;
-	@NotNull(message="날짜를 선택하세요")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
 	@NotNull(message="날짜를 선택하세요")
