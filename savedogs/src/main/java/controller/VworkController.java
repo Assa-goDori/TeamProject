@@ -50,7 +50,7 @@ public class VworkController {
 	}
 	
 	@GetMapping("vmain")
-	public ModelAndView chkloginvmain(HttpSession session) {
+	public ModelAndView chkloginvmainchkauth(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Member smem = (Member)session.getAttribute("loginsmem");
 		if(smem != null) {
