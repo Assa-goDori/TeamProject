@@ -51,7 +51,7 @@
 
 			<tr height="40px">
 				<td>시작 날짜</td>
-				<td><input type="date" name="start_date" value="${today }" /> 
+				<td><input type="date" name="start_date" value="${today}" /> 
 				<font color="red">
 				<form:errors path="start_date" /></font></td>
 			</tr>

@@ -42,8 +42,11 @@ function file_delete() {
 <font color="red"><form:errors path="fund_count" /></font></td></tr>
 
 <tr height="40px"><td>시작 날짜</td>
-<td><input type="date" name="start_date" />
-<font color="red"><form:errors path="start_date" value="${today }" /></font></td></tr>
+<td><input type="text" name="start_date" value="${funding.start_date }" readonly="readonly"/>
+<fmt:formatDate pattern="yyyy-MM-dd" value="${funding.start_date }" var="start_date"/>
+
+
+<font color="red"><form:errors path="start_date" /></font></td></tr>
 
 <tr height="40px"><td>마감날짜</td>
 <td><input type="date" name="end_date" />
@@ -53,7 +56,7 @@ function file_delete() {
 <td>
 <c:if test="${!empty funding.fund_pic }">
 					<div id="file_desc">
-						<a href="img/${funding.fund_pic }">${funding.fund_pic }</a>
+						<a href="img/${funding.fund_pic }">${funding.fund_pic}</a>
 						<a href="javascript:file_delete()">[파일첨부삭제]</a>
 					</div></c:if>
 <input type="file" name="picture" /></td></tr>
