@@ -193,7 +193,7 @@
 						href="shelterfundMypage.dog?type=3&id=${sessionScope.loginsmem.member_id }" class="tab_a">기부</a>
 					</td>
 					<td id="mytab4" align="center" class="mytab"><a
-						href="shelteradoptMypage.dog?type=4&id=${sessionScope.loginsmem.member_id }" class="tab_a">보호소</a>
+						href="shelteradoptMypage.dog?type=4&id=${sessionScope.loginsmem.member_id }" class="tab_a">입양</a>
 					</td>
 				</tr>
 			</table>

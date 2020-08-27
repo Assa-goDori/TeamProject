@@ -53,15 +53,15 @@
 	<table>
 		<tr>
 			<td id="tab1" class ="tab" style="width: 50%;" align="center">
-				<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">장바구니</a>
+				<a href="javascript:disp_div('minfo','tab1')" style="color: gray; width: 50%;">구매내역</a>
 			</td>
 			<td id="tab2" class="tab" align="center">
-				<a href="javascript:disp_div('oinfo','tab2')" style="color: gray; width: 50%;">구매내역</a>
+				<a href="javascript:disp_div('oinfo','tab2')" style="color: gray; width: 50%;">장바구니</a>
 			</td>
 		</tr>
 	</table>
 	</div>
-	<div id="minfo" class="info" style="width:100%;">
+	<div id="oinfo" class="info" style=" display:none; width:100%;">
 	<hr>
 	<c:if test="${empty cart }">
 		<h3>장바구니에 물품이 없습니다.</h3>
@@ -93,7 +93,7 @@
 	</div>
 	</c:if>
 	</div>
-	<div id="oinfo" class="info" style="display:none; width:100%;">
+	<div id="minfo" class="info" style="width:100%;">
 		<c:if test="${empty buylist }" >
 			<h3>구매 내역이 없습니다.</h3>
 		</c:if>

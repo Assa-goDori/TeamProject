@@ -159,10 +159,14 @@
 					<td class="data">${list.item_state==0?"판매중":"매진" }</td>
 					<td class="data">
 						<c:if test="${list.item_state==0 }">
-							<a href="javascript:changestate(${list.item_no }, 1)">매진</a>
+							<a href="javascript:changestate(${list.item_no }, 1)">
+								<font color="blue">매진</font>
+							</a>
 						</c:if>
 						<c:if test="${list.item_state==1 }">
-							<a href="javascript:changestate(${list.item_no }, 0)">판매중</a>
+							<a href="javascript:changestate(${list.item_no }, 0)">
+								<font color="blue">판매중</font>
+							</a>
 						</c:if>
 					</td>
 				</tr>
