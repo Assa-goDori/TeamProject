@@ -17,7 +17,7 @@
 <div class="main_div">
 <h2>공지사항 작성</h2>
 <hr>
-<form:form modelAttribute="board" action="noticeWrite.dog" enctype="multipart/form-data" name="f">	
+<form:form modelAttribute="board" action="noticeWrite.dog" enctype="multipart/form-data" accept-charset="UTF-8" name="f">	
 	<form:hidden path="type" value="1"/>
 	<form:hidden path="member_id" value="${sessionScope.loginadmin.member_id }"/>
 	<table>
