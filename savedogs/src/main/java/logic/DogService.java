@@ -591,10 +591,12 @@ public class DogService {
 		public List<Shelter> getHaplist() {
 			return shelterDao.getHaplist();
 		}
+		
+		public List<Adopt> getAdoptlist() {
+			return adoptDao.getAdoptlist();
+		}
 //-------------------입양 관련 끝------------------------------------------------
 
-
-		
 //-------------------메인관련 시작-------------------------------------------------
 		public List<Board> mainnotice() {
 			return boardDao.mainnotice();
