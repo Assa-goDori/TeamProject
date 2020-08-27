@@ -34,7 +34,7 @@
    <c:if test="${listcount > 0}">
    <c:forEach var="f" items="${boardlist}">
         <table>
-        <tr><td rowspan="4"><a href="detail.dog?fund_no=${f.fund_no}"><img src="img/${f.fund_pic}"  style="width:300px; height=:320px" align="center" alt=""></a></td>
+        <tr><td rowspan="4"><a href="detail.dog?fund_no=${f.fund_no}"><img src="img/${f.fund_pic}"  style="width:300px; height:240px" align="center" alt=""></a></td>
           <td><a href="detail.dog?fund_no=${f.fund_no}"> <h3><${f.fund_subject}></h3> </a></td></tr>
             <tr><td><i class="fa fa-building fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.sheltername}</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.restdate}일 남음</td></tr>

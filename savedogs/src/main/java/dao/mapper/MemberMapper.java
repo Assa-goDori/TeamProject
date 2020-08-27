@@ -35,6 +35,7 @@ public interface MemberMapper {
 			"<if test='member_daddress != null'> member_daddress=#{member_daddress}, </if>",
 			"<if test='shelter_no != null'> shelter_no=#{shelter_no}, </if>",
 			"<if test='file1 != null'> file1=#{file1}, </if>",
+			"<if test='file2 != null'> file2=#{file2}, </if>",
 			" member_tel=#{member_tel}, member_email=#{member_email} where member_id=#{member_id}",
 			"</script>"
 	})

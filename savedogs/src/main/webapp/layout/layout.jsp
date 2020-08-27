@@ -98,7 +98,7 @@
                                     </ul>
                                 </li>
                                 <li class="active"><a href="${path}/vwork/vmain.dog">봉사</a></li>
-                              	<li class="active"><a href="index.html">정보</a></li>
+                              	<li class="active"><a href="info.dog">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
                                         <li><a href="${path }/board/qnaList.dog?type=2">Q&A</a></li>
@@ -162,7 +162,6 @@
         </div>
     </div>
     <!-- /.footer -->
-    <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
 
 
 <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
@@ -202,8 +201,6 @@
     </script>
 
 
-<script type="text/javascript" src="${path}/js/return-to-top.js">     
-</script>
 
 </body>
 
