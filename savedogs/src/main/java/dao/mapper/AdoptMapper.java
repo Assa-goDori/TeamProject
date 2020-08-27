@@ -16,7 +16,7 @@ public interface AdoptMapper {
 			+ " values (#{member_id}, #{dog_no}, #{shelter_no}, now(), 0, #{adopt_file})")
 	void adoptInsert(AdoptSign a);
 
-	@Select("select * from adopt where member_id=#{id} order by adopt_date desc")
+	@Select("select a.member_id, a.dog_no, a.adopt_date, a.adopt_etc, a.adopt_file, s.shelter_name, s.shelter_address from adopt a, shelter s where a.shelter_no=s.shelter_no and member_id=#{id} order by adopt_date desc")
 	List<AdoptSign> getMyadoptlist(String id);
 
 	@Select("select * from adopt" +

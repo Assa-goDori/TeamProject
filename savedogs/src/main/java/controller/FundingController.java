@@ -44,6 +44,8 @@ public class FundingController {
       public ModelAndView fregFormchks(HttpSession session) {
           ModelAndView mav = new ModelAndView();
           Funding f = new Funding();
+          SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+          mav.addObject("today", sd.format(new Date()));
           mav.addObject("f",f);
           return mav; // WEB-INF/view/userEntry.jsp
         }

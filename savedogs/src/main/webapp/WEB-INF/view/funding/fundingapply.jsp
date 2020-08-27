@@ -8,6 +8,12 @@
 <title>기부 신청 양식</title>
 <link rel='stylesheet' href='../css/style.css' />
 <link rel='stylesheet' href='../css/savedogs_exc.css' />
+<script>
+function apply(){
+	opener.location.href='fundMypage.dog'
+	self.close();
+}
+</script>
 </head>
 <body>
 <div class="vdiv">
@@ -24,7 +30,7 @@
         <th><td><h5 style="color:black;" align="center">1.기부 신청 후 회원탈퇴는 하실 수 없습니다.</h5></th></t>
         <th><td><h5 style="color:black;" align="center">2.기부 취소는 불가합니다. 이 점 유의하시길 바랍니다.</h5></th></tr>
         <table>
-        <tr><th colspan="2"><input class="s_btn" type="submit" value="신청하기"></th></tr>
+        <tr><th colspan="2"><input class="s_btn" type="submit" value="신청하기" onclick="apply()"></th></tr>
         </table>
    </form:form>
    </div>

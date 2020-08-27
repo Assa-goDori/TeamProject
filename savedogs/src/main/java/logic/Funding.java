@@ -4,7 +4,6 @@ package logic;
 import java.util.Date;
 
 import javax.validation.constraints.Future;
-import javax.validation.constraints.FutureOrPresent;
 //import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -25,7 +24,6 @@ public class Funding {
 	@NotNull(message="목표금액을 입력하세요")
 	private int fund_count;
 	@NotNull(message="날짜를 선택하세요")
-    @Future(message="미래 날짜만 입력 가능합니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
 	@NotNull(message="날짜를 선택하세요")
@@ -33,7 +31,9 @@ public class Funding {
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
 	private int restdate; //마감날짜-오늘날짜
+	@NotNull(message="사진을 선택하세요")
 	private String fund_pic; //사진 파일 명
+	@NotNull(message="사진을 선택하세요")
 	private MultipartFile picture; //사진
 	private int complete; 
 	public int getFund_no() {

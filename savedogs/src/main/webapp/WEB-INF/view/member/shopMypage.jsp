@@ -104,7 +104,9 @@
 			<c:forEach items="${buylist }" var="buy" varStatus="stat">
 				<tr>
 					<td class="data">
-						<a href="javascript:list_disp('saleLine${stat.index+1 }')">${stat.index+1 }</a>
+						<a href="javascript:list_disp('saleLine${stat.index+1 }')">
+							<font color="blue">${stat.index+1 }</font>
+						</a>
 					</td>
 					<td class="data">
 						<fmt:formatDate value="${buy.buy_date }" pattern="yyyy-MM-dd" />
@@ -131,16 +133,16 @@
 								</tr>
 							</c:forEach>
 							<tr>
-								<th colspan="2">배송지정보</th>
-								<th colspan="2">상태</th>
+								<th colspan="3">배송지정보</th>
+								<th>상태</th>
 							</tr>
 							<tr>
-								<td colspan="2" class="data">
+								<td colspan="3" class="data">
 									${buy.buy_postcode }
 									${buy.buy_address }
 									${buy.buy_daddress }
 								</td>
-								<td colspan="2" class="data">
+								<td class="data">
 									${buy.buy_state }
 								</td>
 							</tr>

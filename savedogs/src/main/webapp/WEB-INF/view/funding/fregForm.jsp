@@ -11,6 +11,7 @@
 <link rel='stylesheet' href='../css/savedogs_main.css' />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head> 
 <body> 
 <!-- submit일때 hidden값  -->
@@ -50,7 +51,7 @@
 
 			<tr height="40px">
 				<td>시작 날짜</td>
-				<td><input type="date" name="start_date" /> 
+				<td><input type="date" name="start_date" value="${today }" /> 
 				<font color="red">
 				<form:errors path="start_date" /></font></td>
 			</tr>
@@ -65,6 +66,7 @@
 			<tr height="40px">
 				<td>배너사진</td>
 				<td><input type="file" name="picture"/></td>
+				
 			</tr>
 
 			<tr height="40px" >

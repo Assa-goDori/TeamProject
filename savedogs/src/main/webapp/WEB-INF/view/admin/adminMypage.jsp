@@ -45,7 +45,7 @@
 					</tr>
 				</table>
 		<form name="f" method="post" action="recent.dog">
-			<input class="s_btn" type="button" value="보호소정보 최신화" onclick="newlist()">
+			<input class="s_btn" style="width:200px;" type="button" value="보호소정보 최신화" onclick="newlist()">
 		</form>
 	</div>
 </body>

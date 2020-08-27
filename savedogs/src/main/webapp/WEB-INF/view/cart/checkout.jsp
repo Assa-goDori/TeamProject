@@ -132,8 +132,8 @@
 				</tr>
 			</table>
 			<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
-			<input type="button" value="주문 완료" onclick="location.href='end.dog'">
-			<input type="button" value="취소" onclick="location.href='../item/list.dog'">
+			<input type="button" value="주문 완료" class="s_btn" onclick="location.href='end.dog'">
+			<input type="button" value="취소" class="g_btn"  onclick="location.href='../item/list.dog'">
 		</div>
 		<form:form modelAttribute="buylist" action="checkout.dog" method="post">
 		<input type="hidden" value="${sessionScope.loginmem.member_id}">
@@ -174,8 +174,8 @@
 				</tr>
 			</table>
 		<h3 align="left" style="margin-left: 15%;">총 구입 금액 : <fmt:formatNumber pattern="0,000" value="${sessionScope.CART.total}"/> 원</h3>
-		<input type="submit" value="주문 완료">
-		<input type="button" value="취소" onclick="location.href='../item/list.dog'">
+		<input type="submit" class="s_btn" value="주문 완료">
+		<input type="button" class="g_btn" value="취소" onclick="location.href='../item/list.dog'">
 		</form:form>
 		</div>
 	</div>

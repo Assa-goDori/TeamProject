@@ -31,9 +31,10 @@
 	});
 
 </script>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
-	<div style="margin-left: 30%; width:40%;">
+	<div class="main_div">
 	<h2>보호소 관리자 가입</h2>
 	<hr>
 	<form:form modelAttribute="member" method="post" action="smemberSignup.dog" enctype="multipart/form-data">
@@ -83,7 +84,7 @@
 			<tr height="40px">
 				<td>전화번호</td>
 				<td>
-					<form:input path="member_tel" placeholder="010-0000-0000"/>
+					<form:input path="member_tel" value="010-0000-0000"/>
 					<font color="red">
 						<form:errors path="member_tel" />
 					</font>
@@ -102,7 +103,7 @@
 				<td>보호소 번호</td>
 				<td>
 					<form:input path="shelter_no" />
-					<input type="button" value="보호소 찾기" onclick="window.open('shelterlist.dog','','width=500, height=250, left=150,top=150')">
+					<input class="s_btn" style="width:120px;" type="button" value="보호소 찾기" onclick="window.open('shelterlist.dog','','width=500, height=250, left=150,top=150')">
 				</td>
 				<td>
 					<font color="red">
@@ -118,9 +119,9 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td colspan="2" align="center">
-					<input type="submit" value="회원가입">
-					<input type="reset" value="초기화">
+				<td class="btn_td" colspan="2" align="center">
+					<input class="s_btn" type="submit" value="회원가입">
+					<input class="g_btn" type="reset" value="초기화">
 				</td>
 			</tr>
 		</table>
