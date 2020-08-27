@@ -29,23 +29,23 @@
 		<hr>
 		<table>
 			<tr>
-				<th>제목</th>
-				<td>${showFund.fund_subject}</td>
+				<th class="b_th">제목</th>
+				<td class="b_td">${showFund.fund_subject}</td>
 			</tr>
 			<tr>
-				<th>기간</th>
+				<th class="b_th">기간</th>
 				<fmt:formatDate value="${showFund.start_date }" pattern="yyyy-MM-dd" var="start"/>
 				<fmt:formatDate value="${showFund.end_date }" pattern="yyyy-MM-dd" var="end"/>
-				<td>${start} ~ ${end}</td>
+				<td class="b_td">${start} ~ ${end}</td>
 			</tr>
 			<tr>
-				<th>목표금액</th>
-				<td>
+				<th class="b_th">목표금액</th>
+				<td class="b_td">
 					${showFund.fund_count}
 				</td>
 			</tr>
 			<tr>
-				<td class="data" colspan="2">
+				<td class="data btn_td" colspan="2">
 					<input class="small_btn" type="button" value="목록으로" onclick="location.href='shelterfundMypage.dog?type=3&id=${sessionScope.loginsmem.member_id}'">
 				</td>
 			</tr>
@@ -56,31 +56,31 @@
 			<input type="hidden" value="${param.fund_no }" name="fund_no">
 			<table>
 				<tr>
-					<th>아이디</th>
-					<th>이메일</th>
-					<th>후원금액</th>
+					<th class="l_th">아이디</th>
+					<th class="l_th">이메일</th>
+					<th class="l_th">후원금액</th>
 					<th>
 						<input type="checkbox" name="allchk" onchange="allchkbox(this)">
 					</th>
 				</tr>
 				<c:forEach items="${detaillist }" var="dlist">
 					<tr>
-						<td class="data">
+						<td class="data l_th">
 							${dlist.fund_id }
 						</td>
-						<td class="data">
+						<td class="data l_th">
 							${dlist.member_email }
 						</td>
-						<td class="data">
+						<td class="data l_th">
 							${dlist.fund_cost }
 						</td>
-						<td style="text-align: center;">
+						<td style="text-align: center;" class="l_td">
 							<input type="checkbox" name="idchks" class="idchks" value="${dlist.fund_id }">
 						</td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td class="data" colspan="4">
+					<td class="data btn_td" colspan="4">
 						<input class="s_btn" type="submit" value="메일전송">
 					</td>
 				</tr>

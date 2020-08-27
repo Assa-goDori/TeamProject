@@ -258,6 +258,10 @@ public class DogService {
 	public Idpw getFindPW(String id, String tel, String email) {
 		return memberDao.getFindPW(id,tel, email);
 	}
+	
+	public void deleteMember(String member_id) {
+		memberDao.deleteMember(member_id);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	
@@ -609,7 +613,7 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
-	
+			
 
 		
 

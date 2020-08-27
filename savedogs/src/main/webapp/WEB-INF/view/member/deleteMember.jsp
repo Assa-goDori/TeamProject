@@ -14,6 +14,7 @@
 		</h3>
 		<form name="f" method="post" action="delete.dog">
 			<h5>비밀번호 입력</h5>
+			<input type="hidden" name="member_id" value="${param.id }">
 			<input type="password" name="member_pass">
 			<input class="g_btn" type="submit" value="탈퇴">
 		</form>

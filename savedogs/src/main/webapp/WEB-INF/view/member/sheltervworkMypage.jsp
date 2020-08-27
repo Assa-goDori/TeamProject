@@ -18,6 +18,10 @@
 	min-width: 100%;
 	text-align: center;
 	}
+.l_th, .l_td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+}
 </style>
 <!-- calendar 관련 -->
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -126,9 +130,10 @@
 			</c:if>
 			
 			<c:if test="${!empty writelist }">
+			
 				<h3>작성한 봉사리스트</h3>
 				<hr>
-				<table style="width: 100%;" class="l_table">
+				<table style="width: 80%;">
 					<tr>
 						<th class="l_th" style="text-align: center;">봉사날짜</th>
 						<th class="l_th" style="text-align: center;">모집인원</th>
@@ -147,9 +152,9 @@
 					</tr>
 					</c:forEach>
 				</table>
+			
 			</c:if>
 		</div>
-		
-	</div>
+		</div>
 </body>
 </html>

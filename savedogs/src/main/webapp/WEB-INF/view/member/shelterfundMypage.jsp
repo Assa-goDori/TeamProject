@@ -23,21 +23,21 @@
 		<hr>
 		<table>
 			<tr>
-				<th>펀딩제목</th>
-				<th>진행일자</th>
-				<th>비고</th>
+				<th class="l_th">펀딩제목</th>
+				<th class="l_th">진행일자</th>
+				<th class="l_th">비고</th>
 			</tr>
 			<c:forEach items="${writelist }" var="list">
 				<tr>
-					<td class="data" style="width:360px">
+					<td class="data l_td" style="width:360px">
 						<a href="shelterfundDetail.dog?fund_no=${list.fund_no }">${list.fund_subject }</a>
 					</td>
-					<td class="data" style="width:360px">
+					<td class="data l_td" style="width:360px">
 						<fmt:formatDate value="${list.start_date }" pattern="yyyy-MM-dd" var="start"/>
 						<fmt:formatDate value="${list.end_date }" pattern="yyyy-MM-dd" var="end" />
 						${start } ~ ${end }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${list.restdate>0?"진행중":"마감" }
 					</td>
 				</tr>

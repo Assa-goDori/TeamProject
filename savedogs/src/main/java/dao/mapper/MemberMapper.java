@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -65,5 +66,8 @@ public interface MemberMapper {
 
 	@Update("update member set member_auth=${member_auth} where member_id=#{member_id}")
 	void updateAuth(Map<String, Object> param);
+
+	@Delete("delete from member where member_id=#{member_id}")
+	void deleteMember(String member_id);
 
 }

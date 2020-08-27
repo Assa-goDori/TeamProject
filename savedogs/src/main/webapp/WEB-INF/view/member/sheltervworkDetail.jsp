@@ -11,6 +11,8 @@
 	.data {
 		text-align: center;
 	}
+	.l_th{
+	width: 250px;}
 </style>
 </head>
 <body>
@@ -45,19 +47,19 @@
 		<h3>신청자 현황</h3>
 		<table>
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>전화번호</th>
+				<th class="l_th">아이디</th>
+				<th class="l_th">이름</th>
+				<th class="l_th">전화번호</th>
 			</tr>
 			<c:forEach items="${detaillist }" var="dlist">
 				<tr>
-					<td class="data">
+					<td class="data l_td">
 						${dlist.vwork_id }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${dlist.member_name }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${dlist.vwork_tel }
 					</td>
 				</tr>

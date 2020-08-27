@@ -72,4 +72,8 @@ public class MemberDao {
 		param.put("member_id",id);
 		return template.getMapper(MemberMapper.class).selectmem(param).get(0);
 	}
+
+	public void deleteMember(String member_id) {
+		template.getMapper(MemberMapper.class).deleteMember(member_id);
+	}
 }
