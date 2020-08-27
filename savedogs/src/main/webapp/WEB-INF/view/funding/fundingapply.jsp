@@ -10,7 +10,6 @@
 <link rel='stylesheet' href='../css/savedogs_exc.css' />
 <script>
 function apply(){
-	opener.location.href='fundMypage.dog'
 	self.close();
 }
 </script>

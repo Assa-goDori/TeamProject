@@ -31,9 +31,7 @@ public class Funding {
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
 	private int restdate; //마감날짜-오늘날짜
-	@NotNull(message="사진을 선택하세요")
 	private String fund_pic; //사진 파일 명
-	@NotNull(message="사진을 선택하세요")
 	private MultipartFile picture; //사진
 	private int complete; 
 	public int getFund_no() {
