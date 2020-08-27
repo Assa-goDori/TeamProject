@@ -47,20 +47,29 @@
 		<table>
 			<tr>
 				<th>신청날짜</th>
-				<th>공고번호</th>
-				<th>보호소</th>
+				<th colspan="2">공고번호</th>
+				<th colspan="3">보호소</th>
 				<th>진행단계</th>
+				<th></th>
 			</tr>
 			<c:forEach items="${myadoptlist }" var="list">
 				<tr>
 					<fmt:formatDate value="${list.adopt_date }" pattern="yyyy-MM-dd" var="day" />
 					<td class="data">${day }</td>
-					<td class="data" style="width:200px;"><a href="../adopt/adetail.dog?noticeNo=${list.dog_no }">${list.dog_no }</a></td>
-					<td class="data">${list.shelter_no }</td>
+					<td class="data" colspan="2">
+						<a href="../adopt/adetail.dog?noticeNo=${list.dog_no }">
+							<font color="blue">${list.dog_no }</font>
+						</a>
+					</td>
+					<td class="data" colspan="3">${list.shelter_address} ${list.shelter_name }</td>
 					<td class="data">
 						${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }
+					</td>
+					<td class="data">
 						<c:if test="${list.adopt_etc==3 }">
-							<a href="../board/reviewList.dog?type=0">입양후기 작성</a>
+							<a href="../board/reviewWrite.dog">
+								<font color="blue">입양후기 작성</font>
+							</a>
 						</c:if>
 					</td>
 				</tr>

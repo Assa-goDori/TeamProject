@@ -12,10 +12,36 @@ public class AdoptSign {
 	private int adopt_etc;
 	private String adopt_file;
 	private MultipartFile adopt_f;
+	private String shelter_address;
+	private String shelter_name;
 
 	// getter, setter
 	public String getMember_id() {
 		return member_id;
+	}
+
+	public String getShelter_address() {
+		return shelter_address;
+	}
+
+	public void setShelter_address(String shelter_address) {
+		this.shelter_address = shelter_address;
+	}
+
+	public MultipartFile getAdopt_f() {
+		return adopt_f;
+	}
+
+	public void setAdopt_f(MultipartFile adopt_f) {
+		this.adopt_f = adopt_f;
+	}
+
+	public String getShelter_name() {
+		return shelter_name;
+	}
+
+	public void setShelter_name(String shelter_name) {
+		this.shelter_name = shelter_name;
 	}
 
 	public void setMember_id(String member_id) {
