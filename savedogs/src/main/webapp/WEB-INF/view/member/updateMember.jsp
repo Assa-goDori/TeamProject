@@ -41,14 +41,19 @@
         }).open();
 	}
 	
-	function file_delete() {
-		file_desc.style.display = "none";
+	function file_delete(no) {
+		if(no==1) {
+			file_desc1.style.display = "none";
+		} else if (no==2) {
+			file_desc2.style.display = "none";
+		}
+		
 	}
 </script>
 </head>
 <body>
 	<div class="main_div">
-	<form:form modelAttribute="member" method="post" action="updateMember.dog" name="f">
+	<form:form modelAttribute="member" method="post" action="updateMember.dog" name="f" enctype="multipart/form-data">
 		<spring:hasBindErrors name="member">
 			<font color="red">
 				<c:forEach items="${errors.globalErrors }" var="error">
@@ -135,7 +140,7 @@
 			</tr>
 			<tr height="40px">
 				<td class="btn_td" colspan="2" align="center">
-					<input class="s_btn" type="button" value="비밀번호 변경" onclick="window.open('changepass.dog?id=${member.member_id}','','width=500, height=250, left=150,top=150')">
+					<input class="s_btn" style="width:150px;" type="button" value="비밀번호 변경" onclick="window.open('changepass.dog?id=${member.member_id}','','width=500, height=250, left=150,top=150')">
 					<input class="s_btn" type="submit" value="수정 완료">
 				</td>
 			</tr>
@@ -186,12 +191,19 @@
 				<td>첨부파일</td>
 				<td>&nbsp;
 				<c:if test="${!empty member.file1 }">
-					<div id="file_desc">
+					<div id="file_desc1">
 						<a href="member/img/${member.file1 }">${member.file1 }</a>
-						<a href="javascript:file_delete()">[파일첨부삭제]</a>
+						<a href="javascript:file_delete(1)">[파일첨부삭제]</a>
 					</div>
 				</c:if>
-				<input type="file" name="file1">
+				<c:if test="${!empty member.file2 }">
+					<div id="file_desc2">
+						<a href="member/img/${member.file2 }">${member.file2 }</a>
+						<a href="javascript:file_delete(2)">[파일첨부삭제]</a>
+					</div>
+				</c:if>
+				<input type="file" name="f1">
+				<input type="file" name="f2">
 			</td>
 			</tr>
 			<tr height="40px">

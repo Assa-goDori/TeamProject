@@ -66,6 +66,10 @@ public class DogService {
 			uploadFileCreate(mem.getF1(),request,"member/img/");
 			mem.setFile1(mem.getF1().getOriginalFilename());
 		}
+		if(mem.getF2() != null && !mem.getF2().isEmpty()) {
+			uploadFileCreate(mem.getF2(),request,"member/img/");
+			mem.setFile2(mem.getF2().getOriginalFilename());
+		}
 		memberDao.smemberInsert(mem);
 	}
 	
@@ -130,6 +134,10 @@ public class DogService {
 		if(mem.getF1() != null && !mem.getF1().isEmpty()) {
 			uploadFileCreate(mem.getF1(),request,"member/img/");
 			mem.setFile1(mem.getF1().getOriginalFilename());
+		}
+		if(mem.getF2() != null && !mem.getF2().isEmpty()) {
+			uploadFileCreate(mem.getF2(),request,"member/img/");
+			mem.setFile2(mem.getF2().getOriginalFilename());
 		}
 		memberDao.memUpdate(mem);
 	}

@@ -102,13 +102,16 @@ td{
 			</td>
 		</tr>
 	</c:if>
-	<c:if test="${listcount == 0 }"> 
-		<tr><td colspan="5">등록된 게시물이 없습니다.</td></tr>
-	</c:if>
-	<c:if test="${sessionScope.loginmem != null}">
-	<tr><td colspan="5" class="btn_td"><input type="button" value="작성" class="s_btn" onclick="location.href='qnaWrite.dog'"></td></tr>
-	</c:if>	
+	
+	
 </table>
+<c:if test="${listcount == 0 }"> 
+		<h3>등록된 게시물이 없습니다.</h3>
+	</c:if>
+<br>
+<c:if test="${sessionScope.loginmem != null || sessionScope.loginsmem != null}">
+	<input type="button" value="작성" class="s_btn" onclick="location.href='qnaWrite.dog'">
+	</c:if>	
 </div>
 </body>
 </html>

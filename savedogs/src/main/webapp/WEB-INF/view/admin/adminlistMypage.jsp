@@ -101,8 +101,16 @@
 						${slist.member_email }
 					</td>
 					<td class="data">
-						<a href="../member/img/${slist.file1 }">
-							<font color="blue">${slist.file1 }</font></a>
+						<c:if test="${slist.file1 != null }">
+							<a href="../member/img/${slist.file1 }">
+							<font color="blue">${slist.file1 }</font>
+							</a>
+						</c:if>
+						<c:if test="${slist.file2 != null }">
+							<a href="../member/img/${slist.file2 }">
+								<font color="blue">${slist.file2 }</font>
+							</a>
+						</c:if>
 					</td>
 					<td class="data">
 						<c:if test="${slist.member_auth == 1 }">

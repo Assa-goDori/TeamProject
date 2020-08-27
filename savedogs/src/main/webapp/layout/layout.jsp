@@ -162,7 +162,6 @@
         </div>
     </div>
     <!-- /.footer -->
-    <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
 
 
 <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
@@ -202,8 +201,6 @@
     </script>
 
 
-<script type="text/javascript" src="${path}/js/return-to-top.js">     
-</script>
 
 </body>
 

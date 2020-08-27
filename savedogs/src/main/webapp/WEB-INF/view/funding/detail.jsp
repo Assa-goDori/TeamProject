@@ -83,10 +83,10 @@ function replyDelete(rno){
 <input type="hidden" value="${param.fund_no}" name="fund_no">
  <table class="w3-table" style="width:1000px; ">
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
-        <tr><td rowspan="7"><img src="img/${funding.fund_pic}" style="width:250px; height=:320px" alt="기부 배너 사진"></td></tr>
+        <tr><td rowspan="7"><img src="img/${funding.fund_pic}" style="width:250px; height:280px" alt="기부 배너 사진"></td></tr>
           <td colspan='1'><h3><${funding.fund_subject}></h3></td>
             <tr><td><i class="fa fa-building fa-fw w3-margin-right w3-large w3-text-teal"></i>"${funding.sheltername}"</td></tr>
-            <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>기부 기간<fmt:formatDate value="${funding.start_date}" pattern="yyyy.MM.dd" var="startdate" />
+            <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>기부 기간 : <fmt:formatDate value="${funding.start_date}" pattern="yyyy.MM.dd" var="startdate" />
              <fmt:formatDate value="${funding.end_date}" pattern="yyyy.MM.dd" var="enddate" />
             ${startdate}&nbsp;-&nbsp;${enddate}</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${funding.restdate}일 남음</td></tr>

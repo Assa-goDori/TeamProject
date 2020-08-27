@@ -91,9 +91,8 @@ td{
 </c:if>
 
 	<c:if test="${listcount == 0 }">
-		 <table>
-			<tr><td colspan="5">등록된 게시물이 없습니다.</td></tr>
-		</table>
+		<h3>등록된 게시물이 없습니다.</h3>
+		
 	</c:if>
 	<br>
 	<!-- 
