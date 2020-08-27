@@ -35,7 +35,7 @@ public class CartAspect {
 	("execution(* controller.*.*chkauth(..)) && args(.., session)")
 	public Object ShelterAuthCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {
 		Member loginsmem = (Member)session.getAttribute("loginsmem");
-		if(loginsmem.getMember_auth() == 1) {
+		if(loginsmem != null && loginsmem.getMember_auth() == 1) {
 				throw new LoginException("가입 미승인 상태입니다. 자세한 내용은 Q&A 게시판을 이용해주세요.","../main.dog");
 		}
 		Object ret = joinPoint.proceed();
