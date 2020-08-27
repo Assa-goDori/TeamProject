@@ -128,7 +128,7 @@ public class MemberLoginAspect {
 	
 	
 	@Around // adivce중 하나.
-	("execution(* controller.Funding*.*chks(..))")
+	("execution(* controller.Funding*.chks*(..))")
 	public Object FundingCheck(ProceedingJoinPoint joinPoint) throws Throwable{
 		Member loginmem = null;
 		Member loginsmem = null;
