@@ -112,14 +112,21 @@ function replyDelete(rno){
         <label for="content">comment</label>
         <div class="replywrite" >
         
+        <c:if test="${sessionScope.loginmem != null || sessionScope.loginsmem != null}">
 		<form:form modelAttribute="fundreply" name="replyf" >
 			<input type="hidden" name="fund_no" value="${funding.fund_no }">
+			<c:if test="${sessionScope.loginmem != null}">
 			<input type="hidden" name="fundreply_id" value="${sessionScope.loginmem.member_id}">
 			${sessionScope.loginmem.member_id} &nbsp;&nbsp;
+			</c:if>
+			<c:if test="${sessionScope.loginsmem != null}">
+			<input type="hidden" name="fundreply_id" value="${sessionScope.loginsmem.member_id}">
+			${sessionScope.loginsmem.member_id} &nbsp;&nbsp;
+			</c:if>
 			<input type="text" name="fund_comment" class="content_txt" style="width: 500px;">
 			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">			
 		</form:form>
-	
+		</c:if>
     </div>
     <div class="container">
         <div class="replys" id="replys"></div>

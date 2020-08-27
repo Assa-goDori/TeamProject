@@ -174,8 +174,15 @@ public class FundingController {
 			for(Fundreply r : list) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getFund_regdate());
 				html.append("<tr><th>"+r.getFundreply_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getFund_comment()+"</td><td rowspan='2'>");
-				Member login = (Member)session.getAttribute("loginmem");
-				String login_id = login.getMember_id();
+				Member loginmem = (Member)session.getAttribute("loginmem");
+				Member loginsmem = (Member)session.getAttribute("loginsmem");
+				String login_id = "";
+				if(loginmem != null) {
+					login_id = loginmem.getMember_id();
+				} else if(loginsmem != null) {
+					login_id = loginsmem.getMember_id();
+				}
+				
 				if(r.getFundreply_id().equals(login_id)) {
 					html.append("<input type='button' value='삭제' class='small_btn' onclick='replyDelete("+r.getFund_replyno()+");'>");
 				}
@@ -193,7 +200,6 @@ public class FundingController {
 	@ResponseBody
 	public void replyInsert(Fundreply reply, HttpServletRequest request, HttpSession session) {
 		int rmax = service.getFRmax();
-		
 		reply.setFund_replyno(++rmax);
 		service.insertReply(reply);
 	}

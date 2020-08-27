@@ -96,10 +96,16 @@ function replyDelete(rno){
 		<!-- action="replyInsert.dog"  -->
 	<form:form modelAttribute="reply" name="replyf" >
 			<input type="hidden" name="board_no" value="${board.board_no }">
-			<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id}">
 			
-			<c:if test="${sessionScope.loginmem.member_id}!=null">
-			${sessionScope.loginmem.member_id} &nbsp;&nbsp;
+			<c:if test="${sessionScope.loginmem != null || sessionScope.loginsmem != null}">
+			<c:if test="${sessionScope.loginmem != null}">	
+				<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id}">
+				${sessionScope.loginmem.member_id} &nbsp;&nbsp;
+			</c:if>
+			<c:if test="${sessionScope.loginsmem != null}">	
+				<input type="hidden" name="member_id" value="${sessionScope.loginsmem.member_id}">
+				${sessionScope.loginsmem.member_id} &nbsp;&nbsp;
+			</c:if>
 			<input type="text" name="board_comment" class="content_txt" style="width: 500px;">
 			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">
 			</c:if>			

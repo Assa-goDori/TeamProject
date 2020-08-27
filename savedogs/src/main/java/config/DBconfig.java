@@ -23,7 +23,7 @@ public class DBconfig {
 
 			//192.168.0.113
 
-			ds.setJdbcUrl("jdbc:mariadb://192.168.0.113:3306/savedogs");
+			ds.setJdbcUrl("jdbc:mariadb://localhost:3306/savedogs");
 			ds.setUser("scott");
 			ds.setPassword("1234");
 			ds.setMaxPoolSize(20);		//최대 연결 객체의 개수

@@ -67,7 +67,7 @@ public interface FundingMapper {
     @Select("select * from fundreply where fund_no=#{fund_no}")
 	List<Fundreply> freplyList(String fund_no);
 
-    @Select("select count(*) from fundreply")
+    @Select("select ifnull(max(fund_replyno),0) from fundreply")
 	int getFRmax();
 
     @Insert("insert into fundreply (fund_replyno, fund_no, fundreply_id, fund_comment, fund_regdate) values (#{fund_replyno}, #{fund_no}, #{fundreply_id}, #{fund_comment}, now())")
