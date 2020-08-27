@@ -77,16 +77,6 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
-	@Around	//보호소관리자 접근권한 확인 aop
-	("execution(* controller.*.*chkauth(..)) && args(.., session)")
-	public Object ShelterAuthCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {
-		Member loginsmem = (Member)session.getAttribute("loginsmem");
-		if(loginsmem.getMember_auth() == 1) {
-			throw new LoginException("가입 미승인 상태입니다. 자세한 내용은 Q&A 게시판을 이용해주세요.","../main.dog");
-		}
-		Object ret = joinPoint.proceed();
-		return ret;
-	}
 	
 	@Around // 보호소관리자 aop
 	("execution(* controller.Member*.*chks(..)) && args(type, id, session)")
@@ -150,7 +140,26 @@ public class MemberLoginAspect {
 		Object ret = joinPoint.proceed();
 		return ret;
 	}
-	
+	@Around // adivce중 하나.
+	("execution(* controller.Funding*.chkm*(..))")
+	public Object FundingloginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
+		Member loginmem = null;
+		Member loginsmem = null;
+		Member loginadmin = null;
+		for(Object o : joinPoint.getArgs()) {
+			if(o instanceof HttpSession) {
+				HttpSession session = (HttpSession)o;
+				loginmem = (Member)session.getAttribute("loginmem");
+				loginsmem = (Member)session.getAttribute("loginsmem");
+				loginadmin = (Member)session.getAttribute("loginadmin");
+			}
+		}
+		if(loginmem == null && loginsmem == null && loginadmin == null) {
+			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
 	
 	@Around //봉사 회원로그인 확인
 	("execution(* controller.Vwork*.chklogin*(..)) && args(..,session)")
