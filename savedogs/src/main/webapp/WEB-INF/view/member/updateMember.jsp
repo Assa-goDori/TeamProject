@@ -196,7 +196,7 @@
 			</tr>
 			<tr height="40px">
 				<td class="btn_td" colspan="2" align="center">
-					<input class="s_btn" type="button" value="비밀번호 변경" onclick="window.open('changepass.dog?id=${member.member_id}','','width=500, height=250, left=150,top=150')">
+					<input class="s_btn" style="width:150px;" type="button" value="비밀번호 변경" onclick="window.open('changepass.dog?id=${member.member_id}','','width=500, height=250, left=150,top=150')">
 					<input class="s_btn" type="submit" value="수정 완료">
 				</td>
 			</tr>

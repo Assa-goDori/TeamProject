@@ -11,6 +11,7 @@
 		f.submit();
 	}
 </script>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
 	<div class="main_div">

@@ -16,8 +16,10 @@
 		})
 	})
 </script>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 </head>
 <body>
+	<div class="main_div">
 	<form name="f" method="post">
 		<select name="goo">
 			<c:forEach items="${list }" var="m">
@@ -27,7 +29,7 @@
 		<script>
 			f.goo.value="${param.goo}";
 		</script>
-		<input type="submit" value="검색">
+		<input class="s_btn" type="submit" value="검색">
 	</form>
 	<div align="left">
 		<c:if test="${empty namelist }">
@@ -37,10 +39,11 @@
 			${namelist[0].shelter_address } 보호소 현황<br>
 			<ul>
 				<c:forEach items="${namelist }" var="n">
-					<li>${n.shelter_no} ${n.shelter_name }</li>
+					<li><font color="blue">${n.shelter_no} ${n.shelter_name }</font></li>
 				</c:forEach>
 			</ul>
 		</c:if>
+	</div>
 	</div>
 </body>
 </html>
