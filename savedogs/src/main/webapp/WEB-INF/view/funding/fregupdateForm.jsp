@@ -43,7 +43,7 @@ function file_delete() {
 
 <tr height="40px"><td>시작 날짜</td>
 <td><input type="date" name="start_date" />
-<font color="red"><form:errors path="start_date" /></font></td></tr>
+<font color="red"><form:errors path="start_date" value="${today }" /></font></td></tr>
 
 <tr height="40px"><td>마감날짜</td>
 <td><input type="date" name="end_date" />
@@ -57,6 +57,7 @@ function file_delete() {
 						<a href="javascript:file_delete()">[파일첨부삭제]</a>
 					</div></c:if>
 <input type="file" name="picture" /></td></tr>
+
 
 <tr height="40px">
 <td colspan="2" align="center">
