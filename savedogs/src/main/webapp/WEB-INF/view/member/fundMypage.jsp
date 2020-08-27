@@ -116,24 +116,24 @@
 	<c:if test="${!empty fundlist }">
 		<table>
 			<tr>
-				<th style="width:250px;" colspan="4">후원 기간</th>
-				<th style="width:300px;">후원명</th>
-				<th>후원금액</th>
+				<th class="l_th" style="width:250px;" colspan="4">후원 기간</th>
+				<th class="l_th" style="width:300px;">후원명</th>
+				<th class="l_th">후원금액</th>
 			</tr>
 			<c:forEach items="${fundlist }" var="list">
 				<tr>
-					<td style="width:250px;" class="data" colspan="4">
+					<td style="width:250px;" class="data l_td" colspan="4">
 						<fmt:formatDate value="${list.start_date }" pattern="yyyy.MM.dd" var="start"/>
 						<fmt:formatDate value="${list.end_date }" pattern="yyyy.MM.dd" var="end"/>
 						${start } ~ ${end }
 					</td>
-					<td style="width:300px;" class="data">
+					<td style="width:300px;" class="data l_td">
 						<a href="../funding/detail.dog?fund_no=${list.fund_no}">
 							<font color="blue">${list.fund_subject }</font>
 						</a>
 					</td>
 					<fmt:formatNumber pattern="##,###원" value="${list.fund_cost }" var="cost1"/>
-					<td class="data">${cost1 }</td>
+					<td class="data l_td">${cost1 }</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -148,23 +148,23 @@
 	<c:if test="${!empty endfundlist }">
 		<table>
 			<tr>
-				<th style="width:250px;">후원 신청 날짜</th>
-				<th style="width:300px;">후원명</th>
-				<th>후원금액</th>
+				<th class="l_th" style="width:250px;">후원 신청 날짜</th>
+				<th class="l_th" style="width:300px;">후원명</th>
+				<th class="l_th">후원금액</th>
 			</tr>
 			<c:forEach items="${endfundlist }" var="endlist">
 				<tr>
-					<td style="width:250px;" class="data">
+					<td style="width:250px;" class="data l_td">
 						<fmt:formatDate value="${endlist.fund_date }" pattern="yyyy년 MM월 dd일" var="date2"/>
 						${date2 }
 					</td>
-					<td style="width:300px;" class="data">
+					<td style="width:300px;" class="data l_td">
 						<a href="../funding/detail.dog?fund_no=${endlist.fund_no}">
 							<font color="blue">${endlist.fund_subject }</font>
 						</a>
 					</td>
 					<fmt:formatNumber pattern="##,###원" value="${endlist.fund_cost }" var="cost2"/>
-					<td class="data">${cost2 }</td>
+					<td class="data l_td">${cost2 }</td>
 				</tr>
 			</c:forEach>
 		</table>

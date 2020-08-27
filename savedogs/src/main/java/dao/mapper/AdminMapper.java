@@ -36,7 +36,7 @@ public interface AdminMapper {
 	@Select("select * from member where member_id != 'admin' and member_type=0")
 	List<Member> getMemberList();
 
-	@Select("select * from member where member_type=1")
+	@Select("select m.member_id, m.member_tel, m.member_email, m.file1, m.member_auth, s.shelter_name, s.shelter_address from member m, shelter s where m.shelter_no=s.shelter_no and member_type=1")
 	List<Member> getSmemberList();
 
 	

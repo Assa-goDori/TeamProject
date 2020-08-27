@@ -97,9 +97,12 @@ function replyDelete(rno){
 	<form:form modelAttribute="reply" name="replyf" >
 			<input type="hidden" name="board_no" value="${board.board_no }">
 			<input type="hidden" name="member_id" value="${sessionScope.loginmem.member_id}">
+			
+			<c:if test="${sessionScope.loginmem.member_id}!=null">
 			${sessionScope.loginmem.member_id} &nbsp;&nbsp;
 			<input type="text" name="board_comment" class="content_txt" style="width: 500px;">
-			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">			
+			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">
+			</c:if>			
 	</form:form>
 				
 	</div>

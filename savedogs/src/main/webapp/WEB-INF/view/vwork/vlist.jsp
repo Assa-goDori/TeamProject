@@ -57,7 +57,7 @@ function date_search() {
 					
 					<td>
 						<input type="button" class="g_btn" value="상세보기" onclick="location.href='vdetail.dog?vwork_no=${vwork.vwork_no}'">
-						<c:if test="${vwork.Nmem != vwork.Vmem }">
+						<c:if test="${vwork.Nmem != vwork.Vmem && sessionScope.loginmem != null}">
 							<input type="button" value="신청" class="s_btn" onclick="location.href='vjoin.dog?vwork_no=${vwork.vwork_no}'">
 						</c:if>
 						<c:if test="${vwork.Nmem == vwork.Vmem }">

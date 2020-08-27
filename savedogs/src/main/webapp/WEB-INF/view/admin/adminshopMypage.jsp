@@ -47,6 +47,7 @@
 	
 	function shopgraph(data) {
 		console.log(data)
+		var name = document.getElementById("shoplist").value;
 		var rows = JSON.parse(data)
 		var dates = []
 		var datas = []
@@ -86,7 +87,7 @@
 				responsive : true,
 				title : {
 					display : true,
-					text : '월별 판매금액 분석'
+					text : name + ' 월별 판매금액 분석'
 				},
 				legend : {display : false},
 				scales : {

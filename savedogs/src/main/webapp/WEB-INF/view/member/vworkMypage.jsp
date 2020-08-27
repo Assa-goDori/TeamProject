@@ -36,6 +36,7 @@
 	
 	function vworkgraph(data) {
 		console.log(data)
+		var selectyear = document.getElementById("selectyear").value;
 		var rows = JSON.parse(data)
 		var dates = []
 		var datas = []
@@ -75,7 +76,7 @@
 				responsive : true,
 				title : {
 					display : true,
-					text : '월별 봉사 횟수'
+					text : selectyear + '년 월별 봉사 횟수'
 				},
 				legend : {display : false},
 				scales : {
@@ -116,16 +117,16 @@
 		<c:if test="${!empty list }">
 			<table>
 				<tr>
-					<th>봉사 신청 날짜</th>
-					<th style="width:300px;">장소</th>
-					<th>비고</th>
+					<th class="l_th">봉사 신청 날짜</th>
+					<th class="l_th" style="width:300px;">장소</th>
+					<th class="l_th">비고</th>
 				</tr>
 			<c:forEach items="${list }" var="m">
 				<tr>
 					<fmt:formatDate value="${m.vwork_date }" pattern="yyyy년 MM월 dd일" var="date"/>
-					<td class="data" style="width:200px;">${date}</td>
-					<td class="data" style="width:300px;">${m.shelter_address} ${m.shelter_name }</td>
-					<td class="data">
+					<td class="data l_th" style="width:200px;">${date}</td>
+					<td class="data l_th" style="width:300px;">${m.shelter_address} ${m.shelter_name }</td>
+					<td class="data l_th">
 						<a href="../vwork/vdetail.dog?vwork_no=${m.vwork_no }"><font color="blue">상세보기</font></a>
 					</td>
 				</tr>

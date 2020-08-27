@@ -308,8 +308,18 @@ public class BoardController {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getBoard_regdate());
 				html.append("<tr><th>"+r.getMember_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getBoard_comment()+"</td><td rowspan='2'>");
 				//<c:if test='${sessionScope.loginmem.member_id == "+r.getMember_id()+"}'><input type='button' value='삭제' onclick='replyDelete("+r.getBoard_replyno()+");'></c:if>");
-				Member login = (Member)session.getAttribute("loginmem");
-				String login_id = login.getMember_id();
+				Member loginmem = (Member)session.getAttribute("loginmem");
+				Member loginsmem = (Member)session.getAttribute("loginsmem");
+				Member loginadmin = (Member)session.getAttribute("loginadmin");
+				String login_id = "";
+				if(loginmem != null) {
+					login_id = loginmem.getMember_id();
+				} else if(loginsmem != null) {
+					login_id = loginsmem.getMember_id();
+				} else if(loginadmin != null) {
+					login_id = loginadmin.getMember_id();
+				}  
+				
 				if(r.getMember_id().equals(login_id)) {
 					html.append("<input type='button' value='삭제' class='small_btn' onclick='replyDelete("+r.getBoard_replyno()+");'>");
 				}
