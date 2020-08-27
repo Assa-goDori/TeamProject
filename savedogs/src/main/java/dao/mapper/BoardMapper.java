@@ -70,30 +70,32 @@ public interface BoardMapper {
 	
 	@Select({"<script>",
 		"select board_no,member_id,subject,content,file1 fileurl,regdate,readcnt,grp,grplevel,grpstep,type from board ",
-		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
 		"<if test='type != null'> where type = #{type} </if>",
+		"<if test='searchtype != null and searchcontent != null'> and ${searchtype} like #{searchcontent} </if>",
+	
 		"<if test='startrow != null and limit != null'>order by grp desc, grpstep limit #{startrow}, #{limit} </if>",
 		"</script>"})
 	List<Board> qnalist(Map<String, Object> param);
 
 	@Select({"<script>",
 		"select count(*) from board ",
-		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
 		"<if test='type != null'> where type = #{type} </if>",
+		"<if test='searchtype != null and searchcontent != null'> and ${searchtype} like #{searchcontent} </if>",
+		
 		"</script>"})
 	int qnacnt(Map<String, Object> param);
 
 	@Select({"<script>",
 		"select count(*) from board ",
-		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
 		"<if test='type != null'> where type = #{type} </if>",
+		"<if test='searchtype != null and searchcontent != null'> and ${searchtype} like #{searchcontent} </if>",
 		"</script>"})
 	int reviewcnt(Map<String, Object> param);
 
 	@Select({"<script>",
 		"select board_no,member_id,subject,content,file1 fileurl,regdate,readcnt,grp,grplevel,grpstep,type from board ",
-		"<if test='searchtype != null and searchcontent != null'> where ${searchtype} like #{searchcontent} and type = #{type}</if>",
 		"<if test='type != null'> where type = #{type} </if>",
+		"<if test='searchtype != null and searchcontent != null'> and ${searchtype} like #{searchcontent} </if>",
 		"<if test='startrow != null and limit != null'>order by grp desc, grpstep limit #{startrow}, #{limit} </if>",
 		"</script>"})
 	List<Board> reviewlist(Map<String, Object> param);

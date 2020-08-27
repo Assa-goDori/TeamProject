@@ -43,6 +43,7 @@ td{
 	<div  style="display: inline;">
 		<form action="qnaList.dog" method="post" name="searchform" class="s_form">
 			<input type="hidden" name="pageNum" value="1">
+			<input type="hidden" name="type" value="2">
 			<select name="searchtype" class="sel">
 				<option value="">선택하세요</option>
 				<option value="subject">제목</option>
@@ -53,7 +54,7 @@ td{
 			</script>
 			<input type="text" name="searchcontent" value="${param.searchcontent }" style="width: 250px; padding: 9px;" >
 			<input type="submit" value="검색" class="s_btn">
-			<input type="button" value="전체 게시물 보기" class="g_btn" onclick="location.href='qnaList.dog'">
+			<input type="button" value="전체 게시물 보기" class="g_btn" onclick="location.href='qnaList.dog?type=2'">
 		</form>	
 	</div>
 		
