@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import logic.Adopt;
 import logic.AdoptSign;
 
 public interface AdoptMapper {
@@ -27,5 +28,7 @@ public interface AdoptMapper {
 	@Update("update adopt set adopt_etc=${adopt_etc} where dog_no=#{dog_no}")
 	void updateEtc(Map<String, Object> param);
 
+	@Select("select * from adopt")
+	List<AdoptSign> getAdoptList();
 	
 }

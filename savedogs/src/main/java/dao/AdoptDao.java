@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import dao.mapper.AdminMapper;
 import dao.mapper.AdoptMapper;
+import logic.Adopt;
 import logic.AdoptSign;
 
 @Repository
@@ -18,7 +20,6 @@ public class AdoptDao {
 	Map<String, Object> param = new HashMap<>();
 	
 	public void adoptInsert(AdoptSign a) {
-		System.out.println(a);
 		template.getMapper(AdoptMapper.class).adoptInsert(a);
 	}
 
@@ -35,6 +36,10 @@ public class AdoptDao {
 		param.put("dog_no",dog_no);
 		param.put("adopt_etc", state);
 		template.getMapper(AdoptMapper.class).updateEtc(param);
+	}
+
+	public List<AdoptSign> getAdoptlist() {
+		return template.getMapper(AdoptMapper.class).getAdoptList();
 	}
 
 }

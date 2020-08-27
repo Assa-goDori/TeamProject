@@ -42,11 +42,8 @@ function replyList(){
 //댓글 등록
 $(function() {
   $("#replyinsert_btn").on("click", function() {
-	  
-	
-  	var insertData = $('[name=replyf]').serialize(); 
+	var insertData = $('[name=replyf]').serialize(); 
       replyInsert(insertData); 
-      console.log(insertData);
   })
 });
   

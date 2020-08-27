@@ -81,6 +81,17 @@ public class AdoptController {
 			throws Exception {
 		ModelAndView mav = new ModelAndView();
 		model.addAttribute(new AdoptSign());
+		List<AdoptSign> list = service.getAdoptlist();
+		System.out.println(list);
+		for (AdoptSign ad : list) {
+			System.out.println("ad " + ad);
+			System.out.println("ad.getDog_no() " + ad.getDog_no());
+			System.out.println("ad.getAdopt_etc() " + ad.getAdopt_etc());
+			System.out.println("noticeNo" + noticeNo);
+			if (ad.getDog_no().equals(noticeNo) && ad.getAdopt_etc() != 1) {
+				throw new AdoptException("입양 절차 진행 중입니다.", "amain.dog");
+			}
+		}
 		return mav;
 	}
 
@@ -112,15 +123,16 @@ public class AdoptController {
 		for (Member m : sm) {
 			if (m.getShelter_no().equals(num)) {
 				a.setShelter_no(num);
+				a.setF(adopt_f);
+				service.adoptInsert(a, request);
+				mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=" + a.getMember_id());
 			}
 		}
 
 		if (a.getShelter_no() == null) {
 			throw new AdoptException("보호소 관리자가 존재하지 않습니다. 해당 보호소로 문의 바랍니다.", "adetail.dog?noticeNo=" + a.getDog_no());
 		}
-		a.setF(adopt_f);
-		service.adoptInsert(a, request);
-		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=" + a.getMember_id());
+
 		return mav;
 	}
 

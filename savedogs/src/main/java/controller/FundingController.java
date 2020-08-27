@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.FundingException;
@@ -26,7 +27,9 @@ import exception.VworkException;
 import logic.DogService;
 import logic.Funding;
 import logic.Fundinglist;
+import logic.Fundreply;
 import logic.Member;
+import logic.Reply;
 import logic.Shelter;
 import logic.Vwork;
 
@@ -38,7 +41,7 @@ public class FundingController {
       private DogService service;
       
       @GetMapping("fregForm")
-      public ModelAndView fregFormchks(HttpSession session) {
+      public ModelAndView chksfregForm(HttpSession session) {
           ModelAndView mav = new ModelAndView();
           Funding f = new Funding();
           SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
@@ -72,7 +75,7 @@ public class FundingController {
 
   	@PostMapping("fregupdateForm")
   	public ModelAndView fregupdateForm(@Valid Funding funding, 
-  			BindingResult bresult,HttpServletRequest request) {
+  			BindingResult bresult,HttpServletRequest request,HttpSession session) {
   		ModelAndView mav = new ModelAndView("funding/fregupdateForm");
   		if(bresult.hasErrors()) {
   			mav.getModel().putAll(bresult.getModel());
@@ -84,7 +87,7 @@ public class FundingController {
   		return mav;
   	}
 	@PostMapping("delete")
-	public ModelAndView fundDelete(String fund_no) {
+	public ModelAndView fundDelete(String fund_no,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(fund_no);
 		service.fundDelete(fund_no);
@@ -101,7 +104,7 @@ public class FundingController {
 	 
 	 
 	 @RequestMapping("list")
-	 public ModelAndView list(Integer pageNum) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
+	 public ModelAndView chkmlistchkauth(Integer pageNum,HttpSession session) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
       ModelAndView mav = new ModelAndView();	
       
        if(pageNum == null || pageNum.toString().equals("")) {
@@ -133,7 +136,7 @@ public class FundingController {
 	 
 	 
 	 @GetMapping({"detail", "fundingapply"})
-	   public ModelAndView detail(String fund_no) {
+	   public ModelAndView chkmdetail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
 		 //service.readcnt(num);
@@ -143,7 +146,7 @@ public class FundingController {
 	
 
 	 @PostMapping("fundingapply")
-	  public ModelAndView apply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
+	  public ModelAndView chkmapply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
           ModelAndView mav = new ModelAndView();
           Member mem = (Member)session.getAttribute("loginmem");
           if(bresult.hasErrors()) {
@@ -158,4 +161,46 @@ public class FundingController {
           return mav;      
       
         }
+	 
+	 
+//===========댓글===============		
+	@PostMapping(value="replyList", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public String replyList(String pno, HttpServletRequest request, HttpSession session) {
+		List<Fundreply> list = service.freplyList(pno);
+		StringBuilder html = new StringBuilder();
+		html.append("<table>");
+		if(list.size()>0 ) {
+			for(Fundreply r : list) {
+				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getFund_regdate());
+				html.append("<tr><th>"+r.getFundreply_id()+"</th><td rowspan='2' style='width:70%;' class='l_td'>"+r.getFund_comment()+"</td><td rowspan='2'>");
+				Member login = (Member)session.getAttribute("loginmem");
+				String login_id = login.getMember_id();
+				if(r.getFundreply_id().equals(login_id)) {
+					html.append("<input type='button' value='삭제' class='small_btn' onclick='replyDelete("+r.getFund_replyno()+");'>");
+				}
+				html.append("</td></tr>");
+				html.append("<tr><td class='l_td' style='text-align:center;'>"+date+"</td></tr>");
+			}
+		} else {
+			html.append("<tr><td colspan='2'>해당 게시글의 댓글이 없습니다.</td></tr>");
+		}
+		html.append("</table>");
+		return html.toString();
+	}
+		
+	@PostMapping(value="replyInsert", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public void replyInsert(Fundreply reply, HttpServletRequest request, HttpSession session) {
+		int rmax = service.getFRmax();
+		
+		reply.setFund_replyno(++rmax);
+		service.insertReply(reply);
+	}
+
+	@PostMapping(value="replyDelete", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public void replyDelete(String rno, HttpServletRequest request, HttpSession session) {
+		service.deleteFreply(rno);
+	}
 }

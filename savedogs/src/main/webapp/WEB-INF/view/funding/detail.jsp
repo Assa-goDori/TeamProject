@@ -20,107 +20,68 @@ open(page+".dog?fund_no=${param.fund_no}","",op);
 }
 
 
-var bno = '${detail.bno}'; //게시글 번호
- 
-$('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
-    var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-    commentInsert(insertData); //Insert 함수호출(아래)
+var pno = '${param.fund_no}'; //게시글 번호
+
+$(document).ready(function(){
+	  replyList();  
 });
- 
- 
  
 //댓글 목록 
-function commentList(){
-    $.ajax({
-        url : '/comment/list',
-        type : 'get',
-        data : {'bno':bno},
-        success : function(data){
-            var a =''; 
-            $.each(data, function(key, value){ 
-                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                a += '<div class="commentInfo'+value.cno+'">'+'댓글번호 : '+value.cno+' / 작성자 : '+value.writer;
-                a += '<a onclick="commentUpdate('+value.cno+',\''+value.content+'\');"> 수정 </a>';
-                a += '<a onclick="commentDelete('+value.cno+');"> 삭제 </a> </div>';
-                a += '<div class="commentContent'+value.cno+'"> <p> 내용 : '+value.content +'</p>';
-                a += '</div></div>';
-            });
-            
-            $(".commentList").html(a);
-        }
-    });
+function replyList(){
+  $.ajax({
+      url : "replyList.dog",
+      type : 'POST',
+      data : {'pno':pno},
+      success : function(data){
+      	$("#replys").html(data);
+      },
+		error : function(e) {
+			alert("서버오류: " + e.status);
+		}
+	})
 }
- 
+
 //댓글 등록
-function commentInsert(insertData){
-    $.ajax({
-        url : '/comment/insert',
-        type : 'post',
-        data : insertData,
-        success : function(data){
-            if(data == 1) {
-                commentList(); //댓글 작성 후 댓글 목록 reload
-                $('[name=content]').val('');
-            }
-        }
-    });
+$(function() {
+  $("#replyinsert_btn").on("click", function() {
+  	var insertData = $('[name=replyf]').serialize(); 
+      replyInsert(insertData); 
+      console.log(insertData);
+  })
+});
+  
+//댓글 등록
+function replyInsert(insertData){
+  $.ajax({
+      url : "replyInsert.dog",
+      type : 'POST',
+      data : insertData,
+      success : function(data){
+    	  replyList(); 
+    	  $('[name=fund_comment]').val('');
+      }
+  });
 }
  
-//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
-function commentUpdate(cno, content){
-    var a ='';
-    
-    a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="content_'+cno+'" value="'+content+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
-    a += '</div>';
-    
-    $('.commentContent'+cno).html(a);
-    
-}
- 
-//댓글 수정
-function commentUpdateProc(cno){
-    var updateContent = $('[name=content_'+cno+']').val();
-    
-    $.ajax({
-        url : '/comment/update',
-        type : 'post',
-        data : {'content' : updateContent, 'cno' : cno},
-        success : function(data){
-            if(data == 1) commentList(bno); //댓글 수정후 목록 출력 
-        }
-    });
-}
  
 //댓글 삭제 
-function commentDelete(cno){
-    $.ajax({
-        url : '/comment/delete/'+cno,
-        type : 'post',
-        success : function(data){
-            if(data == 1) commentList(bno); //댓글 삭제후 목록 출력 
-        }
-    });
+function replyDelete(rno){
+  $.ajax({
+      url : "replyDelete.dog?rno="+rno,
+      type : 'POST',
+      success : function(data){
+          replyList(); 
+  }});
 }
- 
- 
- 
- 
-$(document).ready(function(){
-    commentList(); //페이지 로딩시 댓글 목록 출력 
-});
- 
- 
  
 </script>
 </head>
 <body>
 
-<div style="margin-left: 25%; width:80%;">
+<div style="width:80%;" class="main_div">
  <form:form modelAttribute="funding" method="post" action="delete.dog">
 <input type="hidden" value="${param.fund_no}" name="fund_no">
- <table class="w3-table" style="width:1000px; margin-right:130px;">
+ <table class="w3-table" style="width:1000px; ">
        <!--  <form action="후원하기.dog=?fund_no=${f.fund_no}" method="POST"> -->
         <tr><td rowspan="7"><img src="img/${funding.fund_pic}" style="width:250px; height=:320px" alt="기부 배너 사진"></td></tr>
           <td colspan='1'><h3><${funding.fund_subject}></h3></td>
@@ -135,9 +96,15 @@ $(document).ready(function(){
             <td width="8%" align="center">${funding.complete}%</td>
             <tr><td>&nbsp;</tr><td>
              </table> 
+
              <c:if test="${!empty sessionScope.loginmem}"><c:if test="${restdate > 0}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>
              <tr><td><h5 style="text-align: center; margin-right:250px"><input type="button" class="s_btn" value="기부하기" onclick="win_open('fundingapply')"></h5></td></tr>
              </c:if></c:if>
+
+             <c:if test="${!empty sessionScope.loginmem}"><h6><a href="fundingapply.dog?id=${sessionScope.loginmem.member_id}"></a></h6>
+             <tr><td><h5 style="text-align: center; margin-right:250px"><input type="button" class="s_btn" value="기부하기" onclick="win_open('fundingapply')" style="height:50px;"></h5></td></tr>
+             </c:if>
+
              <c:if test="${!empty sessionScope.loginsmem && sessionScope.loginsmem.member_id.equals(funding.member_id)}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}"></a></h6>
              <tr><td><h5 style="text-align: center; margin-right:100px"><input type="button" class="s_btn" value="수정하기" onclick="location.href='fregupdateForm.dog?fund_no=${param.fund_no}'"></h5></td>
              <!-- <td><h5><input type="submit" value="삭제하기"></h5></td></tr>-->
@@ -146,20 +113,21 @@ $(document).ready(function(){
                 </form:form>
         <!-- 댓글 -->
         <hr>
-   <div class="container">
+   		<div class="container" style="text-align: center;">
         <label for="content">comment</label>
-        <form name="commentInsertForm">
-            <div class="input-group">
-               <input type="hidden" name="bno" value="${detail.bno}"/>
-               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
-               <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
-               </span>
-              </div>
-        </form>
+        <div class="replywrite" >
+        
+		<form:form modelAttribute="fundreply" name="replyf" >
+			<input type="hidden" name="fund_no" value="${funding.fund_no }">
+			<input type="hidden" name="fundreply_id" value="${sessionScope.loginmem.member_id}">
+			${sessionScope.loginmem.member_id} &nbsp;&nbsp;
+			<input type="text" name="fund_comment" class="content_txt" style="width: 500px;">
+			<input type="button" value="등록" id="replyinsert_btn" class="s_btn">			
+		</form:form>
+	
     </div>
     <div class="container">
-        <div class="commentList"></div>
+        <div class="replys" id="replys"></div>
     </div>
 </div>
  </div>

@@ -1,6 +1,8 @@
 package logic;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.AdminDao;
@@ -68,6 +71,14 @@ public class DogService {
 	
 	private void uploadFileCreate(MultipartFile picture, HttpServletRequest request, String path) {
 		String orgFile = picture.getOriginalFilename();
+
+/*		String orgFile ="";
+		try {
+			orgFile = new String(picture.getOriginalFilename().getBytes("8859_1"), StandardCharsets.UTF_8);
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+*/	
 		String uploadPath = request.getServletContext().getRealPath("/") + path;
 		File fpath = new File(uploadPath);
 		if(!fpath.exists()) fpath.mkdirs();
@@ -350,8 +361,22 @@ public class DogService {
 			return fundingDao.listcount();
 		}
 	
+		//펀딩 댓글
+		public List<Fundreply> freplyList(String fund_no) {
+			return fundingDao.freplyList(fund_no);
+		}
 		
+		public int getFRmax() {
+			return fundingDao.getFRmax();
+		}
 		
+		public void insertReply(Fundreply reply) {
+			fundingDao.insertReply(reply);
+		}
+
+		public void deleteFreply(String rno) {
+			fundingDao.deleteFreply(rno);			
+		}
 //-------------------펀딩관련 끝-------------------------------------------------
 //-------------------쇼핑관련 시작-------------------------------------------------
 		public List<Item> getItemList() {
@@ -566,10 +591,12 @@ public class DogService {
 		public List<Shelter> getHaplist() {
 			return shelterDao.getHaplist();
 		}
+		
+		public List<AdoptSign> getAdoptlist() {
+			return adoptDao.getAdoptlist();
+		}
 //-------------------입양 관련 끝------------------------------------------------
 
-
-		
 //-------------------메인관련 시작-------------------------------------------------
 		public List<Board> mainnotice() {
 			return boardDao.mainnotice();
@@ -582,6 +609,11 @@ public class DogService {
 			return fundingDao.duefunding();
 		}
 
+	
+
+		
+
+		
 
 		
 
