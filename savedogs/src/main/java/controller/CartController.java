@@ -83,7 +83,7 @@ public class CartController {
 		session.removeAttribute("CART");
 		mav.addObject("buylist",buylist);
 		mav.addObject("total",total);
-		mav.setViewName("redirect:../item/list.dog");
+		mav.setViewName("redirect:../member/shopMypage.dog?type=5&id="+loginmem.getMember_id());
 		return mav;
 	}
 
