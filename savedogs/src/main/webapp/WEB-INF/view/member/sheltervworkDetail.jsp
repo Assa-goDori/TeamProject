@@ -12,7 +12,8 @@
 		text-align: center;
 	}
 	.l_th{
-	width: 250px;}
+	width: 250px;
+	}
 </style>
 </head>
 <body>
