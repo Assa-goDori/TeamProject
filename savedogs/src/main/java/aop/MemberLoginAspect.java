@@ -77,6 +77,17 @@ public class MemberLoginAspect {
 		return ret;
 	}
 	
+	@Around	//보호소관리자 접근권한 확인 aop
+	("execution(* controller.*.*chkauth(..)) && args(.., session)")
+	public Object ShelterAuthCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		if(loginsmem.getMember_auth() == 1) {
+			throw new LoginException("가입 미승인 상태입니다. 자세한 내용은 Q&A 게시판을 이용해주세요.","../main.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
 	@Around // 보호소관리자 aop
 	("execution(* controller.Member*.*chks(..)) && args(type, id, session)")
 	public Object ShelterMemberCheck(ProceedingJoinPoint joinPoint, String type, String id, HttpSession session) throws Throwable {
