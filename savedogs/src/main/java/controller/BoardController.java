@@ -302,7 +302,7 @@ public class BoardController {
 	public String replyList(String board_no, HttpServletRequest request, HttpSession session) {
 		List<Reply> list = service.replyList(board_no);
 		StringBuilder html = new StringBuilder();
-		html.append("<table clas>");
+		html.append("<table>");
 		if(list.size()>0 ) {
 			for(Reply r : list) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(r.getBoard_regdate());

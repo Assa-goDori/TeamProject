@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Update;
 
 import logic.Board;
 import logic.Funding;
+import logic.Fundreply;
 
 public interface FundingMapper {
 	
@@ -64,6 +65,18 @@ public interface FundingMapper {
 
     @Select("select *, datediff(end_date, now()) restdate from funding where member_id=#{member_id}")
 	List<Funding> getwritelist2(Map<String, Object> param);
+
+    @Select("select * from fundreply where fund_no=#{fund_no}")
+	List<Fundreply> freplyList(String fund_no);
+
+    @Select("select count(*) from fundreply")
+	int getFRmax();
+
+    @Insert("insert into fundreply (fund_replyno, fund_no, fundreply_id, fund_comment, fund_regdate) values (#{fund_replyno}, #{fund_no}, #{fundreply_id}, #{fund_comment}, now())")
+	void insertReply(Fundreply reply);
+
+    @Delete("delete from fundreply where fund_replyno=#{rno}")
+	void deleteFreply(String rno);
 
     
 	  }
