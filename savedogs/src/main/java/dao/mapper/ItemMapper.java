@@ -29,7 +29,7 @@ public interface ItemMapper {
 	@Select("SELECT i.item_picture,i.item_name,b.item_no,SUM(b.item_each) 'sellCnt' FROM buydetail b join item i on i.item_no=b.item_no where i.item_state = 0 GROUP BY item_no ORDER BY sellCnt DESC LIMIT 0,3")
 	List<Item> bestitem();
 
-	@Select("SELECT i.item_no, i.item_code, i.item_name, i.item_price, i.item_state, sum(item_each) sellCnt FROM item i JOIN buydetail b ON i.item_no = b.item_no GROUP BY i.item_no")
+	@Select("SELECT i.item_no, i.item_code, i.item_name, i.item_price, i.item_state, sum(item_each) sellCnt FROM item i left outer JOIN buydetail b ON i.item_no = b.item_no GROUP BY i.item_no")
 	List<Item> getShopall();
 
 	@Update("update item set item_state=${item_state} where item_no=${item_no}")
