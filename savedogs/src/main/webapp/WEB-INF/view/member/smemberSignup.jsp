@@ -115,7 +115,6 @@
 				<td>첨부파일</td>
 				<td>
 					<input type="file" name="f1" />
-					<!-- <input type="file" name="file2" /> -->
 				</td>
 			</tr>
 			<tr height="40px">
