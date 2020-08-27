@@ -87,6 +87,7 @@ public class AdoptController {
 	@PostMapping("adoptSignup")
 	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, MultipartFile adopt_f,
 			HttpServletRequest request) throws Exception {
+		List<Adopt> list = service.getAdoptlist();
 		String[] orgNms = orgNm.split(" ");
 		String split1 = orgNms[0];
 		String split2 = null;
@@ -112,15 +113,16 @@ public class AdoptController {
 		for (Member m : sm) {
 			if (m.getShelter_no().equals(num)) {
 				a.setShelter_no(num);
+				a.setF(adopt_f);
+				service.adoptInsert(a, request);
+				mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=" + a.getMember_id());
 			}
 		}
 
 		if (a.getShelter_no() == null) {
 			throw new AdoptException("보호소 관리자가 존재하지 않습니다. 해당 보호소로 문의 바랍니다.", "adetail.dog?noticeNo=" + a.getDog_no());
 		}
-		a.setF(adopt_f);
-		service.adoptInsert(a, request);
-		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=" + a.getMember_id());
+		
 		return mav;
 	}
 
