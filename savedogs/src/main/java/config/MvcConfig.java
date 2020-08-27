@@ -62,6 +62,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		pr.put("exception.BoardException", "exception");
 		pr.put("exception.CartEmptyException", "exception");
 		pr.put("exception.AdoptException", "exception");
+		pr.put("exception.FundingException", "exception");
 		ser.setExceptionMappings(pr);
 		return ser;
 	}

@@ -66,8 +66,10 @@
 						${list.member_email }
 					</td>
 					<td class="data">
-						<a href="../member/updateMember.dog?type=1&id=${list.member_id }&update=1&member_type=0">수정</a>
-						<a href="../member/deleteMember.dog?type=1&id=${list.member_id }">탈퇴</a>
+						<a href="../member/updateMember.dog?type=1&id=${list.member_id }&update=1&member_type=0">
+							<font color="blue">수정</font></a>
+						<a href="../member/deleteMember.dog?type=1&id=${list.member_id }">
+							<font color="blue">탈퇴</font></a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -78,7 +80,7 @@
 			<tr>
 				<th>아이디</th>
 				<th>핸드폰</th>
-				<th>보호소번호</th>
+				<th colspan="2">보호소</th>
 				<th>이메일</th>
 				<th>첨부서류</th>
 				<th>가입여부</th>
@@ -92,18 +94,21 @@
 					<td class="data">
 						${slist.member_tel }
 					</td>
-					<td class="data">
-						${slist.shelter_no}
+					<td class="data" colspan="2">
+						${slist.shelter_address} ${slist.shelter_name}
 					</td>
 					<td class="data">
 						${slist.member_email }
 					</td>
 					<td class="data">
-						<a href="../member/img/${slist.file1 }">${slist.file1 }</a>
+						<a href="../member/img/${slist.file1 }">
+							<font color="blue">${slist.file1 }</font></a>
 					</td>
 					<td class="data">
 						<c:if test="${slist.member_auth == 1 }">
-							<a href="javascript:changeauth('${slist.member_id }', 0)">승인</a>
+							<a href="javascript:changeauth('${slist.member_id }', 0)">
+								<font color="blue">승인</font>
+							</a>
 							<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
 						</c:if>
 						<c:if test="${slist.member_auth == 0 }">
@@ -113,8 +118,10 @@
 						</c:if>
 					</td>
 					<td class="data">
-						<a href="../member/updateMember.dog?type=1&id=${slist.member_id }&update=2&member_type=1">수정</a>
-						<a href="../member/deleteMember.dog?type=1&id=${slist.member_id }">탈퇴</a>
+						<a href="../member/updateMember.dog?type=1&id=${slist.member_id }&update=2&member_type=1">
+							<font color="blue">수정</font></a>
+						<a href="../member/deleteMember.dog?type=1&id=${slist.member_id }">
+							<font color="blue">탈퇴</font></a>
 					</td>
 				</tr>
 			</c:forEach>

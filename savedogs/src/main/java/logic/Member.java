@@ -38,11 +38,24 @@ public class Member {
 	private MultipartFile f2;
 	private int member_type;
 	private int member_auth;
+	private String shelter_name;
+	private String shelter_address;
 	
 	//getter,setter
-	
 	public String getMember_id() {
 		return member_id;
+	}
+	public String getShelter_address() {
+		return shelter_address;
+	}
+	public void setShelter_address(String shelter_address) {
+		this.shelter_address = shelter_address;
+	}
+	public String getShelter_name() {
+		return shelter_name;
+	}
+	public void setShelter_name(String shelter_name) {
+		this.shelter_name = shelter_name;
 	}
 	public int getMember_auth() {
 		return member_auth;
