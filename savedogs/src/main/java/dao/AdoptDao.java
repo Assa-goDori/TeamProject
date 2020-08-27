@@ -38,7 +38,7 @@ public class AdoptDao {
 		template.getMapper(AdoptMapper.class).updateEtc(param);
 	}
 
-	public List<Adopt> getAdoptlist() {
+	public List<AdoptSign> getAdoptlist() {
 		return template.getMapper(AdoptMapper.class).getAdoptList();
 	}
 

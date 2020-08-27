@@ -581,7 +581,7 @@ public class DogService {
 			return shelterDao.getHaplist();
 		}
 		
-		public List<Adopt> getAdoptlist() {
+		public List<AdoptSign> getAdoptlist() {
 			return adoptDao.getAdoptlist();
 		}
 //-------------------입양 관련 끝------------------------------------------------
