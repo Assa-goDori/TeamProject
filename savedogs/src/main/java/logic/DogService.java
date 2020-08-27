@@ -84,6 +84,7 @@ public class DogService {
 		}
 */	
 		String uploadPath = request.getServletContext().getRealPath("/") + path;
+		System.out.println(uploadPath);
 		File fpath = new File(uploadPath);
 		if(!fpath.exists()) fpath.mkdirs();
 		try {
