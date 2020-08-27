@@ -136,7 +136,7 @@ public class FundingController {
 	 
 	 
 	 @GetMapping({"detail", "fundingapply"})
-	   public ModelAndView chkmdetail(String fund_no) {
+	   public ModelAndView chkmdetail(String fund_no, HttpSession session) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
 		 //service.readcnt(num);
@@ -155,9 +155,9 @@ public class FundingController {
   		}	try {
   			service.fundingapply(fundinglist,request);
   		}   catch(Exception e) {
-  			throw new FundingException("이미 후원 하셨습니다.", "/member/fundMypage.dog?member_id="+mem.getMember_id());
+  			throw new FundingException("이미 후원 하셨습니다.", "../vwork/gotoMain.dog");
   		}
-          mav.setViewName("redirect:/funding/list.dog"); //mypage로~?
+          mav.setViewName("redirect:/vwork/gotoMain.dog"); //mypage로~?
           return mav;      
       
         }
