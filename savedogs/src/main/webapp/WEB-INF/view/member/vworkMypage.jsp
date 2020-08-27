@@ -36,6 +36,7 @@
 	
 	function vworkgraph(data) {
 		console.log(data)
+		var selectyear = document.getElementById("selectyear").value;
 		var rows = JSON.parse(data)
 		var dates = []
 		var datas = []
@@ -75,7 +76,7 @@
 				responsive : true,
 				title : {
 					display : true,
-					text : '월별 봉사 횟수'
+					text : selectyear + '년 월별 봉사 횟수'
 				},
 				legend : {display : false},
 				scales : {
