@@ -29,6 +29,6 @@ public interface AdoptMapper {
 	void updateEtc(Map<String, Object> param);
 
 	@Select("select * from adopt")
-	List<Adopt> getAdoptList();
+	List<AdoptSign> getAdoptList();
 	
 }

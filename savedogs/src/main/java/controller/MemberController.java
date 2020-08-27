@@ -299,6 +299,44 @@ public class MemberController {
 		return mav;
 	}
 	
+	@PostMapping("delete")
+	public ModelAndView delete(String member_id, String member_pass, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Member loginmem = (Member)session.getAttribute("loginmem");
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		Member loginadmin = (Member)session.getAttribute("loginadmin");
+			String dbpass = service.getMemberPass(member_id);
+			if(loginadmin == null) {	//일반탈퇴
+				if(member_pass.equals(dbpass)) {
+					try {
+						service.deleteMember(member_id);
+					} catch (Exception e) {
+						throw new LoginException("삭제 오류","../member/memberMypage.dog?type=1&id=" + member_id);
+					}
+					if(loginmem != null) {
+						session.removeAttribute("loginmem");
+					} else if(loginsmem != null) {
+						session.removeAttribute("loginsmem");
+					}
+					mav.setViewName("redirect:../main.dog");
+				} else {
+					throw new LoginException("비밀번호 오류","../member/memberMypage.dog?type=1&id=" + member_id);
+				}
+			} else {					//관리자의 강제탈퇴
+				if(member_pass.equals(loginadmin.getMember_pass())) {
+					try {
+						service.deleteMember(member_id);
+					} catch (Exception e) {
+						throw new LoginException("삭제 오류","../admin/adminlistMypage.dog?type=2&id=admin");
+					}
+					mav.setViewName("redirect:../admin/adminlistMypage.dog?type2&id=admin");
+				} else {
+					throw new LoginException("관리자 비밀번호 오류","../admin/adminlistMypage.dog?type=2&id=admin");
+				}
+			}
+		return mav;
+	}
+	
 	@PostMapping("changepass")
 	public ModelAndView changepass(String inputpass, String newpass, String id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();

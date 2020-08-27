@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dao.ShelterDao;
 import exception.AdoptException;
-import exception.BoardException;
 import logic.Adopt;
 import logic.AdoptSign;
 import logic.ApiExplorer;
@@ -41,8 +39,11 @@ public class AdoptController {
 		if (kind == null || kind.trim().equals(""))
 			kind = null;
 		/*
-		 * pageNo : 현재 페이지 번호 maxpage : 최대 페이지 startpage : 보여지는 시작 페이지 번호 endpage : 보여지는
-		 * 끝 페이지 번호 listcount : 전체 등록된 게시글 건수
+		 * pageNo : 현재 페이지 번호 
+		 * maxpage : 최대 페이지 
+		 * startpage : 보여지는 시작 페이지 번호 
+		 * endpage : 보여지는 끝 페이지 번호 
+		 * listcount : 전체 등록된 게시글 건수
 		 */
 		int limit = 16; // 한 페이지에 보여질 게시물 건수
 		long totalcount = (long) ApiExplorer.getTotalCount(state, kind, pageNo);
@@ -81,13 +82,18 @@ public class AdoptController {
 			throws Exception {
 		ModelAndView mav = new ModelAndView();
 		model.addAttribute(new AdoptSign());
+		List<AdoptSign> list = service.getAdoptlist();
+		for (AdoptSign ad : list) {
+			if (ad.getDog_no().equals(noticeNo) && ad.getAdopt_etc() != 1) {
+				throw new AdoptException("입양 절차 진행 중입니다.", "amain.dog");
+			}
+		}
 		return mav;
 	}
 
 	@PostMapping("adoptSignup")
 	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, MultipartFile adopt_f,
 			HttpServletRequest request) throws Exception {
-		List<Adopt> list = service.getAdoptlist();
 		String[] orgNms = orgNm.split(" ");
 		String split1 = orgNms[0];
 		String split2 = null;
@@ -122,7 +128,7 @@ public class AdoptController {
 		if (a.getShelter_no() == null) {
 			throw new AdoptException("보호소 관리자가 존재하지 않습니다. 해당 보호소로 문의 바랍니다.", "adetail.dog?noticeNo=" + a.getDog_no());
 		}
-		
+
 		return mav;
 	}
 
