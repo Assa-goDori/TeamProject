@@ -48,7 +48,7 @@
 </head>
 <body>
 	<div class="main_div">
-	<form:form modelAttribute="member" method="post" action="updateMember.dog" name="f">
+	<form:form modelAttribute="member" method="post" action="updateMember.dog" name="f" enctype="multipart/form-data">
 		<spring:hasBindErrors name="member">
 			<font color="red">
 				<c:forEach items="${errors.globalErrors }" var="error">
@@ -191,7 +191,7 @@
 						<a href="javascript:file_delete()">[파일첨부삭제]</a>
 					</div>
 				</c:if>
-				<input type="file" name="file1">
+				<input type="file" name="f1">
 			</td>
 			</tr>
 			<tr height="40px">
