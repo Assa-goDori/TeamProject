@@ -25,12 +25,14 @@
 	</table>
 <div class="btn_div">  
 	<input type="button" value="목록" class="s_btn" onclick="location.href='qnaList.dog?type=2'">
-	<c:if test="${sessionScope.loginmem.member_id == board.member_id }">
+	<c:if test="${sessionScope.loginmem.member_id == board.member_id || sessionScope.loginsmem.member_id == board.member_id || sessionScope.loginadmin.member_id == board.member_id }">
 		<input type="button" value="수정" class="g_btn" onclick="location.href='qnaUpdate.dog?no=${board.board_no}'">
 		<input type="button" value="삭제" class="g_btn" onclick="location.href='qnaDelete.dog?no=${board.board_no}'">
 	</c:if>
 	<c:if test="${sessionScope.loginsmem != null || sessionScope.loginadmin != null }">
+		<c:if test="${board.grplevel == 0 }">
 		<input type="button" value="답변" class="s_btn" onclick="location.href='qnaReply.dog?no=${board.board_no}'">
+		</c:if>
 	</c:if>
 </div>
 </div>
