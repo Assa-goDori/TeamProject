@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8">
 <title>상품 상세 보기</title>
+<link rel='stylesheet' href='../css/savedogs_main.css' />
 <script type="text/javascript">
 	function add(f){
 		var item_each = f.item_each.value;
@@ -37,7 +38,7 @@
 					&nbsp;<img src="img/${item.item_picture}" style="width: 80%; height: 80%;">&nbsp;
 				</td>
 				<td>
-					<table>
+					<table style="width: 100%;">
 						<tr>
 							<td align="center" width="30%"><h3>상품명</h3> </td>
 							<td><h4>&nbsp;${item.item_name}&nbsp;<c:if test="${item.item_state==1}"><span style="color: #f8591b">품절</span></c:if></h4></td>
@@ -58,23 +59,26 @@
 									<input type="hidden" name="item_no" value="${item.item_no}">
 									<table style="width: 100%; height: 100%;">
 										<tr>
-											<td width="100%" align="center">
-												<h3>수량 &nbsp;&nbsp;&nbsp;<select style="width: 70%;" name="item_each" id="item_each">
+											<td style="width: 110px;" align="center">
+												<h3>수량</h3>
+											</td>
+											<td style="width: 259px">
+												<select style="width: 70%;" name="item_each" id="item_each">
 					 								<c:forEach begin="1" end="10" var="i">
 					 									<option>${i}</option>
 					 								</c:forEach>
-					 							</select></h3>
+					 							</select>
 					 						</td>
 					 					</tr>
 					 					<tr style="height: 15%;">
-				 							<td width="100%" align="center"> 
+				 							<td colspan="2" width="100%" align="center"> 
 				 								<input style="width: 100%;" type="submit" class="s_btn" value="장바구니" >
 				 							</td>
 				 						</tr>
 				 						
 				 						<tr style="height: 15%;">
-				 							<td width="100%" align="center">
-				 								<input style="width: 100%;" type="button" value="상품목록" onclick="location.href='list.dog'">
+				 							<td colspan="2" width="100%" align="center">
+				 								<input style="width: 100%;" type="button" class="g_btn" value="상품목록" onclick="location.href='list.dog'">
 				 							</td>
 				 						</tr>
 									</table>

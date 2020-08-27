@@ -30,28 +30,25 @@ public class AdoptController {
 
 	@Autowired
 	private DogService service;
-	
+
 	@RequestMapping("amain")
 	public ModelAndView main2(Adopt adopt, String state, String kind, Integer pageNo) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		if(pageNo == null || pageNo.toString().equals(""))
+		if (pageNo == null || pageNo.toString().equals(""))
 			pageNo = 1;
-		if(state == null || state.trim().equals(""))
+		if (state == null || state.trim().equals(""))
 			state = null;
-		if(kind == null || kind.trim().equals(""))
+		if (kind == null || kind.trim().equals(""))
 			kind = null;
 		/*
-		 * pageNo    : 현재 페이지 번호
-		 * maxpage   : 최대 페이지
-		 * startpage : 보여지는 시작 페이지 번호
-		 * endpage   : 보여지는 끝 페이지 번호
-		 * listcount : 전체 등록된 게시글 건수
+		 * pageNo : 현재 페이지 번호 maxpage : 최대 페이지 startpage : 보여지는 시작 페이지 번호 endpage : 보여지는
+		 * 끝 페이지 번호 listcount : 전체 등록된 게시글 건수
 		 */
 		int limit = 16; // 한 페이지에 보여질 게시물 건수
 		long totalcount = (long) ApiExplorer.getTotalCount(state, kind, pageNo);
 		long listcount = totalcount; // 등록 게시물 건수
-		int maxpage = (int)((double) listcount / limit + 0.95);
-		int startpage = (int)((pageNo / 10.0 + 0.9) - 1) * 10 + 1;
+		int maxpage = (int) ((double) listcount / limit + 0.95);
+		int startpage = (int) ((pageNo / 10.0 + 0.9) - 1) * 10 + 1;
 		int endpage = startpage + 9;
 		if (endpage > maxpage)
 			endpage = maxpage;
@@ -64,7 +61,7 @@ public class AdoptController {
 			mav.addObject("go", go);
 			mav.setViewName("/adopt/amain");
 		} catch (Exception e) {
-		//	e.printStackTrace();
+			// e.printStackTrace();
 			String message = "검색결과가 없습니다.";
 			mav.addObject("message", message);
 		}
@@ -88,8 +85,8 @@ public class AdoptController {
 	}
 
 	@PostMapping("adoptSignup")
-	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, MultipartFile adopt_f, HttpServletRequest request)
-			throws Exception {
+	public ModelAndView asignup2(String careNm, String orgNm, AdoptSign a, MultipartFile adopt_f,
+			HttpServletRequest request) throws Exception {
 		String[] orgNms = orgNm.split(" ");
 		String split1 = orgNms[0];
 		String split2 = null;
@@ -110,18 +107,20 @@ public class AdoptController {
 				num = ss.getShelter_no();
 			}
 		}
-		
-		List<Member> sm = service.getMemberList();
-		for(Member m : sm) {
-			if(m.getShelter_no() == num) {
+
+		List<Member> sm = service.getSmemberList();
+		for (Member m : sm) {
+			if (m.getShelter_no().equals(num)) {
 				a.setShelter_no(num);
-			} else 
-				detail(a.getDog_no());
-				throw new AdoptException("보호소 관리자가 존재하지 않습니다. 해당 보호소로 문의 바랍니다.", "adetail.dog?noticeNo="+a.getDog_no());
+			}
+		}
+
+		if (a.getShelter_no() == null) {
+			throw new AdoptException("보호소 관리자가 존재하지 않습니다. 해당 보호소로 문의 바랍니다.", "adetail.dog?noticeNo=" + a.getDog_no());
 		}
 		a.setF(adopt_f);
 		service.adoptInsert(a, request);
-		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id="+a.getMember_id());
+		mav.setViewName("redirect:../member/adoptMypage.dog?type=4&id=" + a.getMember_id());
 		return mav;
 	}
 

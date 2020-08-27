@@ -22,24 +22,36 @@ public class MemberLoginAspect {
 	public Object ItemMemberLoginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
 		Member loginmem = null;
 		Member loginadmin = null;
+		Member loginsmem = null;
 		for(Object o : joinPoint.getArgs()) {
 			if(o instanceof HttpSession) {
 				HttpSession session = (HttpSession)o;
 				loginadmin = (Member)session.getAttribute("loginadmin");
 				loginmem = (Member)session.getAttribute("loginmem");
+				loginsmem = (Member)session.getAttribute("loginsmem");
 			}
 		}
-		if(loginmem == null && loginadmin == null) {
+		if(loginmem == null && loginadmin == null && loginsmem == null) {
 			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
 		}
 		Object ret = joinPoint.proceed();
 		return ret;
 	}
 	@Around 
-	("execution(* controller.Cart*.chkm*(..)) && args(..,session)")
-	public Object CartMemberLoginCheck(ProceedingJoinPoint joinPoint,HttpSession session) throws Throwable{
-		Member loginmem = (Member)session.getAttribute("loginmem");
-		if(loginmem == null) {
+	("execution(* controller.Cart*.chkm*(..))")
+	public Object CartMemberLoginCheck(ProceedingJoinPoint joinPoint) throws Throwable{
+		Member loginmem = null;
+		Member loginadmin = null;
+		Member loginsmem = null;
+		for(Object o : joinPoint.getArgs()) {
+			if(o instanceof HttpSession) {
+				HttpSession session = (HttpSession)o;
+				loginadmin = (Member)session.getAttribute("loginadmin");
+				loginmem = (Member)session.getAttribute("loginmem");
+				loginsmem = (Member)session.getAttribute("loginsmem");
+			}
+		}
+		if(loginmem == null && loginadmin == null && loginsmem == null) {
 			throw new LoginException("로그인 후 거래하세요","../member/login.dog");
 		}
 		Object ret = joinPoint.proceed();
@@ -60,6 +72,17 @@ public class MemberLoginAspect {
 		}
 		if(loginadmin == null && loginmem == null && !id.equals(loginsmem.getMember_id())) {
 			throw new LoginException("본인 정보만 조회 가능.","../main.dog");
+		}
+		Object ret = joinPoint.proceed();
+		return ret;
+	}
+	
+	@Around	//보호소관리자 접근권한 확인 aop
+	("execution(* controller.*.*chkauth(..)) && args(.., session)")
+	public Object ShelterAuthCheck(ProceedingJoinPoint joinPoint, HttpSession session) throws Throwable {
+		Member loginsmem = (Member)session.getAttribute("loginsmem");
+		if(loginsmem.getMember_auth() == 1) {
+			throw new LoginException("가입 미승인 상태입니다. 자세한 내용은 Q&A 게시판을 이용해주세요.","../main.dog");
 		}
 		Object ret = joinPoint.proceed();
 		return ret;
