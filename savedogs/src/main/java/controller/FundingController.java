@@ -51,7 +51,7 @@ public class FundingController {
         }
       
       @PostMapping("fregForm") 
-        public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult, HttpServletRequest request,HttpSession session) {
+        public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult, HttpServletRequest request) {
             ModelAndView mav = new ModelAndView();
 		  if(bresult.hasErrors())  { 
 			  mav.getModel().putAll(bresult.getModel());
