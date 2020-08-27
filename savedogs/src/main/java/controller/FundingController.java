@@ -38,7 +38,7 @@ public class FundingController {
       private DogService service;
       
       @GetMapping("fregForm")
-      public ModelAndView fregFormchks(HttpSession session) {
+      public ModelAndView chksfregForm(HttpSession session) {
           ModelAndView mav = new ModelAndView();
           Funding f = new Funding();
           SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
@@ -48,7 +48,7 @@ public class FundingController {
         }
       
       @PostMapping("fregForm") 
-        public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult, HttpServletRequest request) {
+        public ModelAndView fregForm(@Valid Funding funding, BindingResult bresult, HttpServletRequest request,HttpSession session) {
             ModelAndView mav = new ModelAndView();
 		  if(bresult.hasErrors())  { 
 			  mav.getModel().putAll(bresult.getModel());
@@ -72,7 +72,7 @@ public class FundingController {
 
   	@PostMapping("fregupdateForm")
   	public ModelAndView fregupdateForm(@Valid Funding funding, 
-  			BindingResult bresult,HttpServletRequest request) {
+  			BindingResult bresult,HttpServletRequest request,HttpSession session) {
   		ModelAndView mav = new ModelAndView("funding/fregupdateForm");
   		if(bresult.hasErrors()) {
   			mav.getModel().putAll(bresult.getModel());
@@ -84,7 +84,7 @@ public class FundingController {
   		return mav;
   	}
 	@PostMapping("delete")
-	public ModelAndView fundDelete(String fund_no) {
+	public ModelAndView fundDelete(String fund_no,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(fund_no);
 		service.fundDelete(fund_no);
@@ -101,7 +101,7 @@ public class FundingController {
 	 
 	 
 	 @RequestMapping("list")
-	 public ModelAndView list(Integer pageNum) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
+	 public ModelAndView chkslistchkauth(Integer pageNum,HttpSession session) { //int가 아닌 Integer로 써줌 -> pageNum이라는 파라미터 값이 없으면 null임, int는 기본자료형->null값이 없음
       ModelAndView mav = new ModelAndView();	
       
        if(pageNum == null || pageNum.toString().equals("")) {
@@ -133,7 +133,7 @@ public class FundingController {
 	 
 	 
 	 @GetMapping({"detail", "fundingapply"})
-	   public ModelAndView detail(String fund_no) {
+	   public ModelAndView chksdetail(String fund_no) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
 		 //service.readcnt(num);
@@ -143,7 +143,7 @@ public class FundingController {
 	
 
 	 @PostMapping("fundingapply")
-	  public ModelAndView apply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
+	  public ModelAndView chksapply(@Valid Fundinglist fundinglist, BindingResult bresult,HttpSession session, HttpServletRequest request) {
           ModelAndView mav = new ModelAndView();
           Member mem = (Member)session.getAttribute("loginmem");
           if(bresult.hasErrors()) {
