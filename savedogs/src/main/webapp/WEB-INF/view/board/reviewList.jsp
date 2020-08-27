@@ -42,6 +42,7 @@ td{
 		<div style="display: inline;">
 			<form action="reviewList.dog" method="post" name="searchform">
 				<input type="hidden" name="pageNum" value="1">
+				<input type="hidden" name="type" value="0">
 				<select name="searchtype" class="sel">
 					<option value="">선택하세요</option>
 					<option value="subject">제목</option>

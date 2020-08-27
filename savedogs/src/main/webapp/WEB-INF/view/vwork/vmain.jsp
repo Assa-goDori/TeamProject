@@ -82,17 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="main_div">
 	<div class="search_div">
 		<form action="vmain.dog" method="post" name="f">
-			<!-- <select id="goo">
+			 <!--<select id="goo">
 				<option value="">전체</option>
 				<c:forEach items="${list }" var="s">
 					<option id="op" value="${s.shelter_address }">${s.shelter_address }</option>
 				</c:forEach>
-			</select>
-			 -->
+			</select> -->
+			
 			<select id="shelterList" name="shelter_no" style="width: 400px;">
 				<option value="">전체</option>
 				<c:forEach items="${list }" var="s">
-					<option id="goo" value="${s.shelter_no }">${s.shelter_address }&nbsp;${s.shelter_name }</option>
+					<option id="op" value="${s.shelter_no }">${s.shelter_address }&nbsp;${s.shelter_name }</option>
 				</c:forEach>
 			</select>
 			<script type="text/javascript">

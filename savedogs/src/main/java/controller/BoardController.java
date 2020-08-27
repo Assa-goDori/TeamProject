@@ -84,8 +84,6 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		Board board = service.getBoard(no);
 		mav.addObject("board",board);
-		System.out.println(board.getFile1());
-		System.out.println(board.getFileurl());
 		return mav;
 	}
 	
@@ -142,7 +140,6 @@ public class BoardController {
 		}
 		//검색 정보까지 집어넣기
 		int listcount = service.qnacnt(searchtype,searchcontent,type);  
-		System.out.println(searchtype);
 		List<Board> boardlist = service.qnalist(pageNum, limit,searchtype,searchcontent,type);
 		
 		int maxpage = (int)((double)listcount/limit + 0.95);

@@ -12,7 +12,7 @@
 		text-align: center;
 	}
 	body {
-	width: 100%;
+	width: 80%;
 	margin: 0 auto;
 	width: 100%;
 	min-width: 100%;
@@ -128,20 +128,20 @@
 			<c:if test="${!empty writelist }">
 				<h3>작성한 봉사리스트</h3>
 				<hr>
-				<table>
+				<table style="width: 100%;" class="l_table">
 					<tr>
-						<th>봉사날짜</th>
-						<th>모집인원</th>
-						<th>상태</th>
+						<th class="l_th" style="text-align: center;">봉사날짜</th>
+						<th class="l_th" style="text-align: center;">모집인원</th>
+						<th class="l_th" style="text-align: center;">상태</th>
 					</tr>
 					<c:forEach items="${writelist }" var="list">
 					<tr>
-						<td class="data">
+						<td class="data l_td">
 							<fmt:formatDate value="${list.vwork_date }" pattern="yyyy-MM-dd" var="day"/>
 							<a href="sheltervworkDetail.dog?vwork_no=${list.vwork_no }">${day }</a>
 						</td>
-						<td class="data">${list.vwork_member }</td>
-						<td class="data">
+						<td class="data l_td">${list.vwork_member }</td>
+						<td class="data l_td">
 							${list.state>0?"모집중":"완료" }
 						</td>
 					</tr>

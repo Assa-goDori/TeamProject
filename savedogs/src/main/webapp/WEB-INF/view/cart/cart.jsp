@@ -23,7 +23,7 @@
 		<table>
 			<tr>
 				<td><img src="cart_img.jpg" style="width: 15%; height: 20%;">장바구니</td>
-				<td><input type="button" onclick="location.href='../item/list.dog'" value="상품목록"></td>
+				<td><input type="button" onclick="location.href='../item/list.dog'" class="g_btn" value="상품목록"></td>
 			</tr>
 		</table>
 		</form>

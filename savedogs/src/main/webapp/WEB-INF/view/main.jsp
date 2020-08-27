@@ -157,7 +157,7 @@
 						<td colspan="2" width="100%"><a href="funding/detail.dog?fund_no=${duefunding.fund_no}">${duefunding.fund_subject}</a></td>
 					</tr>
 					<tr style="width: 100%;">
-						<td width="500px"><input type="button" style="width: ${duefunding.complete}%; background-color:#34b2a4;" onclick="location.href='funding/detail.dog?fund_no=${duefunding.fund_no}'"></td>
+						<td width="500px"><input type="button" style="width: ${duefunding.complete}%; background-color:#34b2a4; background-color: lightgreen; border-radius: 20px; border: none;" onclick="location.href='funding/detail.dog?fund_no=${duefunding.fund_no}'"></td>
 						<td width="200px"><div align="right"><a href='funding/detail.dog?fund_no=${duefunding.fund_no}'>${duefunding.complete}%</a></div></td>
 					</tr>
 				</table>

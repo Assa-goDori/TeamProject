@@ -83,14 +83,14 @@
 <decorator:head />
 <body>
     <!-- top-header-section-->
-    <div class="top-header">
+    <div class="top-header" style="background-color: #34b2a4">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12">
-                    <p class="welcome-text">구해독 페이지에 오신걸 환영합니다.</p>
+                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12" style="text-align: left;">
+                    <p class="welcome-text" style="color: white;">구해독 페이지에 오신걸 환영합니다.</p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                    <ul>
+                    <ul style="color: white;">
                     <c:if test="${empty sessionScope.loginmem and empty sessionScope.loginsmem and empty sessionScope.loginadmin}">
                     	<a style="color: white;" href="${path}/member/login.dog">로그인</a>&nbsp;|&nbsp; <a href="${path}/member/selectSignup.dog" style="color: white;">회원가입</a>
                     </c:if>
@@ -137,9 +137,9 @@
                               	<li class="active"><a href="index.html">정보</a></li>
                                  <li class="has-sub"><a href="#">커뮤니티</a>
                                     <ul>
-                                        <li><a href="blog-default.html">Q&A</a></li>
-                                        <li><a href="${path }/board/noticeList.dog">공지사항</a></li>
-                                        <li><a href="blog-single.html">입양 후기 </a></li>
+                                        <li><a href="${path }/board/qnaList.dog?type=2">Q&A</a></li>
+                                        <li><a href="${path }/board/noticeList.dog?type=1">공지사항</a></li>
+                                        <li><a href="${path }/board/reviewList.dog?type=0">입양 후기 </a></li>
                                     </ul>
                                 </li>
                                
@@ -220,7 +220,7 @@
     <!-- </div>  -->
     <!-- video-section -->
     <!-- footer -->
-    <div class="footer">
+    <div class="footer" style="background-color: #34b2a4">
         <div class="container">
             <div class="row">
                 

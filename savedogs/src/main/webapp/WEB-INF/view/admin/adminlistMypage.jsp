@@ -39,7 +39,7 @@
 				<th>아이디</th>
 				<th>이름</th>
 				<th>핸드폰</th>
-				<th>주소</th>
+				<th colspan="2">주소</th>
 				<th>생년월일</th>
 				<th>이메일</th>
 				<th>관리</th>
@@ -55,7 +55,7 @@
 					<td class="data">
 						${list.member_tel }
 					</td>
-					<td class="data">
+					<td class="data" colspan="2">
 						${list.member_postcode} ${list.member_address} ${list.member_daddress}
 					</td>
 					<td class="data">

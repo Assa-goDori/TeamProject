@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import exception.VworkException;
@@ -146,10 +147,11 @@ public class VworkController {
 		return mav;
 	}
 	
+	//(value="replyList", produces="text/plain; charset=UTF-8")
 	@PostMapping("shelterNames")
+	@ResponseBody
 	public List<Shelter> shelterNames(String goo) {
 		List<Shelter> shelters = service.getShelters(goo);
-		
 		return shelters;
 	}
 	
