@@ -42,9 +42,8 @@ function file_delete() {
 <font color="red"><form:errors path="fund_count" /></font></td></tr>
 
 <tr height="40px"><td>시작 날짜</td>
-<td><input type="text" name="start_date" value="${funding.start_date }" readonly="readonly"/>
-<fmt:formatDate pattern="yyyy-MM-dd" value="${funding.start_date }" var="start_date"/>
-
+<td><fmt:formatDate value="${funding.start_date}" pattern="yyyy-MM-dd" var="startdate" />
+${startdate}
 
 <font color="red"><form:errors path="start_date" /></font></td></tr>
 

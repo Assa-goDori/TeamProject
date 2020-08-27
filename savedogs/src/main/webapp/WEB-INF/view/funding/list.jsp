@@ -39,7 +39,7 @@
             <tr><td><i class="fa fa-building fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.sheltername}</td></tr>
             <tr><td><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>${f.restdate}일 남음</td></tr>
             <td width="60%">
-            <input type="button" readonly="readonly" style="width: ${f.complete}%; background-color: lightgreen; border-radius: 20px; border: none;" ></td>
+            <input type="button" disabled="" readonly="readonly" style="width: ${f.complete}%; background-color: lightgreen; border-radius: 20px; border: none;" ></td>
             <td width="10%">${f.complete}%</td>
             <hr color = "green" size="10">
         </table>

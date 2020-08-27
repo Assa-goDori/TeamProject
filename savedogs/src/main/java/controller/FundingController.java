@@ -136,7 +136,7 @@ public class FundingController {
 	 
 	 
 	 @GetMapping({"detail", "fundingapply"})
-	   public ModelAndView chkmdetail(String fund_no) {
+	   public ModelAndView chkmdetail(String fund_no, HttpSession session) {
 		 ModelAndView mav = new ModelAndView();
 		 Funding funding = service.getfundingdetail(fund_no);
 		 //service.readcnt(num);

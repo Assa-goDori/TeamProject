@@ -10,8 +10,10 @@
 <link rel='stylesheet' href='../css/savedogs_exc.css' />
 <script>
 function apply(){
-	self.close();
-}
+		f = document.f;
+		f.submit();
+		apply.close();
+	}
 </script>
 </head>
 <body>
