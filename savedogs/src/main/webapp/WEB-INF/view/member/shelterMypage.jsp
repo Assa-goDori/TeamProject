@@ -30,7 +30,7 @@
 				</table>
 				<div align="center">
 					<input type="button" class="s_btn" value="수정하기" onclick="location.href='checkpass.dog?type=1&id=${mem.member_id}'">
-					<input type="button" class="s_btn" value="탈퇴" >
+					<input type="button" class="g_btn" value="탈퇴" >
 				</div>
 		</div>
 </body>
