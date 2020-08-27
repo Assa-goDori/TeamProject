@@ -60,7 +60,7 @@ td{
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<form:input path="vwork_tel" value="${mem.member_tel }" placeholder="010-0000-0000"/><font color="red"><form:errors path="vwork_tel"/></font>			
+						<form:input path="vwork_tel" value="${mem.member_tel }"/><font color="red"><form:errors path="vwork_tel"/></font>			
 					</td>
 				</tr>
 				<tr><th colspan="2">
