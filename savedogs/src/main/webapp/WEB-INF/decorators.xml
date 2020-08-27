@@ -16,6 +16,7 @@
 		<pattern>/adopt/*.dog</pattern>
 		<pattern>/cart/*.dog</pattern>
 		<pattern>/board/review*.dog</pattern>
+		<pattern>/info.dog</pattern>
 	</decorator>
 	<decorator name="membermypage" page="memberMypage_layout.jsp">
 		<pattern>/member/*Mypage.dog</pattern>
