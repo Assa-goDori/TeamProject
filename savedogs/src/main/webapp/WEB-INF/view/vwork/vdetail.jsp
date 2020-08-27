@@ -13,7 +13,7 @@ th{
 	width: 20%;
 }
 .btn_div{
-	margin-top: 10%;
+
 	text-align: center;
 }
 </style>
@@ -39,7 +39,7 @@ console.log(port);
 	<tr><th>보호소</th><td>${vwork.address }${vwork.name }</td></tr>
 	<tr><th>위치</th><td><div id="map" style="width:500px;height:400px;"></div></td></tr>
 	<tr><th>모집인원</th><td>${vwork.Nmem }/${vwork.Vmem } &nbsp;명</td></tr>
-	<tr><th>설명</th><td>${vwork.vwork_content }</td></tr>
+	<tr><th>설명</th><td style="white-space:pre;">${vwork.vwork_content }</td></tr>
 </table>
 <input type="hidden" value="${vwork.address } ${vwork.name }" id="shelter">
 <script type="text/javascript">
