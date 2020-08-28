@@ -142,4 +142,8 @@ public class MainController {
 		mav.addObject(funding);
 		return mav;
 	}
+	@RequestMapping("*")
+	public String info() {
+		return null;
+	}
 }
