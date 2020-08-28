@@ -16,10 +16,10 @@
 			type : "POST",
 			data : "name="+ name,
 			success : function(data) {
-				shopgraph(data);
+				shopgraph(data, name);
 			},
 			error : function(e) {
-				alert("ajax 오류");
+				alert("데이터가 충분하지 않습니다");
 			}
 		})
 	}
@@ -27,7 +27,7 @@
 	function drawgraph2() {
 		$.ajax("../ajax/shopallgraph.dog", {
 			success : function(data) {
-				shopgraph(data);
+				shopgraph(data, '2020년');
 			},
 			error : function(e) {
 				alert("서버 오류 : " + e.status);
@@ -45,9 +45,9 @@
 				+ (opacity || '.3') + ")";
 	};
 	
-	function shopgraph(data) {
+	function shopgraph(data, name) {
 		console.log(data)
-		var name = document.getElementById("shoplist").value;
+		var name = name;
 		var rows = JSON.parse(data)
 		var dates = []
 		var datas = []

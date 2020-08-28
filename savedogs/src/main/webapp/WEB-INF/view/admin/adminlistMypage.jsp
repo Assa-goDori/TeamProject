@@ -101,14 +101,14 @@
 						${slist.member_email }
 					</td>
 					<td class="data">
-						<c:if test="${slist.file1 != null }">
+						<c:if test="${!empty slist.file1}">
 							<a href="../member/img/${slist.file1 }">
 							<font color="blue">${slist.file1 }</font>
 							</a>
 						</c:if>
-						<c:if test="${slist.file2 != null }">
+						<c:if test="${!empty slist.file2}">
 							<a href="../member/img/${slist.file2 }">
-								<font color="blue">${slist.file2 }</font>
+							<font color="blue">${slist.file2 }</font>
 							</a>
 						</c:if>
 					</td>
