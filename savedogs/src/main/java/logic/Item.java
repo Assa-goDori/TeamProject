@@ -12,7 +12,7 @@ public class Item {
 	@NotEmpty(message ="상품명을 입력하세요")
 	private String item_name;
 	@Min(value = 10,message = "10원 이상 가능합니다")
-	@Max(value = 100000,message = "1000000원 이하만 가능합니다")
+	@Max(value = 1000000,message = "1000000원 이하만 가능합니다")
 	private int item_price;
 	
 	@NotEmpty(message = "상품 설명을 입력하세요")
