@@ -155,7 +155,7 @@ public class FundingController {
   		}	try {
   			service.fundingapply(fundinglist,request);
   		}   catch(Exception e) {
-  			throw new FundingException("이미 후원 하셨습니다.", "../vwork/gotoMain.dog");
+  			throw new FundingException("이미 기부 하셨습니다.", "../vwork/gotoMain.dog");
   		}
           mav.setViewName("redirect:/vwork/gotoMain.dog"); //mypage로~?
           return mav;      
