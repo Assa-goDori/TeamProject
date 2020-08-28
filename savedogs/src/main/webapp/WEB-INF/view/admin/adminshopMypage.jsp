@@ -180,7 +180,7 @@
 			</c:forEach>
 		</select>
 		<input class="s_btn" type="button" value="출력" onclick="drawgraph()">
-		<input class="s_btn" style="width: 200px;" type="button" value="전체 월별 판매금액량 보기" onclick="drawgraph2()">
+		<input class="s_btn" style="width: 250px;" type="button" value="전체 월별 판매금액량 보기" onclick="drawgraph2()">
 		<div id="main_div" align="center" style="width:50%; margin-left:25%">
 			<canvas id="canvas" style="width:50%; height:100%;"></canvas>
 		</div>
