@@ -32,8 +32,8 @@
 </head>
 <body>
 	<div class="main_div" style="width: 100%;">
-		<h3>일반회원목록</h3>
-		<hr>
+		<h3>일반 회원 목록</h3>
+		<br>
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -76,6 +76,7 @@
 		</table>
 		<hr>
 		<h3>보호소 관리자 목록</h3>
+		<br>
 		<table>
 			<tr>
 				<th>아이디</th>
