@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -29,5 +30,8 @@ public interface FundlistMapper {
 
 	@Select("select concat(month(fund_date),'월') m, count(*) cnt from fundinglist where fund_id=#{member_id} and year(fund_date)=${year} group by m order by m")
 	List<Map<String, Object>> fundgraph(Map<String, Object> param);
+
+	@Delete("delete from fundinglist where fund_id=#{member_id}")
+	void deleteFundlist(String member_id);
 	
 }

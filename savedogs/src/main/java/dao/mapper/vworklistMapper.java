@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
 import logic.Vwork;
@@ -22,5 +23,8 @@ public interface vworklistMapper {
 
 	@Select("select year(vwork_date) year from vworklist where vwork_id=#{id} group by year order by year desc")
 	List<Vworklist> getYearlist(String id);
+
+	@Delete("delete from vworklist where vwork_id=#{member_id}")
+	void deleteVworklist(String member_id);
 
 }

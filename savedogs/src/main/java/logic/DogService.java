@@ -272,6 +272,14 @@ public class DogService {
 	public void deleteMember(String member_id) {
 		memberDao.deleteMember(member_id);
 	}
+	
+	public void deleteVworklist(String member_id) {
+		vworklistDao.deleteVworklist(member_id);
+	}
+	
+	public void deleteFundlist(String member_id) {
+		fundlistDao.deleteFundlist(member_id);
+	}
 
 //-------------------회원관련 끝-------------------------------------------------
 	

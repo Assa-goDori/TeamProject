@@ -310,6 +310,8 @@ public class MemberController {
 				if(member_pass.equals(dbpass)) {
 					try {
 						service.deleteMember(member_id);
+						service.deleteVworklist(member_id);
+						service.deleteFundlist(member_id);
 					} catch (Exception e) {
 						throw new LoginException("삭제 오류","../member/memberMypage.dog?type=1&id=" + member_id);
 					}
@@ -326,6 +328,8 @@ public class MemberController {
 				if(member_pass.equals(loginadmin.getMember_pass())) {
 					try {
 						service.deleteMember(member_id);
+						service.deleteVworklist(member_id);
+						service.deleteFundlist(member_id);
 					} catch (Exception e) {
 						throw new LoginException("삭제 오류","../admin/adminlistMypage.dog?type=2&id=admin");
 					}

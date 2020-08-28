@@ -40,4 +40,8 @@ public class VworklistDao {
 	public List<Vworklist> getYearlist(String id) {
 		return template.getMapper(vworklistMapper.class).getYearlist(id);
 	}
+
+	public void deleteVworklist(String member_id) {
+		template.getMapper(vworklistMapper.class).deleteVworklist(member_id);
+	}
 }
