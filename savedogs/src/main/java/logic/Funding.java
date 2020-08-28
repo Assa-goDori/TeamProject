@@ -26,7 +26,7 @@ public class Funding {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
 	@NotNull(message="날짜를 선택하세요")
-	@Future(message="미래 날짜만 입력 가능합니다.")
+	@Future(message="시작날짜 이후만 가능합니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")	
 	private Date end_date;
 	private int restdate; //마감날짜-오늘날짜
