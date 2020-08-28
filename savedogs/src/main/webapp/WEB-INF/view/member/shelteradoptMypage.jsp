@@ -37,34 +37,34 @@
 		<c:if test="${!empty shelteradoptlist }">
 		<table>
 			<tr>
-				<th>신청자아이디</th>
-				<th>공고번호</th>
-				<th>신청날짜</th>
-				<th>진행단계</th>
-				<th>신청서</th>
-				<th>처리</th>
+				<th class="l_th">신청자아이디</th>
+				<th class="l_th">공고번호</th>
+				<th class="l_th">신청날짜</th>
+				<th class="l_th">진행단계</th>
+				<th class="l_th">신청서</th>
+				<th class="l_th">처리</th>
 			</tr>
 			<c:forEach items="${shelteradoptlist }" var="list" varStatus="stat">
 				<tr>
-					<td class="data" style="width:360px">
+					<td class="data l_td" style="width:360px">
 						${list.member_id}
 					</td>
-					<td class="data" style="width:200px;"><a href="../adopt/adetail.dog?noticeNo=${list.dog_no }">${list.dog_no }</a></td>
-					<td class="data">
+					<td class="data l_td" style="width:200px;"><a href="../adopt/adetail.dog?noticeNo=${list.dog_no }">${list.dog_no }</a></td>
+					<td class="data l_td">
 						<fmt:formatDate value="${list.adopt_date }" pattern="yyyy-MM-dd" var="day"/>
 						${day }
 					</td>
-					<td class="data">${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }</td>
-					<td>
+					<td class="data l_td">${list.adopt_etc==0?"신청":list.adopt_etc==1?"거부":list.adopt_etc==2?"승인":"완료" }</td>
+					<td class="l_td">
 						<a href="../adopt/img/${list.adopt_file }">신청서 보기</a>
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						<c:if test="${list.adopt_etc==0 }">
-							<input class="g_btn" type="button" value="승인" onclick="changeEtc('${list.dog_no}', 2)">
+							<input class="s_btn" type="button" value="승인" onclick="changeEtc('${list.dog_no}', 2)">
 							<input class="g_btn" type="button" value="거부" onclick="changeEtc('${list.dog_no}', 1)">
 						</c:if>
 						<c:if test="${list.adopt_etc==2 }">
-							<input class="g_btn" type="button" value="완료" onclick="changeEtc('${list.dog_no}', 3)">
+							<input class="s_btn" type="button" value="완료" onclick="changeEtc('${list.dog_no}', 3)">
 						</c:if>
 						<c:if test="${list.adopt_etc==3 }">
 							

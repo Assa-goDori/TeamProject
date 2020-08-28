@@ -36,36 +36,36 @@
 		<hr>
 		<table>
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>핸드폰</th>
-				<th colspan="2">주소</th>
-				<th>생년월일</th>
-				<th>이메일</th>
-				<th>관리</th>
+				<th class="l_th">아이디</th>
+				<th class="l_th">이름</th>
+				<th class="l_th">핸드폰</th>
+				<th colspan="2" class="l_th">주소</th>
+				<th class="l_th">생년월일</th>
+				<th class="l_th">이메일</th>
+				<th class="l_th">관리</th>
 			</tr>
 			<c:forEach items="${memberlist }" var="list">
 				<tr>
-					<td class="data">
+					<td class="data l_td">
 						${list.member_id }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${list.member_name }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${list.member_tel }
 					</td>
-					<td class="data" colspan="2">
+					<td class="data l_td" colspan="2">
 						${list.member_postcode} ${list.member_address} ${list.member_daddress}
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						<fmt:formatDate value="${list.member_birthday }" pattern="yyyy.MM.dd" var="day" />
 						${day }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${list.member_email }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						<a href="../member/updateMember.dog?type=1&id=${list.member_id }&update=1&member_type=0">
 							<font color="blue">수정</font></a>
 						<a href="../member/deleteMember.dog?type=1&id=${list.member_id }">
@@ -78,29 +78,29 @@
 		<h3>보호소 관리자 목록</h3>
 		<table>
 			<tr>
-				<th>아이디</th>
-				<th>핸드폰</th>
-				<th colspan="2">보호소</th>
-				<th>이메일</th>
-				<th>첨부서류</th>
-				<th>가입여부</th>
-				<th>관리</th>
+				<th class="l_th">아이디</th>
+				<th class="l_th">핸드폰</th>
+				<th class="l_th" colspan="2">보호소</th>
+				<th class="l_th">이메일</th>
+				<th class="l_th">첨부서류</th>
+				<th class="l_th">가입여부</th>
+				<th class="l_th">관리</th>
 			</tr>
 			<c:forEach items="${smemberlist }" var="slist">
 				<tr>
-					<td class="data">
+					<td class="data l_td">
 						${slist.member_id }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${slist.member_tel }
 					</td>
-					<td class="data" colspan="2">
+					<td class="data l_td" colspan="2">
 						${slist.shelter_address} ${slist.shelter_name}
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						${slist.member_email }
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						<c:if test="${slist.file1 != null }">
 							<a href="../member/img/${slist.file1 }">
 							<font color="blue">${slist.file1 }</font>
@@ -112,7 +112,7 @@
 							</a>
 						</c:if>
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						<c:if test="${slist.member_auth == 1 }">
 							<a href="javascript:changeauth('${slist.member_id }', 0)">
 								<font color="blue">승인</font>
@@ -125,7 +125,7 @@
 							<!-- <a href="javascript:changeauth('${slist.member_id }', 1)">거부</a>  -->
 						</c:if>
 					</td>
-					<td class="data">
+					<td class="data l_td">
 						<a href="../member/updateMember.dog?type=1&id=${slist.member_id }&update=2&member_type=1">
 							<font color="blue">수정</font></a>
 						<a href="../member/deleteMember.dog?type=1&id=${slist.member_id }">
