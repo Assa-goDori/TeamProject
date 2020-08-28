@@ -53,4 +53,8 @@ public class FundinglistDao {
 		param.put("member_id", member_id);
 		return template.getMapper(FundlistMapper.class).fundgraph(param);
 	}
+
+	public void deleteFundlist(String member_id) {
+		template.getMapper(FundlistMapper.class).deleteFundlist(member_id);
+	}
 }
