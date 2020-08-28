@@ -19,6 +19,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,6 +33,11 @@ import logic.Member;
 public class MainController {
 	@Autowired
 	private DogService service;
+	
+	@GetMapping("*")
+	public String info() {
+		return null;
+	}
 	
 	@RequestMapping("main")
 	public ModelAndView main(HttpServletRequest request) throws IOException {
@@ -141,9 +147,5 @@ public class MainController {
 		mav.addObject(item);
 		mav.addObject(funding);
 		return mav;
-	}
-	@RequestMapping("*")
-	public String info() {
-		return null;
 	}
 }
