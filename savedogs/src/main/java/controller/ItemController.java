@@ -95,7 +95,7 @@ public class ItemController {
 	public ModelAndView delete(int item_no) {
 		ModelAndView mav = new ModelAndView();
 		service.itemdelete(item_no);
-		mav.setViewName("/item/list");
+		mav.setViewName("redirect:/item/list.dog");
 		return mav;
 	}
 }
