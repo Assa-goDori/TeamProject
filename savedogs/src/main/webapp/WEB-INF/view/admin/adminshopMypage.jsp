@@ -139,25 +139,25 @@
 		<h3>후원 물품 판매 관리</h3>
 		<table>
 			<tr>
-				<th>상품코드</th>
-				<th>상품명</th>
-				<th>단가</th>
-				<th>판매량</th>
-				<th>소계</th>
-				<th>상태</th>
-				<th>선택시 변경</th>
+				<th class="l_th">상품코드</th>
+				<th class="l_th">상품명</th>
+				<th class="l_th">단가</th>
+				<th class="l_th">판매량</th>
+				<th class="l_th">소계</th>
+				<th class="l_th">상태</th>
+				<th class="l_th">선택시 변경</th>
 			</tr>
 			<c:forEach items="${shopalllist }" var="list">
 				<tr>
-					<td class="">${list.item_code }</td>
-					<td class="data">${list.item_name }</td>
+					<td class="l_td">${list.item_code }</td>
+					<td class="data l_td">${list.item_name }</td>
 					<fmt:formatNumber value="${list.item_price }" pattern="##,###원" var="price" />
-					<td class="data">${price }</td>
-					<td class="data">${list.sellCnt }개</td>
+					<td class="data l_td">${price }</td>
+					<td class="data l_td">${list.sellCnt }개</td>
 					<fmt:formatNumber value="${list.item_price * list.sellCnt }" pattern="##,###원" var="total" />
-					<td class="data">${total }</td>
-					<td class="data">${list.item_state==0?"판매중":"매진" }</td>
-					<td class="data">
+					<td class="data l_td">${total }</td>
+					<td class="data l_td">${list.item_state==0?"판매중":"매진" }</td>
+					<td class="data l_td">
 						<c:if test="${list.item_state==0 }">
 							<a href="javascript:changestate(${list.item_no }, 1)">
 								<font color="blue">매진</font>
