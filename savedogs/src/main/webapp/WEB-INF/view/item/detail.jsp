@@ -45,7 +45,7 @@
 						</tr>
 						<tr>
 							<td align="center" width="30%"><h3>가격</h3></td>
-							<td><h4>&nbsp;${item.item_price}원</h4></td>
+							<td><h4>&nbsp;<fmt:formatNumber pattern="##,###" value="${item.item_price}"/>원</h4></td>
 						</tr>
 						<tr>
 							<td align="center" width="30%"><h3>상품코드</h3></td>

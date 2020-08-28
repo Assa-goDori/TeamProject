@@ -36,7 +36,7 @@
 	<c:forEach items="${cart.itemSetList}" var="itemSet" varStatus="stat">
 		<tr><td width="250px" style="text-align: center;">${itemSet.item.item_name}</td>
 			<td width="250px" style="text-align: center;">${itemSet.item_each}</td>
-			<td width="250px" style="text-align: center;">${itemSet.item_each * itemSet.item.item_price}
+			<td width="250px" style="text-align: center;"><fmt:formatNumber pattern="##,###" value="${itemSet.item_each * itemSet.item.item_price}"/>  
 		<c:set var="tot" value="${tot +(itemSet.item_each * itemSet.item.item_price)}"/>
 		<a href="cartDelete.dog?index=${stat.index}">ⓧ</a></td></tr>
 		</c:forEach>
