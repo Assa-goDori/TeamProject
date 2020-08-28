@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -209,7 +210,7 @@ public class DogService {
 	}
 	
 	public Map<String, Object> vworkgraph(String year, String member_id) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
 		for(Map<String, Object> m : vworklistDao.vworkgraph(year, member_id)) {
 			map.put((String)m.get("m"), m.get("cnt"));
 		}
@@ -217,7 +218,7 @@ public class DogService {
 	}
 	
 	public Map<String, Object> fundgraph(String year, String member_id) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
 		for(Map<String, Object> m : fundlistDao.fundgraph(year, member_id)) {
 			map.put((String)m.get("m"), m.get("cnt"));
 		}
@@ -225,7 +226,7 @@ public class DogService {
 	}
 	
 	public Map<String, Object> shopgraph(String name) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
 		for(Map<String, Object> m : itemDao.shopgraph(name)) {
 			map.put((String)m.get("m"), m.get("cnt"));
 		}
@@ -233,7 +234,7 @@ public class DogService {
 	}
 	
 	public Map<String, Object> shopallgraph(String year) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
 		for(Map<String, Object> m : itemDao.shopallgraph(year)) {
 			map.put((String)m.get("m"), m.get("cnt"));
 		}
