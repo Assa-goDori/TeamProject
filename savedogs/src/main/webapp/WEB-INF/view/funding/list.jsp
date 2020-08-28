@@ -66,7 +66,7 @@
                </table>
                </c:if>
                 <div align="right">
-        <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}">후원모집작성</a></h6>
+        <c:if test="${!empty sessionScope.loginsmem}"><h6><a href="fregForm.dog?id=${sessionScope.loginsmem.member_id}">기부모집작성</a></h6>
         </c:if>
         </div>
        </div>
