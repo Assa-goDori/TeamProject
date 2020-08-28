@@ -47,7 +47,7 @@ public interface ItemMapper {
 			" WHERE item_no = (" +
 			" SELECT item_no" +
 			" FROM item" +
-			" WHERE item_name=#{name} group by m order by m)"
+			" WHERE item_name=#{name}) group by m order by m"
 			)
 	List<Map<String, Object>> shopgraph(String name);
 

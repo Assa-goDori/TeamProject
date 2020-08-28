@@ -440,7 +440,6 @@ public class MemberController {
 		}
 		if(i<hashSet.size()) json.append(",");	
 		json.append("]");
-		System.out.println(json.toString());
 		mav.addObject("json", json.toString().trim());
 		
 		return mav;
